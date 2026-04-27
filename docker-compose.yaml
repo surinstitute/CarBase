@@ -1,0 +1,90 @@
+services:
+  database:
+    image: postgis/postgis:18-3.6-alpine
+    platform: linux/amd64
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    volumes:
+      - database:/var/lib/postgresql
+    env_file:
+      - backend/.env
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -h 127.0.0.1 -U $$POSTGRES_USER -d $$POSTGRES_DB",
+        ]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+    networks:
+      - django-liberty
+  backend:
+    build:
+      context: backend
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    env_file:
+      - backend/.env
+    volumes:
+      - backend:/app
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/')",
+        ]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - django-liberty
+  frontend:
+    build:
+      context: frontend
+      args:
+        DJANGO_URL: ${DJANGO_URL:-http://127.0.0.1:8000}
+        FRONTEND_URL: ${FRONTEND_URL:-http://127.0.0.1:3000}
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    env_file:
+      - frontend/.env
+    environment:
+      DJANGO_URL: ${DJANGO_URL:-http://127.0.0.1:8000}
+      FRONTEND_URL: ${FRONTEND_URL:-http://127.0.0.1:3000}
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "bun",
+          "--eval",
+          "fetch('http://127.0.0.1:3000/').then((response) => { if (!response.ok) process.exit(1) }).catch(() => process.exit(1))",
+        ]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - django-liberty
+
+networks:
+  django-liberty:
+    driver: bridge
+
+volumes:
+  backend:
+  database:
+  frontend:
