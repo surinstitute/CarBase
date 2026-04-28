@@ -41,6 +41,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=60, blank=True, null=True)
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
+    catalog_groups = models.ManyToManyField(
+        "catalog.Group",
+        related_name="users",
+        blank=True,
+    )
     is_active = models.BooleanField(default=False, db_index=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now, db_index=True)

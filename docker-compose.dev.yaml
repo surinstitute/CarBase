@@ -6,8 +6,6 @@ services:
       - "5432"
     ports:
       - "5432:5432"
-    volumes:
-      - database:/var/lib/postgresql
     env_file:
       - backend/.env
     healthcheck:
@@ -27,7 +25,9 @@ services:
     env_file:
       - backend/.env
     volumes:
-      - backend:/app
+      - ./backend/src:/app/src
+      - ./backend/manage.py:/app/manage.py
+      - ./backend/entrypoint.sh:/app/entrypoint.sh
     healthcheck:
       test:
         [
@@ -35,7 +35,7 @@ services:
           "python",
           "-c",
           "import urllib.request;
-            urllib.request.urlopen('http://localhost:8000/')",
+            urllib.request.urlopen('http://localhost:8000/djadmin/')",
         ]
       interval: 2s
       timeout: 2s
@@ -81,7 +81,3 @@ services:
 networks:
   django-liberty:
     driver: bridge
-
-volumes:
-  backend:
-  database: #frontend:
