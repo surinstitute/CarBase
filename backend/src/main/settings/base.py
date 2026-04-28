@@ -200,6 +200,8 @@ INSTALLED_APPS = [
     # Third Party
     "corsheaders",
     "storages",
+    # Catalog
+    "catalog",
     # Users
     "users",
     # Main
