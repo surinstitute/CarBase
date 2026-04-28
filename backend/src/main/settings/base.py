@@ -359,7 +359,7 @@ USE_TZ = True
 # Staticfiles
 ######################################################################
 
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR.parent.parent / "staticfiles"
 STATIC_URL = "/static/"
 
 MEDIA_ROOT = BASE_DIR / "media"
@@ -369,7 +369,7 @@ MEDIA_URL = "/media/"
 # Storages and Static/Media Files
 ######################################################################
 
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR.parent.parent / "staticfiles"
 STATIC_URL = "/static/"
 
 MEDIA_ROOT = BASE_DIR / "media"
@@ -444,7 +444,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
@@ -455,25 +455,131 @@ REST_FRAMEWORK = {
 # Unfold
 ######################################################################
 UNFOLD = {
-    "SITE_HEADER": _("django-liberty"),
-    "SITE_TITLE": _("django-liberty Admin"),
+    "SITE_HEADER": _("CarBase"),
+    "SITE_TITLE": _("CarBase Admin"),
     "SIDEBAR": {
         "show_search": True,
-        "show_all_applications": True,
+        "show_all_applications": False,
         "navigation": [
             {
-                "title": _("Navigation"),
+                "title": _("Catalogos"),
                 "separator": False,
                 "items": [
                     {
-                        "title": _("Users"),
-                        "icon": "person",
-                        "link": reverse_lazy("admin:users_user_changelist"),
+                        "title": _("Marcas"),
+                        "icon": "branding_watermark",
+                        "link": reverse_lazy("admin:catalog_make_changelist"),
                     },
                     {
-                        "title": _("Groups"),
+                        "title": _("Modelos"),
+                        "icon": "category",
+                        "link": reverse_lazy("admin:catalog_basemodel_changelist"),
+                    },
+                    {
+                        "title": _("Motores"),
+                        "icon": "precision_manufacturing",
+                        "link": reverse_lazy("admin:catalog_engine_changelist"),
+                    },
+                    {
+                        "title": _("Motores electricos"),
+                        "icon": "bolt",
+                        "link": reverse_lazy("admin:catalog_emotor_changelist"),
+                    },
+                    {
+                        "title": _("Baterias"),
+                        "icon": "battery_full",
+                        "link": reverse_lazy("admin:catalog_batterypack_changelist"),
+                    },
+                    {
+                        "title": _("Tanques"),
+                        "icon": "local_gas_station",
+                        "link": reverse_lazy("admin:catalog_fueltank_changelist"),
+                    },
+                    {
+                        "title": _("Powertrains"),
+                        "icon": "settings_input_component",
+                        "link": reverse_lazy("admin:catalog_powertrain_changelist"),
+                    },
+                    {
+                        "title": _("Transmisiones"),
+                        "icon": "sync_alt",
+                        "link": reverse_lazy("admin:catalog_transmission_changelist"),
+                    },
+                    {
+                        "title": _("Plataformas"),
                         "icon": "label",
-                        "link": reverse_lazy("admin:auth_group_changelist"),
+                        "link": reverse_lazy("admin:catalog_platform_changelist"),
+                    },
+                    {
+                        "title": _("Vehiculos"),
+                        "icon": "directions_car",
+                        "link": reverse_lazy("admin:catalog_vehicle_changelist"),
+                    },
+                    {
+                        "title": _("Grupos de catalogo"),
+                        "icon": "group_work",
+                        "link": reverse_lazy("admin:catalog_group_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Configuracion de Vehiculo"),
+                "separator": False,
+                "items": [
+                    {
+                        "title": _("Seguridad"),
+                        "icon": "health_and_safety",
+                        "link": reverse_lazy("admin:catalog_safetypackage_changelist"),
+                    },
+                    {
+                        "title": _("Carga"),
+                        "icon": "ev_station",
+                        "link": reverse_lazy(
+                            "admin:catalog_chargingpackage_changelist"
+                        ),
+                    },
+                    {
+                        "title": _("Puertos de carga"),
+                        "icon": "power",
+                        "link": reverse_lazy("admin:catalog_chargingport_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Cumplimiento"),
+                "separator": False,
+                "items": [
+                    {
+                        "title": _("Records de cumplimiento"),
+                        "icon": "fact_check",
+                        "link": reverse_lazy(
+                            "admin:catalog_compliancerecord_changelist"
+                        ),
+                    },
+                    {
+                        "title": _("Certificaciones"),
+                        "icon": "verified",
+                        "link": reverse_lazy(
+                            "admin:catalog_regulatoryapproval_changelist"
+                        ),
+                    },
+                    {
+                        "title": _("Documentos fuente"),
+                        "icon": "description",
+                        "link": reverse_lazy(
+                            "admin:catalog_approvalsourcedocument_changelist"
+                        ),
+                    },
+                ],
+            },
+            {
+                "title": _("Acceso"),
+                "separator": False,
+                "items": [
+                    {
+                        "title": _("Usuarios"),
+                        "icon": "person",
+                        "link": reverse_lazy("admin:users_user_changelist"),
                     },
                 ],
             },
