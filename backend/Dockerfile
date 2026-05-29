@@ -18,12 +18,12 @@ WORKDIR /app
 
 COPY pyproject.toml ./
 
-RUN --mount=type=cache,id=s/backend-/root/.cache/uv,target=/root/.cache/uv \
+RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --no-dev --no-install-project
 
 COPY . .
 
-RUN --mount=type=cache,id=s/backend-/root/.cache/uv,target=/root/.cache/uv \
+RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --no-dev
 
 ENTRYPOINT ["sh", "/app/entrypoint.sh"]
