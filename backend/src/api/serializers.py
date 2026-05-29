@@ -17,14 +17,12 @@ from catalog.models import (
     Group,
     Make,
     Platform,
-    PowerResult,
     PowerTrain,
     PowerTrainArchitecture,
     RangeResult,
     RegulatoryApproval,
     SafetyPackage,
     TopSpeedResult,
-    TorqueResult,
     Transmission,
     Vehicle,
 )
@@ -41,6 +39,15 @@ ARCHITECTURE_MAP = {
     PowerTrainArchitecture.FCEV: "fuel_cell_electric",
 }
 
+ENGINE_FUEL_TYPE_MAP = {
+    "gasoline": "gasoline",
+    "diesel": "diesel",
+    "e85": "flex_fuel",
+    "cng": "cng",
+    "lpg": "lpg",
+    "hydrogen": "hydrogen",
+}
+
 FUEL_SOURCE_MAP = {
     "gasoline": "gasoline",
     "diesel": "diesel",
@@ -49,6 +56,8 @@ FUEL_SOURCE_MAP = {
     "lpg": "lpg",
     "hydrogen": "hydrogen",
 }
+
+PROPULSION_ROLES = {"traction", "mixed"}
 
 
 def mark_first_primary(items):
@@ -85,15 +94,53 @@ class PlatformSerializer(serializers.ModelSerializer):
 
 
 class EngineSerializer(serializers.ModelSerializer):
+    id = serializers.UUIDField(source="engineId", read_only=True)
+    fuelType = serializers.SerializerMethodField()
+    displacementCc = serializers.IntegerField(source="displacement_cc", read_only=True)
+    powerKw = serializers.FloatField(source="power_kW", read_only=True)
+    cylinderCount = serializers.IntegerField(source="cylinder_count", read_only=True)
+
     class Meta:
         model = Engine
-        fields = "__all__"
+        fields = (
+            "id",
+            "fuelType",
+            "displacementCc",
+            "powerKw",
+            "cylinderCount",
+            "aspiration",
+            "layout",
+        )
+
+    def get_fuelType(self, obj):
+        return ENGINE_FUEL_TYPE_MAP.get(obj.energy_source, "other")
 
 
 class BatteryPackSerializer(serializers.ModelSerializer):
+    id = serializers.UUIDField(source="batteryPackId", read_only=True)
+    grossCapacityKWh = serializers.SerializerMethodField()
+    usableCapacityKWh = serializers.FloatField(source="usable_capacity_kWh", read_only=True)
+    systemVoltage = serializers.SerializerMethodField()
+
     class Meta:
         model = BatteryPack
-        fields = "__all__"
+        fields = (
+            "id",
+            "chemistry",
+            "grossCapacityKWh",
+            "usableCapacityKWh",
+            "systemVoltage",
+        )
+
+    def get_grossCapacityKWh(self, obj):
+        if obj.gross_capacity_kWh is not None:
+            return obj.gross_capacity_kWh
+        return obj.capacity_kWh
+
+    def get_systemVoltage(self, obj):
+        if obj.voltage_V is None:
+            return None
+        return int(round(obj.voltage_V))
 
 
 class FuelTankSerializer(serializers.ModelSerializer):
@@ -103,9 +150,20 @@ class FuelTankSerializer(serializers.ModelSerializer):
 
 
 class EMotorSerializer(serializers.ModelSerializer):
+    id = serializers.UUIDField(source="eMotorId", read_only=True)
+    motorType = serializers.CharField(source="motor_type", read_only=True)
+    powerKw = serializers.FloatField(source="power_kW", read_only=True)
+    coolingType = serializers.CharField(source="cooling_type", read_only=True)
+
     class Meta:
         model = EMotor
-        fields = "__all__"
+        fields = (
+            "id",
+            "motorType",
+            "powerKw",
+            "position",
+            "coolingType",
+        )
 
 
 class PowerTrainSerializer(serializers.ModelSerializer):
@@ -135,8 +193,8 @@ class VehicleSerializer(serializers.ModelSerializer):
             "modelId": str(obj.modelId.id),
             "modelYear": obj.modelId.year,
         }
-        if obj.platformId_id:
-            lineage["platformId"] = str(obj.platformId.platformId)
+        if obj.modelId.platformId_id:
+            lineage["platformId"] = str(obj.modelId.platformId.platformId)
         if obj.modelId.generation:
             lineage["generationId"] = obj.modelId.generation
         return lineage
@@ -149,11 +207,6 @@ class VehicleSerializer(serializers.ModelSerializer):
             configuration["bodyStyle"] = obj.bodyStyle
         if obj.transmissionId_id:
             configuration["transmissionId"] = str(obj.transmissionId.transmissionId)
-        if obj.platformId_id:
-            configuration["platform"] = {
-                "id": str(obj.platformId.platformId),
-                "name": obj.platformId.name,
-            }
         return configuration
 
     def to_representation(self, instance):
@@ -180,8 +233,6 @@ class VehicleSerializer(serializers.ModelSerializer):
             return None
 
         serialized = {
-            "id": str(powertrain.powerTrainId),
-            "name": powertrain.name,
             "architecture": ARCHITECTURE_MAP.get(
                 powertrain.architecture, powertrain.architecture
             ),
@@ -540,19 +591,94 @@ class VehicleSerializer(serializers.ModelSerializer):
         if top_speed:
             performance["topSpeed"] = top_speed
 
-        torque = [
-            self._serialize_metric_result(item) for item in obj.torque_results.all()
-        ]
-        if torque:
-            performance["torque"] = torque
-
-        power = [
-            self._serialize_metric_result(item) for item in obj.power_results.all()
-        ]
+        power = self._build_computed_power_results(obj)
         if power:
             performance["power"] = power
 
+        torque = self._build_computed_torque_results(obj)
+        if torque:
+            performance["torque"] = torque
+
         return performance
+
+    def _build_computed_power_results(self, obj):
+        powertrain = obj.powerTrainId
+        if not powertrain:
+            return []
+
+        items = []
+        engine_fitments = self._propulsion_engine_fitments(powertrain)
+        motor_fitments = self._propulsion_motor_fitments(powertrain)
+
+        combustion_power_kw = sum(
+            fitment.engine.power_kW
+            for fitment in engine_fitments
+            if fitment.engine.power_kW is not None
+        )
+        if combustion_power_kw > 0:
+            items.append(
+                {
+                    "metric": "combustion_engine_power",
+                    "value": combustion_power_kw,
+                    "unit": "kw",
+                    "isPrimary": not motor_fitments,
+                }
+            )
+
+        electric_power_kw = sum(
+            fitment.e_motor.power_kW * (fitment.quantity or 1)
+            for fitment in motor_fitments
+            if fitment.e_motor.power_kW is not None
+        )
+        if electric_power_kw > 0:
+            items.append(
+                {
+                    "metric": "electric_motor_power",
+                    "value": electric_power_kw,
+                    "unit": "kw",
+                    "isPrimary": not engine_fitments,
+                }
+            )
+
+        return [item for item in items if item["value"] is not None]
+
+    def _build_computed_torque_results(self, obj):
+        powertrain = obj.powerTrainId
+        if not powertrain:
+            return []
+
+        engine_fitments = self._propulsion_engine_fitments(powertrain)
+        motor_fitments = self._propulsion_motor_fitments(powertrain)
+        if engine_fitments or len(motor_fitments) != 1:
+            return []
+
+        fitment = motor_fitments[0]
+        torque_nm = fitment.e_motor.torque_Nm
+        if torque_nm is None:
+            return []
+
+        return [
+            {
+                "metric": "peak_torque",
+                "value": torque_nm * (fitment.quantity or 1),
+                "unit": "nm",
+                "isPrimary": True,
+            }
+        ]
+
+    def _propulsion_engine_fitments(self, powertrain):
+        return [
+            fitment
+            for fitment in powertrain.engine_fitments.all()
+            if fitment.role in PROPULSION_ROLES
+        ]
+
+    def _propulsion_motor_fitments(self, powertrain):
+        return [
+            fitment
+            for fitment in powertrain.motor_fitments.all()
+            if fitment.role in PROPULSION_ROLES
+        ]
 
     def _serialize_result_with_cycle_scope(self, item):
         data = {

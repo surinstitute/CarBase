@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 from django.db.models import Q
 from django.urls import reverse
@@ -13,15 +14,14 @@ from .models import (
     ChargingPackage,
     ChargingPort,
     ComplianceRecord,
-    EMotor,
     EfficiencyResult,
     EmissionsResult,
+    EMotor,
     Engine,
     FuelTank,
     Group,
     Make,
     Platform,
-    PowerResult,
     PowerTrain,
     PowerTrainBatteryPack,
     PowerTrainEMotor,
@@ -31,10 +31,48 @@ from .models import (
     RegulatoryApproval,
     SafetyPackage,
     TopSpeedResult,
-    TorqueResult,
     Transmission,
     Vehicle,
 )
+from .types import PowerTrainArchitecture
+
+
+SAFETY_FEATURE_DESCRIPTIONS = {
+    "collisionWarnings_fcw": "Forward collision warning alerts the driver to a possible frontal collision.",
+    "collisionWarnings_ldw": "Lane departure warning alerts when the vehicle leaves its lane unintentionally.",
+    "collisionWarnings_bsw": "Blind spot warning detects vehicles in adjacent lanes that may be hard to see.",
+    "collisionWarnings_rctw": "Rear cross-traffic warning alerts of approaching traffic while reversing.",
+    "collisionIntervention_aebCity": "Automatic emergency braking tuned for lower-speed urban driving.",
+    "collisionIntervention_aebPedestrian": "Automatic emergency braking with pedestrian detection.",
+    "collisionIntervention_aebHighway": "Automatic emergency braking designed for higher-speed driving.",
+    "collisionIntervention_aebRear": "Rear automatic emergency braking helps avoid obstacles while backing up.",
+    "drivingControlAssistance_lka": "Lane keeping assist applies steering support to keep the vehicle in lane.",
+    "drivingControlAssistance_lca": "Lane centering assist helps keep the vehicle centered within the lane.",
+    "drivingControlAssistance_acc": "Adaptive cruise control adjusts speed to maintain distance from traffic ahead.",
+    "drivingControlAssistance_activeDrivingAssistanceDirectDriverMonitoring": "Driver monitoring checks driver attention during assisted driving.",
+    "rearSeatSafety_childSafety": "Rear-seat child safety features such as child locks or child-seat support.",
+    "rearSeatSafety_rearOccupantAlertEndOfTripReminder": "Rear occupant alert reminds the driver to check the back seats after a trip.",
+    "visibilityAndControl_drl": "Daytime running lights improve vehicle visibility during the day.",
+    "visibilityAndControl_rearViewCamera": "Rear-view camera shows the area behind the vehicle while reversing.",
+    "visibilityAndControl_esc": "Electronic stability control helps maintain control during skids or evasive maneuvers.",
+    "visibilityAndControl_tractionControl": "Traction control reduces wheel slip under acceleration.",
+    "visibilityAndControl_abs": "Anti-lock braking system helps prevent wheel lock during hard braking.",
+    "restraints_airbagSideFront": "Front side airbags protect the torso of front occupants in side impacts.",
+    "restraints_airbagSideRear": "Rear side airbags protect rear occupants in side impacts.",
+    "restraints_headProtectionAirbag": "Head protection airbags, often curtain airbags, help protect occupants' heads in side impacts or rollovers.",
+}
+
+
+class SafetyPackageAdminForm(forms.ModelForm):
+    class Meta:
+        model = SafetyPackage
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, description in SAFETY_FEATURE_DESCRIPTIONS.items():
+            if field_name in self.fields:
+                self.fields[field_name].help_text = description
 
 
 class GroupScopedAdminMixin:
@@ -201,6 +239,7 @@ class PowerTrainFuelTankInline(GroupScopedInlineMixin, admin.TabularInline):
 
 class SafetyPackageInline(admin.StackedInline):
     model = SafetyPackage
+    form = SafetyPackageAdminForm
     extra = 0
     max_num = 1
 
@@ -261,16 +300,6 @@ class TopSpeedResultInline(admin.TabularInline):
     extra = 0
 
 
-class TorqueResultInline(admin.TabularInline):
-    model = TorqueResult
-    extra = 0
-
-
-class PowerResultInline(admin.TabularInline):
-    model = PowerResult
-    extra = 0
-
-
 @admin.register(RegulatoryApproval)
 class RegulatoryApprovalAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("authority", "jurisdiction", "scheme", "domain", "status")
@@ -300,6 +329,7 @@ class VehicleLinkedAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(SafetyPackage)
 class SafetyPackageAdmin(VehicleLinkedAdmin):
+    form = SafetyPackageAdminForm
     list_display = ("vehicle",)
     search_fields = ("vehicle__modelId__model", "vehicle__modelId__make__name")
 
@@ -345,6 +375,7 @@ class ComplianceRecordAdmin(VehicleLinkedAdmin):
         "region",
         "standard",
         "classification",
+        "source_url",
         "is_primary",
     )
     search_fields = (
@@ -353,6 +384,7 @@ class ComplianceRecordAdmin(VehicleLinkedAdmin):
         "region",
         "standard",
         "classification",
+        "source_url",
     )
 
 
@@ -409,23 +441,14 @@ class TopSpeedResultAdmin(VehicleResultAdmin):
     list_display = ("vehicle", "value", "unit", "is_primary")
 
 
-@admin.register(TorqueResult)
-class TorqueResultAdmin(VehicleResultAdmin):
-    list_display = ("vehicle", "metric", "value", "unit", "is_primary")
-
-
-@admin.register(PowerResult)
-class PowerResultAdmin(VehicleResultAdmin):
-    list_display = ("vehicle", "metric", "value", "unit", "is_primary")
-
-
 @admin.register(BaseModel)
 class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("id", "make", "model", "year", "generation")
-    search_fields = ("model", "make__name", "generation")
+    list_display = ("id", "make", "model", "platformId", "year", "generation")
+    search_fields = ("model", "make__name", "platformId__name", "generation")
     list_filter = ("year",)
+    autocomplete_fields = ("make", "platformId")
     group_paths = ("make__group",)
-    foreignkey_group_paths = {"make": "group"}
+    foreignkey_group_paths = {"make": "group", "platformId": "groups"}
 
 
 @admin.register(Make)
@@ -455,7 +478,7 @@ class PlatformAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(Engine)
 class EngineAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("name", "maker", "energy_source")
+    list_display = ("name", "maker", "energy_source", "power_kW", "displacement_cc")
     search_fields = ("name", "maker__name")
     group_paths = ("maker__group",)
     foreignkey_group_paths = {"maker": "group"}
@@ -467,8 +490,11 @@ class BatteryPackAdmin(GroupScopedAdminMixin, ModelAdmin):
         "batteryPackId",
         "name",
         "group",
+        "chemistry",
         "provider",
         "capacity_kWh",
+        "gross_capacity_kWh",
+        "usable_capacity_kWh",
         "voltage_V",
     )
     search_fields = ("name", "provider")
@@ -487,7 +513,14 @@ class FuelTankAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(EMotor)
 class EMotorAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("eMotorId", "name", "maker", "power_kW", "torque_Nm")
+    list_display = (
+        "eMotorId",
+        "name",
+        "maker",
+        "motor_type",
+        "power_kW",
+        "torque_Nm",
+    )
     search_fields = ("name", "maker__name")
     group_paths = ("maker__group",)
     foreignkey_group_paths = {"maker": "group"}
@@ -503,11 +536,9 @@ class TransmissionAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(PowerTrain)
 class PowerTrainAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("powerTrainId", "name", "group", "architecture")
-    search_fields = ("name",)
-    group_paths = ("group",)
-    foreignkey_group_paths = {"group": "self"}
-    owner_group_field = "group"
+    list_display = ("powerTrainId", "name", "make", "architecture")
+    search_fields = ("name", "make__name")
+    foreignkey_group_paths = {"make": "group"}
     inlines = (
         PowerTrainEngineInline,
         PowerTrainEMotorInline,
@@ -518,88 +549,142 @@ class PowerTrainAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(Vehicle)
 class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("id", "modelId", "platformId", "powerTrainId", "transmissionId")
-    search_fields = (
-        "id",
-        "modelId__model",
-        "modelId__make__name",
-        "platformId__name",
-        "powerTrainId__name",
-        "transmissionId__name",
-    )
-    autocomplete_fields = ("modelId", "platformId", "powerTrainId", "transmissionId")
-    inlines = (
-        SafetyPackageInline,
+    electric_inlines = (
         ChargingPackageInline,
         ChargingPortInline,
         ChargeTimeResultInline,
-        ComplianceRecordInline,
-        RegulatoryApprovalInline,
+    )
+    standard_inlines = (
+        SafetyPackageInline,
         EfficiencyResultInline,
         RangeResultInline,
         EmissionsResultInline,
         AccelerationResultInline,
         TopSpeedResultInline,
-        TorqueResultInline,
-        PowerResultInline,
     )
+    compliance_inlines = (
+        ComplianceRecordInline,
+        RegulatoryApprovalInline,
+    )
+    list_display = ("id", "modelId", "platform", "powerTrainId", "transmissionId")
+    search_fields = (
+        "id",
+        "modelId__model",
+        "modelId__make__name",
+        "modelId__platformId__name",
+        "powerTrainId__name",
+        "transmissionId__name",
+    )
+    autocomplete_fields = ("modelId", "powerTrainId", "transmissionId")
     readonly_fields = (
+        "powertrain_inline",
         "transmission_inline",
         "powertrain_engines_inline",
         "powertrain_motors_inline",
         "powertrain_battery_packs_inline",
         "powertrain_fuel_tanks_inline",
     )
-    fieldsets = (
-        (
-            None,
-            {
-                "fields": (
-                    "modelId",
-                    "platformId",
-                    "powerTrainId",
-                    "transmissionId",
-                    "bodyStyle",
-                )
-            },
-        ),
-        (
-            "Specs",
-            {
-                "fields": (
-                    "length_mm",
-                    "width_mm",
-                    "height_mm",
-                    "wheelbase_mm",
-                    "curb_weight_kg",
-                    "door_count",
-                    "passenger_capacity",
-                )
-            },
-        ),
-        (
-            "Transmission",
-            {"fields": ("transmission_inline",)},
-        ),
-        (
-            "Powertrain Components",
-            {
-                "fields": (
-                    "powertrain_engines_inline",
-                    "powertrain_motors_inline",
-                    "powertrain_battery_packs_inline",
-                    "powertrain_fuel_tanks_inline",
-                )
-            },
-        ),
-    )
     group_paths = ("modelId__make__group",)
     foreignkey_group_paths = {
         "modelId": "make__group",
-        "platformId": "groups",
-        "powerTrainId": "group",
+        "powerTrainId": "make__group",
         "transmissionId": "maker__group",
     }
+
+    @admin.display(ordering="modelId__platformId", description="platformId")
+    def platform(self, obj):
+        return obj.modelId.platformId
+
+    def _get_selected_powertrain(self, request, obj=None):
+        if obj is not None and obj.powerTrainId_id:
+            return obj.powerTrainId
+
+        powertrain_id = request.POST.get("powerTrainId")
+        if not powertrain_id:
+            return None
+
+        queryset = PowerTrain.objects.all()
+        if not request.user.is_superuser:
+            queryset = self._filter_by_group_paths(
+                queryset,
+                self.get_allowed_groups(request),
+                ("make__group",),
+            )
+        return queryset.filter(pk=powertrain_id).first()
+
+    def _supports_electric_features(self, request, obj=None):
+        powertrain = self._get_selected_powertrain(request, obj)
+        if powertrain is None:
+            return False
+        return powertrain.architecture != PowerTrainArchitecture.ICE
+
+    def get_inlines(self, request, obj=None):
+        inlines = [*self.standard_inlines]
+        if self._supports_electric_features(request, obj):
+            inlines[1:1] = self.electric_inlines
+        inlines.extend(self.compliance_inlines)
+        return inlines
+
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = [
+            (
+                None,
+                {
+                    "fields": (
+                        "modelId",
+                        "powerTrainId",
+                        "transmissionId",
+                        "bodyStyle",
+                    )
+                },
+            ),
+            (
+                "Specs",
+                {
+                    "fields": (
+                        "length_mm",
+                        "width_mm",
+                        "height_mm",
+                        "wheelbase_mm",
+                        "curb_weight_kg",
+                        "door_count",
+                        "passenger_capacity",
+                    )
+                },
+            ),
+            (
+                "Transmission",
+                {"fields": ("transmission_inline",)},
+            ),
+            (
+                "Powertrain",
+                {"fields": ("powertrain_inline",)},
+            ),
+            (
+                "Combustion Components",
+                {
+                    "fields": (
+                        "powertrain_engines_inline",
+                        "powertrain_fuel_tanks_inline",
+                    )
+                },
+            ),
+        ]
+
+        if self._supports_electric_features(request, obj):
+            fieldsets.append(
+                (
+                    "Electric Systems",
+                    {
+                        "fields": (
+                            "powertrain_motors_inline",
+                            "powertrain_battery_packs_inline",
+                        )
+                    },
+                )
+            )
+
+        return fieldsets
 
     def _admin_change_link(self, app_label, model_name, object_id, label):
         url = reverse(f"admin:{app_label}_{model_name}_change", args=[object_id])
@@ -634,6 +719,23 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         return format_html("{}", " | ".join(str(detail) for detail in details))
 
     transmission_inline.short_description = "Transmission"
+
+    def powertrain_inline(self, obj):
+        if not obj.powerTrainId_id:
+            return "No powertrain"
+
+        details = [
+            self._admin_change_link(
+                "catalog",
+                "powertrain",
+                obj.powerTrainId_id,
+                obj.powerTrainId.name,
+            ),
+            obj.powerTrainId.architecture,
+        ]
+        return format_html("{}", " | ".join(str(detail) for detail in details))
+
+    powertrain_inline.short_description = "Powertrain"
 
     def powertrain_engines_inline(self, obj):
         return self._render_powertrain_fitments(
@@ -694,14 +796,13 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
                 else []
             ),
             lambda fitment: format_html(
-                "{} | storage: {}{}",
+                "{}{}",
                 self._admin_change_link(
                     "catalog",
                     "batterypack",
                     fitment.battery_pack_id,
                     fitment.battery_pack.name,
                 ),
-                fitment.storage_type,
                 " | primary" if fitment.is_primary else "",
             ),
             "No battery packs",
@@ -718,14 +819,13 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
                 else []
             ),
             lambda fitment: format_html(
-                "{} | storage: {}{}",
+                "{}{}",
                 self._admin_change_link(
                     "catalog",
                     "fueltank",
                     fitment.fuel_tank_id,
                     fitment.fuel_tank.name,
                 ),
-                fitment.storage_type,
                 " | primary" if fitment.is_primary else "",
             ),
             "No fuel tanks",

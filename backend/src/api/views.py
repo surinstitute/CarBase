@@ -40,7 +40,9 @@ class MakeViewSet(ReadOnlyModelViewSet):
 
 class BaseModelViewSet(ReadOnlyModelViewSet):
     queryset = (
-        BaseModel.objects.select_related("make").all().order_by("make__name", "model")
+        BaseModel.objects.select_related("make", "platformId")
+        .all()
+        .order_by("make__name", "model")
     )
     serializer_class = BaseModelSerializer
 
@@ -71,7 +73,9 @@ class EMotorViewSet(ReadOnlyModelViewSet):
 
 
 class PowerTrainViewSet(ReadOnlyModelViewSet):
-    queryset = PowerTrain.objects.select_related("group").all().order_by("name")
+    queryset = PowerTrain.objects.select_related("make").all().order_by(
+        "name"
+    )
     serializer_class = PowerTrainSerializer
 
 
@@ -84,7 +88,7 @@ class VehicleViewSet(ReadOnlyModelViewSet):
     queryset = (
         Vehicle.objects.select_related(
             "modelId",
-            "platformId",
+            "modelId__platformId",
             "powerTrainId",
             "transmissionId",
             "modelId__make",
@@ -105,8 +109,6 @@ class VehicleViewSet(ReadOnlyModelViewSet):
             "emissions_results",
             "acceleration_results",
             "top_speed_results",
-            "torque_results",
-            "power_results",
         )
         .all()
     )
