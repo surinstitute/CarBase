@@ -1,3 +1,4 @@
+from random import choices
 import uuid
 
 from django.db import models
@@ -15,13 +16,13 @@ from catalog.types import (
     ComplianceCategory,
     ConverterRole,
     DistanceUnit,
-    ElectricMotorType,
-    EngineAspiration,
-    EngineLayout,
     EfficiencyMetric,
     EfficiencyUnit,
+    ElectricMotorType,
     EmissionsMetric,
     EmissionsUnit,
+    EngineAspiration,
+    EngineLayout,
     FuelType,
     MotorCoolingType,
     PowerTrainArchitecture,
@@ -554,13 +555,13 @@ class EmissionsResult(models.Model):
         on_delete=models.CASCADE,
         related_name="emissions_results",
     )
+    criteria = models.CharField(max_length=255, choices=EmissionsMetric.choices)
     cycle = models.CharField(
         max_length=255, choices=TestCycle.choices, null=True, blank=True
     )
     scope = models.CharField(
         max_length=255, choices=ResultScope.choices, null=True, blank=True
     )
-    metric = models.CharField(max_length=255, choices=EmissionsMetric.choices)
     value = models.FloatField()
     unit = models.CharField(max_length=255, choices=EmissionsUnit.choices)
     is_primary = models.BooleanField(default=False)

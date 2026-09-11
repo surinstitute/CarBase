@@ -424,7 +424,7 @@ class EmissionsResultAdmin(VehicleResultAdmin):
         "vehicle",
         "cycle",
         "scope",
-        "metric",
+        "criteria",
         "value",
         "unit",
         "is_primary",
