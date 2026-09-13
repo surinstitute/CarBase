@@ -20,7 +20,9 @@ from .models import (
     Engine,
     FuelTank,
     Group,
+    ImageAsset,
     Make,
+    ModelImagePlacement,
     Platform,
     PowerTrain,
     PowerTrainBatteryPack,
@@ -300,6 +302,12 @@ class TopSpeedResultInline(admin.TabularInline):
     extra = 0
 
 
+class ModelImagePlacementInline(admin.TabularInline):
+    model = ModelImagePlacement
+    extra = 0
+    autocomplete_fields = ("image",)
+
+
 @admin.register(RegulatoryApproval)
 class RegulatoryApprovalAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("authority", "jurisdiction", "scheme", "domain", "status")
@@ -441,6 +449,12 @@ class TopSpeedResultAdmin(VehicleResultAdmin):
     list_display = ("vehicle", "value", "unit", "is_primary")
 
 
+@admin.register(ImageAsset)
+class ImageAssetAdmin(ModelAdmin):
+    list_display = ("title", "file", "credit", "license")
+    search_fields = ("title", "description", "credit", "license")
+
+
 @admin.register(BaseModel)
 class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("id", "make", "model", "platformId", "year", "generation")
@@ -449,6 +463,7 @@ class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
     autocomplete_fields = ("make", "platformId")
     group_paths = ("make__group",)
     foreignkey_group_paths = {"make": "group", "platformId": "groups"}
+    inlines = (ModelImagePlacementInline,)
 
 
 @admin.register(Make)
@@ -596,7 +611,7 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         return obj.modelId.platformId
 
     def _get_selected_powertrain(self, request, obj=None):
-        if obj is not None and obj.powerTrainId_id:
+        if obj is not None:
             return obj.powerTrainId
 
         powertrain_id = request.POST.get("powerTrainId")
@@ -620,7 +635,9 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
 
     def get_inlines(self, request, obj=None):
         inlines = [*self.standard_inlines]
-        if self._supports_electric_features(request, obj):
+        # Add forms must include electric inlines before a powertrain is selected.
+        # On change forms, keep inline prefixes stable if the selection changes.
+        if obj is None or self._supports_electric_features(request, obj):
             inlines[1:1] = self.electric_inlines
         inlines.extend(self.compliance_inlines)
         return inlines

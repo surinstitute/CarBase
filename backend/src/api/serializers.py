@@ -211,6 +211,9 @@ class VehicleSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
+        images = self._serialize_images(instance)
+        if images:
+            data["images"] = images
         specs = self._serialize_specs(instance)
         if specs:
             data["specs"] = specs
@@ -227,6 +230,26 @@ class VehicleSerializer(serializers.ModelSerializer):
         if compliance:
             data["compliance"] = compliance
         return data
+
+    def _serialize_images(self, obj):
+        images = {}
+        request = self.context.get("request")
+        for placement in obj.modelId.image_placements.filter(is_visible=True):
+            url = placement.image.file.url
+            if request is not None:
+                url = request.build_absolute_uri(url)
+            key = {
+                "left_side": "leftSide",
+                "right_side": "rightSide",
+                "front": "front",
+                "rear": "rear",
+                "silhouette": "silhouette",
+            }[placement.view]
+            images[key] = {
+                "url": url,
+                "alt": placement.alt_text or placement.image.title,
+            }
+        return images
 
     def _serialize_powertrain(self, powertrain):
         if powertrain is None:

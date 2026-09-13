@@ -58,6 +58,50 @@ class BaseModel(models.Model):
         return f"{self.make.name} {self.model} {self.year}"
 
 
+class ImageAsset(models.Model):
+    file = models.ImageField(upload_to="catalog/images/%Y/%m/")
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    credit = models.CharField(max_length=255, blank=True)
+    license = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class ModelImagePlacement(models.Model):
+    class View(models.TextChoices):
+        LEFT_SIDE = "left_side", "Left side"
+        RIGHT_SIDE = "right_side", "Right side"
+        FRONT = "front", "Front"
+        REAR = "rear", "Rear"
+        SILHOUETTE = "silhouette", "Silhouette"
+
+    base_model = models.ForeignKey(
+        BaseModel,
+        on_delete=models.CASCADE,
+        related_name="image_placements",
+    )
+    image = models.ForeignKey(
+        ImageAsset,
+        on_delete=models.PROTECT,
+        related_name="model_placements",
+    )
+    view = models.CharField(max_length=20, choices=View.choices)
+    alt_text = models.CharField(max_length=255, blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    is_visible = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ("sort_order", "id")
+        constraints = [
+            models.UniqueConstraint(
+                fields=("base_model", "view"),
+                name="unique_base_model_image_view",
+            )
+        ]
+
+
 class Make(models.Model):
     makeId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
