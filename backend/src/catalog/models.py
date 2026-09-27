@@ -359,6 +359,7 @@ class Vehicle(models.Model):
     model = models.ForeignKey(
         BaseModel, on_delete=models.CASCADE, related_name="model_vehicles"
     )
+    variant_name = models.CharField(max_length=255, null=True, blank=True)
     powertrain = models.ForeignKey(
         PowerTrain,
         on_delete=models.CASCADE,

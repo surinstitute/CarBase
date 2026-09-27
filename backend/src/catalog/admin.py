@@ -38,7 +38,6 @@ from .models import (
 )
 from .types import PowerTrainArchitecture
 
-
 SAFETY_FEATURE_DESCRIPTIONS = {
     "collisionWarnings_fcw": "Forward collision warning alerts the driver to a possible frontal collision.",
     "collisionWarnings_ldw": "Lane departure warning alerts when the vehicle leaves its lane unintentionally.",
@@ -649,6 +648,7 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
                 {
                     "fields": (
                         "model",
+                        "variant_name",
                         "powertrain",
                         "transmissionId",
                         "body_style",
