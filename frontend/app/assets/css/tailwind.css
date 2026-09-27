@@ -1,0 +1,30 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+}
+
+:root {
+  font-family: 'Public Sans', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  background: #f5f7f4;
+  color: #1c2822;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}

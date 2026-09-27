@@ -35,7 +35,7 @@ services:
           "python",
           "-c",
           "import urllib.request;
-            urllib.request.urlopen('http://localhost:8000/')",
+            urllib.request.urlopen('http://localhost:8000/api/')",
         ]
       interval: 2s
       timeout: 2s
@@ -45,38 +45,34 @@ services:
         condition: service_healthy
     networks:
       - django-liberty
-  #frontend:
-  #  build:
-  #    context: frontend
-  #    args:
-  #      DJANGO_URL: ${DJANGO_URL:-http://127.0.0.1:8000}
-  #      FRONTEND_URL: ${FRONTEND_URL:-http://127.0.0.1:3000}
-  #  expose:
-  #    - "3000"
-  #  ports:
-  #    - "3000:3000"
-  #  env_file:
-  #    - frontend/.env
-  #  environment:
-  #    DJANGO_URL: ${DJANGO_URL:-http://127.0.0.1:8000}
-  #    FRONTEND_URL: ${FRONTEND_URL:-http://127.0.0.1:3000}
-  #  healthcheck:
-  #    test:
-  #      [
-  #        "CMD",
-  #        "bun",
-  #        "--eval",
-  #        "fetch('http://127.0.0.1:3000/').then((response) => { if
-  #          (!response.ok) process.exit(1) }).catch(() => process.exit(1))",
-  #      ]
-  #    interval: 2s
-  #    timeout: 2s
-  #    retries: 10
-  #  depends_on:
-  #    backend:
-  #      condition: service_healthy
-  #  networks:
-  #    - django-liberty
+  frontend:
+    build:
+      context: frontend
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    environment:
+      NUXT_DJANGO_API_URL: http://backend:8000/api
+      NUXT_HOST: 0.0.0.0
+      NUXT_PORT: 3000
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "bun",
+          "--eval",
+          "fetch('http://127.0.0.1:3000/').then((response) => { if
+            (!response.ok) process.exit(1) }).catch(() => process.exit(1))",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - django-liberty
 
 networks:
   django-liberty:
@@ -84,4 +80,4 @@ networks:
 
 volumes:
   backend:
-  database: #frontend:
+  database:
