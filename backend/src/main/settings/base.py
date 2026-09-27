@@ -196,8 +196,11 @@ INSTALLED_APPS = [
     # DRF
     "rest_framework",
     "drf_spectacular",
+    # Search
+    "paradedb",
     # Third Party
     "corsheaders",
+    "django_countries",
     "storages",
     # Catalog
     "catalog",

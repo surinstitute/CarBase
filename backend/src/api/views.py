@@ -1,3 +1,7 @@
+from django_filters.rest_framework import DjangoFilterBackend
+from django_countries import countries
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from api.serializers import (
@@ -26,6 +30,7 @@ from catalog.models import (
     Transmission,
     Vehicle,
 )
+from catalog.filters import BaseModelFilter, VehicleFilter
 
 
 class GroupViewSet(ReadOnlyModelViewSet):
@@ -45,6 +50,50 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
         .order_by("make__name", "model")
     )
     serializer_class = BaseModelSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = BaseModelFilter
+
+    @action(detail=False, methods=["get"], url_path="filter-options")
+    def filter_options(self, request):
+        queryset = BaseModel.objects.all()
+        make_id = request.query_params.get("make", "").strip()
+        model_name = request.query_params.get("model", "").strip()
+        assembly_country = request.query_params.get("assembly_country", "").strip()
+
+        if make_id:
+            queryset = queryset.filter(make_id=make_id)
+
+        if assembly_country:
+            queryset = queryset.filter(
+                model_vehicles__assembly_country__iexact=assembly_country
+            )
+
+        model_names = queryset.order_by("model").values_list("model", flat=True).distinct()
+
+        if model_name:
+            queryset = queryset.filter(model__iexact=model_name)
+
+        years = queryset.order_by("-year").values_list("year", flat=True).distinct()
+        country_codes = (
+            queryset.exclude(model_vehicles__assembly_country__isnull=True)
+            .exclude(model_vehicles__assembly_country="")
+            .values_list("model_vehicles__assembly_country", flat=True)
+            .distinct()
+        )
+        assembly_countries = sorted(
+            (
+                {"code": code, "name": countries.name(code)}
+                for code in country_codes
+            ),
+            key=lambda country: country["name"],
+        )
+        return Response(
+            {
+                "models": list(model_names),
+                "years": list(years),
+                "assemblyCountries": assembly_countries,
+            }
+        )
 
 
 class PlatformViewSet(ReadOnlyModelViewSet):
@@ -109,7 +158,11 @@ class VehicleViewSet(ReadOnlyModelViewSet):
             "emissions_results",
             "acceleration_results",
             "top_speed_results",
+            "monthly_sales",
+            "model__recalls",
         )
         .all()
     )
     serializer_class = VehicleSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = VehicleFilter

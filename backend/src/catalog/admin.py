@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.urls import reverse
 from django.utils.html import format_html, format_html_join
@@ -30,11 +31,13 @@ from .models import (
     PowerTrainEngine,
     PowerTrainFuelTank,
     RangeResult,
+    Recall,
     RegulatoryApproval,
     SafetyPackage,
     TopSpeedResult,
     Transmission,
     Vehicle,
+    VehicleMonthlySales,
 )
 from .types import PowerTrainArchitecture
 
@@ -301,6 +304,12 @@ class TopSpeedResultInline(admin.TabularInline):
     extra = 0
 
 
+class VehicleMonthlySalesInline(admin.TabularInline):
+    model = VehicleMonthlySales
+    extra = 0
+    ordering = ("period",)
+
+
 class ModelImagePlacementInline(admin.TabularInline):
     model = ModelImagePlacement
     extra = 0
@@ -467,8 +476,8 @@ class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(Make)
 class MakeAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("makeId", "name", "group")
-    search_fields = ("name",)
+    list_display = ("makeId", "name", "country", "website", "phone", "group")
+    search_fields = ("name", "description")
     group_paths = ("group",)
     foreignkey_group_paths = {"group": "self"}
     owner_group_field = "group"
@@ -476,8 +485,8 @@ class MakeAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(Group)
 class GroupAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("groupId", "name")
-    search_fields = ("name",)
+    list_display = ("groupId", "name", "country")
+    search_fields = ("name", "description")
     group_paths = ("self",)
 
 
@@ -561,6 +570,51 @@ class PowerTrainAdmin(GroupScopedAdminMixin, ModelAdmin):
     )
 
 
+@admin.register(VehicleMonthlySales)
+class VehicleMonthlySalesAdmin(GroupScopedAdminMixin, ModelAdmin):
+    list_display = ("vehicle", "period", "units_sold")
+    search_fields = ("vehicle__model__model", "vehicle__model__make__name")
+    list_filter = ("period",)
+    ordering = ("-period",)
+    autocomplete_fields = ("vehicle",)
+    group_paths = ("vehicle__model__make__group",)
+    foreignkey_group_paths = {"vehicle": "model__make__group"}
+
+
+class RecallAdminForm(forms.ModelForm):
+    class Meta:
+        model = Recall
+        fields = "__all__"
+
+    def clean(self):
+        cleaned_data = super().clean()
+        maker = cleaned_data.get("maker")
+        affected_models = cleaned_data.get("affected_models")
+        if maker and affected_models and affected_models.exclude(make=maker).exists():
+            raise ValidationError("Los modelos afectados deben pertenecer al maker del recall.")
+        return cleaned_data
+
+
+@admin.register(Recall)
+class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
+    form = RecallAdminForm
+    list_display = ("recall_number", "title", "maker", "status", "published_date")
+    search_fields = (
+        "recall_number",
+        "title",
+        "authority",
+        "maker__name",
+        "affected_models__model",
+    )
+    list_filter = ("status", "maker__country", "published_date")
+    ordering = ("-published_date", "id")
+    autocomplete_fields = ("maker",)
+    filter_horizontal = ("affected_models",)
+    group_paths = ("maker__group",)
+    foreignkey_group_paths = {"maker": "group"}
+    manytomany_group_paths = {"affected_models": "make__group"}
+
+
 @admin.register(Vehicle)
 class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
     electric_inlines = (
@@ -575,12 +629,22 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         EmissionsResultInline,
         AccelerationResultInline,
         TopSpeedResultInline,
+        VehicleMonthlySalesInline,
     )
     compliance_inlines = (
         ComplianceRecordInline,
         RegulatoryApprovalInline,
     )
-    list_display = ("id", "model", "platform", "powertrain", "transmissionId")
+    list_display = (
+        "id",
+        "model",
+        "assembly_country",
+        "price_amount",
+        "price_currency",
+        "platform",
+        "powertrain",
+        "transmissionId",
+    )
     search_fields = (
         "id",
         "model__model",
@@ -649,9 +713,11 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
                     "fields": (
                         "model",
                         "variant_name",
+                        "assembly_country",
+                        "price_amount",
+                        "price_currency",
                         "powertrain",
                         "transmissionId",
-                        "body_style",
                     )
                 },
             ),

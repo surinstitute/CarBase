@@ -183,12 +183,65 @@ class VehicleSerializer(serializers.ModelSerializer):
     variantName = serializers.CharField(
         source="variant_name", read_only=True, allow_null=True
     )
+    assemblyCountry = serializers.CharField(
+        source="assembly_country", read_only=True, allow_null=True
+    )
+    priceAmount = serializers.DecimalField(
+        source="price_amount",
+        max_digits=12,
+        decimal_places=2,
+        read_only=True,
+        allow_null=True,
+    )
+    priceCurrency = serializers.CharField(source="price_currency", read_only=True)
     lineage = serializers.SerializerMethodField()
     configuration = serializers.SerializerMethodField()
+    monthlySales = serializers.SerializerMethodField()
+    recalls = serializers.SerializerMethodField()
 
     class Meta:
         model = Vehicle
-        fields = ("id", "variantName", "lineage", "configuration")
+        fields = (
+            "id",
+            "variantName",
+            "assemblyCountry",
+            "priceAmount",
+            "priceCurrency",
+            "lineage",
+            "configuration",
+            "monthlySales",
+            "recalls",
+        )
+
+    def get_monthlySales(self, obj):
+        return [
+            {"period": sale.period.isoformat(), "unitsSold": sale.units_sold}
+            for sale in obj.monthly_sales.all()
+        ]
+
+    def get_recalls(self, obj):
+        return [
+            {
+                "authority": recall.authority,
+                "recallNumber": recall.recall_number,
+                "country": str(recall.country) if recall.country else None,
+                "title": recall.title,
+                "description": recall.description,
+                "risk": recall.risk,
+                "riskConsequence": recall.risk_consequence,
+                "countermeasure": recall.countermeasure,
+                "actions": recall.actions,
+                "status": recall.status,
+                "publishedDate": (
+                    recall.published_date.isoformat()
+                    if recall.published_date
+                    else None
+                ),
+                "remedy": recall.remedy,
+                "sourceUrl": recall.source_url,
+            }
+            for recall in obj.model.recalls.all()
+        ]
 
     def get_lineage(self, obj):
         lineage = {

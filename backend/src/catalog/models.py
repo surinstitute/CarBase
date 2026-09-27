@@ -1,7 +1,11 @@
-from random import choices
 import uuid
 
+from django.core.validators import FileExtensionValidator
 from django.db import models
+from django_countries.fields import CountryField
+from paradedb.indexes import BM25Index
+from paradedb.queryset import ParadeDBManager
+from paradedb.search import Tokenizer
 
 from catalog.types import (
     AccelerationMetric,
@@ -49,10 +53,30 @@ class BaseModel(models.Model):
         null=True,
         blank=True,
     )
+    body_style = models.CharField(
+        max_length=255,
+        choices=BodyStyle.choices,
+        null=True,
+        blank=True,
+    )
     generation = models.CharField(max_length=255, null=True, blank=True)
     year = models.IntegerField()
+    objects = ParadeDBManager()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        indexes = [
+            BM25Index(
+                fields={
+                    "generation": {"tokenizer": Tokenizer.unicode_words()},
+                    "id": {},
+                    "model": {"tokenizer": Tokenizer.unicode_words()},
+                },
+                key_field="id",
+                name="base_model_search_idx",
+            ),
+        ]
 
     def __str__(self):
         return f"{self.make.name} {self.model} {self.year}"
@@ -105,6 +129,16 @@ class ModelImagePlacement(models.Model):
 class Make(models.Model):
     makeId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    website = models.URLField(blank=True)
+    phone = models.CharField(max_length=50, blank=True)
+    legal_representative = models.CharField(max_length=255, blank=True)
+    icon_svg = models.FileField(
+        upload_to="catalog/make-icons/",
+        blank=True,
+        validators=[FileExtensionValidator(["svg"])],
+    )
+    country = CountryField(null=True, blank=True)
     group = models.ForeignKey(
         "Group",
         on_delete=models.CASCADE,
@@ -120,6 +154,8 @@ class Make(models.Model):
 class Group(models.Model):
     groupId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    country = CountryField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -360,6 +396,11 @@ class Vehicle(models.Model):
         BaseModel, on_delete=models.CASCADE, related_name="model_vehicles"
     )
     variant_name = models.CharField(max_length=255, null=True, blank=True)
+    assembly_country = CountryField(null=True, blank=True)
+    price_amount = models.DecimalField(
+        max_digits=12, decimal_places=2, null=True, blank=True
+    )
+    price_currency = models.CharField(max_length=3, blank=True)
     powertrain = models.ForeignKey(
         PowerTrain,
         on_delete=models.CASCADE,
@@ -374,12 +415,6 @@ class Vehicle(models.Model):
         null=True,
         blank=True,
     )
-    body_style = models.CharField(
-        max_length=255,
-        choices=BodyStyle.choices,
-        null=True,
-        blank=True,
-    )
     length_mm = models.FloatField(null=True, blank=True)
     width_mm = models.FloatField(null=True, blank=True)
     height_mm = models.FloatField(null=True, blank=True)
@@ -387,12 +422,78 @@ class Vehicle(models.Model):
     curb_weight_kg = models.FloatField(null=True, blank=True)
     door_count = models.PositiveIntegerField(null=True, blank=True)
     passenger_capacity = models.PositiveIntegerField(null=True, blank=True)
+    objects = ParadeDBManager()
+
+    class Meta:
+        indexes = [
+            BM25Index(
+                fields={
+                    "id": {},
+                    "variant_name": {"tokenizer": Tokenizer.unicode_words()},
+                },
+                key_field="id",
+                name="vehicle_search_idx",
+            ),
+        ]
 
     def __str__(self):
         details = [str(self.model)]
         if self.powertrain:
             details.append(self.powertrain.name)
         return " - ".join(details)
+
+
+class VehicleMonthlySales(models.Model):
+    vehicle = models.ForeignKey(
+        Vehicle,
+        on_delete=models.CASCADE,
+        related_name="monthly_sales",
+    )
+    period = models.DateField()
+    units_sold = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ("period",)
+        constraints = [
+            models.UniqueConstraint(
+                fields=("vehicle", "period"),
+                name="unique_vehicle_monthly_sales_period",
+            )
+        ]
+
+
+class Recall(models.Model):
+    class Status(models.TextChoices):
+        OPEN = "open", "Open"
+        RESOLVED = "resolved", "Resolved"
+
+    maker = models.ForeignKey(
+        Make,
+        on_delete=models.CASCADE,
+        related_name="recalls",
+    )
+    affected_models = models.ManyToManyField(BaseModel, related_name="recalls")
+    recall_number = models.CharField(max_length=100)
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    risk = models.TextField(blank=True)
+    risk_consequence = models.TextField(blank=True)
+    countermeasure = models.TextField(blank=True)
+    actions = models.TextField(blank=True)
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.OPEN)
+    published_date = models.DateField(null=True, blank=True)
+    total_units_affected = models.PositiveIntegerField(null=True, blank=True)
+    source_url = models.URLField(blank=True)
+    damage_report = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ("-published_date", "id")
+        constraints = [
+            models.UniqueConstraint(
+                fields=("maker", "recall_number"),
+                name="unique_recall_reference",
+            )
+        ]
 
 
 class SafetyPackage(models.Model):
