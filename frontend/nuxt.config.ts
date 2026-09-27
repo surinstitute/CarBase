@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/tailwind.css'],
+  colorMode: {
+    classSuffix: ''
+  },
   runtimeConfig: {
     djangoApiUrl: 'http://localhost:8000/api'
   },

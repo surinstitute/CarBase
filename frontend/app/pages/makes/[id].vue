@@ -1,0 +1,56 @@
+<script setup lang="ts">
+import { useQuery } from '@pinia/colada'
+import { Badge } from '@/components/ui/badge'
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
+import { Card, CardContent } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
+import type { CatalogResponse } from '#shared/types/catalog'
+
+const route = useRoute()
+const makeId = computed(() => String(route.params.id))
+const { data, status } = useQuery({
+  key: ['catalog'],
+  query: () => $fetch<CatalogResponse>('/api/catalog')
+})
+const make = computed(() => data.value?.makes.find((item) => item.id === makeId.value))
+const models = computed(() => data.value?.models.filter((model) => model.makeId === makeId.value) ?? [])
+</script>
+
+<template>
+  <section v-if="status === 'pending'" class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
+    <Skeleton class="h-8 w-48" />
+    <Skeleton class="h-16 w-full" />
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"><Skeleton v-for="item in 3" :key="item" class="h-80" /></div>
+  </section>
+  <section v-else-if="status === 'error'" class="mx-auto w-full max-w-6xl px-4 py-8">
+    <p role="alert" class="text-sm text-destructive">No se pudo cargar la información de marcas.</p>
+  </section>
+  <section v-else-if="make" class="mx-auto w-full max-w-6xl space-y-8 px-4 py-8">
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink to="/models">Modelos</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem><BreadcrumbPage>{{ make.name }}</BreadcrumbPage></BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+
+    <header class="flex flex-wrap items-end justify-between gap-4 border-b pb-6">
+      <div class="space-y-2">
+        <p class="text-sm text-muted-foreground">Marca</p>
+        <h1 class="text-3xl font-bold tracking-tight">{{ make.name }}</h1>
+      </div>
+      <Badge variant="secondary">{{ models.length }} modelos</Badge>
+    </header>
+
+    <div v-if="models.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <CatalogModelCard v-for="model in models" :key="model.id" :model="model" />
+    </div>
+    <Card v-else>
+      <CardContent class="p-6 text-sm text-muted-foreground">Esta marca aún no tiene modelos base en el catálogo.</CardContent>
+    </Card>
+  </section>
+  <section v-else class="mx-auto w-full max-w-6xl space-y-4 px-4 py-8">
+    <h1>Marca no encontrada</h1>
+    <NuxtLink to="/models" class="underline underline-offset-4">Volver a modelos</NuxtLink>
+  </section>
+</template>

@@ -1,6 +1,8 @@
 .DS_Store
 *.pyc
 node_modules
+frontend/.nuxt
+frontend/.output
 .idea
 requirements.txt
 TODO.md
@@ -26,3 +28,4 @@ next-env.d.ts
 .ruff_cache
 django-liberty/backend/.env
 django-liberty/frontend/.env
+/backend/src/main/media
