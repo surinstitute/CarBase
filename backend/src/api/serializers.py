@@ -180,12 +180,15 @@ class TransmissionSerializer(serializers.ModelSerializer):
 
 class VehicleSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(source="pk", read_only=True)
+    variantName = serializers.CharField(
+        source="variant_name", read_only=True, allow_null=True
+    )
     lineage = serializers.SerializerMethodField()
     configuration = serializers.SerializerMethodField()
 
     class Meta:
         model = Vehicle
-        fields = ("id", "lineage", "configuration")
+        fields = ("id", "variantName", "lineage", "configuration")
 
     def get_lineage(self, obj):
         lineage = {
