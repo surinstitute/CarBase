@@ -43,13 +43,41 @@ async function fetchAll<T>(url: string) {
 
 export default defineEventHandler(async (event): Promise<CatalogResponse> => {
   const apiBase = useRuntimeConfig(event).djangoApiUrl.replace(/\/+$/, '')
-  const [vehiclesPage, makesPage, modelsPage, platformsPage, groupsPage] = await Promise.all([
-    fetchAll<CatalogVehicleRecord>(`${apiBase}/vehicles/`),
+  const query = getQuery(event)
+  const modelParams = new URLSearchParams()
+  const filterParams = new URLSearchParams()
+
+  for (const name of ['q', 'make', 'model', 'year', 'assembly_country', 'page']) {
+    const value = query[name]
+    if (typeof value === 'string' && value.trim()) {
+      modelParams.set(name, value.trim())
+    }
+  }
+
+  for (const name of ['make', 'model', 'assembly_country']) {
+    const value = query[name]
+    if (typeof value === 'string' && value.trim()) {
+      filterParams.set(name, value.trim())
+    }
+  }
+
+  const modelsUrl = `${apiBase}/models/${modelParams.size ? `?${modelParams}` : ''}`
+  const filterOptionsUrl = `${apiBase}/models/filter-options/${filterParams.size ? `?${filterParams}` : ''}`
+  const paginatedModels = typeof query.page === 'string'
+  const [makesPage, modelsPage, platformsPage, groupsPage, filterOptions] = await Promise.all([
     fetchAll<ApiMake>(`${apiBase}/makes/`),
-    fetchAll<ApiModel>(`${apiBase}/models/`),
+    paginatedModels
+      ? $fetch<ApiPage<ApiModel>>(modelsUrl)
+      : fetchAll<ApiModel>(modelsUrl),
     fetchAll<ApiPlatform>(`${apiBase}/platforms/`),
-    fetchAll<ApiGroup>(`${apiBase}/groups/`)
+    fetchAll<ApiGroup>(`${apiBase}/groups/`),
+    $fetch<CatalogResponse['filterOptions']>(filterOptionsUrl)
   ])
+  const vehiclePages = await Promise.all(
+    modelsPage.results.map((model) => fetchAll<CatalogVehicleRecord>(
+      `${apiBase}/vehicles/?model=${encodeURIComponent(model.id)}`
+    ))
+  )
 
   const makesById = new Map(makesPage.results.map((make) => [make.makeId, make.name]))
   const platformsById = new Map(platformsPage.results.map((platform) => [platform.platformId, platform.name]))
@@ -60,7 +88,7 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
     vehicles: CatalogVehicleRecord[]
   }>()
 
-  for (const vehicle of vehiclesPage.results) {
+  for (const vehicle of vehiclePages.flatMap((vehiclePage) => vehiclePage.results)) {
     const details = detailsByModelId.get(vehicle.lineage.modelId) ?? {
       bodyStyles: new Set<string>(),
       architectures: new Set<string>(),
@@ -108,5 +136,13 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
 
   const groups = groupsPage.results.map(({ groupId, name }) => ({ id: groupId, name }))
 
-  return { count: modelsPage.count, groups, models, makes }
+  return {
+    count: modelsPage.count,
+    next: 'next' in modelsPage ? modelsPage.next : null,
+    previous: 'previous' in modelsPage ? modelsPage.previous : null,
+    filterOptions,
+    groups,
+    models,
+    makes
+  }
 })

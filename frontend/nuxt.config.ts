@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/hints',
     '@pinia/nuxt',
+    '@pinia/colada-nuxt',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/sitemap',

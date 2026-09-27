@@ -1,102 +1,138 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { useQuery } from '@pinia/colada'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { refDebounced } from '@vueuse/core'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import { Skeleton } from '@/components/ui/skeleton'
 import type { CatalogResponse } from '#shared/types/catalog'
 
 const filters = useCatalogFiltersStore()
+const { search } = storeToRefs(filters)
 const route = useRoute()
+const router = useRouter()
 
-if (typeof route.query.q === 'string') {
-  filters.search = route.query.q
+function queryValue(name: string) {
+  const value = route.query[name]
+  return typeof value === 'string' ? value : ''
 }
 
+filters.search = queryValue('q')
+filters.makeId = queryValue('make') || 'all'
+filters.modelName = queryValue('model') || 'all'
+filters.year = queryValue('year') || 'all'
+filters.assemblyCountry = queryValue('assembly_country') || 'all'
+
+const requestedPage = Number.parseInt(queryValue('page'), 10)
+const page = ref(Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1)
+const debouncedSearch = refDebounced(search, 300)
+const catalogQuery = computed(() => ({
+  page: String(page.value),
+  ...(debouncedSearch.value.trim() ? { q: debouncedSearch.value.trim() } : {}),
+  ...(filters.makeId !== 'all' ? { make: filters.makeId } : {}),
+  ...(filters.modelName !== 'all' ? { model: filters.modelName } : {}),
+  ...(filters.year !== 'all' ? { year: filters.year } : {}),
+  ...(filters.assemblyCountry !== 'all' ? { assembly_country: filters.assemblyCountry } : {})
+}))
+
 const { data, status } = useQuery({
-  key: ['catalog'],
-  query: () => $fetch<CatalogResponse>('/api/catalog')
+  key: () => ['catalog', catalogQuery.value],
+  query: () => $fetch<CatalogResponse>('/api/catalog', { query: catalogQuery.value })
 })
 
-const modelsForMake = computed(() => (data.value?.models ?? []).filter((model) => filters.makeId === 'all' || model.makeId === filters.makeId))
-const modelNames = computed(() => [...new Set(modelsForMake.value.map((model) => model.modelName))].sort((first, second) => first.localeCompare(second)))
-const years = computed(() => [...new Set(modelsForMake.value
-  .filter((model) => filters.modelName === 'all' || model.modelName === filters.modelName)
-  .map((model) => model.year))].sort((first, second) => second - first))
+watch(catalogQuery, (query) => {
+  if (JSON.stringify(route.query) !== JSON.stringify(query)) {
+    router.replace({ query })
+  }
+})
+
+const modelNames = computed(() => data.value?.filterOptions.models ?? [])
+const years = computed(() => data.value?.filterOptions.years ?? [])
+const assemblyCountries = computed(() => data.value?.filterOptions.assemblyCountries ?? [])
+const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 10)))
 
 watch(() => filters.makeId, () => {
   filters.modelName = 'all'
   filters.year = 'all'
+  page.value = 1
 })
 
 watch(() => filters.modelName, () => {
   filters.year = 'all'
+  page.value = 1
 })
 
-const filteredModels = computed(() => {
-  const term = filters.search.trim().toLocaleLowerCase()
-  return (data.value?.models ?? []).filter((model) => {
-    const matchesSearch = !term || `${model.makeName} ${model.modelName} ${model.year}`.toLocaleLowerCase().includes(term)
-    const matchesMake = filters.makeId === 'all' || model.makeId === filters.makeId
-    const matchesModel = filters.modelName === 'all' || model.modelName === filters.modelName
-    const matchesYear = filters.year === 'all' || String(model.year) === filters.year
-    return matchesSearch && matchesMake && matchesModel && matchesYear
-  })
+watch([() => debouncedSearch.value, () => filters.year, () => filters.assemblyCountry], () => {
+  page.value = 1
 })
+
+function resetFilters() {
+  filters.reset()
+  page.value = 1
+}
 </script>
 
 <template>
-  <section class="border-b bg-muted/30">
-    <div class="mx-auto w-full max-w-6xl space-y-2 px-4 py-10">
-      <p class="text-sm font-medium text-muted-foreground">Explorar</p>
-      <h1 class="text-3xl font-bold tracking-tight">Catálogo de autos</h1>
-    </div>
-  </section>
+  <div>
+    <section class="border-b bg-muted/30">
+      <div class="mx-auto w-full max-w-6xl space-y-2 px-4 py-10">
+        <p class="text-sm font-medium text-muted-foreground">Explorar</p>
+        <h1 class="text-3xl font-bold tracking-tight">Catálogo de autos</h1>
+      </div>
+    </section>
 
-  <section class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
-    <Card>
-      <CardContent class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-2 xl:grid-cols-[minmax(15rem,1.5fr)_repeat(3,minmax(10rem,1fr))_auto] xl:items-end">
-        <label class="grid gap-2 text-sm font-medium">Buscar
-          <Input v-model="filters.search" placeholder="Marca, modelo o año" />
-        </label>
-        <div class="grid gap-2 text-sm font-medium">
-          <span>Marca</span>
-          <NativeSelect v-model="filters.makeId" class="w-full" aria-label="Filtrar por marca">
-            <NativeSelectOption value="all">Todas las marcas</NativeSelectOption>
-            <NativeSelectOption v-for="make in data?.makes" :key="make.id" :value="make.id">{{ make.name }}</NativeSelectOption>
-          </NativeSelect>
-        </div>
-        <div class="grid gap-2 text-sm font-medium">
-          <span>Modelo</span>
-          <NativeSelect v-model="filters.modelName" class="w-full" :disabled="!modelNames.length" aria-label="Filtrar por modelo">
-            <NativeSelectOption value="all">Todos los modelos</NativeSelectOption>
-            <NativeSelectOption v-for="model in modelNames" :key="model" :value="model">{{ model }}</NativeSelectOption>
-          </NativeSelect>
-        </div>
-        <div class="grid gap-2 text-sm font-medium">
-          <span>Año</span>
-          <NativeSelect v-model="filters.year" class="w-full" :disabled="!years.length" aria-label="Filtrar por año">
-            <NativeSelectOption value="all">Todos los años</NativeSelectOption>
-            <NativeSelectOption v-for="year in years" :key="year" :value="String(year)">{{ year }}</NativeSelectOption>
-          </NativeSelect>
-        </div>
-        <Button type="button" variant="outline" @click="filters.reset">Limpiar</Button>
-      </CardContent>
-    </Card>
+    <section class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
+      <Card>
+        <CardContent class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-2 xl:grid-cols-[minmax(15rem,1.5fr)_repeat(4,minmax(10rem,1fr))_auto] xl:items-end">
+          <label class="grid gap-2 text-sm font-medium">Buscar
+            <Input v-model="filters.search" placeholder="Modelo o generación" />
+          </label>
+          <div class="grid gap-2 text-sm font-medium">
+            <span>Marca</span>
+            <NativeSelect v-model="filters.makeId" class="w-full" aria-label="Filtrar por marca">
+              <NativeSelectOption value="all">Todas las marcas</NativeSelectOption>
+              <NativeSelectOption v-for="make in data?.makes" :key="make.id" :value="make.id">{{ make.name }}</NativeSelectOption>
+            </NativeSelect>
+          </div>
+          <div class="grid gap-2 text-sm font-medium">
+            <span>Modelo</span>
+            <NativeSelect v-model="filters.modelName" class="w-full" :disabled="!modelNames.length" aria-label="Filtrar por modelo">
+              <NativeSelectOption value="all">Todos los modelos</NativeSelectOption>
+              <NativeSelectOption v-for="model in modelNames" :key="model" :value="model">{{ model }}</NativeSelectOption>
+            </NativeSelect>
+          </div>
+          <div class="grid gap-2 text-sm font-medium">
+            <span>Año</span>
+            <NativeSelect v-model="filters.year" class="w-full" :disabled="!years.length" aria-label="Filtrar por año">
+              <NativeSelectOption value="all">Todos los años</NativeSelectOption>
+              <NativeSelectOption v-for="year in years" :key="year" :value="String(year)">{{ year }}</NativeSelectOption>
+            </NativeSelect>
+          </div>
+          <div class="grid gap-2 text-sm font-medium">
+            <span>País de armado</span>
+            <NativeSelect v-model="filters.assemblyCountry" class="w-full" :disabled="!assemblyCountries.length" aria-label="Filtrar por país de armado">
+              <NativeSelectOption value="all">Todos los países</NativeSelectOption>
+              <NativeSelectOption v-for="country in assemblyCountries" :key="country.code" :value="country.code">{{ country.name }}</NativeSelectOption>
+            </NativeSelect>
+          </div>
+          <Button type="button" variant="outline" @click="resetFilters">Limpiar</Button>
+        </CardContent>
+      </Card>
 
     <div class="flex items-center justify-between gap-4">
       <h2 class="text-lg font-semibold tracking-tight">Modelos base</h2>
-      <Badge variant="secondary">{{ filteredModels.length }} resultados</Badge>
+      <Badge variant="secondary">{{ data?.count ?? 0 }} resultados</Badge>
     </div>
 
     <p v-if="status === 'error'" role="alert" class="text-sm text-destructive">No se pudo cargar el catálogo. Revisa que la API esté disponible.</p>
     <div v-else-if="status === 'pending'" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Skeleton v-for="item in 6" :key="item" class="h-80" />
     </div>
-    <div v-else-if="filteredModels.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <CatalogModelCard v-for="model in filteredModels" :key="model.id" :model="model" />
+    <div v-else-if="data?.models.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <CatalogModelCard v-for="model in data.models" :key="model.id" :model="model" />
     </div>
     <Card v-else>
       <CardContent class="flex flex-col items-center gap-2 p-8 text-center">
@@ -105,5 +141,16 @@ const filteredModels = computed(() => {
         <p class="text-sm text-muted-foreground">Prueba a cambiar los filtros o vuelve más tarde.</p>
       </CardContent>
     </Card>
-  </section>
+
+      <nav v-if="pageCount > 1" class="flex items-center justify-center gap-3" aria-label="Paginación">
+        <Button type="button" variant="outline" size="icon" :disabled="!data?.previous" aria-label="Página anterior" title="Página anterior" @click="page--">
+          <Icon name="tabler:chevron-left" class="size-4" aria-hidden="true" />
+        </Button>
+        <span class="text-sm text-muted-foreground">Página {{ page }} de {{ pageCount }}</span>
+        <Button type="button" variant="outline" size="icon" :disabled="!data?.next" aria-label="Página siguiente" title="Página siguiente" @click="page++">
+          <Icon name="tabler:chevron-right" class="size-4" aria-hidden="true" />
+        </Button>
+      </nav>
+    </section>
+  </div>
 </template>

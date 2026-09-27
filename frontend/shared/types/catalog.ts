@@ -19,6 +19,27 @@ export interface CatalogGroup {
 export interface CatalogVehicleRecord {
   id: string | number
   variantName?: string | null
+  priceAmount?: string | null
+  priceCurrency?: string
+  monthlySales?: Array<{
+    period: string
+    unitsSold: number
+  }>
+  recalls?: Array<{
+    authority: string
+    recallNumber: string
+    country: string | null
+    title: string
+    description: string
+    risk: string
+    riskConsequence: string
+    countermeasure: string
+    actions: string
+    status: 'open' | 'resolved'
+    publishedDate: string | null
+    remedy: string
+    sourceUrl: string
+  }>
   lineage: {
     makeId: string
     modelId: string
@@ -59,6 +80,16 @@ export interface CatalogModel {
 
 export interface CatalogResponse {
   count: number
+  next: string | null
+  previous: string | null
+  filterOptions: {
+    models: string[]
+    years: number[]
+    assemblyCountries: Array<{
+      code: string
+      name: string
+    }>
+  }
   groups: CatalogGroup[]
   models: CatalogModel[]
   makes: CatalogMake[]
