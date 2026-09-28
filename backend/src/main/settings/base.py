@@ -552,6 +552,11 @@ UNFOLD = {
                 "separator": False,
                 "items": [
                     {
+                        "title": _("Recalls"),
+                        "icon": "campaign",
+                        "link": reverse_lazy("admin:catalog_recall_changelist"),
+                    },
+                    {
                         "title": _("Records de cumplimiento"),
                         "icon": "fact_check",
                         "link": reverse_lazy(

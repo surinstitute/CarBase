@@ -9,9 +9,9 @@ from catalog.models import (
     ChargingPackage,
     ChargingPort,
     ComplianceRecord,
-    EMotor,
     EfficiencyResult,
     EmissionsResult,
+    EMotor,
     Engine,
     FuelTank,
     Group,
@@ -26,7 +26,6 @@ from catalog.models import (
     Transmission,
     Vehicle,
 )
-
 
 ARCHITECTURE_MAP = {
     PowerTrainArchitecture.ICE: "ice",
@@ -215,7 +214,7 @@ class VehicleSerializer(serializers.ModelSerializer):
 
     def get_monthlySales(self, obj):
         return [
-            {"period": sale.period.isoformat(), "unitsSold": sale.units_sold}
+            {"month": sale.month, "year": sale.year, "unitsSold": sale.units_sold}
             for sale in obj.monthly_sales.all()
         ]
 
@@ -259,8 +258,6 @@ class VehicleSerializer(serializers.ModelSerializer):
         configuration = {
             "powertrain": self._serialize_powertrain(obj.powertrain),
         }
-        if obj.body_style:
-            configuration["bodyStyle"] = obj.body_style
         if obj.transmissionId_id:
             configuration["transmissionId"] = str(obj.transmissionId.transmissionId)
         return configuration

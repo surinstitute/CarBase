@@ -66,6 +66,65 @@ SAFETY_FEATURE_DESCRIPTIONS = {
     "restraints_headProtectionAirbag": "Head protection airbags, often curtain airbags, help protect occupants' heads in side impacts or rollovers.",
 }
 
+CHARGING_PACKAGE_FIELD_DESCRIPTIONS = {
+    "ac_max_power_kw": "Maximum alternating-current (AC) charging power, in kilowatts.",
+    "ac_max_voltage_v": "Maximum alternating-current (AC) charging voltage, in volts.",
+    "ac_max_current_a": "Maximum alternating-current (AC) charging current, in amperes.",
+    "ac_phases": "Number of electrical phases supported for alternating-current (AC) charging.",
+    "dc_max_power_kw": "Maximum direct-current (DC) charging power, in kilowatts.",
+    "dc_max_voltage_v": "Maximum direct-current (DC) charging voltage, in volts.",
+    "dc_max_current_a": "Maximum direct-current (DC) charging current, in amperes.",
+    "v2l": "Allows the vehicle battery to power external devices (Vehicle-to-Load).",
+    "v2h": "Allows the vehicle battery to power a home (Vehicle-to-Home).",
+    "v2g": "Allows the vehicle battery to send power back to the electrical grid (Vehicle-to-Grid).",
+}
+
+ENGINE_FIELD_DESCRIPTIONS = {
+    "name": "Manufacturer or model name used to identify this engine.",
+    "maker": "Vehicle manufacturer that produces or supplies this engine.",
+    "energy_source": "Fuel or energy source used by the engine.",
+    "displacement_cc": "Total cylinder displacement, in cubic centimetres (cc).",
+    "power_kW": "Maximum engine power output, in kilowatts (kW).",
+    "cylinder_count": "Number of cylinders in the engine.",
+    "aspiration": "Method used to supply air to the engine, such as naturally aspirated or turbocharged.",
+    "layout": "Physical arrangement of the engine cylinders, such as inline, V, or boxer.",
+}
+
+E_MOTOR_FIELD_DESCRIPTIONS = {
+    "name": "Manufacturer or model name used to identify this electric motor.",
+    "maker": "Vehicle manufacturer that produces or supplies this electric motor.",
+    "motor_type": "Electric motor technology, such as permanent-magnet synchronous or induction.",
+    "power_kW": "Maximum electric motor power output, in kilowatts (kW).",
+    "torque_Nm": "Maximum electric motor torque, in newton-metres (Nm).",
+    "position": "Location of the motor in the vehicle and the axle or wheels it drives.",
+    "cooling_type": "Method used to cool the electric motor.",
+}
+
+BATTERY_PACK_FIELD_DESCRIPTIONS = {
+    "name": "Manufacturer or model name used to identify this battery pack.",
+    "group": "Corporate group that owns or supplies this battery pack.",
+    "provider": "Company that manufactures or supplies the battery cells or pack.",
+    "chemistry": "Electrochemical cell chemistry used by the battery pack.",
+    "capacity_kWh": "Nominal total energy capacity, in kilowatt-hours (kWh).",
+    "gross_capacity_kWh": "Total energy capacity before the manufacturer reserve buffer, in kilowatt-hours (kWh).",
+    "usable_capacity_kWh": "Energy capacity available to power the vehicle, in kilowatt-hours (kWh).",
+    "voltage_V": "Nominal battery pack voltage, in volts (V).",
+    "weight_kg": "Battery pack weight, in kilograms (kg).",
+}
+
+POWERTRAIN_FIELD_DESCRIPTIONS = {
+    "name": "Manufacturer or model name used to identify this powertrain.",
+    "make": "Vehicle manufacturer associated with this powertrain.",
+    "architecture": "Powertrain configuration, such as internal combustion, hybrid, plug-in hybrid, or battery electric.",
+}
+
+CHARGING_PORT_FIELD_DESCRIPTIONS = {
+    "vehicle": "Vehicle configuration that uses this charging port.",
+    "current_type": "Type of electrical current supported by the port: AC, DC, or both.",
+    "connector": "Physical charging connector standard fitted to the port.",
+    "location": "Physical location of the charging port on the vehicle body.",
+}
+
 
 class SafetyPackageAdminForm(forms.ModelForm):
     class Meta:
@@ -75,6 +134,78 @@ class SafetyPackageAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, description in SAFETY_FEATURE_DESCRIPTIONS.items():
+            if field_name in self.fields:
+                self.fields[field_name].help_text = description
+
+
+class ChargingPackageAdminForm(forms.ModelForm):
+    class Meta:
+        model = ChargingPackage
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, description in CHARGING_PACKAGE_FIELD_DESCRIPTIONS.items():
+            if field_name in self.fields:
+                self.fields[field_name].help_text = description
+
+
+class EngineAdminForm(forms.ModelForm):
+    class Meta:
+        model = Engine
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, description in ENGINE_FIELD_DESCRIPTIONS.items():
+            if field_name in self.fields:
+                self.fields[field_name].help_text = description
+
+
+class EMotorAdminForm(forms.ModelForm):
+    class Meta:
+        model = EMotor
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, description in E_MOTOR_FIELD_DESCRIPTIONS.items():
+            if field_name in self.fields:
+                self.fields[field_name].help_text = description
+
+
+class BatteryPackAdminForm(forms.ModelForm):
+    class Meta:
+        model = BatteryPack
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, description in BATTERY_PACK_FIELD_DESCRIPTIONS.items():
+            if field_name in self.fields:
+                self.fields[field_name].help_text = description
+
+
+class PowerTrainAdminForm(forms.ModelForm):
+    class Meta:
+        model = PowerTrain
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, description in POWERTRAIN_FIELD_DESCRIPTIONS.items():
+            if field_name in self.fields:
+                self.fields[field_name].help_text = description
+
+
+class ChargingPortAdminForm(forms.ModelForm):
+    class Meta:
+        model = ChargingPort
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, description in CHARGING_PORT_FIELD_DESCRIPTIONS.items():
             if field_name in self.fields:
                 self.fields[field_name].help_text = description
 
@@ -250,6 +381,7 @@ class SafetyPackageInline(admin.StackedInline):
 
 class ChargingPackageInline(admin.StackedInline):
     model = ChargingPackage
+    form = ChargingPackageAdminForm
     extra = 0
     max_num = 1
 
@@ -307,7 +439,7 @@ class TopSpeedResultInline(admin.TabularInline):
 class VehicleMonthlySalesInline(admin.TabularInline):
     model = VehicleMonthlySales
     extra = 0
-    ordering = ("period",)
+    ordering = ("year", "month")
 
 
 class ModelImagePlacementInline(admin.TabularInline):
@@ -352,6 +484,7 @@ class SafetyPackageAdmin(VehicleLinkedAdmin):
 
 @admin.register(ChargingPackage)
 class ChargingPackageAdmin(VehicleLinkedAdmin):
+    form = ChargingPackageAdminForm
     list_display = (
         "vehicle",
         "ac_max_power_kw",
@@ -365,6 +498,7 @@ class ChargingPackageAdmin(VehicleLinkedAdmin):
 
 @admin.register(ChargingPort)
 class ChargingPortAdmin(VehicleLinkedAdmin):
+    form = ChargingPortAdminForm
     list_display = ("vehicle", "current_type", "connector", "location")
     search_fields = ("vehicle__model__model", "vehicle__model__make__name")
 
@@ -501,6 +635,7 @@ class PlatformAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(Engine)
 class EngineAdmin(GroupScopedAdminMixin, ModelAdmin):
+    form = EngineAdminForm
     list_display = ("name", "maker", "energy_source", "power_kW", "displacement_cc")
     search_fields = ("name", "maker__name")
     group_paths = ("maker__group",)
@@ -509,6 +644,7 @@ class EngineAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(BatteryPack)
 class BatteryPackAdmin(GroupScopedAdminMixin, ModelAdmin):
+    form = BatteryPackAdminForm
     list_display = (
         "batteryPackId",
         "name",
@@ -536,6 +672,7 @@ class FuelTankAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(EMotor)
 class EMotorAdmin(GroupScopedAdminMixin, ModelAdmin):
+    form = EMotorAdminForm
     list_display = (
         "eMotorId",
         "name",
@@ -559,6 +696,7 @@ class TransmissionAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(PowerTrain)
 class PowerTrainAdmin(GroupScopedAdminMixin, ModelAdmin):
+    form = PowerTrainAdminForm
     list_display = ("powerTrainId", "name", "make", "architecture")
     search_fields = ("name", "make__name")
     foreignkey_group_paths = {"make": "group"}
@@ -572,10 +710,10 @@ class PowerTrainAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 @admin.register(VehicleMonthlySales)
 class VehicleMonthlySalesAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("vehicle", "period", "units_sold")
+    list_display = ("vehicle", "month", "year", "units_sold")
     search_fields = ("vehicle__model__model", "vehicle__model__make__name")
-    list_filter = ("period",)
-    ordering = ("-period",)
+    list_filter = ("year", "month")
+    ordering = ("-year", "-month")
     autocomplete_fields = ("vehicle",)
     group_paths = ("vehicle__model__make__group",)
     foreignkey_group_paths = {"vehicle": "model__make__group"}

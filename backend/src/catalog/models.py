@@ -391,6 +391,9 @@ class PowerTrainFuelTank(models.Model):
 
 
 class Vehicle(models.Model):
+    class PriceCurrency(models.TextChoices):
+        USD = "USD", "Dólares estadounidenses"
+        MXN = "MXN", "Pesos mexicanos"
 
     model = models.ForeignKey(
         BaseModel, on_delete=models.CASCADE, related_name="model_vehicles"
@@ -400,7 +403,11 @@ class Vehicle(models.Model):
     price_amount = models.DecimalField(
         max_digits=12, decimal_places=2, null=True, blank=True
     )
-    price_currency = models.CharField(max_length=3, blank=True)
+    price_currency = models.CharField(
+        max_length=3,
+        choices=PriceCurrency.choices,
+        blank=True,
+    )
     powertrain = models.ForeignKey(
         PowerTrain,
         on_delete=models.CASCADE,
@@ -444,20 +451,35 @@ class Vehicle(models.Model):
 
 
 class VehicleMonthlySales(models.Model):
+    class Month(models.IntegerChoices):
+        JANUARY = 1, "Enero"
+        FEBRUARY = 2, "Febrero"
+        MARCH = 3, "Marzo"
+        APRIL = 4, "Abril"
+        MAY = 5, "Mayo"
+        JUNE = 6, "Junio"
+        JULY = 7, "Julio"
+        AUGUST = 8, "Agosto"
+        SEPTEMBER = 9, "Septiembre"
+        OCTOBER = 10, "Octubre"
+        NOVEMBER = 11, "Noviembre"
+        DECEMBER = 12, "Diciembre"
+
     vehicle = models.ForeignKey(
         Vehicle,
         on_delete=models.CASCADE,
         related_name="monthly_sales",
     )
-    period = models.DateField()
+    month = models.PositiveSmallIntegerField(choices=Month.choices)
+    year = models.PositiveIntegerField()
     units_sold = models.PositiveIntegerField()
 
     class Meta:
-        ordering = ("period",)
+        ordering = ("year", "month")
         constraints = [
             models.UniqueConstraint(
-                fields=("vehicle", "period"),
-                name="unique_vehicle_monthly_sales_period",
+                fields=("vehicle", "year", "month"),
+                name="unique_vehicle_monthly_sales_year_month",
             )
         ]
 
