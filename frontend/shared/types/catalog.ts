@@ -22,7 +22,8 @@ export interface CatalogVehicleRecord {
   priceAmount?: string | null
   priceCurrency?: string
   monthlySales?: Array<{
-    period: string
+    month: number
+    year: number
     unitsSold: number
   }>
   recalls?: Array<{

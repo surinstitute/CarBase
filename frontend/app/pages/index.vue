@@ -17,8 +17,8 @@ function browseCatalog() {
 			<div class="max-w-3xl space-y-6">
 				<Badge variant="secondary">Catálogo de vehículos</Badge>
 				<div class="space-y-3">
-					<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Encuentra el auto que habla tu idioma.</h1>
-					<p class="max-w-2xl text-lg text-muted-foreground">Compara modelos, carrocerías y sistemas de propulsión para decidir mejor.</p>
+					<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Autos y Datos Abiertos</h1>
+					<p class="max-w-2xl text-lg text-muted-foreground">Compara modelosy sistemas de propulsión para decidir mejor.</p>
 				</div>
 				<Card class="max-w-2xl">
 					<CardContent class="p-4 sm:p-6">
