@@ -1,7 +1,7 @@
 import django_filters
 from django.db.models import Q
 from paradedb.functions import Score
-from paradedb.search import Match, ParadeDB
+from paradedb.search import ParadeDB, Term
 
 from .models import BaseModel, Vehicle
 
@@ -26,10 +26,12 @@ class BaseModelFilter(django_filters.FilterSet):
         normalized_value = (value or "").strip()
         if not normalized_value:
             return queryset
+        search_query = ParadeDB(
+            Term(normalized_value.lower(), prefix=True, distance=0)
+        )
         return (
             queryset.filter(
-                Q(model=ParadeDB(Match(normalized_value, operator="AND")))
-                | Q(generation=ParadeDB(Match(normalized_value, operator="AND")))
+                Q(model=search_query) | Q(generation=search_query)
             )
             .annotate(score=Score())
             .order_by("-score")
@@ -61,10 +63,17 @@ class VehicleFilter(django_filters.FilterSet):
         normalized_value = (value or "").strip()
         if not normalized_value:
             return queryset
+        search_query = ParadeDB(
+            Term(normalized_value.lower(), prefix=True, distance=0)
+        )
+        matching_model_ids = list(
+            BaseModel.objects.filter(model=search_query).values_list(
+                "pk", flat=True
+            )
+        )
         return (
             queryset.filter(
-                Q(variant_name=ParadeDB(Match(normalized_value, operator="AND")))
-                | Q(body_style=ParadeDB(Match(normalized_value, operator="AND")))
+                Q(variant_name=search_query) | Q(model_id__in=matching_model_ids)
             )
             .annotate(score=Score())
             .order_by("-score")

@@ -195,6 +195,7 @@ INSTALLED_APPS = [
     "allauth.idp.oidc",
     # DRF
     "rest_framework",
+    "django_filters",
     "drf_spectacular",
     # Search
     "paradedb",

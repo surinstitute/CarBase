@@ -647,7 +647,7 @@ class VehicleSerializer(serializers.ModelSerializer):
             performance["range"] = range_results
 
         emissions = [
-            self._serialize_result_with_cycle_scope(item)
+            self._serialize_result_with_cycle_scope(item, "criteria")
             for item in obj.emissions_results.all()
         ]
         if emissions:
@@ -756,9 +756,9 @@ class VehicleSerializer(serializers.ModelSerializer):
             if fitment.role in PROPULSION_ROLES
         ]
 
-    def _serialize_result_with_cycle_scope(self, item):
+    def _serialize_result_with_cycle_scope(self, item, metric_field="metric"):
         data = {
-            "metric": item.metric,
+            "metric": getattr(item, metric_field),
             "value": item.value,
             "unit": item.unit,
         }
