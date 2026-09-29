@@ -10,6 +10,7 @@ from api.views import (
     GroupViewSet,
     MakeViewSet,
     PlatformViewSet,
+    RecallViewSet,
     PowerTrainViewSet,
     TransmissionViewSet,
     VehicleViewSet,
@@ -27,6 +28,7 @@ router.register("e-motors", EMotorViewSet, basename="emotor")
 router.register("powertrains", PowerTrainViewSet, basename="powertrain")
 router.register("transmissions", TransmissionViewSet, basename="transmission")
 router.register("vehicles", VehicleViewSet, basename="vehicle")
+router.register("recalls", RecallViewSet, basename="recall")
 
 urlpatterns = [
     path("", include(router.urls)),

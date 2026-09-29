@@ -3,7 +3,7 @@ from django.db.models import Q
 from paradedb.functions import Score
 from paradedb.search import ParadeDB, Term
 
-from .models import BaseModel, Vehicle
+from .models import BaseModel, Recall, Vehicle
 from .types import BodyStyle, PowerTrainArchitecture
 
 
@@ -119,3 +119,21 @@ class VehicleFilter(django_filters.FilterSet):
             .annotate(score=Score())
             .order_by("-score")
         )
+
+class RecallFilter(django_filters.FilterSet):
+    q = django_filters.CharFilter(method="filter_search")
+
+    class Meta:
+        model = Recall
+        fields = ["q"]
+
+    def filter_search(self, queryset, _name, value):
+        normalized_value = (value or "").strip()
+        if not normalized_value:
+            return queryset
+        return queryset.filter(
+            Q(recall_number__icontains=normalized_value)
+            | Q(title__icontains=normalized_value)
+            | Q(maker__name__icontains=normalized_value)
+            | Q(affected_models__model__icontains=normalized_value)
+        ).distinct()

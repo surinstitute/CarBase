@@ -78,6 +78,29 @@ export interface CatalogSafetyRating {
   sourceUrl: string | null
 }
 
+export interface CatalogRecall {
+  id: number
+  makerId: string
+  makerName: string
+  recallNumber: string
+  title: string
+  description: string
+  risk: string
+  riskConsequence: string
+  countermeasure: string
+  actions: string
+  status: 'open' | 'resolved'
+  publishedDate: string | null
+  totalUnitsAffected: number | null
+  sourceUrl: string
+  damageReport: string
+  affectedModels: Array<{
+    id: string
+    name: string
+    year: number
+  }>
+}
+
 export interface CatalogModel {
   id: string
   makeId: string

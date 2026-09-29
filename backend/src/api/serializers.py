@@ -20,6 +20,7 @@ from catalog.models import (
     PowerTrain,
     PowerTrainArchitecture,
     RangeResult,
+    Recall,
     RegulatoryApproval,
     SafetyPackage,
     TopSpeedResult,
@@ -192,6 +193,46 @@ class TransmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transmission
         fields = "__all__"
+
+class RecallSerializer(serializers.ModelSerializer):
+    makerId = serializers.UUIDField(source="maker.makeId", read_only=True)
+    makerName = serializers.CharField(source="maker.name", read_only=True)
+    recallNumber = serializers.CharField(source="recall_number", read_only=True)
+    publishedDate = serializers.DateField(source="published_date", read_only=True)
+    riskConsequence = serializers.CharField(source="risk_consequence", read_only=True)
+    totalUnitsAffected = serializers.IntegerField(
+        source="total_units_affected", read_only=True
+    )
+    sourceUrl = serializers.URLField(source="source_url", read_only=True)
+    damageReport = serializers.CharField(source="damage_report", read_only=True)
+    affectedModels = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Recall
+        fields = (
+            "id",
+            "makerId",
+            "makerName",
+            "recallNumber",
+            "title",
+            "description",
+            "risk",
+            "riskConsequence",
+            "countermeasure",
+            "actions",
+            "status",
+            "publishedDate",
+            "totalUnitsAffected",
+            "sourceUrl",
+            "damageReport",
+            "affectedModels",
+        )
+
+    def get_affectedModels(self, obj):
+        return [
+            {"id": str(model.id), "name": model.model, "year": model.year}
+            for model in obj.affected_models.all()
+        ]
 
 
 class VehicleSerializer(serializers.ModelSerializer):

@@ -17,6 +17,7 @@ function toggleColorMode() {
         <NuxtLink to="/models" class="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Modelos</NuxtLink>
         <NuxtLink to="/makes" class="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Marcas</NuxtLink>
         <NuxtLink to="/groups" class="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Grupos</NuxtLink>
+        <NuxtLink to="/recalls" class="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Recalls</NuxtLink>
         <Button
           variant="outline"
           size="icon"

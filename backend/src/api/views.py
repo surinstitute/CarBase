@@ -16,6 +16,7 @@ from api.serializers import (
     PowerTrainSerializer,
     TransmissionSerializer,
     VehicleSerializer,
+    RecallSerializer,
 )
 from catalog.models import (
     BaseModel,
@@ -29,10 +30,12 @@ from catalog.models import (
     PowerTrain,
     Transmission,
     Vehicle,
+    Recall,
 )
 from catalog.filters import (
     POWERTRAIN_TYPE_ARCHITECTURES,
     BaseModelFilter,
+    RecallFilter,
     VehicleFilter,
 )
 
@@ -166,3 +169,11 @@ class VehicleViewSet(ReadOnlyModelViewSet):
     serializer_class = VehicleSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = VehicleFilter
+
+class RecallViewSet(ReadOnlyModelViewSet):
+    queryset = Recall.objects.select_related("maker").prefetch_related(
+        "affected_models"
+    ).order_by("-published_date", "id")
+    serializer_class = RecallSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = RecallFilter
