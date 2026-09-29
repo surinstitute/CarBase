@@ -48,14 +48,14 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
   const modelParams = new URLSearchParams()
   const filterParams = new URLSearchParams()
 
-  for (const name of ['q', 'make', 'model', 'year', 'assembly_country', 'page']) {
+  for (const name of ['q', 'make', 'model', 'year', 'body_style', 'powertrain_type', 'assembly_country', 'page']) {
     const value = query[name]
     if (typeof value === 'string' && value.trim()) {
       modelParams.set(name, value.trim())
     }
   }
 
-  for (const name of ['make', 'model', 'assembly_country']) {
+  for (const name of ['q', 'make', 'model', 'year', 'body_style', 'powertrain_type', 'assembly_country']) {
     const value = query[name]
     if (typeof value === 'string' && value.trim()) {
       filterParams.set(name, value.trim())

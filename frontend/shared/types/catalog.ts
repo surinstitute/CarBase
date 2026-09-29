@@ -55,6 +55,14 @@ export interface CatalogVehicleRecord {
     } | null
     [field: string]: unknown
   }
+  safety?: {
+    collisionWarnings?: Partial<Record<'fcw' | 'ldw' | 'bsw' | 'rctw', boolean>>
+    collisionIntervention?: Partial<Record<'aebCity' | 'aebPedestrian' | 'aebHighway' | 'aebRear', boolean>>
+    drivingControlAssistance?: Partial<Record<'lka' | 'lca' | 'acc' | 'activeDrivingAssistanceDirectDriverMonitoring', boolean>>
+    rearSeatSafety?: Partial<Record<'childSafety' | 'rearOccupantAlertEndOfTripReminder', boolean>>
+    visibilityAndControl?: Partial<Record<'drl' | 'rearViewCamera' | 'esc' | 'tractionControl' | 'abs', boolean>>
+    restraints?: Partial<Record<'airbagSideFront' | 'airbagSideRear' | 'headProtectionAirbag', number>>
+  } | null
   images?: Record<string, { url: string; alt: string }>
   [field: string]: unknown
 }
@@ -98,6 +106,8 @@ export interface CatalogResponse {
   filterOptions: {
     models: string[]
     years: number[]
+    bodyStyles: string[]
+    powertrainTypes: Array<'combustion' | 'hybrid' | 'electric'>
     assemblyCountries: Array<{
       code: string
       name: string

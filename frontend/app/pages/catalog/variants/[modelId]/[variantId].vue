@@ -32,6 +32,7 @@ const detailRows = computed(() => variant.value
 const specs = computed(() => recordOf(variant.value?.specs))
 const performance = computed(() => recordOf(variant.value?.performance))
 const configuration = computed(() => recordOf(variant.value?.configuration))
+const safety = computed(() => recordOf(variant.value?.safety))
 const specRows = computed(() => Object.entries(specs.value).map(([field, value]) => ({
   field: fieldLabel(field),
   value: measurement(value)
@@ -44,7 +45,10 @@ const configurationRows = computed(() => {
   const charging = recordOf(configuration.value.charging)
   const rows: Array<{ field: string, value: string }> = []
   const energySources = itemsOf(powertrain.energySources).map((item) => label(item.source)).filter(Boolean)
-  const energyStorage = itemsOf(powertrain.energyStorage).map((item) => label(item.type)).filter(Boolean)
+  const energyStorage = itemsOf(powertrain.energyStorage).map((item) => [
+    label(item.type),
+    item.capacityKwh !== undefined ? `${item.capacityKwh} kWh` : ''
+  ].filter(Boolean).join(' · ')).filter(Boolean)
   const energyConverters = itemsOf(powertrain.energyConverters).map((item) => label(item.type)).filter(Boolean)
   const tractionMotors = itemsOf(powertrain.tractionMotors).map((item) => [label(item.role), label(item.position), item.quantity ? `x${item.quantity}` : ''].filter(Boolean).join(' · ')).filter(Boolean)
   const acCharging = recordOf(charging.acCharging)
@@ -63,6 +67,60 @@ const configurationRows = computed(() => {
 
   return rows
 })
+const safetySections = computed(() => [
+  {
+    title: 'Alertas de colisión',
+    values: safetyRows(safety.value.collisionWarnings, {
+      fcw: 'Alerta de colisión frontal',
+      ldw: 'Alerta de salida de carril',
+      bsw: 'Alerta de punto ciego',
+      rctw: 'Alerta de tráfico cruzado trasero'
+    })
+  },
+  {
+    title: 'Intervención de colisión',
+    values: safetyRows(safety.value.collisionIntervention, {
+      aebCity: 'Frenado autónomo en ciudad',
+      aebPedestrian: 'Frenado autónomo para peatones',
+      aebHighway: 'Frenado autónomo en carretera',
+      aebRear: 'Frenado autónomo trasero'
+    })
+  },
+  {
+    title: 'Asistencia a la conducción',
+    values: safetyRows(safety.value.drivingControlAssistance, {
+      lka: 'Asistencia de mantenimiento de carril',
+      lca: 'Centrado de carril',
+      acc: 'Control de crucero adaptativo',
+      activeDrivingAssistanceDirectDriverMonitoring: 'Monitorización del conductor'
+    })
+  },
+  {
+    title: 'Seguridad y visibilidad',
+    values: safetyRows(safety.value.visibilityAndControl, {
+      drl: 'Luces diurnas',
+      rearViewCamera: 'Cámara trasera',
+      esc: 'Control electrónico de estabilidad',
+      tractionControl: 'Control de tracción',
+      abs: 'Frenos antibloqueo'
+    })
+  },
+  {
+    title: 'Seguridad trasera',
+    values: safetyRows(safety.value.rearSeatSafety, {
+      childSafety: 'Seguridad infantil',
+      rearOccupantAlertEndOfTripReminder: 'Recordatorio de ocupante trasero'
+    })
+  },
+  {
+    title: 'Airbags',
+    values: safetyRows(safety.value.restraints, {
+      airbagSideFront: 'Airbags laterales delanteros',
+      airbagSideRear: 'Airbags laterales traseros',
+      headProtectionAirbag: 'Airbags de protección de cabeza'
+    })
+  }
+])
 
 const labels: Record<string, string> = {
   battery_electric: 'Eléctrico de batería',
@@ -195,6 +253,14 @@ function performanceRows(value: unknown) {
     detail: [label(item.cycle), label(item.scope)].filter(Boolean).join(' · ')
   }))
 }
+
+function safetyRows(value: unknown, fields: Record<string, string>) {
+  const section = recordOf(value)
+  return Object.entries(fields).map(([field, label]) => ({
+    label,
+    present: section[field] === true || (typeof section[field] === 'number' && section[field] > 0)
+  }))
+}
 </script>
 
 <template>
@@ -287,6 +353,27 @@ function performanceRows(value: unknown) {
         </CardContent>
       </Card>
     </div>
+
+    <Card>
+      <CardHeader>
+        <CardTitle>Seguridad</CardTitle>
+        <CardDescription>Sistemas de alerta, asistencia y protección de esta variante.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div v-if="variant.safety" class="grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+          <section v-for="section in safetySections" :key="section.title" class="space-y-3">
+            <h3 class="text-sm font-medium">{{ section.title }}</h3>
+            <ul class="space-y-2 text-sm">
+              <li v-for="feature in section.values" :key="feature.label" class="flex items-start gap-2">
+                <Icon :name="feature.present ? 'tabler:check' : 'tabler:x'" :class="feature.present ? 'mt-0.5 size-4 shrink-0 text-emerald-500' : 'mt-0.5 size-4 shrink-0 text-destructive'" :aria-label="feature.present ? 'Disponible' : 'No disponible'" />
+                <span :class="feature.present ? 'text-foreground' : 'text-muted-foreground'">{{ feature.label }}</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <p v-else class="text-sm text-muted-foreground">No hay paquete de seguridad registrado para esta variante.</p>
+      </CardContent>
+    </Card>
 
     <Collapsible class="space-y-3">
       <CollapsibleTrigger as-child>

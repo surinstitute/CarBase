@@ -22,8 +22,9 @@ function queryValue(name: string) {
 
 filters.search = queryValue('q')
 filters.makeId = queryValue('make') || 'all'
-filters.modelName = queryValue('model') || 'all'
 filters.year = queryValue('year') || 'all'
+filters.bodyStyle = queryValue('body_style') || 'all'
+filters.powertrainType = queryValue('powertrain_type') || 'all'
 filters.assemblyCountry = queryValue('assembly_country') || 'all'
 
 const requestedPage = Number.parseInt(queryValue('page'), 10)
@@ -33,8 +34,9 @@ const catalogQuery = computed(() => ({
   page: String(page.value),
   ...(debouncedSearch.value.trim() ? { q: debouncedSearch.value.trim() } : {}),
   ...(filters.makeId !== 'all' ? { make: filters.makeId } : {}),
-  ...(filters.modelName !== 'all' ? { model: filters.modelName } : {}),
   ...(filters.year !== 'all' ? { year: filters.year } : {}),
+  ...(filters.bodyStyle !== 'all' ? { body_style: filters.bodyStyle } : {}),
+  ...(filters.powertrainType !== 'all' ? { powertrain_type: filters.powertrainType } : {}),
   ...(filters.assemblyCountry !== 'all' ? { assembly_country: filters.assemblyCountry } : {})
 }))
 
@@ -49,18 +51,13 @@ watch(catalogQuery, (query) => {
   }
 })
 
-const modelNames = computed(() => data.value?.filterOptions.models ?? [])
 const years = computed(() => data.value?.filterOptions.years ?? [])
+const bodyStyles = computed(() => data.value?.filterOptions.bodyStyles ?? [])
+const powertrainTypes = computed(() => data.value?.filterOptions.powertrainTypes ?? [])
 const assemblyCountries = computed(() => data.value?.filterOptions.assemblyCountries ?? [])
 const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 10)))
 
 watch(() => filters.makeId, () => {
-  filters.modelName = 'all'
-  filters.year = 'all'
-  page.value = 1
-})
-
-watch(() => filters.modelName, () => {
   filters.year = 'all'
   page.value = 1
 })
@@ -69,9 +66,25 @@ watch([() => debouncedSearch.value, () => filters.year, () => filters.assemblyCo
   page.value = 1
 })
 
+watch([() => filters.bodyStyle, () => filters.powertrainType], () => {
+  page.value = 1
+})
+
 function resetFilters() {
   filters.reset()
   page.value = 1
+}
+
+function bodyStyleLabel(bodyStyle: string) {
+  const labels: Record<string, string> = {
+    sedan: 'Sedán', hatchback: 'Hatchback', fastback: 'Fastback', coupe: 'Coupé', convertible: 'Convertible', wagon: 'Familiar', suv: 'SUV', crossover: 'Crossover', pickup: 'Pickup', van: 'Van', minivan: 'Minivan', liftback: 'Liftback', roadster: 'Roadster', targa: 'Targa', other: 'Otro'
+  }
+  return labels[bodyStyle] ?? bodyStyle
+}
+
+function powertrainTypeLabel(powertrainType: string) {
+  const labels: Record<string, string> = { combustion: 'Combustión', hybrid: 'Híbrido', electric: 'Eléctrico' }
+  return labels[powertrainType] ?? powertrainType
 }
 </script>
 
@@ -86,7 +99,7 @@ function resetFilters() {
 
     <section class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
       <Card>
-        <CardContent class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-2 xl:grid-cols-[minmax(15rem,1.5fr)_repeat(4,minmax(10rem,1fr))_auto] xl:items-end">
+        <CardContent class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-2 xl:grid-cols-4 xl:items-end">
           <label class="grid gap-2 text-sm font-medium">Buscar
             <Input v-model="filters.search" placeholder="Modelo o generación" />
           </label>
@@ -98,17 +111,24 @@ function resetFilters() {
             </NativeSelect>
           </div>
           <div class="grid gap-2 text-sm font-medium">
-            <span>Modelo</span>
-            <NativeSelect v-model="filters.modelName" class="w-full" :disabled="!modelNames.length" aria-label="Filtrar por modelo">
-              <NativeSelectOption value="all">Todos los modelos</NativeSelectOption>
-              <NativeSelectOption v-for="model in modelNames" :key="model" :value="model">{{ model }}</NativeSelectOption>
-            </NativeSelect>
-          </div>
-          <div class="grid gap-2 text-sm font-medium">
             <span>Año</span>
             <NativeSelect v-model="filters.year" class="w-full" :disabled="!years.length" aria-label="Filtrar por año">
               <NativeSelectOption value="all">Todos los años</NativeSelectOption>
               <NativeSelectOption v-for="year in years" :key="year" :value="String(year)">{{ year }}</NativeSelectOption>
+            </NativeSelect>
+          </div>
+          <div class="grid gap-2 text-sm font-medium">
+            <span>Carrocería</span>
+            <NativeSelect v-model="filters.bodyStyle" class="w-full" :disabled="!bodyStyles.length" aria-label="Filtrar por carrocería">
+              <NativeSelectOption value="all">Todas las carrocerías</NativeSelectOption>
+              <NativeSelectOption v-for="bodyStyle in bodyStyles" :key="bodyStyle" :value="bodyStyle">{{ bodyStyleLabel(bodyStyle) }}</NativeSelectOption>
+            </NativeSelect>
+          </div>
+          <div class="grid gap-2 text-sm font-medium">
+            <span>Propulsión</span>
+            <NativeSelect v-model="filters.powertrainType" class="w-full" :disabled="!powertrainTypes.length" aria-label="Filtrar por tipo de propulsión">
+              <NativeSelectOption value="all">Todas las propulsiones</NativeSelectOption>
+              <NativeSelectOption v-for="powertrainType in powertrainTypes" :key="powertrainType" :value="powertrainType">{{ powertrainTypeLabel(powertrainType) }}</NativeSelectOption>
             </NativeSelect>
           </div>
           <div class="grid gap-2 text-sm font-medium">
