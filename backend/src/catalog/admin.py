@@ -1,7 +1,10 @@
+from pathlib import Path
+
 from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
 from django.db.models import Q
+from django.forms.models import BaseInlineFormSet
 from django.urls import reverse
 from django.utils.html import format_html, format_html_join
 from unfold.admin import ModelAdmin
@@ -441,10 +444,54 @@ class TopSpeedResultInline(admin.TabularInline):
     extra = 0
 
 
+class ModelImagePlacementInlineForm(forms.ModelForm):
+    image_file = forms.ImageField(label="Upload image", required=False)
+
+    class Meta:
+        model = ModelImagePlacement
+        fields = ("image_file", "view", "alt_text", "sort_order", "is_visible")
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if not self.instance.pk and not cleaned_data.get("image_file"):
+            self.add_error("image_file", "Upload an image for this model placement.")
+        return cleaned_data
+
+
+class ModelImagePlacementInlineFormSet(BaseInlineFormSet):
+    def save_new(self, form, commit=True):
+        instance = form.save(commit=False)
+        setattr(instance, self.fk.name, self.instance)
+        self._save_uploaded_image(form, instance)
+        if commit:
+            instance.save()
+        return instance
+
+    def save_existing(self, form, instance, commit=True):
+        instance = form.save(commit=False)
+        self._save_uploaded_image(form, instance)
+        if commit:
+            instance.save()
+        return instance
+
+    def _save_uploaded_image(self, form, placement):
+        uploaded_file = form.cleaned_data.get("image_file")
+        if uploaded_file is None:
+            return
+
+        image = ImageAsset(title=Path(uploaded_file.name).stem[:255])
+        image._base_model = placement.base_model
+        image.file = uploaded_file
+        image.save()
+        placement.image = image
+
+
 class ModelImagePlacementInline(admin.TabularInline):
     model = ModelImagePlacement
+    form = ModelImagePlacementInlineForm
+    formset = ModelImagePlacementInlineFormSet
     extra = 0
-    autocomplete_fields = ("image",)
+    fields = ("image_file", "view", "alt_text", "sort_order", "is_visible")
 
 
 @admin.register(RegulatoryApproval)
@@ -594,6 +641,10 @@ class TopSpeedResultAdmin(VehicleResultAdmin):
 class ImageAssetAdmin(ModelAdmin):
     list_display = ("title", "file", "credit", "license")
     search_fields = ("title", "description", "credit", "license")
+    readonly_fields = ("file",)
+
+    def has_add_permission(self, request):
+        return False
 
 
 @admin.register(BaseModel)

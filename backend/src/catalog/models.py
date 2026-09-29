@@ -1,8 +1,10 @@
 import uuid
+from pathlib import Path
 
 from django.core.validators import FileExtensionValidator
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils.text import slugify
 from django_countries.fields import CountryField
 from paradedb.indexes import BM25Index
 from paradedb.queryset import ParadeDBManager
@@ -129,8 +131,22 @@ class ModelSafetyRating(SafetyRatingMetrics):
         ]
 
 
+def model_image_upload_to(instance, filename):
+    base_model = getattr(instance, "_base_model", None)
+    if base_model is None:
+        raise ValueError("Model images must be uploaded from a model placement.")
+
+    make_slug = slugify(base_model.make.name) or "unknown-make"
+    model_slug = slugify(base_model.model) or "unknown-model"
+    extension = Path(filename).suffix.lower()
+    return (
+        f"catalog/images/{make_slug}/{model_slug}/"
+        f"{uuid.uuid4().hex}{extension}"
+    )
+
+
 class ImageAsset(models.Model):
-    file = models.ImageField(upload_to="catalog/images/%Y/%m/")
+    file = models.ImageField(upload_to=model_image_upload_to)
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     credit = models.CharField(max_length=255, blank=True)
