@@ -1,44 +1,87 @@
 [
 {
-  "model": "catalog.group",
-  "pk": "04f1d87d-c79b-4470-beb4-8c6d218cfc1b",
+  "model": "catalog.basemodel",
+  "pk": "11854108-8d4b-4233-8189-90aeba8e2790",
   "fields": {
-    "name": "Volkswagen Group"
+    "model": "Countryman",
+    "make": "f5e86c9b-f5fb-4da3-9af7-4ffd6b2fe814",
+    "platform": null,
+    "body_style": "suv",
+    "generation": null,
+    "year": 2026,
+    "created_at": "2026-09-29T04:07:17.074Z",
+    "updated_at": "2026-09-29T04:07:17.074Z"
   }
 },
 {
-  "model": "catalog.group",
-  "pk": "2c286c90-e325-4439-914f-eacfbccb8d49",
+  "model": "catalog.basemodel",
+  "pk": "3e9ba764-3580-43ad-808a-7e56842a0c2b",
   "fields": {
-    "name": "Toyota Group"
+    "model": "Yaris",
+    "make": "897c8da6-b93e-4a70-8842-29854f5b0490",
+    "platform": null,
+    "body_style": null,
+    "generation": null,
+    "year": 2022,
+    "created_at": "2026-09-29T03:55:22.575Z",
+    "updated_at": "2026-09-29T03:55:22.575Z"
   }
 },
 {
-  "model": "catalog.group",
-  "pk": "4dbe094a-ea35-4b7f-8391-bbf07ebef34f",
+  "model": "catalog.basemodel",
+  "pk": "42b68269-c481-4269-82cc-a5a60a56b7c0",
   "fields": {
-    "name": "Stellantis N.V."
+    "model": "Aceman",
+    "make": "f5e86c9b-f5fb-4da3-9af7-4ffd6b2fe814",
+    "platform": null,
+    "body_style": null,
+    "generation": null,
+    "year": 2026,
+    "created_at": "2026-09-28T00:19:59.255Z",
+    "updated_at": "2026-09-28T00:19:59.255Z"
   }
 },
 {
-  "model": "catalog.group",
-  "pk": "a4d98235-23a3-43ad-89d6-847d1e24bdec",
+  "model": "catalog.basemodel",
+  "pk": "d98be423-173d-48d0-9b23-97cdb38ee91d",
   "fields": {
-    "name": "BMW"
+    "model": "EX30",
+    "make": "928aa863-39a3-4d50-a5b4-db5a5d2f53c5",
+    "platform": "ea7ee066-ce9d-4e30-82fc-b5da5573222c",
+    "body_style": "suv",
+    "generation": "First",
+    "year": 2026,
+    "created_at": "2026-09-28T00:19:21.311Z",
+    "updated_at": "2026-09-28T22:11:08.728Z"
   }
 },
 {
-  "model": "catalog.group",
-  "pk": "c8d47b03-a5a5-498a-8126-a17bb970ed41",
+  "model": "catalog.basemodel",
+  "pk": "d9c791f6-777e-4c50-aaec-4a82405ab479",
   "fields": {
-    "name": "Zhejiang Geely Holding Group Co., Ltd. (吉利控股集团)"
+    "model": "EV3",
+    "make": "84be70c8-006b-4501-a6bb-9d8ac65fb7be",
+    "platform": null,
+    "body_style": null,
+    "generation": null,
+    "year": 2026,
+    "created_at": "2026-09-28T00:19:44.867Z",
+    "updated_at": "2026-09-28T00:19:44.867Z"
   }
 },
 {
-  "model": "catalog.group",
-  "pk": "ea9d8de5-1f71-411a-abf1-c8772a862c87",
+  "model": "catalog.modelsafetyrating",
+  "pk": 1,
   "fields": {
-    "name": "SAIC Motor"
+    "overall_stars": 5,
+    "adult_occupant_protection": 88,
+    "child_occupant_protection": 85,
+    "vulnerable_road_user_protection": 79,
+    "safety_assist": 80,
+    "model": "d98be423-173d-48d0-9b23-97cdb38ee91d",
+    "program": "euro_ncap",
+    "assessment_year": 2024,
+    "source_url": "https://www.euroncap.com/assessments/volvo/ex30/1098/"
   }
 },
 {
@@ -46,6 +89,12 @@
   "pk": "00002305-8874-4a38-ad0b-caab68532c87",
   "fields": {
     "name": "Subaru",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -54,6 +103,12 @@
   "pk": "09d5ff59-d613-4c3e-a2f7-8efb0caec19f",
   "fields": {
     "name": "Honda",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -62,6 +117,12 @@
   "pk": "0d75a802-02cc-4e48-9841-bad230bff9d7",
   "fields": {
     "name": "JAC",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -70,6 +131,12 @@
   "pk": "0d9eb33c-7877-4dc7-bb19-89fb0598b8ef",
   "fields": {
     "name": "GMC",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -78,6 +145,12 @@
   "pk": "13447bbf-2eb4-4105-83eb-f784db1d3fb9",
   "fields": {
     "name": "Audi",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -86,6 +159,12 @@
   "pk": "1d50a4d7-59e7-4334-8074-fb7429a83b1e",
   "fields": {
     "name": "Xpeng",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -94,6 +173,12 @@
   "pk": "22d49adb-5108-4d8c-be96-29b041fba5ab",
   "fields": {
     "name": "Alfa Romeo",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "4dbe094a-ea35-4b7f-8391-bbf07ebef34f"
   }
 },
@@ -102,6 +187,12 @@
   "pk": "2782d001-ef3c-4a9e-b7c7-a4050b02898c",
   "fields": {
     "name": "Changan",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -110,6 +201,12 @@
   "pk": "29567d84-44e2-49b3-867a-b8251fdfebaa",
   "fields": {
     "name": "Volkswagen",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "04f1d87d-c79b-4470-beb4-8c6d218cfc1b"
   }
 },
@@ -118,6 +215,12 @@
   "pk": "2f9203d2-db18-45de-9792-eda64d9982f1",
   "fields": {
     "name": "Fiat",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "4dbe094a-ea35-4b7f-8391-bbf07ebef34f"
   }
 },
@@ -126,6 +229,12 @@
   "pk": "30a7b884-33aa-4248-bd3c-e0671ab68776",
   "fields": {
     "name": "Dodge",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "4dbe094a-ea35-4b7f-8391-bbf07ebef34f"
   }
 },
@@ -134,6 +243,12 @@
   "pk": "33223736-be21-4c8b-9b57-321d300c853a",
   "fields": {
     "name": "Renault",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -142,6 +257,12 @@
   "pk": "3a6fced5-e210-4280-a785-e807130cc2c7",
   "fields": {
     "name": "Nissan",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -150,6 +271,12 @@
   "pk": "45335979-ee14-49a2-a68a-2d774aeef9ae",
   "fields": {
     "name": "Jeep",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "4dbe094a-ea35-4b7f-8391-bbf07ebef34f"
   }
 },
@@ -158,6 +285,12 @@
   "pk": "4e924333-d0f6-4879-88cc-4ee5ffc5163d",
   "fields": {
     "name": "Porsche",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "04f1d87d-c79b-4470-beb4-8c6d218cfc1b"
   }
 },
@@ -166,6 +299,12 @@
   "pk": "522f7a3d-100d-455d-be5f-a150fe1689cf",
   "fields": {
     "name": "Chevrolet",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -174,6 +313,12 @@
   "pk": "58d40294-402d-4917-9484-6ba4a45d27c6",
   "fields": {
     "name": "Licoln",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -182,6 +327,12 @@
   "pk": "5a384d67-164d-432d-b2f8-d681c2f175af",
   "fields": {
     "name": "Infinity",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -190,6 +341,12 @@
   "pk": "5b953372-5b31-4c62-bf90-7231b47d235b",
   "fields": {
     "name": "Morris Garage",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "ea9d8de5-1f71-411a-abf1-c8772a862c87"
   }
 },
@@ -198,6 +355,12 @@
   "pk": "736be033-22cb-46e6-b395-d9e6704e8e4e",
   "fields": {
     "name": "Jaecoo",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -206,6 +369,12 @@
   "pk": "75dd0220-4b34-473b-9946-c0a43ff59107",
   "fields": {
     "name": "Cadillac",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -214,6 +383,12 @@
   "pk": "7be7b2eb-ec84-4bc0-9884-e529a5214b76",
   "fields": {
     "name": "Ford",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -222,6 +397,12 @@
   "pk": "84be70c8-006b-4501-a6bb-9d8ac65fb7be",
   "fields": {
     "name": "KIA",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -230,6 +411,12 @@
   "pk": "84cd7e6e-56c7-4efd-8811-e90435e4d026",
   "fields": {
     "name": "CUPRA",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "04f1d87d-c79b-4470-beb4-8c6d218cfc1b"
   }
 },
@@ -238,6 +425,12 @@
   "pk": "86b9f4ea-f21c-4b91-9745-fc476890b01c",
   "fields": {
     "name": "Mazda",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -246,6 +439,12 @@
   "pk": "87d25568-ceba-496d-9320-c44d45cbd2ba",
   "fields": {
     "name": "Zeekr",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -254,6 +453,12 @@
   "pk": "897c8da6-b93e-4a70-8842-29854f5b0490",
   "fields": {
     "name": "Toyota",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "2c286c90-e325-4439-914f-eacfbccb8d49"
   }
 },
@@ -262,6 +467,12 @@
   "pk": "8f5e764c-ba33-4d18-b70d-d204423bfe9c",
   "fields": {
     "name": "Land Rover",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -270,6 +481,12 @@
   "pk": "928aa863-39a3-4d50-a5b4-db5a5d2f53c5",
   "fields": {
     "name": "Volvo",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "c8d47b03-a5a5-498a-8126-a17bb970ed41"
   }
 },
@@ -278,6 +495,12 @@
   "pk": "a4042ab3-e25e-4149-bc7f-050e36869e59",
   "fields": {
     "name": "Peugeot",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "4dbe094a-ea35-4b7f-8391-bbf07ebef34f"
   }
 },
@@ -286,6 +509,12 @@
   "pk": "aa4edd3b-8814-4dea-921d-86ea0c600f3c",
   "fields": {
     "name": "Lexus",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "2c286c90-e325-4439-914f-eacfbccb8d49"
   }
 },
@@ -294,6 +523,12 @@
   "pk": "bc409766-12cd-405e-ae5b-808fb5af4c55",
   "fields": {
     "name": "Mercedes Benz",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -302,6 +537,12 @@
   "pk": "be6b67f1-fb77-4098-9efd-923683b9f5fa",
   "fields": {
     "name": "SEAT",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "04f1d87d-c79b-4470-beb4-8c6d218cfc1b"
   }
 },
@@ -310,6 +551,12 @@
   "pk": "d4d57cb8-6117-44e8-80fd-3553e73f7629",
   "fields": {
     "name": "Chirey",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -318,6 +565,12 @@
   "pk": "da36f12f-28fd-4aaf-a2f8-252f6c88eaf5",
   "fields": {
     "name": "Hyundai",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -326,6 +579,12 @@
   "pk": "e210ea45-910c-4ee7-8216-0e6b16a6f843",
   "fields": {
     "name": "Buick",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -334,6 +593,12 @@
   "pk": "e393e2fd-2277-4035-9a8d-22be7c4e6f77",
   "fields": {
     "name": "Lynk & Co.",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -342,6 +607,12 @@
   "pk": "eb03c444-d8a9-45da-9383-9b86f03a4163",
   "fields": {
     "name": "BMW",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "a4d98235-23a3-43ad-89d6-847d1e24bdec"
   }
 },
@@ -350,6 +621,12 @@
   "pk": "f3431cc5-07ef-4fce-9944-ba54ae2451a7",
   "fields": {
     "name": "Tesla",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": null
   }
 },
@@ -358,7 +635,483 @@
   "pk": "f5e86c9b-f5fb-4da3-9af7-4ffd6b2fe814",
   "fields": {
     "name": "Mini",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
     "group": "a4d98235-23a3-43ad-89d6-847d1e24bdec"
+  }
+},
+{
+  "model": "catalog.group",
+  "pk": "04f1d87d-c79b-4470-beb4-8c6d218cfc1b",
+  "fields": {
+    "name": "Volkswagen Group",
+    "description": "",
+    "country": null
+  }
+},
+{
+  "model": "catalog.group",
+  "pk": "2c286c90-e325-4439-914f-eacfbccb8d49",
+  "fields": {
+    "name": "Toyota Group",
+    "description": "",
+    "country": null
+  }
+},
+{
+  "model": "catalog.group",
+  "pk": "4dbe094a-ea35-4b7f-8391-bbf07ebef34f",
+  "fields": {
+    "name": "Stellantis N.V.",
+    "description": "",
+    "country": null
+  }
+},
+{
+  "model": "catalog.group",
+  "pk": "a4d98235-23a3-43ad-89d6-847d1e24bdec",
+  "fields": {
+    "name": "BMW",
+    "description": "",
+    "country": null
+  }
+},
+{
+  "model": "catalog.group",
+  "pk": "c8d47b03-a5a5-498a-8126-a17bb970ed41",
+  "fields": {
+    "name": "Zhejiang Geely Holding Group Co., Ltd. (吉利控股集团)",
+    "description": "",
+    "country": null
+  }
+},
+{
+  "model": "catalog.group",
+  "pk": "ea9d8de5-1f71-411a-abf1-c8772a862c87",
+  "fields": {
+    "name": "SAIC Motor",
+    "description": "",
+    "country": null
+  }
+},
+{
+  "model": "catalog.platform",
+  "pk": "ea7ee066-ce9d-4e30-82fc-b5da5573222c",
+  "fields": {
+    "name": "Sustainable Experience Architecture",
+    "groups": [
+      "c8d47b03-a5a5-498a-8126-a17bb970ed41"
+    ]
+  }
+},
+{
+  "model": "catalog.engine",
+  "pk": "067475b2-1cc8-44a4-b7df-36c1d1a44985",
+  "fields": {
+    "name": "JCW",
+    "maker": "eb03c444-d8a9-45da-9383-9b86f03a4163",
+    "energy_source": "gasoline",
+    "displacement_cc": null,
+    "power_kW": 233.0,
+    "cylinder_count": 4,
+    "aspiration": "turbocharged",
+    "layout": "i"
+  }
+},
+{
+  "model": "catalog.engine",
+  "pk": "66eb1af9-4d35-47ee-bc5a-2fe027054748",
+  "fields": {
+    "name": "C Gasoline",
+    "maker": "eb03c444-d8a9-45da-9383-9b86f03a4163",
+    "energy_source": "gasoline",
+    "displacement_cc": null,
+    "power_kW": 115.0,
+    "cylinder_count": 4,
+    "aspiration": "turbocharged",
+    "layout": "i"
+  }
+},
+{
+  "model": "catalog.batterypack",
+  "pk": "cf87e2e5-4ee2-4b97-a087-b7bfecf661e8",
+  "fields": {
+    "name": "Base",
+    "group": "c8d47b03-a5a5-498a-8126-a17bb970ed41",
+    "provider": "Geely",
+    "chemistry": "nimh",
+    "capacity_kWh": 51.0,
+    "gross_capacity_kWh": null,
+    "usable_capacity_kWh": null,
+    "voltage_V": 100.0,
+    "weight_kg": 500.0
+  }
+},
+{
+  "model": "catalog.fueltank",
+  "pk": "ef30e7b9-4a55-4636-9971-45d1b63fcaf1",
+  "fields": {
+    "name": "40L",
+    "maker": "eb03c444-d8a9-45da-9383-9b86f03a4163",
+    "fuel_type": "gasoline",
+    "capacity_L": 40.0
+  }
+},
+{
+  "model": "catalog.emotor",
+  "pk": "826b5645-e481-4a37-b5c0-8d3d525e5273",
+  "fields": {
+    "name": "E",
+    "maker": "eb03c444-d8a9-45da-9383-9b86f03a4163",
+    "motor_type": "permanent_magnet",
+    "power_kW": 0.0,
+    "torque_Nm": 0.0,
+    "cooling_type": "air"
+  }
+},
+{
+  "model": "catalog.emotor",
+  "pk": "9191b14e-f106-47eb-93c1-6187cf35c6a9",
+  "fields": {
+    "name": "SE ALL4",
+    "maker": "eb03c444-d8a9-45da-9383-9b86f03a4163",
+    "motor_type": "permanent_magnet",
+    "power_kW": 0.0,
+    "torque_Nm": 0.0,
+    "cooling_type": "air"
+  }
+},
+{
+  "model": "catalog.emotor",
+  "pk": "b12b4737-eafb-4713-b97f-c53a3ae035a0",
+  "fields": {
+    "name": "Single Motor Volvo E Motor",
+    "maker": "928aa863-39a3-4d50-a5b4-db5a5d2f53c5",
+    "motor_type": "permanent_magnet",
+    "power_kW": 200.0,
+    "torque_Nm": 343.02,
+    "cooling_type": "air"
+  }
+},
+{
+  "model": "catalog.powertrain",
+  "pk": "1b5d4f4e-d1ac-4039-bc2c-aac71eda9756",
+  "fields": {
+    "name": "E",
+    "make": "eb03c444-d8a9-45da-9383-9b86f03a4163",
+    "architecture": "bev"
+  }
+},
+{
+  "model": "catalog.powertrain",
+  "pk": "5a3c9625-ab2e-4461-a351-5c232d87f778",
+  "fields": {
+    "name": "JCW",
+    "make": "eb03c444-d8a9-45da-9383-9b86f03a4163",
+    "architecture": "ice"
+  }
+},
+{
+  "model": "catalog.powertrain",
+  "pk": "94cb450e-7ff9-4073-a190-95031791a8b5",
+  "fields": {
+    "name": "Core",
+    "make": "928aa863-39a3-4d50-a5b4-db5a5d2f53c5",
+    "architecture": "bev"
+  }
+},
+{
+  "model": "catalog.powertrain",
+  "pk": "963c3ddb-eb7c-4cfd-93e5-14befce64d71",
+  "fields": {
+    "name": "C",
+    "make": "f5e86c9b-f5fb-4da3-9af7-4ffd6b2fe814",
+    "architecture": "ice"
+  }
+},
+{
+  "model": "catalog.powertrain",
+  "pk": "ff07858a-fc9c-49c7-b902-b1e9f498cdee",
+  "fields": {
+    "name": "SE ALL4",
+    "make": "eb03c444-d8a9-45da-9383-9b86f03a4163",
+    "architecture": "bev"
+  }
+},
+{
+  "model": "catalog.powertrainengine",
+  "pk": 1,
+  "fields": {
+    "powertrain": "963c3ddb-eb7c-4cfd-93e5-14befce64d71",
+    "engine": "66eb1af9-4d35-47ee-bc5a-2fe027054748",
+    "role": "traction",
+    "is_primary": true
+  }
+},
+{
+  "model": "catalog.powertrainengine",
+  "pk": 2,
+  "fields": {
+    "powertrain": "5a3c9625-ab2e-4461-a351-5c232d87f778",
+    "engine": "067475b2-1cc8-44a4-b7df-36c1d1a44985",
+    "role": "traction",
+    "is_primary": true
+  }
+},
+{
+  "model": "catalog.powertrainemotor",
+  "pk": 1,
+  "fields": {
+    "powertrain": "94cb450e-7ff9-4073-a190-95031791a8b5",
+    "e_motor": "b12b4737-eafb-4713-b97f-c53a3ae035a0",
+    "role": "traction",
+    "position": "front_axle",
+    "is_primary": true,
+    "quantity": 1
+  }
+},
+{
+  "model": "catalog.powertrainemotor",
+  "pk": 2,
+  "fields": {
+    "powertrain": "1b5d4f4e-d1ac-4039-bc2c-aac71eda9756",
+    "e_motor": "826b5645-e481-4a37-b5c0-8d3d525e5273",
+    "role": "traction",
+    "position": "front_axle",
+    "is_primary": true,
+    "quantity": 1
+  }
+},
+{
+  "model": "catalog.powertrainemotor",
+  "pk": 3,
+  "fields": {
+    "powertrain": "ff07858a-fc9c-49c7-b902-b1e9f498cdee",
+    "e_motor": "9191b14e-f106-47eb-93c1-6187cf35c6a9",
+    "role": "traction",
+    "position": "front_axle",
+    "is_primary": true,
+    "quantity": 1
+  }
+},
+{
+  "model": "catalog.powertrainbatterypack",
+  "pk": 1,
+  "fields": {
+    "powertrain": "94cb450e-7ff9-4073-a190-95031791a8b5",
+    "battery_pack": "cf87e2e5-4ee2-4b97-a087-b7bfecf661e8",
+    "is_primary": true
+  }
+},
+{
+  "model": "catalog.powertrainfueltank",
+  "pk": 1,
+  "fields": {
+    "powertrain": "963c3ddb-eb7c-4cfd-93e5-14befce64d71",
+    "fuel_tank": "ef30e7b9-4a55-4636-9971-45d1b63fcaf1",
+    "is_primary": true
+  }
+},
+{
+  "model": "catalog.vehicle",
+  "pk": 1,
+  "fields": {
+    "model": "d98be423-173d-48d0-9b23-97cdb38ee91d",
+    "variant_name": "Core",
+    "assembly_country": null,
+    "price_amount": "749900.00",
+    "price_currency": "MXN",
+    "powertrain": "94cb450e-7ff9-4073-a190-95031791a8b5",
+    "transmissionId": null,
+    "length_mm": 4233.0,
+    "width_mm": 1837.0,
+    "height_mm": 1550.0,
+    "wheelbase_mm": null,
+    "curb_weight_kg": null,
+    "door_count": 5,
+    "passenger_capacity": 5
+  }
+},
+{
+  "model": "catalog.vehicle",
+  "pk": 2,
+  "fields": {
+    "model": "11854108-8d4b-4233-8189-90aeba8e2790",
+    "variant_name": "C",
+    "assembly_country": null,
+    "price_amount": "850000.00",
+    "price_currency": "MXN",
+    "powertrain": "963c3ddb-eb7c-4cfd-93e5-14befce64d71",
+    "transmissionId": null,
+    "length_mm": null,
+    "width_mm": null,
+    "height_mm": null,
+    "wheelbase_mm": null,
+    "curb_weight_kg": null,
+    "door_count": null,
+    "passenger_capacity": null
+  }
+},
+{
+  "model": "catalog.vehicle",
+  "pk": 3,
+  "fields": {
+    "model": "11854108-8d4b-4233-8189-90aeba8e2790",
+    "variant_name": "JCW ALL4",
+    "assembly_country": null,
+    "price_amount": "1107000.00",
+    "price_currency": "MXN",
+    "powertrain": "5a3c9625-ab2e-4461-a351-5c232d87f778",
+    "transmissionId": null,
+    "length_mm": null,
+    "width_mm": null,
+    "height_mm": null,
+    "wheelbase_mm": null,
+    "curb_weight_kg": null,
+    "door_count": null,
+    "passenger_capacity": null
+  }
+},
+{
+  "model": "catalog.vehicle",
+  "pk": 4,
+  "fields": {
+    "model": "11854108-8d4b-4233-8189-90aeba8e2790",
+    "variant_name": "E",
+    "assembly_country": null,
+    "price_amount": "979000.00",
+    "price_currency": "",
+    "powertrain": "1b5d4f4e-d1ac-4039-bc2c-aac71eda9756",
+    "transmissionId": null,
+    "length_mm": null,
+    "width_mm": null,
+    "height_mm": null,
+    "wheelbase_mm": null,
+    "curb_weight_kg": null,
+    "door_count": null,
+    "passenger_capacity": null
+  }
+},
+{
+  "model": "catalog.vehicle",
+  "pk": 5,
+  "fields": {
+    "model": "11854108-8d4b-4233-8189-90aeba8e2790",
+    "variant_name": "SE ALL4",
+    "assembly_country": null,
+    "price_amount": null,
+    "price_currency": "",
+    "powertrain": "ff07858a-fc9c-49c7-b902-b1e9f498cdee",
+    "transmissionId": null,
+    "length_mm": null,
+    "width_mm": null,
+    "height_mm": null,
+    "wheelbase_mm": null,
+    "curb_weight_kg": null,
+    "door_count": null,
+    "passenger_capacity": null
+  }
+},
+{
+  "model": "catalog.recall",
+  "pk": 1,
+  "fields": {
+    "maker": "928aa863-39a3-4d50-a5b4-db5a5d2f53c5",
+    "recall_number": "R10355",
+    "title": "Volvo Car México informa actualización sobre recall activo de Volvo EX30",
+    "description": "Recientemente, Volvo Cars emitió el aviso de seguridad R10355 relacionado con el\r\nmodelo Volvo EX30. Volvo Cars informa sobre la actualización, ahora identificada con\r\nel número R10363, correspondiente a la misma campaña, para ciertas unidades del\r\nmodelo EX30, correspondientes a los años modelo 2024-2026 en versiones Single\r\nMotor Extended Range y Twin Motor Performance, sobre el cual se emitió un aviso de\r\nseguridad hace unas semanas.",
+    "risk": "Se detectó que las celdas de batería podrían presentar un incremento anormal de\r\ntemperatura cuando el nivel de carga es superior al 70 % de su capacidad.",
+    "risk_consequence": "En casos muy poco frecuentes algunas unidades\r\npodrían presentar un incremento de temperatura cuando el nivel de carga es elevado.",
+    "countermeasure": "Se inspeccionará y, en caso de presentar el problema reportado, se corregirá mediante la sustitución de los módulos de batería correspondientes.",
+    "actions": "Volvo Car México comenzará a contactar directamente a los clientes de las unidades\r\ninvolucradas para informarles los siguientes pasos y coordinar la intervención en los\r\ndistribuidores autorizados, una vez que las piezas estén disponibles en el taller\r\ncorrespondiente.\r\n\r\nMientras se realiza la revisión y, en su caso, el reemplazo de los módulos, se mantiene\r\ncomo medida preventiva la recomendación de limitar el nivel máximo de carga al 70%,\r\najuste que puede configurarse directamente desde el sistema del auto.",
+    "status": "open",
+    "published_date": "2026-03-28",
+    "total_units_affected": 5130,
+    "source_url": "https://www.volvocars.com/mx/l/recall/",
+    "damage_report": "Ninguno hasta la fecha",
+    "affected_models": [
+      "d98be423-173d-48d0-9b23-97cdb38ee91d"
+    ]
+  }
+},
+{
+  "model": "catalog.safetypackage",
+  "pk": 1,
+  "fields": {
+    "vehicle": 1,
+    "collisionWarnings_fcw": true,
+    "collisionWarnings_ldw": null,
+    "collisionWarnings_bsw": null,
+    "collisionWarnings_rctw": null,
+    "collisionIntervention_aebCity": null,
+    "collisionIntervention_aebPedestrian": null,
+    "collisionIntervention_aebHighway": null,
+    "collisionIntervention_aebRear": null,
+    "drivingControlAssistance_lka": null,
+    "drivingControlAssistance_lca": null,
+    "drivingControlAssistance_acc": null,
+    "drivingControlAssistance_activeDrivingAssistanceDirectDriverMonitoring": null,
+    "rearSeatSafety_childSafety": null,
+    "rearSeatSafety_rearOccupantAlertEndOfTripReminder": null,
+    "visibilityAndControl_drl": null,
+    "visibilityAndControl_rearViewCamera": null,
+    "visibilityAndControl_esc": null,
+    "visibilityAndControl_tractionControl": null,
+    "visibilityAndControl_abs": null,
+    "restraints_airbagSideFront": null,
+    "restraints_airbagSideRear": null,
+    "restraints_headProtectionAirbag": null
+  }
+},
+{
+  "model": "catalog.rangeresult",
+  "pk": 1,
+  "fields": {
+    "vehicle": 1,
+    "cycle": "wltp",
+    "scope": "mixed",
+    "metric": "total_range",
+    "value": 265.0,
+    "unit": "km",
+    "is_primary": true
+  }
+},
+{
+  "model": "catalog.emissionsresult",
+  "pk": 1,
+  "fields": {
+    "vehicle": 1,
+    "criteria": "co2_weighted",
+    "cycle": "epa",
+    "scope": "mixed",
+    "value": 0.0,
+    "unit": "g_per_km",
+    "is_primary": true
+  }
+},
+{
+  "model": "catalog.accelerationresult",
+  "pk": 1,
+  "fields": {
+    "vehicle": 1,
+    "metric": "0_100_kmh",
+    "value": 5.7,
+    "unit": "s",
+    "is_primary": true
+  }
+},
+{
+  "model": "catalog.topspeedresult",
+  "pk": 1,
+  "fields": {
+    "vehicle": 1,
+    "value": 180.0,
+    "unit": "km_h",
+    "is_primary": true
   }
 }
 ]
