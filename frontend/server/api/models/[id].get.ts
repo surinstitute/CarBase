@@ -2,7 +2,8 @@ import type {
   CatalogModelDetail,
   CatalogModelImage,
   CatalogSafetyRating,
-  CatalogVehicleRecord
+  CatalogVehicleRecord,
+  CatalogWarranty
 } from '#shared/types/catalog'
 
 interface ApiModelDetail {
@@ -20,6 +21,7 @@ interface ApiModelDetail {
   image: CatalogModelDetail['image'] | null
   images: CatalogModelImage[]
   safetyRatings: CatalogSafetyRating[]
+  warranty: CatalogWarranty | null
   variants: CatalogVehicleRecord[]
 }
 
@@ -58,6 +60,7 @@ export default defineEventHandler(async (event): Promise<CatalogModelDetail> => 
     vehicles: variants,
     image: model.image ?? variantImage,
     images: model.images ?? [],
-    safetyRatings: model.safetyRatings ?? []
+    safetyRatings: model.safetyRatings ?? [],
+    warranty: model.warranty
   }
 })

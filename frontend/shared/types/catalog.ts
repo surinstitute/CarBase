@@ -127,9 +127,22 @@ export interface CatalogModelImage {
   alt: string
 }
 
+export interface CatalogWarrantyCoverage {
+  years: number | null
+  kilometers: number | null
+  kilometersUnlimited: boolean
+}
+
+export interface CatalogWarranty {
+  basic?: CatalogWarrantyCoverage
+  drivetrain?: CatalogWarrantyCoverage
+  corrosion?: CatalogWarrantyCoverage
+}
+
 export interface CatalogModelDetail extends CatalogModel {
   safetyRatings: CatalogSafetyRating[]
   images: CatalogModelImage[]
+  warranty: CatalogWarranty | null
 }
 
 export interface CatalogResponse {

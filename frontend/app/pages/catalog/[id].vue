@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import type { CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord } from '#shared/types/catalog'
+import type { CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord, CatalogWarrantyCoverage } from '#shared/types/catalog'
 
 const route = useRoute()
 const modelId = computed(() => String(route.params.id))
@@ -74,6 +74,35 @@ function safetyMetrics(rating: CatalogSafetyRating) {
     { label: 'Asistencia a la seguridad', value: rating.safetyAssist }
   ]
 }
+
+function warrantyRows(warranty: CatalogModelDetail['warranty']) {
+  if (!warranty) return []
+
+  const labels = [
+    { key: 'basic', label: 'Básica' },
+    { key: 'drivetrain', label: 'Tren motriz' },
+    { key: 'corrosion', label: 'Corrosión' }
+  ] as const
+
+  return labels.flatMap(({ key, label }) => {
+    const coverage = warranty[key]
+    if (!coverage) return []
+    return [{ label, value: formatWarrantyCoverage(coverage) }]
+  })
+}
+
+function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
+  const terms = []
+  if (coverage.years !== null) {
+    terms.push(`${coverage.years} ${coverage.years === 1 ? 'año' : 'años'}`)
+  }
+  if (coverage.kilometersUnlimited) {
+    terms.push('kilometraje ilimitado')
+  } else if (coverage.kilometers !== null) {
+    terms.push(`${new Intl.NumberFormat('es-MX').format(coverage.kilometers)} km`)
+  }
+  return terms.join(' / ')
+}
 </script>
 
 <template>
@@ -130,6 +159,17 @@ function safetyMetrics(rating: CatalogSafetyRating) {
         </CardContent>
       </Card>
     </div>
+
+    <section class="space-y-3">
+      <h2 class="text-xl font-semibold">Garantía</h2>
+      <dl v-if="warrantyRows(model.warranty).length" class="grid gap-3 sm:grid-cols-3">
+        <div v-for="row in warrantyRows(model.warranty)" :key="row.label" class="space-y-1">
+          <dt class="text-sm text-muted-foreground">{{ row.label }}</dt>
+          <dd class="font-medium">{{ row.value }}</dd>
+        </div>
+      </dl>
+      <p v-else class="text-sm text-muted-foreground">No hay coberturas de garantía registradas.</p>
+    </section>
 
     <section class="space-y-3">
       <h2 class="text-xl font-semibold">Seguridad</h2>
