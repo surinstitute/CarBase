@@ -16,6 +16,7 @@ from catalog.models import (
     FuelTank,
     Group,
     Make,
+    ModelImagePlacement,
     Platform,
     PowerTrain,
     PowerTrainArchitecture,
@@ -82,7 +83,42 @@ class MakeSerializer(serializers.ModelSerializer):
 
 
 class BaseModelSerializer(serializers.ModelSerializer):
+    makeName = serializers.CharField(source="make.name", read_only=True)
+    platformName = serializers.CharField(
+        source="platform.name", read_only=True, allow_null=True
+    )
+    image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = BaseModel
+        fields = "__all__"
+
+    def get_image(self, obj):
+        placements = getattr(obj, "visible_image_placements", None)
+        if placements is None:
+            placements = obj.image_placements.filter(is_visible=True).select_related(
+                "image"
+            )
+
+        placement = placements[0] if placements else None
+        if placement is None:
+            return None
+
+        url = placement.image.file.url
+        request = self.context.get("request")
+        if request is not None:
+            url = request.build_absolute_uri(url)
+
+        return {
+            "url": url,
+            "alt": placement.alt_text or placement.image.title,
+        }
+
+
+class BaseModelDetailSerializer(BaseModelSerializer):
     safetyRatings = serializers.SerializerMethodField()
+    variants = serializers.SerializerMethodField()
+    images = serializers.SerializerMethodField()
 
     class Meta:
         model = BaseModel
@@ -102,6 +138,33 @@ class BaseModelSerializer(serializers.ModelSerializer):
             }
             for rating in obj.safety_ratings.all()
         ]
+
+    def get_variants(self, obj):
+        return VehicleSerializer(
+            obj.model_vehicles.all(), many=True, context=self.context
+        ).data
+
+    def get_images(self, obj):
+        placements = getattr(obj, "visible_image_placements", None)
+        if placements is None:
+            placements = obj.image_placements.filter(is_visible=True).select_related(
+                "image"
+            )
+
+        request = self.context.get("request")
+        images = []
+        for placement in placements:
+            url = placement.image.file.url
+            if request is not None:
+                url = request.build_absolute_uri(url)
+            images.append(
+                {
+                    "view": placement.view,
+                    "url": url,
+                    "alt": placement.alt_text or placement.image.title,
+                }
+            )
+        return images
 
 
 class PlatformSerializer(serializers.ModelSerializer):
@@ -342,7 +405,13 @@ class VehicleSerializer(serializers.ModelSerializer):
     def _serialize_images(self, obj):
         images = {}
         request = self.context.get("request")
-        for placement in obj.model.image_placements.filter(is_visible=True):
+        placements = getattr(obj.model, "visible_image_placements", None)
+        if placements is None:
+            placements = obj.model.image_placements.filter(is_visible=True).select_related(
+                "image"
+            )
+
+        for placement in placements:
             url = placement.image.file.url
             if request is not None:
                 url = request.build_absolute_uri(url)

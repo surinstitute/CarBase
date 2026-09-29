@@ -1,10 +1,12 @@
-from django_filters.rest_framework import DjangoFilterBackend
+from django.db.models import Prefetch
 from django_countries import countries
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from api.serializers import (
+    BaseModelDetailSerializer,
     BaseModelSerializer,
     BatteryPackSerializer,
     EMotorSerializer,
@@ -14,9 +16,15 @@ from api.serializers import (
     MakeSerializer,
     PlatformSerializer,
     PowerTrainSerializer,
+    RecallSerializer,
     TransmissionSerializer,
     VehicleSerializer,
-    RecallSerializer,
+)
+from catalog.filters import (
+    POWERTRAIN_TYPE_ARCHITECTURES,
+    BaseModelFilter,
+    RecallFilter,
+    VehicleFilter,
 )
 from catalog.models import (
     BaseModel,
@@ -26,18 +34,52 @@ from catalog.models import (
     FuelTank,
     Group,
     Make,
+    ModelImagePlacement,
     Platform,
     PowerTrain,
+    Recall,
     Transmission,
     Vehicle,
-    Recall,
 )
-from catalog.filters import (
-    POWERTRAIN_TYPE_ARCHITECTURES,
-    BaseModelFilter,
-    RecallFilter,
-    VehicleFilter,
-)
+
+
+def _vehicle_queryset():
+    return (
+        Vehicle.objects.select_related(
+            "model",
+            "model__platform",
+            "powertrain",
+            "transmissionId",
+            "model__make",
+            "safety_package",
+            "charging_package",
+        )
+        .prefetch_related(
+            "powertrain__engine_fitments__engine",
+            "powertrain__motor_fitments__e_motor",
+            "powertrain__battery_fitments__battery_pack",
+            "powertrain__fuel_fitments__fuel_tank",
+            Prefetch(
+                "model__image_placements",
+                queryset=ModelImagePlacement.objects.filter(is_visible=True)
+                .select_related("image")
+                .order_by("sort_order", "id"),
+                to_attr="visible_image_placements",
+            ),
+            "charging_ports",
+            "charge_time_results",
+            "regulatory_approvals__source_docs",
+            "compliance_records",
+            "efficiency_results",
+            "range_results",
+            "emissions_results",
+            "acceleration_results",
+            "top_speed_results",
+            "monthly_sales",
+            "model__recalls",
+        )
+        .order_by("model__make__name", "model__model", "variant_name", "id")
+    )
 
 
 class GroupViewSet(ReadOnlyModelViewSet):
@@ -51,15 +93,33 @@ class MakeViewSet(ReadOnlyModelViewSet):
 
 
 class BaseModelViewSet(ReadOnlyModelViewSet):
-    queryset = (
-        BaseModel.objects.select_related("make", "platform")
-        .prefetch_related("safety_ratings")
-        .all()
-        .order_by("make__name", "model")
-    )
     serializer_class = BaseModelSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = BaseModelFilter
+
+    def get_queryset(self):
+        queryset = BaseModel.objects.select_related("make", "platform").order_by(
+            "make__name", "model"
+        ).prefetch_related(
+            Prefetch(
+                "image_placements",
+                queryset=ModelImagePlacement.objects.filter(is_visible=True)
+                .select_related("image")
+                .order_by("sort_order", "id"),
+                to_attr="visible_image_placements",
+            )
+        )
+        if self.action == "retrieve":
+            queryset = queryset.prefetch_related(
+                "safety_ratings",
+                Prefetch("model_vehicles", queryset=_vehicle_queryset()),
+            )
+        return queryset
+
+    def get_serializer_class(self):
+        if self.action == "retrieve":
+            return BaseModelDetailSerializer
+        return BaseModelSerializer
 
     @action(detail=False, methods=["get"], url_path="filter-options")
     def filter_options(self, request):
@@ -137,35 +197,7 @@ class TransmissionViewSet(ReadOnlyModelViewSet):
 
 
 class VehicleViewSet(ReadOnlyModelViewSet):
-    queryset = (
-        Vehicle.objects.select_related(
-            "model",
-            "model__platform",
-            "powertrain",
-            "transmissionId",
-            "model__make",
-            "safety_package",
-            "charging_package",
-        )
-        .prefetch_related(
-            "powertrain__engine_fitments__engine",
-            "powertrain__motor_fitments__e_motor",
-            "powertrain__battery_fitments__battery_pack",
-            "powertrain__fuel_fitments__fuel_tank",
-            "charging_ports",
-            "charge_time_results",
-            "regulatory_approvals__source_docs",
-            "compliance_records",
-            "efficiency_results",
-            "range_results",
-            "emissions_results",
-            "acceleration_results",
-            "top_speed_results",
-            "monthly_sales",
-            "model__recalls",
-        )
-        .order_by("model__make__name", "model__model", "variant_name", "id")
-    )
+    queryset = _vehicle_queryset()
     serializer_class = VehicleSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = VehicleFilter
