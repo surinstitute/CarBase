@@ -378,7 +378,10 @@ STATIC_URL = "/static/"
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
-USE_S3_STORAGE = not DEBUG and _env_bool("S3_STORAGE_ENABLED", False)
+S3_STORAGE_ENABLED = _env_bool(
+    "S3_STORAGE_ENABLED", _env_bool("USE_S3_STORAGE", False)
+)
+USE_S3_STORAGE = not DEBUG and S3_STORAGE_ENABLED
 
 if not USE_S3_STORAGE:
     STORAGES = {
