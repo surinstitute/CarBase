@@ -114,12 +114,22 @@ export interface CatalogModel {
   platformName: string | null
   bodyStyles: string[]
   architectures: string[]
-  safetyRatings: CatalogSafetyRating[]
   vehicles: CatalogVehicleRecord[]
   image?: {
     url: string
     alt: string
   }
+}
+
+export interface CatalogModelImage {
+  view?: 'left_side' | 'right_side' | 'front' | 'rear' | 'silhouette'
+  url: string
+  alt: string
+}
+
+export interface CatalogModelDetail extends CatalogModel {
+  safetyRatings: CatalogSafetyRating[]
+  images: CatalogModelImage[]
 }
 
 export interface CatalogResponse {

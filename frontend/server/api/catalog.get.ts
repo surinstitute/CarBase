@@ -1,4 +1,4 @@
-import type { ApiPage, CatalogMake, CatalogModel, CatalogResponse, CatalogSafetyRating, CatalogVehicleRecord } from '#shared/types/catalog'
+import type { ApiPage, CatalogMake, CatalogModel, CatalogResponse, CatalogVehicleRecord } from '#shared/types/catalog'
 
 interface ApiMake {
   makeId: string
@@ -15,17 +15,14 @@ interface ApiModel {
   id: string
   model: string
   make: string
+  makeName: string
   platform: string | null
+  platformName: string | null
   generation: string | null
   year: number
   created_at: string
   updated_at: string
-  safetyRatings: CatalogSafetyRating[]
-}
-
-interface ApiPlatform {
-  platformId: string
-  name: string
+  image: { url: string; alt: string } | null
 }
 
 async function fetchAll<T>(url: string) {
@@ -65,12 +62,11 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
   const modelsUrl = `${apiBase}/models/${modelParams.size ? `?${modelParams}` : ''}`
   const filterOptionsUrl = `${apiBase}/models/filter-options/${filterParams.size ? `?${filterParams}` : ''}`
   const paginatedModels = typeof query.page === 'string'
-  const [makesPage, modelsPage, platformsPage, groupsPage, filterOptions] = await Promise.all([
+  const [makesPage, modelsPage, groupsPage, filterOptions] = await Promise.all([
     fetchAll<ApiMake>(`${apiBase}/makes/`),
     paginatedModels
       ? $fetch<ApiPage<ApiModel>>(modelsUrl)
       : fetchAll<ApiModel>(modelsUrl),
-    fetchAll<ApiPlatform>(`${apiBase}/platforms/`),
     fetchAll<ApiGroup>(`${apiBase}/groups/`),
     $fetch<CatalogResponse['filterOptions']>(filterOptionsUrl)
   ])
@@ -81,7 +77,6 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
   )
 
   const makesById = new Map(makesPage.results.map((make) => [make.makeId, make.name]))
-  const platformsById = new Map(platformsPage.results.map((platform) => [platform.platformId, platform.name]))
   const detailsByModelId = new Map<string, {
     bodyStyles: Set<string>
     architectures: Set<string>
@@ -114,19 +109,18 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
     return {
       id: model.id,
       makeId: model.make,
-      makeName: makesById.get(model.make) ?? 'Marca sin nombre',
+      makeName: model.makeName,
       modelName: model.model,
       year: model.year,
       generation: model.generation,
       created_at: model.created_at,
       updated_at: model.updated_at,
       platformId: model.platform,
-      platformName: model.platform ? platformsById.get(model.platform) ?? null : null,
+      platformName: model.platformName,
       bodyStyles: [...(details?.bodyStyles ?? [])],
       architectures: [...(details?.architectures ?? [])],
-      safetyRatings: model.safetyRatings,
       vehicles: details?.vehicles ?? [],
-      image: details?.image
+      image: model.image ?? details?.image
     }
   })
 

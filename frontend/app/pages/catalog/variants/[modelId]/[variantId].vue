@@ -258,6 +258,7 @@ function safetyRows(value: unknown, fields: Record<string, string>) {
   const section = recordOf(value)
   return Object.entries(fields).map(([field, label]) => ({
     label,
+    value: section[field],
     present: section[field] === true || (typeof section[field] === 'number' && section[field] > 0)
   }))
 }
@@ -366,7 +367,7 @@ function safetyRows(value: unknown, fields: Record<string, string>) {
             <ul class="space-y-2 text-sm">
               <li v-for="feature in section.values" :key="feature.label" class="flex items-start gap-2">
                 <Icon :name="feature.present ? 'tabler:check' : 'tabler:x'" :class="feature.present ? 'mt-0.5 size-4 shrink-0 text-emerald-500' : 'mt-0.5 size-4 shrink-0 text-destructive'" :aria-label="feature.present ? 'Disponible' : 'No disponible'" />
-                <span :class="feature.present ? 'text-foreground' : 'text-muted-foreground'">{{ feature.label }}</span>
+                <span :class="feature.present ? 'text-foreground' : 'text-muted-foreground'">{{ feature.label }}<template v-if="typeof feature.value === 'number'">: {{ feature.value }}</template></span>
               </li>
             </ul>
           </section>

@@ -6,15 +6,23 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import type { CatalogResponse, CatalogSafetyRating, CatalogVehicleRecord } from '#shared/types/catalog'
+import type { CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord } from '#shared/types/catalog'
 
 const route = useRoute()
 const modelId = computed(() => String(route.params.id))
-const { data, status } = useQuery({
-  key: ['catalog'],
-  query: () => $fetch<CatalogResponse>('/api/catalog')
+const selectedImageIndex = ref(0)
+const { data: model, status } = useQuery({
+  key: () => ['model-detail', modelId.value],
+  query: () => $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
 })
-const model = computed(() => data.value?.models.find((item) => item.id === modelId.value))
+const detailImages = computed(() => {
+  if (!model.value) return []
+  return model.value.images.length ? model.value.images : model.value.image ? [model.value.image] : []
+})
+const activeImage = computed(() => detailImages.value[selectedImageIndex.value] ?? detailImages.value[0])
+watch(modelId, () => {
+  selectedImageIndex.value = 0
+})
 const modelDetailRows = computed(() => {
   if (!model.value) return []
   return [
@@ -84,9 +92,25 @@ function safetyMetrics(rating: CatalogSafetyRating) {
       </BreadcrumbList>
     </Breadcrumb>
     <div class="grid items-start gap-6 lg:grid-cols-2">
-      <img v-if="model.image" :src="model.image.url" :alt="model.image.alt" class="aspect-4/3 w-full rounded-xl border object-cover">
-      <div v-else class="flex aspect-4/3 items-center justify-center rounded-xl border bg-muted text-muted-foreground">
-        <Icon name="tabler:car" class="size-12" aria-hidden="true" />
+      <div class="space-y-2">
+        <img v-if="activeImage" :src="activeImage.url" :alt="activeImage.alt" class="aspect-4/3 w-full rounded-xl border object-cover">
+        <div v-else class="flex aspect-4/3 items-center justify-center rounded-xl border bg-muted text-muted-foreground">
+          <Icon name="tabler:car" class="size-12" aria-hidden="true" />
+        </div>
+        <div v-if="detailImages.length > 1" class="flex gap-2 overflow-x-auto">
+          <button
+            v-for="(image, index) in detailImages"
+            :key="`${image.view}-${image.url}`"
+            type="button"
+            :aria-label="`Mostrar imagen ${index + 1}`"
+            :aria-pressed="selectedImageIndex === index"
+            class="shrink-0 overflow-hidden rounded border-2"
+            :class="selectedImageIndex === index ? 'border-primary' : 'border-transparent'"
+            @click="selectedImageIndex = index"
+          >
+            <img :src="image.url" :alt="image.alt" class="size-16 object-cover sm:size-20">
+          </button>
+        </div>
       </div>
       <Card>
         <CardHeader>
