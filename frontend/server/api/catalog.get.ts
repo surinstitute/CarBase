@@ -1,4 +1,4 @@
-import type { ApiPage, CatalogMake, CatalogModel, CatalogResponse, CatalogVehicleRecord } from '#shared/types/catalog'
+import type { ApiPage, CatalogMake, CatalogModel, CatalogResponse, CatalogSafetyRating, CatalogVehicleRecord } from '#shared/types/catalog'
 
 interface ApiMake {
   makeId: string
@@ -20,6 +20,7 @@ interface ApiModel {
   year: number
   created_at: string
   updated_at: string
+  safetyRatings: CatalogSafetyRating[]
 }
 
 interface ApiPlatform {
@@ -123,6 +124,7 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
       platformName: model.platform ? platformsById.get(model.platform) ?? null : null,
       bodyStyles: [...(details?.bodyStyles ?? [])],
       architectures: [...(details?.architectures ?? [])],
+      safetyRatings: model.safetyRatings,
       vehicles: details?.vehicles ?? [],
       image: details?.image
     }

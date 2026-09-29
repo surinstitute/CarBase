@@ -59,6 +59,17 @@ export interface CatalogVehicleRecord {
   [field: string]: unknown
 }
 
+export interface CatalogSafetyRating {
+  program: 'latin_ncap' | 'euro_ncap' | 'other'
+  assessmentYear: number
+  overallStars: number
+  adultOccupantProtection: number
+  childOccupantProtection: number
+  vulnerableRoadUserProtection: number
+  safetyAssist: number
+  sourceUrl: string | null
+}
+
 export interface CatalogModel {
   id: string
   makeId: string
@@ -72,6 +83,7 @@ export interface CatalogModel {
   platformName: string | null
   bodyStyles: string[]
   architectures: string[]
+  safetyRatings: CatalogSafetyRating[]
   vehicles: CatalogVehicleRecord[]
   image?: {
     url: string

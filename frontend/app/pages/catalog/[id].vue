@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import type { CatalogResponse, CatalogVehicleRecord } from '#shared/types/catalog'
+import type { CatalogResponse, CatalogSafetyRating, CatalogVehicleRecord } from '#shared/types/catalog'
 
 const route = useRoute()
 const modelId = computed(() => String(route.params.id))
@@ -48,6 +48,24 @@ function configurationRows(vehicle: CatalogVehicleRecord) {
 function variantLabel(vehicle: CatalogVehicleRecord, index: number) {
   return vehicle.variantName || `Variante ${index + 1}`
 }
+
+function safetyProgramLabel(program: CatalogSafetyRating['program']) {
+  const labels = {
+    latin_ncap: 'Latin NCAP',
+    euro_ncap: 'Euro NCAP',
+    other: 'Programa de evaluación'
+  }
+  return labels[program]
+}
+
+function safetyMetrics(rating: CatalogSafetyRating) {
+  return [
+    { label: 'Ocupante adulto', value: rating.adultOccupantProtection },
+    { label: 'Ocupante infantil', value: rating.childOccupantProtection },
+    { label: 'Peatones y usuarios vulnerables', value: rating.vulnerableRoadUserProtection },
+    { label: 'Asistencia a la seguridad', value: rating.safetyAssist }
+  ]
+}
 </script>
 
 <template>
@@ -88,6 +106,36 @@ function variantLabel(vehicle: CatalogVehicleRecord, index: number) {
         </CardContent>
       </Card>
     </div>
+
+    <section class="space-y-3">
+      <h2 class="text-xl font-semibold">Seguridad</h2>
+      <div v-if="model.safetyRatings.length" class="grid gap-4 lg:grid-cols-2">
+        <Card v-for="rating in model.safetyRatings" :key="`${rating.program}-${rating.assessmentYear}`">
+          <CardHeader>
+            <div class="flex items-start justify-between gap-4">
+              <div class="space-y-1">
+                <CardTitle>{{ safetyProgramLabel(rating.program) }}</CardTitle>
+                <CardDescription>Evaluación {{ rating.assessmentYear }}</CardDescription>
+              </div>
+              <a v-if="rating.sourceUrl" :href="rating.sourceUrl" target="_blank" rel="noreferrer" class="text-sm font-medium underline underline-offset-4">Fuente</a>
+            </div>
+          </CardHeader>
+          <CardContent class="space-y-5">
+            <div class="flex items-center gap-1" :aria-label="`${rating.overallStars} de 5 estrellas`">
+              <Icon v-for="star in 5" :key="star" name="tabler:star-filled" :class="star <= rating.overallStars ? 'size-6 text-amber-400' : 'size-6 text-muted'" aria-hidden="true" />
+              <span class="ml-2 text-sm font-medium">{{ rating.overallStars }}/5</span>
+            </div>
+            <dl class="grid gap-x-6 gap-y-4 sm:grid-cols-2">
+              <div v-for="metric in safetyMetrics(rating)" :key="metric.label" class="space-y-1">
+                <dt class="text-sm text-muted-foreground">{{ metric.label }}</dt>
+                <dd class="text-lg font-semibold tabular-nums">{{ metric.value }}%</dd>
+              </div>
+            </dl>
+          </CardContent>
+        </Card>
+      </div>
+      <p v-else class="text-sm text-muted-foreground">No hay evaluaciones de seguridad registradas para este modelo.</p>
+    </section>
 
     <section class="space-y-3">
       <h2 class="text-xl font-semibold">Variantes <span class="text-muted-foreground">({{ model.vehicles.length }})</span></h2>
