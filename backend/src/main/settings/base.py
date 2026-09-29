@@ -105,7 +105,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY", get_random_secret_key())
 
-DEBUG = str(os.environ.get("DEBUG", "true")).lower() in ("1", "true", "yes", "on")
+DEBUG = _env_bool("DEBUG", False)
 
 SITE_URL = _ensure_scheme(os.environ.get("DJANGO_URL", "http://localhost").strip())
 FRONTEND_URL = _ensure_scheme(
