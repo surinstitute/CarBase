@@ -4,6 +4,7 @@
     <main class="flex-1">
       <NuxtPage />
     </main>
+    <CatalogCompareBar />
     <LayoutAppFooter />
   </div>
 </template>

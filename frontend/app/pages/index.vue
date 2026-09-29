@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 const search = ref('')
 
 function browseCatalog() {
-	navigateTo({ path: '/catalog', query: search.value.trim() ? { q: search.value.trim() } : undefined })
+	navigateTo({ path: '/models', query: search.value.trim() ? { q: search.value.trim() } : undefined })
 }
 </script>
 
@@ -23,8 +23,8 @@ function browseCatalog() {
 				<Card class="max-w-2xl">
 					<CardContent class="p-4 sm:p-6">
 						<form class="flex flex-col gap-3 sm:flex-row" @submit.prevent="browseCatalog">
-							<label for="vehicle-search" class="sr-only">Buscar marca o modelo</label>
-							<Input id="vehicle-search" v-model="search" placeholder="Busca marca o modelo" class="flex-1" />
+							<label for="vehicle-search" class="sr-only">Buscar marca, modelo o versión</label>
+							<Input id="vehicle-search" v-model="search" placeholder="Busca marca, modelo o versión" class="flex-1" />
 							<Button type="submit"><Icon name="tabler:search" aria-hidden="true" />Buscar</Button>
 						</form>
 					</CardContent>

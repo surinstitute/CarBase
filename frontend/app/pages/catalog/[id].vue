@@ -11,6 +11,7 @@ import type { CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord, Cat
 const route = useRoute()
 const modelId = computed(() => String(route.params.id))
 const selectedImageIndex = ref(0)
+const comparison = useCarComparison()
 const { data: model, status } = useQuery({
   key: () => ['model-detail', modelId.value],
   query: () => $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
@@ -51,10 +52,6 @@ function configurationRows(vehicle: CatalogVehicleRecord) {
   return Object.entries(vehicle.configuration)
     .filter(([, value]) => value !== null && value !== undefined && value !== '')
     .map(([field, value]) => ({ field, value: formatValue(value) }))
-}
-
-function variantLabel(vehicle: CatalogVehicleRecord, index: number) {
-  return vehicle.variantName || `Variante ${index + 1}`
 }
 
 function safetyProgramLabel(program: CatalogSafetyRating['program']) {
@@ -204,34 +201,7 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
     <section class="space-y-3">
       <h2 class="text-xl font-semibold">Variantes <span class="text-muted-foreground">({{ model.vehicles.length }})</span></h2>
       <div v-if="model.vehicles.length" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <Card v-for="(vehicle, index) in model.vehicles" :key="vehicle.id">
-          <CardHeader>
-            <div class="flex items-start justify-between gap-3">
-              <div class="space-y-1">
-                <CardTitle>
-                  <NuxtLink :to="`/models/variants/${model.id}/${vehicle.id}`" class="underline underline-offset-4">
-                    {{ variantLabel(vehicle, index) }}
-                  </NuxtLink>
-                </CardTitle>
-                <CardDescription>Registro #{{ vehicle.id }}</CardDescription>
-              </div>
-              <Badge variant="secondary">{{ vehicle.lineage.modelYear }}</Badge>
-            </div>
-          </CardHeader>
-          <CardContent class="space-y-3">
-            <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
-              <dt class="text-muted-foreground">Generación</dt>
-              <dd class="font-medium">{{ vehicle.lineage.generationId ?? 'No especificada' }}</dd>
-              <template v-for="row in configurationRows(vehicle)" :key="row.field">
-                <dt class="text-muted-foreground">{{ row.field }}</dt>
-                <dd class="wrap-break-word font-medium">{{ row.value }}</dd>
-              </template>
-            </dl>
-            <p v-if="!configurationRows(vehicle).length" class="text-sm text-muted-foreground">
-              Configuración aún no especificada.
-            </p>
-          </CardContent>
-        </Card>
+        <CatalogVehicleCard v-for="(vehicle, index) in model.vehicles" :key="vehicle.id" :model="model" :vehicle="vehicle" :index="index" />
       </div>
       <p v-else class="text-sm text-muted-foreground">No hay variantes registradas para este modelo.</p>
     </section>

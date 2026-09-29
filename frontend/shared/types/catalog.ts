@@ -44,6 +44,8 @@ export interface CatalogVehicleRecord {
   lineage: {
     makeId: string
     modelId: string
+    makeName?: string
+    modelName?: string
     modelYear: number
     [field: string]: unknown
   }
