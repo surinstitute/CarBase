@@ -385,6 +385,8 @@ class VehicleSerializer(serializers.ModelSerializer):
         lineage = {
             "makeId": str(obj.model.make.makeId),
             "modelId": str(obj.model.id),
+            "makeName": obj.model.make.name,
+            "modelName": obj.model.model,
             "modelYear": obj.model.year,
         }
         if obj.model.platform_id:
