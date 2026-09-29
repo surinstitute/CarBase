@@ -238,9 +238,7 @@ class VehicleSerializer(serializers.ModelSerializer):
     def get_recalls(self, obj):
         return [
             {
-                "authority": recall.authority,
                 "recallNumber": recall.recall_number,
-                "country": str(recall.country) if recall.country else None,
                 "title": recall.title,
                 "description": recall.description,
                 "risk": recall.risk,
@@ -253,7 +251,6 @@ class VehicleSerializer(serializers.ModelSerializer):
                     if recall.published_date
                     else None
                 ),
-                "remedy": recall.remedy,
                 "sourceUrl": recall.source_url,
             }
             for recall in obj.model.recalls.all()
@@ -388,6 +385,7 @@ class VehicleSerializer(serializers.ModelSerializer):
             {
                 "type": "battery_pack",
                 "batteryPackId": str(fitment.battery_pack.batteryPackId),
+                "capacityKwh": fitment.battery_pack.capacity_kWh,
                 "isPrimary": fitment.is_primary,
             }
             for fitment in powertrain.battery_fitments.all()

@@ -4,6 +4,23 @@ from paradedb.functions import Score
 from paradedb.search import ParadeDB, Term
 
 from .models import BaseModel, Vehicle
+from .types import BodyStyle, PowerTrainArchitecture
+
+
+POWERTRAIN_TYPE_ARCHITECTURES = {
+    "combustion": (PowerTrainArchitecture.ICE,),
+    "hybrid": (
+        PowerTrainArchitecture.MILD_HYBRID,
+        PowerTrainArchitecture.SERIES_HYBRID,
+        PowerTrainArchitecture.PARALLEL_HYBRID,
+        PowerTrainArchitecture.POWER_SPLIT_HYBRID,
+        PowerTrainArchitecture.PHEV,
+    ),
+    "electric": (
+        PowerTrainArchitecture.BEV,
+        PowerTrainArchitecture.FCEV,
+    ),
+}
 
 
 class BaseModelFilter(django_filters.FilterSet):
@@ -12,6 +29,13 @@ class BaseModelFilter(django_filters.FilterSet):
     make = django_filters.UUIDFilter(field_name="make_id")
     model = django_filters.CharFilter(field_name="model", lookup_expr="iexact")
     year = django_filters.NumberFilter(field_name="year")
+    body_style = django_filters.ChoiceFilter(
+        field_name="body_style", choices=BodyStyle.choices
+    )
+    powertrain_type = django_filters.ChoiceFilter(
+        choices=[(value, value) for value in POWERTRAIN_TYPE_ARCHITECTURES],
+        method="filter_powertrain_type",
+    )
     assembly_country = django_filters.CharFilter(
         field_name="model_vehicles__assembly_country",
         lookup_expr="iexact",
@@ -20,7 +44,16 @@ class BaseModelFilter(django_filters.FilterSet):
 
     class Meta:
         model = BaseModel
-        fields = ["search", "q", "make", "model", "year", "assembly_country"]
+        fields = [
+            "search",
+            "q",
+            "make",
+            "model",
+            "year",
+            "body_style",
+            "powertrain_type",
+            "assembly_country",
+        ]
 
     def filter_search(self, queryset, _name, value):
         normalized_value = (value or "").strip()
@@ -36,6 +69,14 @@ class BaseModelFilter(django_filters.FilterSet):
             .annotate(score=Score())
             .order_by("-score")
         )
+
+    def filter_powertrain_type(self, queryset, _name, value):
+        architectures = POWERTRAIN_TYPE_ARCHITECTURES.get(value)
+        if architectures is None:
+            return queryset
+        return queryset.filter(
+            model_vehicles__powertrain__architecture__in=architectures
+        ).distinct()
 
 
 class VehicleFilter(django_filters.FilterSet):

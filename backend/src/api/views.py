@@ -30,7 +30,11 @@ from catalog.models import (
     Transmission,
     Vehicle,
 )
-from catalog.filters import BaseModelFilter, VehicleFilter
+from catalog.filters import (
+    POWERTRAIN_TYPE_ARCHITECTURES,
+    BaseModelFilter,
+    VehicleFilter,
+)
 
 
 class GroupViewSet(ReadOnlyModelViewSet):
@@ -56,18 +60,8 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
 
     @action(detail=False, methods=["get"], url_path="filter-options")
     def filter_options(self, request):
-        queryset = BaseModel.objects.all()
-        make_id = request.query_params.get("make", "").strip()
+        queryset = BaseModelFilter(request.query_params, queryset=BaseModel.objects.all()).qs
         model_name = request.query_params.get("model", "").strip()
-        assembly_country = request.query_params.get("assembly_country", "").strip()
-
-        if make_id:
-            queryset = queryset.filter(make_id=make_id)
-
-        if assembly_country:
-            queryset = queryset.filter(
-                model_vehicles__assembly_country__iexact=assembly_country
-            )
 
         model_names = queryset.order_by("model").values_list("model", flat=True).distinct()
 
@@ -75,6 +69,9 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
             queryset = queryset.filter(model__iexact=model_name)
 
         years = queryset.order_by("-year").values_list("year", flat=True).distinct()
+        body_styles = queryset.exclude(body_style__isnull=True).exclude(
+            body_style=""
+        ).order_by("body_style").values_list("body_style", flat=True).distinct()
         country_codes = (
             queryset.exclude(model_vehicles__assembly_country__isnull=True)
             .exclude(model_vehicles__assembly_country="")
@@ -92,6 +89,8 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
             {
                 "models": list(model_names),
                 "years": list(years),
+                "bodyStyles": list(body_styles),
+                "powertrainTypes": list(POWERTRAIN_TYPE_ARCHITECTURES),
                 "assemblyCountries": assembly_countries,
             }
         )
@@ -162,7 +161,7 @@ class VehicleViewSet(ReadOnlyModelViewSet):
             "monthly_sales",
             "model__recalls",
         )
-        .all()
+        .order_by("model__make__name", "model__model", "variant_name", "id")
     )
     serializer_class = VehicleSerializer
     filter_backends = [DjangoFilterBackend]
