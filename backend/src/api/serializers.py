@@ -81,9 +81,26 @@ class MakeSerializer(serializers.ModelSerializer):
 
 
 class BaseModelSerializer(serializers.ModelSerializer):
+    safetyRatings = serializers.SerializerMethodField()
+
     class Meta:
         model = BaseModel
         fields = "__all__"
+
+    def get_safetyRatings(self, obj):
+        return [
+            {
+                "program": rating.program,
+                "assessmentYear": rating.assessment_year,
+                "overallStars": rating.overall_stars,
+                "adultOccupantProtection": rating.adult_occupant_protection,
+                "childOccupantProtection": rating.child_occupant_protection,
+                "vulnerableRoadUserProtection": rating.vulnerable_road_user_protection,
+                "safetyAssist": rating.safety_assist,
+                "sourceUrl": rating.source_url or None,
+            }
+            for rating in obj.safety_ratings.all()
+        ]
 
 
 class PlatformSerializer(serializers.ModelSerializer):

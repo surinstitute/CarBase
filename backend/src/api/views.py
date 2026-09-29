@@ -46,6 +46,7 @@ class MakeViewSet(ReadOnlyModelViewSet):
 class BaseModelViewSet(ReadOnlyModelViewSet):
     queryset = (
         BaseModel.objects.select_related("make", "platform")
+        .prefetch_related("safety_ratings")
         .all()
         .order_by("make__name", "model")
     )

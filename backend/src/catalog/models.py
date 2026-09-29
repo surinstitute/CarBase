@@ -1,6 +1,7 @@
 import uuid
 
 from django.core.validators import FileExtensionValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django_countries.fields import CountryField
 from paradedb.indexes import BM25Index
@@ -32,6 +33,7 @@ from catalog.types import (
     PowerTrainArchitecture,
     RangeMetric,
     ResultScope,
+    SafetyRatingProgram,
     SourceDocumentType,
     SpeedUnit,
     TestCycle,
@@ -80,6 +82,51 @@ class BaseModel(models.Model):
 
     def __str__(self):
         return f"{self.make.name} {self.model} {self.year}"
+
+
+class SafetyRatingMetrics(models.Model):
+    overall_stars = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)]
+    )
+    adult_occupant_protection = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
+    child_occupant_protection = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
+    vulnerable_road_user_protection = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
+    safety_assist = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
+
+    class Meta:
+        abstract = True
+
+
+class ModelSafetyRating(SafetyRatingMetrics):
+    model = models.ForeignKey(
+        BaseModel,
+        on_delete=models.CASCADE,
+        related_name="safety_ratings",
+    )
+    program = models.CharField(
+        max_length=32,
+        choices=SafetyRatingProgram.choices,
+        default=SafetyRatingProgram.LATIN_NCAP,
+    )
+    assessment_year = models.PositiveSmallIntegerField()
+    source_url = models.URLField(blank=True)
+
+    class Meta:
+        ordering = ("-assessment_year", "program")
+        constraints = [
+            models.UniqueConstraint(
+                fields=("model", "program", "assessment_year"),
+                name="unique_model_safety_rating_program_year",
+            )
+        ]
 
 
 class ImageAsset(models.Model):
@@ -250,12 +297,6 @@ class EMotor(models.Model):
     )
     power_kW = models.FloatField()
     torque_Nm = models.FloatField()
-    position = models.CharField(
-        max_length=255,
-        choices=TractionPosition.choices,
-        null=True,
-        blank=True,
-    )
     cooling_type = models.CharField(
         max_length=255,
         choices=MotorCoolingType.choices,

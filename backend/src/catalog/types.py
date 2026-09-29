@@ -99,6 +99,12 @@ class BodyStyle(models.TextChoices):
     OTHER = "other", "Other"
 
 
+class SafetyRatingProgram(models.TextChoices):
+    LATIN_NCAP = "latin_ncap", "Latin NCAP"
+    EURO_NCAP = "euro_ncap", "Euro NCAP"
+    OTHER = "other", "Other"
+
+
 class TransmissionType(models.TextChoices):
     MANUAL = "manual", "Manual"
     AUTOMATIC = "automatic", "Automatic"

@@ -24,6 +24,7 @@ from .models import (
     ImageAsset,
     Make,
     ModelImagePlacement,
+    ModelSafetyRating,
     Platform,
     PowerTrain,
     PowerTrainBatteryPack,
@@ -96,7 +97,6 @@ E_MOTOR_FIELD_DESCRIPTIONS = {
     "motor_type": "Electric motor technology, such as permanent-magnet synchronous or induction.",
     "power_kW": "Maximum electric motor power output, in kilowatts (kW).",
     "torque_Nm": "Maximum electric motor torque, in newton-metres (Nm).",
-    "position": "Location of the motor in the vehicle and the axle or wheels it drives.",
     "cooling_type": "Method used to cool the electric motor.",
 }
 
@@ -379,6 +379,11 @@ class SafetyPackageInline(admin.StackedInline):
     max_num = 1
 
 
+class ModelSafetyRatingInline(admin.TabularInline):
+    model = ModelSafetyRating
+    extra = 0
+
+
 class ChargingPackageInline(admin.StackedInline):
     model = ChargingPackage
     form = ChargingPackageAdminForm
@@ -434,12 +439,6 @@ class AccelerationResultInline(admin.TabularInline):
 class TopSpeedResultInline(admin.TabularInline):
     model = TopSpeedResult
     extra = 0
-
-
-class VehicleMonthlySalesInline(admin.TabularInline):
-    model = VehicleMonthlySales
-    extra = 0
-    ordering = ("year", "month")
 
 
 class ModelImagePlacementInline(admin.TabularInline):
@@ -605,7 +604,7 @@ class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
     autocomplete_fields = ("make", "platform")
     group_paths = ("make__group",)
     foreignkey_group_paths = {"make": "group", "platform": "groups"}
-    inlines = (ModelImagePlacementInline,)
+    inlines = (ModelImagePlacementInline, ModelSafetyRatingInline)
 
 
 @admin.register(Make)
@@ -767,7 +766,6 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         EmissionsResultInline,
         AccelerationResultInline,
         TopSpeedResultInline,
-        VehicleMonthlySalesInline,
     )
     compliance_inlines = (
         ComplianceRecordInline,
