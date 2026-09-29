@@ -16,15 +16,15 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-COPY pyproject.toml ./
+COPY pyproject.toml uv.lock ./
 
 #RUN --mount=type=cache,target=/root/.cache/uv \
-RUN   uv sync --no-dev --no-install-project
+RUN uv sync --locked --no-dev --no-install-project
 
 COPY . .
 
 #RUN --mount=type=cache,target=/root/.cache/uv \
-RUN    uv sync --no-dev
+RUN uv sync --locked --no-dev
 
 ENTRYPOINT ["sh", "/app/entrypoint.sh"]
 CMD ["uv", "run", "--no-sync", "gunicorn", "--bind", ":8000", "main.wsgi:application", "--workers", "8", "--timeout", "0"]
