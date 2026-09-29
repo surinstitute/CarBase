@@ -1,8 +1,12 @@
 import uuid
 from pathlib import Path
 
-from django.core.validators import FileExtensionValidator
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ValidationError
+from django.core.validators import (
+    FileExtensionValidator,
+    MaxValueValidator,
+    MinValueValidator,
+)
 from django.db import models
 from django.utils.text import slugify
 from django_countries.fields import CountryField
@@ -84,6 +88,36 @@ class BaseModel(models.Model):
 
     def __str__(self):
         return f"{self.make.name} {self.model} {self.year}"
+
+
+class BaseModelWarranty(models.Model):
+    base_model = models.OneToOneField(
+        BaseModel, on_delete=models.CASCADE, related_name="warranty"
+    )
+    basic_years = models.PositiveSmallIntegerField(null=True, blank=True)
+    basic_kilometers = models.PositiveIntegerField(null=True, blank=True)
+    basic_kilometers_unlimited = models.BooleanField(default=False)
+    drivetrain_years = models.PositiveSmallIntegerField(null=True, blank=True)
+    drivetrain_kilometers = models.PositiveIntegerField(null=True, blank=True)
+    drivetrain_kilometers_unlimited = models.BooleanField(default=False)
+    corrosion_years = models.PositiveSmallIntegerField(null=True, blank=True)
+    corrosion_kilometers = models.PositiveIntegerField(null=True, blank=True)
+    corrosion_kilometers_unlimited = models.BooleanField(default=False)
+
+    def clean(self):
+        errors = {}
+        for name in ("basic", "drivetrain", "corrosion"):
+            kilometers = getattr(self, f"{name}_kilometers")
+            unlimited = getattr(self, f"{name}_kilometers_unlimited")
+            if kilometers is not None and unlimited:
+                errors[f"{name}_kilometers_unlimited"] = (
+                    "Enter a kilometre limit or mark it unlimited, not both."
+                )
+        if errors:
+            raise ValidationError(errors)
+
+    def __str__(self):
+        return f"Warranty for {self.base_model}"
 
 
 class SafetyRatingMetrics(models.Model):

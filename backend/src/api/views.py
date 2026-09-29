@@ -110,6 +110,7 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
             )
         )
         if self.action == "retrieve":
+            queryset = queryset.select_related("warranty")
             queryset = queryset.prefetch_related(
                 "safety_ratings",
                 Prefetch("model_vehicles", queryset=_vehicle_queryset()),

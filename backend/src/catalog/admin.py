@@ -13,6 +13,7 @@ from .models import (
     AccelerationResult,
     ApprovalSourceDocument,
     BaseModel,
+    BaseModelWarranty,
     BatteryPack,
     ChargeTimeResult,
     ChargingPackage,
@@ -494,6 +495,44 @@ class ModelImagePlacementInline(admin.TabularInline):
     fields = ("image_file", "view", "alt_text", "sort_order", "is_visible")
 
 
+class BaseModelWarrantyInline(admin.StackedInline):
+    model = BaseModelWarranty
+    extra = 1
+    max_num = 1
+    fieldsets = (
+        (
+            "Basic",
+            {
+                "fields": (
+                    "basic_years",
+                    "basic_kilometers",
+                    "basic_kilometers_unlimited",
+                )
+            },
+        ),
+        (
+            "Drivetrain",
+            {
+                "fields": (
+                    "drivetrain_years",
+                    "drivetrain_kilometers",
+                    "drivetrain_kilometers_unlimited",
+                )
+            },
+        ),
+        (
+            "Corrosion",
+            {
+                "fields": (
+                    "corrosion_years",
+                    "corrosion_kilometers",
+                    "corrosion_kilometers_unlimited",
+                )
+            },
+        ),
+    )
+
+
 @admin.register(RegulatoryApproval)
 class RegulatoryApprovalAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("authority", "jurisdiction", "scheme", "domain", "status")
@@ -655,7 +694,11 @@ class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
     autocomplete_fields = ("make", "platform")
     group_paths = ("make__group",)
     foreignkey_group_paths = {"make": "group", "platform": "groups"}
-    inlines = (ModelImagePlacementInline, ModelSafetyRatingInline)
+    inlines = (
+        ModelImagePlacementInline,
+        BaseModelWarrantyInline,
+        ModelSafetyRatingInline,
+    )
 
 
 @admin.register(Make)

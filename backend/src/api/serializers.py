@@ -119,6 +119,7 @@ class BaseModelDetailSerializer(BaseModelSerializer):
     safetyRatings = serializers.SerializerMethodField()
     variants = serializers.SerializerMethodField()
     images = serializers.SerializerMethodField()
+    warranty = serializers.SerializerMethodField()
 
     class Meta:
         model = BaseModel
@@ -165,6 +166,26 @@ class BaseModelDetailSerializer(BaseModelSerializer):
                 }
             )
         return images
+
+    def get_warranty(self, obj):
+        warranty = getattr(obj, "warranty", None)
+        if warranty is None:
+            return None
+
+        coverages = {}
+        for name in ("basic", "drivetrain", "corrosion"):
+            years = getattr(warranty, f"{name}_years")
+            kilometers = getattr(warranty, f"{name}_kilometers")
+            kilometers_unlimited = getattr(
+                warranty, f"{name}_kilometers_unlimited"
+            )
+            if years is not None or kilometers is not None or kilometers_unlimited:
+                coverages[name] = {
+                    "years": years,
+                    "kilometers": kilometers,
+                    "kilometersUnlimited": kilometers_unlimited,
+                }
+        return coverages or None
 
 
 class PlatformSerializer(serializers.ModelSerializer):
