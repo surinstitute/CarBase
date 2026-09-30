@@ -10,7 +10,7 @@ from django.core.validators import (
 from django.db import models
 from django.utils.text import slugify
 from django_countries.fields import CountryField
-from paradedb.indexes import BM25Index
+from paradedb.indexes import ParadeDBIndex
 from paradedb.queryset import ParadeDBManager
 from paradedb.search import Tokenizer
 
@@ -75,7 +75,7 @@ class BaseModel(models.Model):
 
     class Meta:
         indexes = [
-            BM25Index(
+            ParadeDBIndex(
                 fields={
                     "generation": {"tokenizer": Tokenizer.unicode_words()},
                     "id": {},
@@ -524,7 +524,7 @@ class Vehicle(models.Model):
 
     class Meta:
         indexes = [
-            BM25Index(
+            ParadeDBIndex(
                 fields={
                     "id": {},
                     "variant_name": {"tokenizer": Tokenizer.unicode_words()},

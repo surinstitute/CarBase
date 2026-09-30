@@ -25,6 +25,8 @@ urlpatterns = [
     path("account/", include("allauth.urls")),
     # OIDC
     path("", include("allauth.idp.urls")),
+    # Hijack
+    path("hijack/", include("hijack.urls")),
 ]
 
 if settings.DEBUG:
