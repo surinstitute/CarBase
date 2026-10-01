@@ -8,6 +8,7 @@ export interface ApiPage<T> {
 export interface CatalogMake {
   id: string
   name: string
+  country?: string | null
   groupId: string | null
 }
 

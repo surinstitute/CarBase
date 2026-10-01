@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Card, CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
+import { countryFlag } from '@/lib/utils'
 import type { CatalogResponse } from '#shared/types/catalog'
 
 const route = useRoute()
@@ -38,6 +39,7 @@ const models = computed(() => data.value?.models.filter((model) => model.makeId 
       <div class="space-y-2">
         <p class="text-sm text-muted-foreground">Marca</p>
         <h1 class="text-3xl font-bold tracking-tight">{{ make.name }}</h1>
+        <p v-if="make.country" class="text-sm text-muted-foreground">{{ countryFlag(make.country) }} Origen: {{ make.country }}</p>
       </div>
       <Badge variant="secondary">{{ models.length }} modelos</Badge>
     </header>

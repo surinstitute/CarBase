@@ -5,3 +5,10 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export function countryFlag(country: string | null | undefined) {
+  const code = country?.trim().toUpperCase()
+  if (!code || !/^[A-Z]{2}$/.test(code)) return ''
+
+  return String.fromCodePoint(...[...code].map((letter) => 127397 + letter.charCodeAt(0)))
+}

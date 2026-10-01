@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Skeleton } from '@/components/ui/skeleton'
+import { countryFlag } from '@/lib/utils'
 import type { CatalogResponse } from '#shared/types/catalog'
 
 const route = useRoute()
@@ -32,7 +33,6 @@ const detailRows = computed(() => variant.value
 const specs = computed(() => recordOf(variant.value?.specs))
 const performance = computed(() => recordOf(variant.value?.performance))
 const configuration = computed(() => recordOf(variant.value?.configuration))
-const safety = computed(() => recordOf(variant.value?.safety))
 const specRows = computed(() => Object.entries(specs.value).map(([field, value]) => ({
   field: fieldLabel(field),
   value: measurement(value)
@@ -67,61 +67,6 @@ const configurationRows = computed(() => {
 
   return rows
 })
-const safetySections = computed(() => [
-  {
-    title: 'Alertas de colisión',
-    values: safetyRows(safety.value.collisionWarnings, {
-      fcw: 'Alerta de colisión frontal',
-      ldw: 'Alerta de salida de carril',
-      bsw: 'Alerta de punto ciego',
-      rctw: 'Alerta de tráfico cruzado trasero'
-    })
-  },
-  {
-    title: 'Intervención de colisión',
-    values: safetyRows(safety.value.collisionIntervention, {
-      aebCity: 'Frenado autónomo en ciudad',
-      aebPedestrian: 'Frenado autónomo para peatones',
-      aebHighway: 'Frenado autónomo en carretera',
-      aebRear: 'Frenado autónomo trasero'
-    })
-  },
-  {
-    title: 'Asistencia a la conducción',
-    values: safetyRows(safety.value.drivingControlAssistance, {
-      lka: 'Asistencia de mantenimiento de carril',
-      lca: 'Centrado de carril',
-      acc: 'Control de crucero adaptativo',
-      activeDrivingAssistanceDirectDriverMonitoring: 'Monitorización del conductor'
-    })
-  },
-  {
-    title: 'Seguridad y visibilidad',
-    values: safetyRows(safety.value.visibilityAndControl, {
-      drl: 'Luces diurnas',
-      rearViewCamera: 'Cámara trasera',
-      esc: 'Control electrónico de estabilidad',
-      tractionControl: 'Control de tracción',
-      abs: 'Frenos antibloqueo'
-    })
-  },
-  {
-    title: 'Seguridad trasera',
-    values: safetyRows(safety.value.rearSeatSafety, {
-      childSafety: 'Seguridad infantil',
-      rearOccupantAlertEndOfTripReminder: 'Recordatorio de ocupante trasero'
-    })
-  },
-  {
-    title: 'Airbags',
-    values: safetyRows(safety.value.restraints, {
-      airbagSideFront: 'Airbags laterales delanteros',
-      airbagSideRear: 'Airbags laterales traseros',
-      headProtectionAirbag: 'Airbags de protección de cabeza'
-    })
-  }
-])
-
 const labels: Record<string, string> = {
   battery_electric: 'Eléctrico de batería',
   bev: 'Eléctrico de batería',
@@ -254,14 +199,6 @@ function performanceRows(value: unknown) {
   }))
 }
 
-function safetyRows(value: unknown, fields: Record<string, string>) {
-  const section = recordOf(value)
-  return Object.entries(fields).map(([field, label]) => ({
-    label,
-    value: section[field],
-    present: section[field] === true || (typeof section[field] === 'number' && section[field] > 0)
-  }))
-}
 </script>
 
 <template>
@@ -297,6 +234,9 @@ function safetyRows(value: unknown, fields: Record<string, string>) {
           <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
             <dt class="text-muted-foreground">Año modelo</dt><dd class="font-medium">{{ variant.lineage.modelYear }}</dd>
             <dt class="text-muted-foreground">Generación</dt><dd class="font-medium">{{ variant.lineage.generationId ?? 'No especificada' }}</dd>
+            <template v-if="variant.assemblyCountry">
+              <dt class="text-muted-foreground">País de armado</dt><dd class="font-medium">{{ countryFlag(String(variant.assemblyCountry)) }} {{ variant.assemblyCountry }}</dd>
+            </template>
           </dl>
         </CardContent>
       </Card>
@@ -355,26 +295,7 @@ function safetyRows(value: unknown, fields: Record<string, string>) {
       </Card>
     </div>
 
-    <Card>
-      <CardHeader>
-        <CardTitle>Seguridad</CardTitle>
-        <CardDescription>Sistemas de alerta, asistencia y protección de esta variante.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div v-if="variant.safety" class="grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-          <section v-for="section in safetySections" :key="section.title" class="space-y-3">
-            <h3 class="text-sm font-medium">{{ section.title }}</h3>
-            <ul class="space-y-2 text-sm">
-              <li v-for="feature in section.values" :key="feature.label" class="flex items-start gap-2">
-                <Icon :name="feature.present ? 'tabler:check' : 'tabler:x'" :class="feature.present ? 'mt-0.5 size-4 shrink-0 text-emerald-500' : 'mt-0.5 size-4 shrink-0 text-destructive'" :aria-label="feature.present ? 'Disponible' : 'No disponible'" />
-                <span :class="feature.present ? 'text-foreground' : 'text-muted-foreground'">{{ feature.label }}<template v-if="typeof feature.value === 'number'">: {{ feature.value }}</template></span>
-              </li>
-            </ul>
-          </section>
-        </div>
-        <p v-else class="text-sm text-muted-foreground">No hay paquete de seguridad registrado para esta variante.</p>
-      </CardContent>
-    </Card>
+    <CatalogSafetyPackage :safety="variant.safety" />
 
     <Collapsible class="space-y-3">
       <CollapsibleTrigger as-child>
