@@ -467,6 +467,16 @@ REST_FRAMEWORK = {
 UNFOLD = {
     "SITE_HEADER": _("CarBase"),
     "SITE_TITLE": _("CarBase Admin"),
+    "SITE_DROPDOWN": [
+        {
+            "icon": "diamond",
+            "title": "Frontend",
+            "link": FRONTEND_URL,
+            "attrs": {
+                "target": "_blank",
+            },
+        },
+    ],
     "SIDEBAR": {
         "show_search": True,
         "show_all_applications": False,
