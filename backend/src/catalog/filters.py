@@ -1,7 +1,7 @@
 import django_filters
 from django.db.models import Q
 from paradedb.functions import Score
-from paradedb.search import ParadeDB, Term
+from paradedb.search import ParadeDB, PhrasePrefix
 
 from .models import BaseModel, Recall, Vehicle
 from .types import BodyStyle, PowerTrainArchitecture
@@ -60,7 +60,7 @@ class BaseModelFilter(django_filters.FilterSet):
         if not normalized_value:
             return queryset
         search_query = ParadeDB(
-            Term(normalized_value.lower(), prefix=True, distance=0)
+            PhrasePrefix(normalized_value.lower())
         )
         return (
             queryset.filter(
@@ -105,7 +105,7 @@ class VehicleFilter(django_filters.FilterSet):
         if not normalized_value:
             return queryset
         search_query = ParadeDB(
-            Term(normalized_value.lower(), prefix=True, distance=0)
+            PhrasePrefix(normalized_value.lower())
         )
         matching_model_ids = list(
             BaseModel.objects.filter(model=search_query).values_list(
