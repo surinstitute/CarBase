@@ -154,12 +154,15 @@ function itemsOf(value: unknown): Record<string, unknown>[] {
 
 function measurement(value: unknown) {
   const item = recordOf(value)
+  if (item.widthMm !== undefined && item.aspectRatio !== undefined && item.rimDiameterInches !== undefined) {
+    return `${formatNumber(String(item.widthMm))}/${formatNumber(String(item.aspectRatio))}R${formatNumber(String(item.rimDiameterInches))}`
+  }
   return item.value !== undefined ? `${formatNumber(String(item.value))} ${item.unit ?? ''}`.trim() : String(value ?? missingValue)
 }
 
 function specificationLabel(value: string) {
   const labels: Record<string, string> = {
-    length: 'Largo', width: 'Ancho', height: 'Alto', wheelbase: 'Distancia entre ejes', curbWeight: 'Peso en vacío', doorCount: 'Puertas', passengerCapacity: 'Plazas', range: 'Autonomía', efficiency: 'Eficiencia', emissions: 'Emisiones', acceleration: 'Aceleración', topSpeed: 'Velocidad máxima', power: 'Potencia', torque: 'Par motor'
+    length: 'Largo', width: 'Ancho', height: 'Alto', wheelbase: 'Distancia entre ejes', curbWeight: 'Peso del vehículo', trunkCapacity: 'Capacidad de la cajuela', doorCount: 'Puertas', passengerCapacity: 'Plazas', range: 'Autonomía', efficiency: 'Eficiencia', emissions: 'Emisiones', acceleration: 'Aceleración', topSpeed: 'Velocidad máxima', power: 'Potencia', torque: 'Par motor', frontBrakes: 'Frenos delanteros', rearBrakes: 'Frenos traseros', frontSuspension: 'Suspensión delantera', rearSuspension: 'Suspensión trasera', frontTire: 'Llantas delanteras', rearTire: 'Llantas traseras'
   }
   return labels[value] ?? value.replace(/([a-z])([A-Z])/g, '$1 $2')
 }

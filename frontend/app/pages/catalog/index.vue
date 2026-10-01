@@ -83,7 +83,7 @@ function bodyStyleLabel(bodyStyle: string) {
 }
 
 function powertrainTypeLabel(powertrainType: string) {
-  const labels: Record<string, string> = { combustion: 'Combustión', hybrid: 'Híbrido', electric: 'Eléctrico' }
+  const labels: Record<string, string> = { combustion: 'Combustión', hybrid: 'Híbrido', plug_in_hybrid: 'Híbrido enchufable', electric: 'Eléctrico' }
   return labels[powertrainType] ?? powertrainType
 }
 </script>

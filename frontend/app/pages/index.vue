@@ -5,9 +5,33 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 
 const search = ref('')
+const quickFilters = [
+	{ label: 'SUV', bodyStyle: 'suv' },
+	{ label: 'Truck', bodyStyle: 'pickup' },
+	{ label: 'Sedán', bodyStyle: 'sedan' },
+	{ label: 'Hatchback', bodyStyle: 'hatchback' }
+]
+const powertrainFilters = [
+	{ label: 'Combustión', powertrainType: 'combustion' },
+	{ label: 'Híbrido', powertrainType: 'hybrid' },
+	{ label: 'Híbrido enchufable', powertrainType: 'plug_in_hybrid' },
+	{ label: 'Eléctrico', powertrainType: 'electric' }
+]
 
 function browseCatalog() {
 	navigateTo({ path: '/models', query: search.value.trim() ? { q: search.value.trim() } : undefined })
+}
+
+function browseBodyStyle(bodyStyle: string) {
+	navigateTo({ path: '/models', query: { body_style: bodyStyle } })
+}
+
+function browsePowertrain(powertrainType: string) {
+	navigateTo({ path: '/models', query: { powertrain_type: powertrainType } })
+}
+
+function browseAssemblyCountry(country: string) {
+	navigateTo({ path: '/models', query: { assembly_country: country } })
 }
 </script>
 
@@ -29,6 +53,22 @@ function browseCatalog() {
 						</form>
 					</CardContent>
 				</Card>
+				<div class="flex flex-wrap items-center gap-2">
+					<span class="mr-1 text-sm text-muted-foreground">Explorar por carrocería</span>
+					<Button v-for="filter in quickFilters" :key="filter.bodyStyle" type="button" variant="outline" @click="browseBodyStyle(filter.bodyStyle)">
+						{{ filter.label }}
+					</Button>
+				</div>
+				<div class="flex flex-wrap items-center gap-2">
+					<span class="mr-1 text-sm text-muted-foreground">Explorar por mecánica</span>
+					<Button v-for="filter in powertrainFilters" :key="filter.powertrainType" type="button" variant="outline" @click="browsePowertrain(filter.powertrainType)">
+						{{ filter.label }}
+					</Button>
+				</div>
+				<div class="flex flex-wrap items-center gap-2">
+					<span class="mr-1 text-sm text-muted-foreground">Explorar por origen</span>
+					<Button type="button" variant="outline" @click="browseAssemblyCountry('MX')">Hecho en México</Button>
+				</div>
 			</div>
 		</div>
 	</section>

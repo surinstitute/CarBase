@@ -156,7 +156,7 @@ export interface CatalogResponse {
     models: string[]
     years: number[]
     bodyStyles: string[]
-    powertrainTypes: Array<'combustion' | 'hybrid' | 'electric'>
+    powertrainTypes: Array<'combustion' | 'hybrid' | 'plug_in_hybrid' | 'electric'>
     assemblyCountries: Array<{
       code: string
       name: string
