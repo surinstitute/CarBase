@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import type { ComparisonVehicle } from '@/composables/useCarComparison'
+import { formatNumber } from '@/lib/utils'
 import type { CatalogSafetyRating } from '#shared/types/catalog'
 
 const comparison = useCarComparison()
@@ -42,7 +43,7 @@ const comparisonSections = computed(() => {
       rows: [
         { label: 'Versión', values: vehicles.map((item: ComparisonVehicle) => item.variantName || 'Versión no especificada') },
         { label: 'Año modelo', values: vehicles.map((item: ComparisonVehicle) => String(item.vehicle.lineage.modelYear)) },
-        { label: 'Precio', values: vehicles.map((item: ComparisonVehicle) => item.vehicle.priceAmount ? `${item.vehicle.priceAmount} ${item.vehicle.priceCurrency ?? ''}`.trim() : missingValue) },
+        { label: 'Precio', values: vehicles.map((item: ComparisonVehicle) => item.vehicle.priceAmount ? `${formatNumber(item.vehicle.priceAmount)} ${item.vehicle.priceCurrency ?? ''}`.trim() : missingValue) },
         { label: 'País de armado', values: vehicles.map((item: ComparisonVehicle) => String(item.vehicle.assemblyCountry ?? missingValue)) },
         { label: 'Carrocería', values: vehicles.map((item: ComparisonVehicle) => String(item.vehicle.configuration.bodyStyle ?? missingValue)) }
       ]
@@ -85,7 +86,7 @@ function vehiclePerformanceRows(item: ComparisonVehicle) {
       const detail = [label(value.cycle), label(value.scope)].filter(Boolean).join(' · ')
       return {
         label: [specificationLabel(category), label(value.metric) || 'Resultado', detail].filter(Boolean).join(' · '),
-        value: `${value.value ?? '—'} ${label(value.unit) || value.unit || ''}`.trim()
+        value: `${formatNumber(String(value.value)) || '—'} ${label(value.unit) || value.unit || ''}`.trim()
       }
     })
   )
@@ -97,9 +98,9 @@ function configurationRows(item: ComparisonVehicle) {
   const charging = recordOf(configuration.charging)
   const rows: Array<{ label: string, value: string }> = []
   const energySources = itemsOf(powertrain.energySources).map((source) => label(source.source)).filter(Boolean)
-  const energyStorage = itemsOf(powertrain.energyStorage).map((storage) => [label(storage.type), storage.capacityKwh !== undefined ? `${storage.capacityKwh} kWh` : ''].filter(Boolean).join(' · ')).filter(Boolean)
+  const energyStorage = itemsOf(powertrain.energyStorage).map((storage) => [label(storage.type), storage.capacityKwh !== undefined ? `${formatNumber(String(storage.capacityKwh))} kWh` : ''].filter(Boolean).join(' · ')).filter(Boolean)
   const energyConverters = itemsOf(powertrain.energyConverters).map((converter) => label(converter.type)).filter(Boolean)
-  const tractionMotors = itemsOf(powertrain.tractionMotors).map((motor) => [label(motor.role), label(motor.position), motor.quantity ? `x${motor.quantity}` : ''].filter(Boolean).join(' · ')).filter(Boolean)
+  const tractionMotors = itemsOf(powertrain.tractionMotors).map((motor) => [label(motor.role), label(motor.position), motor.quantity ? `x${formatNumber(String(motor.quantity))}` : ''].filter(Boolean).join(' · ')).filter(Boolean)
   const ports = itemsOf(charging.ports).map((port) => [label(port.currentType), label(port.connector), label(port.location)].filter(Boolean).join(' · ')).filter(Boolean)
 
   if (powertrain.architecture) rows.push({ label: 'Propulsión', value: label(powertrain.architecture) })
@@ -108,8 +109,8 @@ function configurationRows(item: ComparisonVehicle) {
   if (energyConverters.length) rows.push({ label: 'Convertidores', value: energyConverters.join(', ') })
   if (tractionMotors.length) rows.push({ label: 'Motores', value: tractionMotors.join(', ') })
   if (configuration.transmissionId) rows.push({ label: 'Transmisión', value: 'Incluida' })
-  if (charging.acCharging && recordOf(charging.acCharging).maxPowerKw !== undefined) rows.push({ label: 'Carga CA', value: `${recordOf(charging.acCharging).maxPowerKw} kW` })
-  if (charging.dcCharging && recordOf(charging.dcCharging).maxPowerKw !== undefined) rows.push({ label: 'Carga CC', value: `${recordOf(charging.dcCharging).maxPowerKw} kW` })
+  if (charging.acCharging && recordOf(charging.acCharging).maxPowerKw !== undefined) rows.push({ label: 'Carga CA', value: `${formatNumber(String(recordOf(charging.acCharging).maxPowerKw))} kW` })
+  if (charging.dcCharging && recordOf(charging.dcCharging).maxPowerKw !== undefined) rows.push({ label: 'Carga CC', value: `${formatNumber(String(recordOf(charging.dcCharging).maxPowerKw))} kW` })
   if (ports.length) rows.push({ label: 'Puertos', value: ports.join(', ') })
 
   return rows
@@ -153,7 +154,7 @@ function itemsOf(value: unknown): Record<string, unknown>[] {
 
 function measurement(value: unknown) {
   const item = recordOf(value)
-  return item.value !== undefined ? `${item.value} ${item.unit ?? ''}`.trim() : String(value ?? missingValue)
+  return item.value !== undefined ? `${formatNumber(String(item.value))} ${item.unit ?? ''}`.trim() : String(value ?? missingValue)
 }
 
 function specificationLabel(value: string) {

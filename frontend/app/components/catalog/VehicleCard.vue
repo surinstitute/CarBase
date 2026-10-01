@@ -2,6 +2,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { formatNumber } from '@/lib/utils'
 import type { CatalogModel, CatalogVehicleRecord } from '#shared/types/catalog'
 
 type VehicleCardModel = Pick<CatalogModel, 'id' | 'makeId' | 'makeName' | 'modelName' | 'image'>
@@ -43,9 +44,9 @@ function formatEnergyStorage(value: unknown) {
     const storage = item as Record<string, unknown>
     const type = typeof storage.type === 'string' ? storage.type.replaceAll('_', ' ') : ''
     const capacity = typeof storage.capacityKwh === 'number'
-      ? `${storage.capacityKwh} kWh`
+      ? `${formatNumber(storage.capacityKwh)} kWh`
       : typeof storage.fuelCapacity === 'number'
-        ? `${storage.fuelCapacity} L`
+        ? `${formatNumber(storage.fuelCapacity)} L`
         : ''
     return [type, capacity].filter(Boolean).join(' · ')
   }).filter(Boolean).join(', ')
@@ -94,7 +95,7 @@ function formatEnergyStorage(value: unknown) {
         <dd class="font-medium">{{ vehicle.lineage.generationId ?? 'No especificada' }}</dd>
         <template v-if="vehicle.priceAmount">
           <dt class="text-muted-foreground">Precio</dt>
-          <dd class="font-medium">{{ vehicle.priceCurrency }} {{ Number(vehicle.priceAmount).toLocaleString('es-MX') }}</dd>
+          <dd class="font-medium">{{ vehicle.priceCurrency }} {{ formatNumber(vehicle.priceAmount) }}</dd>
         </template>
         <template v-for="row in configurationRows()" :key="row.field">
           <dt class="text-muted-foreground">{{ row.field }}</dt>

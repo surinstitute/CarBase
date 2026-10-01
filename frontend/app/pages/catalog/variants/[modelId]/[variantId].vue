@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Skeleton } from '@/components/ui/skeleton'
-import { countryFlag } from '@/lib/utils'
+import { countryFlag, formatNumber } from '@/lib/utils'
 import type { CatalogResponse } from '#shared/types/catalog'
 
 const route = useRoute()
@@ -47,10 +47,10 @@ const configurationRows = computed(() => {
   const energySources = itemsOf(powertrain.energySources).map((item) => label(item.source)).filter(Boolean)
   const energyStorage = itemsOf(powertrain.energyStorage).map((item) => [
     label(item.type),
-    item.capacityKwh !== undefined ? `${item.capacityKwh} kWh` : ''
+    item.capacityKwh !== undefined ? `${formatNumber(String(item.capacityKwh))} kWh` : ''
   ].filter(Boolean).join(' · ')).filter(Boolean)
   const energyConverters = itemsOf(powertrain.energyConverters).map((item) => label(item.type)).filter(Boolean)
-  const tractionMotors = itemsOf(powertrain.tractionMotors).map((item) => [label(item.role), label(item.position), item.quantity ? `x${item.quantity}` : ''].filter(Boolean).join(' · ')).filter(Boolean)
+  const tractionMotors = itemsOf(powertrain.tractionMotors).map((item) => [label(item.role), label(item.position), item.quantity ? `x${formatNumber(String(item.quantity))}` : ''].filter(Boolean).join(' · ')).filter(Boolean)
   const acCharging = recordOf(charging.acCharging)
   const dcCharging = recordOf(charging.dcCharging)
   const ports = itemsOf(charging.ports).map((item) => [label(item.currentType), label(item.connector), label(item.location)].filter(Boolean).join(' · ')).filter(Boolean)
@@ -61,8 +61,8 @@ const configurationRows = computed(() => {
   if (energyConverters.length) rows.push({ field: 'Convertidores', value: energyConverters.join(', ') })
   if (tractionMotors.length) rows.push({ field: 'Motores', value: tractionMotors.join(', ') })
   if (configuration.value.transmissionId) rows.push({ field: 'Transmisión', value: 'Incluida' })
-  if (acCharging.maxPowerKw !== undefined) rows.push({ field: 'Carga CA', value: `${acCharging.maxPowerKw} kW` })
-  if (dcCharging.maxPowerKw !== undefined) rows.push({ field: 'Carga CC', value: `${dcCharging.maxPowerKw} kW` })
+  if (acCharging.maxPowerKw !== undefined) rows.push({ field: 'Carga CA', value: `${formatNumber(String(acCharging.maxPowerKw))} kW` })
+  if (dcCharging.maxPowerKw !== undefined) rows.push({ field: 'Carga CC', value: `${formatNumber(String(dcCharging.maxPowerKw))} kW` })
   if (ports.length) rows.push({ field: 'Puertos', value: ports.join(', ') })
 
   return rows
@@ -188,13 +188,13 @@ function fieldLabel(value: string) {
 
 function measurement(value: unknown) {
   const item = recordOf(value)
-  return item.value !== undefined ? `${item.value} ${item.unit ?? ''}`.trim() : formatValue(value)
+  return item.value !== undefined ? `${formatNumber(String(item.value))} ${item.unit ?? ''}`.trim() : formatValue(value)
 }
 
 function performanceRows(value: unknown) {
   return itemsOf(value).map((item) => ({
     label: label(item.metric) || 'Resultado',
-    value: `${item.value ?? '—'} ${label(item.unit) || item.unit || ''}`.trim(),
+    value: `${formatNumber(String(item.value)) || '—'} ${label(item.unit) || item.unit || ''}`.trim(),
     detail: [label(item.cycle), label(item.scope)].filter(Boolean).join(' · ')
   }))
 }

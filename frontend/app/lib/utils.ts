@@ -12,3 +12,10 @@ export function countryFlag(country: string | null | undefined) {
 
   return String.fromCodePoint(...[...code].map((letter) => 127397 + letter.charCodeAt(0)))
 }
+
+export function formatNumber(value: number | string | null | undefined) {
+  const number = typeof value === 'number' ? value : Number(value)
+  if (!Number.isFinite(number)) return ''
+
+  return new Intl.NumberFormat('es-MX', { maximumFractionDigits: 2 }).format(number)
+}

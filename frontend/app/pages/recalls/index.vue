@@ -80,7 +80,10 @@ function formatDate(value: string | null) {
               <p v-if="recall.description">{{ recall.description }}</p>
               <dl class="grid gap-4 sm:grid-cols-2">
                 <div v-if="recall.risk" class="space-y-1"><dt class="font-medium">Riesgo</dt><dd class="text-muted-foreground">{{ recall.risk }}</dd></div>
+                <div v-if="recall.riskConsequence" class="space-y-1"><dt class="font-medium">Consecuencia del riesgo</dt><dd class="text-muted-foreground">{{ recall.riskConsequence }}</dd></div>
                 <div v-if="recall.countermeasure" class="space-y-1"><dt class="font-medium">Medida correctiva</dt><dd class="text-muted-foreground">{{ recall.countermeasure }}</dd></div>
+                <div v-if="recall.actions" class="space-y-1"><dt class="font-medium">Acciones requeridas</dt><dd class="text-muted-foreground">{{ recall.actions }}</dd></div>
+                <div v-if="recall.damageReport" class="space-y-1"><dt class="font-medium">Reporte de daños</dt><dd class="text-muted-foreground">{{ recall.damageReport }}</dd></div>
                 <div v-if="recall.totalUnitsAffected !== null" class="space-y-1"><dt class="font-medium">Unidades afectadas</dt><dd class="text-muted-foreground">{{ recall.totalUnitsAffected.toLocaleString('es-MX') }}</dd></div>
                 <div v-if="recall.affectedModels.length" class="space-y-1"><dt class="font-medium">Modelos afectados</dt><dd class="flex flex-wrap gap-2"><NuxtLink v-for="model in recall.affectedModels" :key="model.id" :to="`/models/${model.id}`" class="underline underline-offset-4">{{ model.name }} {{ model.year }}</NuxtLink></dd></div>
               </dl>
