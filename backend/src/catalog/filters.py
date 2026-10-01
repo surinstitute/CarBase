@@ -16,6 +16,7 @@ POWERTRAIN_TYPE_ARCHITECTURES = {
         PowerTrainArchitecture.POWER_SPLIT_HYBRID,
         PowerTrainArchitecture.PHEV,
     ),
+    "plug_in_hybrid": (PowerTrainArchitecture.PHEV,),
     "electric": (
         PowerTrainArchitecture.BEV,
         PowerTrainArchitecture.FCEV,

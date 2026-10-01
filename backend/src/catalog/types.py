@@ -99,6 +99,23 @@ class BodyStyle(models.TextChoices):
     OTHER = "other", "Other"
 
 
+class BrakeType(models.TextChoices):
+    DISC = "disc", "Disc"
+    VENTILATED_DISC = "ventilated_disc", "Ventilated Disc"
+    DRUM = "drum", "Drum"
+    OTHER = "other", "Other"
+
+
+class SuspensionType(models.TextChoices):
+    MACPHERSON = "macpherson", "MacPherson"
+    DOUBLE_WISHBONE = "double_wishbone", "Double Wishbone"
+    MULTILINK = "multilink", "Multilink"
+    TORSION_BEAM = "torsion_beam", "Torsion Beam"
+    SEMI_RIGID_AXLE = "semi_rigid_axle", "Semi-rigid Axle"
+    SOLID_AXLE = "solid_axle", "Solid Axle"
+    OTHER = "other", "Other"
+
+
 class SafetyRatingProgram(models.TextChoices):
     LATIN_NCAP = "latin_ncap", "Latin NCAP"
     EURO_NCAP = "euro_ncap", "Euro NCAP"

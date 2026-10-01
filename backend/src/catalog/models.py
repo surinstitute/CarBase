@@ -19,6 +19,7 @@ from catalog.types import (
     ApprovalDomain,
     ApprovalStatus,
     BatteryChemistry,
+    BrakeType,
     BodyStyle,
     ChargingConnector,
     ChargingCurrentType,
@@ -42,6 +43,7 @@ from catalog.types import (
     SafetyRatingProgram,
     SourceDocumentType,
     SpeedUnit,
+    SuspensionType,
     TestCycle,
     TorqueMetric,
     TorqueUnit,
@@ -518,8 +520,35 @@ class Vehicle(models.Model):
     height_mm = models.FloatField(null=True, blank=True)
     wheelbase_mm = models.FloatField(null=True, blank=True)
     curb_weight_kg = models.FloatField(null=True, blank=True)
+    trunk_capacity_liters = models.FloatField(null=True, blank=True)
     door_count = models.PositiveIntegerField(null=True, blank=True)
     passenger_capacity = models.PositiveIntegerField(null=True, blank=True)
+    front_brakes = models.CharField(
+        max_length=32, choices=BrakeType.choices, blank=True
+    )
+    rear_brakes = models.CharField(
+        max_length=32, choices=BrakeType.choices, blank=True
+    )
+    front_suspension = models.CharField(
+        max_length=32, choices=SuspensionType.choices, blank=True
+    )
+    rear_suspension = models.CharField(
+        max_length=32, choices=SuspensionType.choices, blank=True
+    )
+    front_tire_width_mm = models.PositiveSmallIntegerField(null=True, blank=True)
+    front_tire_aspect_ratio = models.PositiveSmallIntegerField(
+        null=True, blank=True, validators=[MaxValueValidator(100)]
+    )
+    front_rim_diameter_inches = models.PositiveSmallIntegerField(
+        null=True, blank=True
+    )
+    rear_tire_width_mm = models.PositiveSmallIntegerField(null=True, blank=True)
+    rear_tire_aspect_ratio = models.PositiveSmallIntegerField(
+        null=True, blank=True, validators=[MaxValueValidator(100)]
+    )
+    rear_rim_diameter_inches = models.PositiveSmallIntegerField(
+        null=True, blank=True
+    )
     objects = ParadeDBManager()
 
     class Meta:
@@ -539,6 +568,23 @@ class Vehicle(models.Model):
         if self.powertrain:
             details.append(self.powertrain.name)
         return " - ".join(details)
+
+    def clean(self):
+        super().clean()
+        for axle in ("front", "rear"):
+            fields = (
+                f"{axle}_tire_width_mm",
+                f"{axle}_tire_aspect_ratio",
+                f"{axle}_rim_diameter_inches",
+            )
+            populated = [getattr(self, field) is not None for field in fields]
+            if any(populated) and not all(populated):
+                raise ValidationError(
+                    {
+                        field: "La medida de llanta requiere ancho, perfil y diámetro."
+                        for field in fields
+                    }
+                )
 
 
 class VehicleMonthlySales(models.Model):

@@ -586,13 +586,47 @@ class VehicleSerializer(serializers.ModelSerializer):
         if curb_weight:
             specs["curbWeight"] = curb_weight
 
+        trunk_capacity = self._measurement(obj.trunk_capacity_liters, "L")
+        if trunk_capacity:
+            specs["trunkCapacity"] = trunk_capacity
+
         if obj.door_count is not None:
             specs["doorCount"] = obj.door_count
 
         if obj.passenger_capacity is not None:
             specs["passengerCapacity"] = obj.passenger_capacity
 
+        for api_field, model_field in (
+            ("frontBrakes", "front_brakes"),
+            ("rearBrakes", "rear_brakes"),
+            ("frontSuspension", "front_suspension"),
+            ("rearSuspension", "rear_suspension"),
+        ):
+            value = getattr(obj, model_field)
+            if value:
+                specs[api_field] = value
+
+        front_tire = self._tire_size(obj, "front")
+        if front_tire:
+            specs["frontTire"] = front_tire
+
+        rear_tire = self._tire_size(obj, "rear")
+        if rear_tire:
+            specs["rearTire"] = rear_tire
+
         return specs
+
+    def _tire_size(self, obj, axle):
+        width = getattr(obj, f"{axle}_tire_width_mm")
+        aspect_ratio = getattr(obj, f"{axle}_tire_aspect_ratio")
+        rim_diameter = getattr(obj, f"{axle}_rim_diameter_inches")
+        if width is None:
+            return None
+        return {
+            "widthMm": width,
+            "aspectRatio": aspect_ratio,
+            "rimDiameterInches": rim_diameter,
+        }
 
     def _measurement(self, value, unit):
         if value is None:
