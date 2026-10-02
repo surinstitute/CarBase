@@ -228,6 +228,7 @@ class ModelImagePlacement(models.Model):
 class Make(models.Model):
     makeId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField(blank=True)
     website = models.URLField(blank=True)
     phone = models.CharField(max_length=50, blank=True)
@@ -253,6 +254,7 @@ class Make(models.Model):
 class Group(models.Model):
     groupId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField(blank=True)
     country = CountryField(null=True, blank=True)
 
