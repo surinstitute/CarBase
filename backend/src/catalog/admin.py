@@ -383,7 +383,7 @@ class SafetyPackageInline(admin.StackedInline):
     max_num = 1
 
 
-class ModelSafetyRatingInline(admin.TabularInline):
+class ModelSafetyRatingInline(admin.StackedInline):
     model = ModelSafetyRating
     extra = 0
 
