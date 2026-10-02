@@ -1,0 +1,4710 @@
+[
+{
+  "model": "catalog.basemodel",
+  "pk": "0115c75d-ef47-440d-8fe8-b3fab5cecb59",
+  "fields": {
+    "model_generation": "60f71b6d-61e4-4759-aa75-f4a16cecd479",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.796Z",
+    "updated_at": "2026-10-03T08:19:38.796Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "014e2f95-482a-4280-992c-6b2e1afca3e9",
+  "fields": {
+    "model_generation": "88f0aeab-ad8e-4846-b3e5-18253e9330df",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.213Z",
+    "updated_at": "2026-10-03T08:19:39.213Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "01cc417a-d2a9-4905-8c1b-0b2bd301fb78",
+  "fields": {
+    "model_generation": "4c356e3b-21c1-4d7d-8d07-e5d34a258c48",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.678Z",
+    "updated_at": "2026-10-03T08:19:38.678Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0322e9ea-9ce7-4e2b-8e82-af0214174f57",
+  "fields": {
+    "model_generation": "6367324b-9779-4e53-9808-ce1829e69ce6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.813Z",
+    "updated_at": "2026-10-03T08:19:38.813Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "04b46c0c-9654-4c33-a720-b3685c35d0aa",
+  "fields": {
+    "model_generation": "c19839f9-4392-4465-9e40-60c6424e2bf9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.690Z",
+    "updated_at": "2026-10-03T08:19:39.690Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "04d20da1-58fa-4fd5-b964-3f27dee4ac56",
+  "fields": {
+    "model_generation": "d1396a3e-3e6b-4cff-8505-65204d4000fc",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.790Z",
+    "updated_at": "2026-10-03T08:19:39.790Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "04d576ba-9e44-4475-83db-8c598b1a3c71",
+  "fields": {
+    "model_generation": "87ba31e9-6da6-4b33-a42f-f79e60f353c2",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.187Z",
+    "updated_at": "2026-10-03T08:19:39.187Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0519e95a-1c6a-4c81-aef1-a322ff6c4676",
+  "fields": {
+    "model_generation": "454ed782-5748-473c-ae68-3e7bf702d4a7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.596Z",
+    "updated_at": "2026-10-03T08:19:38.596Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "05b07694-81be-4571-aa9b-29ff140a65dc",
+  "fields": {
+    "model_generation": "a9fe4a15-cf83-4ec7-9754-bd73b2c5ec67",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.493Z",
+    "updated_at": "2026-10-03T08:19:39.493Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0682d37d-c2f2-4fa9-8450-12ef01794053",
+  "fields": {
+    "model_generation": "159cb379-4313-4a77-85b3-b2f9243351d7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.205Z",
+    "updated_at": "2026-10-03T08:19:38.205Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0693ee18-7cec-4d77-993e-96168e835bf6",
+  "fields": {
+    "model_generation": "0bf60f18-fdb2-47fa-9a3c-599223c1ee42",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.128Z",
+    "updated_at": "2026-10-03T08:19:38.128Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "07ddba67-4896-429b-b89a-cc889eb741d2",
+  "fields": {
+    "model_generation": "3fd42f7a-25af-483c-a475-87cc961f9b50",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.544Z",
+    "updated_at": "2026-10-03T08:19:38.544Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "08ca8258-8295-4c8d-96b4-8261cd291fe8",
+  "fields": {
+    "model_generation": "f6fea755-e10f-4770-9e0f-0b527bd8227c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.083Z",
+    "updated_at": "2026-10-03T08:19:40.083Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0a3b542d-ae1e-4cd6-b0dc-dd3e6830f157",
+  "fields": {
+    "model_generation": "694def78-561e-4189-abd1-283313792984",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.884Z",
+    "updated_at": "2026-10-03T08:19:38.884Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0ab54ace-85bf-47e7-a9ff-371bbbc5661f",
+  "fields": {
+    "model_generation": "677d53a1-e2a7-4fae-9908-a862f1bf9cd9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.870Z",
+    "updated_at": "2026-10-03T08:19:38.870Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0b179cd3-25bd-4ac8-8acf-5c334823d403",
+  "fields": {
+    "model_generation": "9c22bbf2-44db-4459-8ff0-473b0fda8e75",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.383Z",
+    "updated_at": "2026-10-03T08:19:39.383Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0dca8c43-a418-4bcb-9f0d-1b3b5fc12525",
+  "fields": {
+    "model_generation": "0aae3b90-85b1-4e48-b6d4-4519d446dbf4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.103Z",
+    "updated_at": "2026-10-03T08:19:38.103Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0df3bcac-1aa9-40f4-b92d-de62f04caa0b",
+  "fields": {
+    "model_generation": "6bdb7239-b1e8-488b-b039-6f2ee177dc87",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.904Z",
+    "updated_at": "2026-10-03T08:19:38.904Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0e30ad7f-de17-4b22-91fc-a93f74813e5b",
+  "fields": {
+    "model_generation": "6404d8d4-ac6e-4255-977b-32454c22bd37",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.828Z",
+    "updated_at": "2026-10-03T08:19:38.828Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0e31c0cf-45a0-4444-99e7-ef14ec85ec75",
+  "fields": {
+    "model_generation": "f92ee422-7447-4dce-b741-8103cd0e4ab6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.092Z",
+    "updated_at": "2026-10-03T08:19:40.092Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0f6895fa-32ae-44b7-87b1-ec4b9d54340f",
+  "fields": {
+    "model_generation": "55e12763-7a18-4878-9045-f603dad9e4c1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.735Z",
+    "updated_at": "2026-10-03T08:19:38.735Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "0fdeb3ce-767d-438b-ac4d-3842f106601e",
+  "fields": {
+    "model_generation": "20ebb1c4-2ab0-4fc4-a7d1-e908dad5dc39",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.293Z",
+    "updated_at": "2026-10-03T08:19:38.293Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "10991ede-3f92-4af9-b5aa-6ba927f710fb",
+  "fields": {
+    "model_generation": "fc82f6be-008d-4949-9c13-efbda2a5eb7f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.129Z",
+    "updated_at": "2026-10-03T08:19:40.129Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "11657e65-4acc-43cb-8eb4-dfb86c67465b",
+  "fields": {
+    "model_generation": "43d52ad5-9555-49a2-b3fc-36b4c0a1545a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.575Z",
+    "updated_at": "2026-10-03T08:19:38.575Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "11f5e20a-fc80-43d7-bf82-045e342ebd05",
+  "fields": {
+    "model_generation": "20c2844e-03f6-44b2-9783-05c124630c46",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.289Z",
+    "updated_at": "2026-10-03T08:19:38.290Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "11fe44bd-5160-4369-8f1c-fc4ce0624286",
+  "fields": {
+    "model_generation": "2fa7d40d-e491-4bb0-b2b1-35bd9cb1a913",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.451Z",
+    "updated_at": "2026-10-03T08:19:38.451Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1220a8f2-6e82-4e02-8e94-f143b3825167",
+  "fields": {
+    "model_generation": "bbac3f17-1dbd-40fa-9dfa-8b9046b02272",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.632Z",
+    "updated_at": "2026-10-03T08:19:39.632Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "12763ce2-54f9-4507-8ab6-c7092bb70cf7",
+  "fields": {
+    "model_generation": "86696bd0-97b3-4498-9e90-fcc19de58199",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.172Z",
+    "updated_at": "2026-10-03T08:19:39.172Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "14859b41-0ef2-4cd8-bcb4-d17308f4ef25",
+  "fields": {
+    "model_generation": "c0e2b4c8-529f-4c8e-b61b-38eadcc5f448",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.687Z",
+    "updated_at": "2026-10-03T08:19:39.687Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1566b8b0-8ee1-47d9-9179-ca80b7238be6",
+  "fields": {
+    "model_generation": "02726b8e-0bb0-49c7-9133-14fef85c3ddc",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.041Z",
+    "updated_at": "2026-10-03T08:19:38.041Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "15c544dd-f6a0-4979-8b13-be8916971197",
+  "fields": {
+    "model_generation": "8acfe45a-791f-427e-b7c0-360f5256eb5f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.227Z",
+    "updated_at": "2026-10-03T08:19:39.227Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "15cc567b-729e-4486-883b-02ba3863e97b",
+  "fields": {
+    "model_generation": "9ce71558-a6ff-499d-b797-bc715b27b7de",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.393Z",
+    "updated_at": "2026-10-03T08:19:39.393Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1648bcd4-33fd-49fc-b9ea-408ee7b2994a",
+  "fields": {
+    "model_generation": "8c48ab18-4a90-4146-80b7-ecce201fbc8b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.238Z",
+    "updated_at": "2026-10-03T08:19:39.238Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "16d8817a-a363-4501-9483-7f71d5bc84a2",
+  "fields": {
+    "model_generation": "1f077dbb-71a8-4ec1-b0f8-b122fb6e6c00",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.267Z",
+    "updated_at": "2026-10-03T08:19:38.267Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "17b35323-0b6a-4187-8582-bb349a77e60d",
+  "fields": {
+    "model_generation": "93d0a6f9-cc98-4b05-8ae2-2a11b53bf3e9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.319Z",
+    "updated_at": "2026-10-03T08:19:39.319Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "17f0ee48-cbd3-4556-830f-991db20f98ff",
+  "fields": {
+    "model_generation": "903f445e-9646-4c65-8430-e6d854c21e1a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.269Z",
+    "updated_at": "2026-10-03T08:19:39.269Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1908361d-28e5-4b32-9ebc-0055654501ed",
+  "fields": {
+    "model_generation": "6fd15ef2-6f74-4e1e-a74f-a1ef027354f8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.942Z",
+    "updated_at": "2026-10-03T08:19:38.942Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1958e715-70d3-4185-b080-966e384bace8",
+  "fields": {
+    "model_generation": "429cc327-e9e0-4697-9324-85ed7590bf0f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.565Z",
+    "updated_at": "2026-10-03T08:19:38.565Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1a308950-ee48-4f7f-b34b-9e6b97ce10f8",
+  "fields": {
+    "model_generation": "c6782a37-f1e8-4fd8-87d2-96457590f033",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.716Z",
+    "updated_at": "2026-10-03T08:19:39.716Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1a7c8374-c8d3-4016-b448-3980eee5c741",
+  "fields": {
+    "model_generation": "0938c256-c0e5-4641-962d-b678d8435698",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.089Z",
+    "updated_at": "2026-10-03T08:19:38.089Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1bc14c14-5e01-41bd-8466-619946a3f2e4",
+  "fields": {
+    "model_generation": "7bcb983e-5e09-4d24-96dc-a2ec91c12bd3",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.073Z",
+    "updated_at": "2026-10-03T08:19:39.073Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1c7cef0f-c09d-428d-8997-77fd0fadc901",
+  "fields": {
+    "model_generation": "cdcec56d-80a3-43e1-a28d-3bfb71fbdedb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.779Z",
+    "updated_at": "2026-10-03T08:19:39.779Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1cec4400-e6f0-4fd2-8c31-6c9bf30a4c26",
+  "fields": {
+    "model_generation": "0b4ba816-bd56-4cd9-9853-eb7c533386ca",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.117Z",
+    "updated_at": "2026-10-03T08:19:38.117Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1eef48a0-8540-4190-8cfa-438034ccb850",
+  "fields": {
+    "model_generation": "bcf81911-214b-42af-92d8-6f7d0803cbd1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.642Z",
+    "updated_at": "2026-10-03T08:19:39.642Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1f1cf43e-e405-4a12-a468-f45588492af2",
+  "fields": {
+    "model_generation": "e593b6c9-df49-4d59-95dd-049ec223318d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.966Z",
+    "updated_at": "2026-10-03T08:19:39.966Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1f392e31-3489-42d3-8b93-0fade143b594",
+  "fields": {
+    "model_generation": "91fa25a7-83fc-49c8-9372-b2baa4d7e887",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.304Z",
+    "updated_at": "2026-10-03T08:19:39.304Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1f6db15c-809d-47ea-9234-222c8d08b622",
+  "fields": {
+    "model_generation": "99e8dfca-972c-48e7-992e-26c1fdfee23c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.373Z",
+    "updated_at": "2026-10-03T08:19:39.373Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1f9eb4a9-b995-445f-a207-c2b09a0c8974",
+  "fields": {
+    "model_generation": "ae305563-747d-46c9-b9bb-59395e38adcd",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.544Z",
+    "updated_at": "2026-10-03T08:19:39.544Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1fa56bc3-278b-401b-82b7-7f04bed45d58",
+  "fields": {
+    "model_generation": "7b6da1ef-6f2b-472e-8f24-1cc66bc89471",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.064Z",
+    "updated_at": "2026-10-03T08:19:39.064Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "1fb11741-1524-44e5-95bc-f1ab2376aa34",
+  "fields": {
+    "model_generation": "598c3827-fa12-4b3d-9eca-387877176cec",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.745Z",
+    "updated_at": "2026-10-03T08:19:38.745Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "22049360-dca7-476d-81c0-9526d856973c",
+  "fields": {
+    "model_generation": "5222c8a2-b24b-4060-9cc5-cd080fbc9db9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.721Z",
+    "updated_at": "2026-10-03T08:19:38.721Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "220f5617-a108-4378-8360-97f819ad9f54",
+  "fields": {
+    "model_generation": "8f282358-0518-4f37-9627-73cb146c1bba",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.260Z",
+    "updated_at": "2026-10-03T08:19:39.260Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "23c2da54-f911-49bd-b7f8-55b09a1fff86",
+  "fields": {
+    "model_generation": "c76f81ac-36c2-4f43-9398-a115e3a46fe8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.721Z",
+    "updated_at": "2026-10-03T08:19:39.721Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "255ca1bd-7029-44a3-b456-0c952c27f39a",
+  "fields": {
+    "model_generation": "a3a14aa9-d95e-414c-a7c5-620334678d17",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.446Z",
+    "updated_at": "2026-10-03T08:19:39.446Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "26303fef-e365-49e3-8c8f-a0eeca72bbf7",
+  "fields": {
+    "model_generation": "b13b8ccd-95c3-4c53-a8ca-0bfebd4bb862",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.555Z",
+    "updated_at": "2026-10-03T08:19:39.555Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "269b69cb-0897-46f3-90af-1a7240a9cebc",
+  "fields": {
+    "model_generation": "4a0302f8-ce90-4a21-b75c-c81bfbc35532",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.653Z",
+    "updated_at": "2026-10-03T08:19:38.653Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "26fab143-0fdb-40b3-8c68-4ce62b376795",
+  "fields": {
+    "model_generation": "d5788991-f18c-4c7d-b48a-301e1f6f9025",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.820Z",
+    "updated_at": "2026-10-03T08:19:39.820Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "27a8a4d6-d06d-48c0-998e-88d4bc757d27",
+  "fields": {
+    "model_generation": "79cb79fe-b97c-468d-b118-5e47c194c0e6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.040Z",
+    "updated_at": "2026-10-03T08:19:39.040Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "27e8e5bb-3db5-4f02-9c41-4287a20662b3",
+  "fields": {
+    "model_generation": "a78c9134-48c1-4c3b-817d-4ee63f527bf5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.476Z",
+    "updated_at": "2026-10-03T08:19:39.476Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "28e540b6-0c76-429f-bc25-77880b003eea",
+  "fields": {
+    "model_generation": "8d124d96-3083-4387-8852-179c8b6349a7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.244Z",
+    "updated_at": "2026-10-03T08:19:39.244Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "291ace76-0e20-4740-9ad4-c84d3ea91956",
+  "fields": {
+    "model_generation": "a2932a84-7b43-46f4-b6b2-e892054952ad",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.435Z",
+    "updated_at": "2026-10-03T08:19:39.435Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2920487b-d116-47ae-b3f2-fe6f165883c8",
+  "fields": {
+    "model_generation": "f9c3579e-30bd-4c4f-8d86-e235788160e8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.104Z",
+    "updated_at": "2026-10-03T08:19:40.104Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "29514ae8-0a3f-4747-9e4f-ca15d1d306c8",
+  "fields": {
+    "model_generation": "97be856e-78eb-4488-8ad6-c3ce787c1a83",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.346Z",
+    "updated_at": "2026-10-03T08:19:39.346Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "29de87f9-682e-44f4-b8c4-fb0155bb140c",
+  "fields": {
+    "model_generation": "448e2c45-9429-4e73-853d-1471d3a8d702",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.580Z",
+    "updated_at": "2026-10-03T08:19:38.580Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2b4a7b0c-3754-439b-80ce-d13e335094fa",
+  "fields": {
+    "model_generation": "9888f8c2-66a4-4855-87ee-964e3749d59a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.355Z",
+    "updated_at": "2026-10-03T08:19:39.355Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2b89f857-32d2-47a6-a998-84f8da5dc9a0",
+  "fields": {
+    "model_generation": "c84014a5-6c89-4420-807f-9cf8b31b3ac2",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.741Z",
+    "updated_at": "2026-10-03T08:19:39.741Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2b8b70be-c842-491c-bc81-735c3b9727eb",
+  "fields": {
+    "model_generation": "27f332f5-55f4-4257-bafb-9519b5d95580",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.360Z",
+    "updated_at": "2026-10-03T08:19:38.360Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2d8191c7-6bd7-4063-890d-88294f1bfc25",
+  "fields": {
+    "model_generation": "e24ad59a-9dd6-4fca-87bb-19d30f8fbfbd",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.937Z",
+    "updated_at": "2026-10-03T08:19:39.937Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2db86220-046d-47cd-9e57-8d3956771595",
+  "fields": {
+    "model_generation": "75886185-245b-490a-a43c-f965b5862f21",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.994Z",
+    "updated_at": "2026-10-03T08:19:38.994Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2e048d2f-e0e6-4bb0-8690-7b3cbfa815e8",
+  "fields": {
+    "model_generation": "7c5ee81e-6be1-4683-a0a1-9b1296c722c5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.078Z",
+    "updated_at": "2026-10-03T08:19:39.078Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2e580879-6191-4685-badb-68cd71ce50cb",
+  "fields": {
+    "model_generation": "34a62083-8597-4a4f-b151-0ad41138d335",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.500Z",
+    "updated_at": "2026-10-03T08:19:38.500Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "2e58e5cd-abb1-4abe-bc96-75fe66113320",
+  "fields": {
+    "model_generation": "0bcf64a1-8c02-4099-8b13-47d98cd66fbf",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.122Z",
+    "updated_at": "2026-10-03T08:19:38.122Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3042095e-4850-49eb-b4ba-64fe5c97c519",
+  "fields": {
+    "model_generation": "cb43f8b2-dd29-41a5-b5d4-61208b326822",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.760Z",
+    "updated_at": "2026-10-03T08:19:39.760Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "313967ed-b415-4405-9adc-bbd426097bc7",
+  "fields": {
+    "model_generation": "0dd02db8-98d1-4418-b2a1-1574b88b23db",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.148Z",
+    "updated_at": "2026-10-03T08:19:38.148Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3142f844-8be6-4555-90b0-4eeffb7c9a71",
+  "fields": {
+    "model_generation": "14591cd8-e07d-4f5c-8c7d-d721d2d1d75b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.182Z",
+    "updated_at": "2026-10-03T08:19:38.182Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "31b9fd1c-62df-4ee3-bfa7-1629470c004f",
+  "fields": {
+    "model_generation": "82760477-7941-4236-adfe-3bef57ba7c09",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.143Z",
+    "updated_at": "2026-10-03T08:19:39.143Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "31c27b9c-f0ef-4b6c-8d3a-b1356f5aa098",
+  "fields": {
+    "model_generation": "22ca3e28-1c88-448d-b16f-996b052bcaa9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.317Z",
+    "updated_at": "2026-10-03T08:19:38.317Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3214bc01-c0aa-4bcd-aaf9-13eff85133b5",
+  "fields": {
+    "model_generation": "1885829c-c266-4c8e-a623-11171974075f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.227Z",
+    "updated_at": "2026-10-03T08:19:38.227Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "324b06a0-886f-4a17-816e-1f95efe73583",
+  "fields": {
+    "model_generation": "84e85e1c-8fac-44a5-90da-e37b16d027cf",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.167Z",
+    "updated_at": "2026-10-03T08:19:39.167Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "32a87e7d-2680-4a3c-90c5-d597eb1db727",
+  "fields": {
+    "model_generation": "4cea1713-0d7d-4bec-a8d7-aeb7dab2b91c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.682Z",
+    "updated_at": "2026-10-03T08:19:38.682Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3346c0b4-3eae-4fbe-8f90-e0386713ab21",
+  "fields": {
+    "model_generation": "1ba97bc3-e441-4698-807c-4849260a16cc",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.249Z",
+    "updated_at": "2026-10-03T08:19:38.249Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "356e0527-b6c2-410a-8831-a4722fd19a37",
+  "fields": {
+    "model_generation": "30585eb7-150c-4f38-9a94-5979f4b80711",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.457Z",
+    "updated_at": "2026-10-03T08:19:38.457Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "35abbbd8-2e0f-4eb9-b91f-c05b979ea992",
+  "fields": {
+    "model_generation": "dae45f5b-c66e-42e2-bc35-f062888e50cd",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.875Z",
+    "updated_at": "2026-10-03T08:19:39.875Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3665256f-1a62-40c3-a57f-f4bad1623f2d",
+  "fields": {
+    "model_generation": "0d605b3b-1714-4f8e-92e2-3961fd583e98",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.143Z",
+    "updated_at": "2026-10-03T08:19:38.143Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "37b72c4c-db23-4d75-b9ca-8db5e63442b8",
+  "fields": {
+    "model_generation": "b5f61d6b-de81-49de-9063-4a418a5dd89f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.597Z",
+    "updated_at": "2026-10-03T08:19:39.597Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "38458ddb-1abc-4310-9311-4b07470dfe63",
+  "fields": {
+    "model_generation": "c04ecdbf-5b67-414e-9dff-d543c0c0027d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.682Z",
+    "updated_at": "2026-10-03T08:19:39.682Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "38f38853-63ab-41f6-b9e7-aef807e614a5",
+  "fields": {
+    "model_generation": "414cd94c-c205-4e9c-a4d0-9ee79fc09485",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.549Z",
+    "updated_at": "2026-10-03T08:19:38.549Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "39f4e64f-d3f8-4971-92f1-5f3c62892ffa",
+  "fields": {
+    "model_generation": "f6a34d86-a64e-4eb9-b9fa-3c2dbc030618",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.079Z",
+    "updated_at": "2026-10-03T08:19:40.079Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3a38979c-38c2-4e4c-af59-046dd03c8414",
+  "fields": {
+    "model_generation": "14e47a6d-3396-4200-af60-0c158878b7e5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.188Z",
+    "updated_at": "2026-10-03T08:19:38.188Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3aceb0f9-743d-4171-9e7d-1d0f8a662921",
+  "fields": {
+    "model_generation": "52275fc1-44b9-48cd-9248-6b149a9c0229",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.725Z",
+    "updated_at": "2026-10-03T08:19:38.725Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3ba43ea6-b599-4e8d-80ee-95929cbe2b0e",
+  "fields": {
+    "model_generation": "d5aa9682-4a44-40e8-8262-8efe891069d8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.832Z",
+    "updated_at": "2026-10-03T08:19:39.832Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3be56a99-9b67-43e5-a180-4d787847ef8d",
+  "fields": {
+    "model_generation": "d3cb38ba-ea09-4933-856e-5d24c7803e3e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.808Z",
+    "updated_at": "2026-10-03T08:19:39.808Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3c597134-49ff-4c39-a7b5-457ccdce9280",
+  "fields": {
+    "model_generation": "074d8aa7-4e47-421c-8678-a234310d3df0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.073Z",
+    "updated_at": "2026-10-03T08:19:38.073Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3d562f54-69f8-45d4-8cb4-fe9f11897c67",
+  "fields": {
+    "model_generation": "337537fd-8331-46fb-b237-e7dc58f1562b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.477Z",
+    "updated_at": "2026-10-03T08:19:38.477Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3d9b589a-5b12-4899-a2be-001d6d59cb8e",
+  "fields": {
+    "model_generation": "7f436b51-1e3a-4133-840a-ef320a9b25f1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.118Z",
+    "updated_at": "2026-10-03T08:19:39.118Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3e7286c8-ffbf-4c31-87ed-2710fe7800f0",
+  "fields": {
+    "model_generation": "4738dda1-7f6b-4801-8ad4-c59c44edba4f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.611Z",
+    "updated_at": "2026-10-03T08:19:38.611Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "3e7e625f-e1dd-4299-8b55-d2fe71cd5488",
+  "fields": {
+    "model_generation": "230306ff-aabb-4f00-9f23-85d32d17da75",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.322Z",
+    "updated_at": "2026-10-03T08:19:38.322Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4069fb93-0475-44e1-afcb-ed9bc9557a43",
+  "fields": {
+    "model_generation": "eb07e81e-9dbb-4125-9921-826ca32dc775",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.008Z",
+    "updated_at": "2026-10-03T08:19:40.008Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "407ec83d-9a2e-4765-81d3-208aaf4b0837",
+  "fields": {
+    "model_generation": "e5e770ba-ae51-4ad0-b56c-a9053f44b553",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.980Z",
+    "updated_at": "2026-10-03T08:19:39.981Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "40cfa4be-eff8-4094-8631-16ef8ff8e61d",
+  "fields": {
+    "model_generation": "27ccfaca-ffd9-47e6-a105-dad39b516545",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.350Z",
+    "updated_at": "2026-10-03T08:19:38.350Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "40f7c927-8d1b-45a0-8722-93ee21595bde",
+  "fields": {
+    "model_generation": "c4ba450b-a630-4ded-befe-38d62f6c1c4f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.705Z",
+    "updated_at": "2026-10-03T08:19:39.705Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "413f78a6-61ef-4b8c-91d3-3628f21ce208",
+  "fields": {
+    "model_generation": "71b5f5c1-63b0-4754-92b4-20eb49dc5341",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.955Z",
+    "updated_at": "2026-10-03T08:19:38.955Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "41959362-9e09-4bcc-a5ac-7f33cd546d94",
+  "fields": {
+    "model_generation": "04a591a7-009a-479a-9d2a-345d28ce2784",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.060Z",
+    "updated_at": "2026-10-03T08:19:38.060Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "42755241-c0f0-4fb5-b521-e8e50b036b6f",
+  "fields": {
+    "model_generation": "ba54c026-9716-4cb8-beab-9fc87b8825c2",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.620Z",
+    "updated_at": "2026-10-03T08:19:39.620Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "428eda6f-78d9-4174-8904-206259a27c86",
+  "fields": {
+    "model_generation": "ddd3562e-64c5-4c14-a84f-dca8c03cf05e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.904Z",
+    "updated_at": "2026-10-03T08:19:39.904Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "42b60a6e-75de-45f7-b156-fc26d237cd06",
+  "fields": {
+    "model_generation": "23475a27-78b9-449e-b94e-e0d6e1619d29",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.325Z",
+    "updated_at": "2026-10-03T08:19:38.325Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4417f0fa-90e1-4409-8b93-2d64e9f27120",
+  "fields": {
+    "model_generation": "4b65ba02-f03b-4320-b558-5e9d7f3d312f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.659Z",
+    "updated_at": "2026-10-03T08:19:38.659Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "448a9b1e-b7e8-4cb4-96f5-f31f6aea80cf",
+  "fields": {
+    "model_generation": "7dbe5bef-1e14-440c-9bd4-f813052d5817",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.098Z",
+    "updated_at": "2026-10-03T08:19:39.098Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "44a6fdce-94a8-4f99-aca8-aa5edf69a272",
+  "fields": {
+    "model_generation": "05525843-b97a-4927-adb0-af7bf27015c4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.068Z",
+    "updated_at": "2026-10-03T08:19:38.068Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4518cdb2-be29-481c-af14-4dc0e17e8959",
+  "fields": {
+    "model_generation": "9c85a175-ee4a-4810-9ce9-5d840330b532",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.387Z",
+    "updated_at": "2026-10-03T08:19:39.387Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "45341f3c-bedb-4ea1-bcdd-cdab14c4538f",
+  "fields": {
+    "model_generation": "09004d59-049e-4047-93ac-1b821ae391f3",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.085Z",
+    "updated_at": "2026-10-03T08:19:38.085Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4540b0d1-3bf5-4658-a15f-b73436cad4b9",
+  "fields": {
+    "model_generation": "90731713-67a7-42cf-ab4f-9c81fdd8f414",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.275Z",
+    "updated_at": "2026-10-03T08:19:39.275Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "474aece0-e644-4b6f-983f-690864622201",
+  "fields": {
+    "model_generation": "48fbd302-f323-4046-876a-6e179c3672ad",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.642Z",
+    "updated_at": "2026-10-03T08:19:38.642Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "47ca339c-0fb0-4468-901c-c84a010b482f",
+  "fields": {
+    "model_generation": "885b4157-1224-4031-bea1-b2a814a908ad",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.191Z",
+    "updated_at": "2026-10-03T08:19:39.191Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4804c4f5-49b8-4c19-b397-0253283e1820",
+  "fields": {
+    "model_generation": "db5bf839-2657-48ec-bdc0-a296e5e4ab59",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.881Z",
+    "updated_at": "2026-10-03T08:19:39.881Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "49183f5e-f03d-4b17-a1b2-638b6c05b523",
+  "fields": {
+    "model_generation": "bccf9302-37dc-490c-a046-a5be503bc642",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.637Z",
+    "updated_at": "2026-10-03T08:19:39.637Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "49199568-ee65-4714-bb08-191d1448e1d0",
+  "fields": {
+    "model_generation": "ba98025b-c3b3-448f-ad9b-d55dcd80ef11",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.624Z",
+    "updated_at": "2026-10-03T08:19:39.624Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4939c684-0577-41d1-bfae-66d33fd81717",
+  "fields": {
+    "model_generation": "ba3e6361-cc36-42c8-88ad-f5882d580700",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.615Z",
+    "updated_at": "2026-10-03T08:19:39.615Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4a3df85a-0991-4c20-ab01-0111447643c4",
+  "fields": {
+    "model_generation": "4bb6aa6a-6bc4-4f35-acd5-cd88c76d3b5a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.664Z",
+    "updated_at": "2026-10-03T08:19:38.664Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4a5d5263-a18d-496c-8ce8-6753fa031b9d",
+  "fields": {
+    "model_generation": "885f239d-3bd5-4a59-ac0c-8c6c7ec1b294",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.196Z",
+    "updated_at": "2026-10-03T08:19:39.196Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4b251fd0-b54f-4240-80e4-f3010acd453c",
+  "fields": {
+    "model_generation": "33212f2d-f893-49f6-acd3-15762930dda6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.472Z",
+    "updated_at": "2026-10-03T08:19:38.472Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4bbfcd4b-d4ed-4c7a-94c8-73104d0bc1d3",
+  "fields": {
+    "model_generation": "1fcd80dd-5530-45fa-bc1f-b3c6eac9e306",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.281Z",
+    "updated_at": "2026-10-03T08:19:38.281Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4bcc9686-a650-4733-a4a2-8b1d45a639c5",
+  "fields": {
+    "model_generation": "4e9c371e-2f88-40f3-8545-0e11233c8b90",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.697Z",
+    "updated_at": "2026-10-03T08:19:38.697Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4c2c6975-5b8d-4f85-9e74-5f114883136b",
+  "fields": {
+    "model_generation": "483af465-06cd-4e80-bb61-08aa6edcf3d1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.632Z",
+    "updated_at": "2026-10-03T08:19:38.632Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4da54c71-4015-4d66-8165-5b0574acf425",
+  "fields": {
+    "model_generation": "becc8f01-15a5-4762-8f91-92d808ce6236",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.659Z",
+    "updated_at": "2026-10-03T08:19:39.659Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4dc78d74-9a31-4372-b9fc-cbe293e3e3e2",
+  "fields": {
+    "model_generation": "a74e1ea5-8180-4d00-82fb-494fc2316bc3",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.471Z",
+    "updated_at": "2026-10-03T08:19:39.471Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4e47e9ad-6e63-4cde-a2c4-0a305ae00578",
+  "fields": {
+    "model_generation": "e5b76723-c6eb-46e4-bcae-9dfc01987c44",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.971Z",
+    "updated_at": "2026-10-03T08:19:39.971Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "4f413644-5bf9-4a45-8f5c-2107f12b1494",
+  "fields": {
+    "model_generation": "6f0b67fb-f786-4eeb-919a-3cea6a879a0c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.938Z",
+    "updated_at": "2026-10-03T08:19:38.938Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5010b544-77fa-4e8e-a18c-4c1c326f1595",
+  "fields": {
+    "model_generation": "639aefaf-d7ab-4451-883a-8680fb6015b4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.819Z",
+    "updated_at": "2026-10-03T08:19:38.819Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "50a640bf-35eb-4f29-9524-03e431054dd7",
+  "fields": {
+    "model_generation": "95a3c55c-07f2-4d4f-a567-a037887d9017",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.329Z",
+    "updated_at": "2026-10-03T08:19:39.329Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "51666528-998c-4ab8-9cf0-147f68e55f6b",
+  "fields": {
+    "model_generation": "5334c376-84c0-485c-863d-f399a42af417",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.730Z",
+    "updated_at": "2026-10-03T08:19:38.730Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "520f3841-ee4d-40a6-8038-28805b5f61d8",
+  "fields": {
+    "model_generation": "3ea3f006-c14e-4a37-b8f3-b1171751939a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.526Z",
+    "updated_at": "2026-10-03T08:19:38.526Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5221d13a-98a4-447e-880b-ad6664e45605",
+  "fields": {
+    "model_generation": "b59394e9-f8f8-4e8f-b94b-a95fff0cf0f8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.586Z",
+    "updated_at": "2026-10-03T08:19:39.586Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "52401df7-1fb2-4d88-8055-2993834c507b",
+  "fields": {
+    "model_generation": "a90d6615-cefc-4369-8410-11fda5c4060e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.484Z",
+    "updated_at": "2026-10-03T08:19:39.484Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "532dbff3-55bd-419a-b585-c9e659cb59cd",
+  "fields": {
+    "model_generation": "3cac24e8-c806-4e1f-94bf-aa9bd02b23bb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.517Z",
+    "updated_at": "2026-10-03T08:19:38.517Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "53585629-dcba-4ff7-94a1-f4382ed7ea93",
+  "fields": {
+    "model_generation": "7966c501-781c-4efa-b53a-940225462970",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.035Z",
+    "updated_at": "2026-10-03T08:19:39.035Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "538533c0-66d8-4469-a0de-f435d94ada01",
+  "fields": {
+    "model_generation": "0b0f7df6-4f2f-452d-ab66-e35d3c98ecd8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.107Z",
+    "updated_at": "2026-10-03T08:19:38.107Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5484af6d-2ba2-4ba8-8f33-eced4fd06b91",
+  "fields": {
+    "model_generation": "e6c3f01d-5277-4386-a66c-8826d023913e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.996Z",
+    "updated_at": "2026-10-03T08:19:39.996Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "54bdb65e-5968-4400-a611-0e6dcd0943ae",
+  "fields": {
+    "model_generation": "83adc2b5-8825-482b-9381-e25bd712a4b1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.154Z",
+    "updated_at": "2026-10-03T08:19:39.154Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5512a2f6-3733-44ad-a5e5-d24eb0745266",
+  "fields": {
+    "model_generation": "e495b6b2-bfcf-47e8-a84c-0ea4447f996a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.956Z",
+    "updated_at": "2026-10-03T08:19:39.956Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "55f24c63-edae-4754-b0ac-2ea696359220",
+  "fields": {
+    "model_generation": "92f94e7c-bbdc-4747-9980-12a61dbe1dd4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.309Z",
+    "updated_at": "2026-10-03T08:19:39.309Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "561c5db2-820d-4e68-8286-fec0a1fc7975",
+  "fields": {
+    "model_generation": "3f04a44b-d152-48f3-a24c-bcdd3086e577",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.532Z",
+    "updated_at": "2026-10-03T08:19:38.532Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "56588088-c486-4626-83ed-f81b099bac52",
+  "fields": {
+    "model_generation": "6c30cfdf-4c84-42f9-96eb-17cea786f7f7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.909Z",
+    "updated_at": "2026-10-03T08:19:38.909Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "569a20be-d975-4e3e-81dc-d195327fa398",
+  "fields": {
+    "model_generation": "7cebdd08-2b8b-474f-be03-e406a7a28211",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.088Z",
+    "updated_at": "2026-10-03T08:19:39.088Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "56a00690-97ff-4569-b4f6-7c382a6f1b3b",
+  "fields": {
+    "model_generation": "acc1d194-cb11-421c-be21-fc5899b489e4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.517Z",
+    "updated_at": "2026-10-03T08:19:39.517Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "59116642-8b8c-4101-bd40-0ae1a86bdcb5",
+  "fields": {
+    "model_generation": "26b9e587-73a3-45b4-9bf5-c26b35febdf1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.340Z",
+    "updated_at": "2026-10-03T08:19:38.340Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5953a474-69fe-4d1d-9c1c-63b995b13e27",
+  "fields": {
+    "model_generation": "3f103a41-bc3f-4ee4-b4d1-9dc974ee5597",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.537Z",
+    "updated_at": "2026-10-03T08:19:38.537Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "59aff9a0-2e46-45e6-a6c7-0b778e9cf779",
+  "fields": {
+    "model_generation": "626a7fe4-3e8c-4c0f-aaa0-db29ce3f5b0c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.804Z",
+    "updated_at": "2026-10-03T08:19:38.804Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "59d5175d-2390-42e3-9cf9-3c31a6a8ed73",
+  "fields": {
+    "model_generation": "449d7c18-ab38-42fd-a50a-088891bf4395",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.586Z",
+    "updated_at": "2026-10-03T08:19:38.586Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "59fc0256-31fe-4546-a2a3-1ca8deec5c65",
+  "fields": {
+    "model_generation": "153d25fe-a59d-47c2-b86d-898a03b59f7b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.194Z",
+    "updated_at": "2026-10-03T08:19:38.194Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5a06fb74-d060-4289-8352-448b9d914b8e",
+  "fields": {
+    "model_generation": "b72325e8-6621-4f15-a4f4-ee7e0fdf9a05",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.605Z",
+    "updated_at": "2026-10-03T08:19:39.605Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5a8a165b-550a-4e58-9c6f-25cd2d23b517",
+  "fields": {
+    "model_generation": "eaa30c5a-28d1-4dcc-b0db-c65e29255540",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.004Z",
+    "updated_at": "2026-10-03T08:19:40.004Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5ab8e11a-2705-4a04-9833-18c881ea05ed",
+  "fields": {
+    "model_generation": "5f0e1e11-e85e-4590-98f7-6394c1954a55",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.785Z",
+    "updated_at": "2026-10-03T08:19:38.785Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5adf46ad-3e84-4d55-8f1d-8f3a606c2f19",
+  "fields": {
+    "model_generation": "db561e8d-5971-42d3-a3ec-9ee8b01e8eb9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.878Z",
+    "updated_at": "2026-10-03T08:19:39.878Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5c10ee8a-d1a6-47ee-95ba-b885043d18e3",
+  "fields": {
+    "model_generation": "4692e392-f5e0-4701-9543-1108858b7bfe",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.606Z",
+    "updated_at": "2026-10-03T08:19:38.606Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5c173717-c020-454b-97cd-336ed3780517",
+  "fields": {
+    "model_generation": "c8cc2744-54e5-47a9-ba6f-723be4081bab",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.746Z",
+    "updated_at": "2026-10-03T08:19:39.746Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5ca6e3ff-aada-42fd-a33e-7ed804f7749c",
+  "fields": {
+    "model_generation": "b6484dc1-d7aa-4089-a8c8-d95f251f08fb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.601Z",
+    "updated_at": "2026-10-03T08:19:39.601Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5cf0cc2b-5ee0-4c4e-9670-ac0454379e2d",
+  "fields": {
+    "model_generation": "ea91f166-cee5-4d8d-abf5-59a5a32ef845",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.000Z",
+    "updated_at": "2026-10-03T08:19:40.000Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5d3b9062-e627-4d1b-87e2-15287f8bd11b",
+  "fields": {
+    "model_generation": "c3a35e27-1918-4062-a3ce-a34123fd3e08",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.700Z",
+    "updated_at": "2026-10-03T08:19:39.700Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5e8de647-aad1-455f-a783-a85c3b969ebc",
+  "fields": {
+    "model_generation": "dff03dae-b1b4-4ae5-8b1b-5214da63bd0b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.925Z",
+    "updated_at": "2026-10-03T08:19:39.925Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5eca6e61-a98f-4ba2-aa44-341c92a442fa",
+  "fields": {
+    "model_generation": "65300631-72ce-4e1a-a60f-afc23450c36f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.842Z",
+    "updated_at": "2026-10-03T08:19:38.842Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5f13f3b1-e0b1-47fb-996d-37e4e1282140",
+  "fields": {
+    "model_generation": "e2557a30-c79e-4b97-aedf-00f7088791f3",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.941Z",
+    "updated_at": "2026-10-03T08:19:39.941Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "5ff829da-e799-400e-b56e-232e0d75d509",
+  "fields": {
+    "model_generation": "5b15321a-e30d-4cc4-be46-d50f969207c9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.754Z",
+    "updated_at": "2026-10-03T08:19:38.754Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "600c87e9-357b-467f-9e5e-60078d431ee8",
+  "fields": {
+    "model_generation": "63ccfa3d-7c02-4314-9a48-241e6d9f988a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.823Z",
+    "updated_at": "2026-10-03T08:19:38.823Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6011672c-4871-46e3-a129-1d28e93fcb47",
+  "fields": {
+    "model_generation": "91c3e091-b8d5-4248-8e5d-0d41691e6745",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.294Z",
+    "updated_at": "2026-10-03T08:19:39.294Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "602de274-1516-4d4c-b7ff-4f7e5fa9e29a",
+  "fields": {
+    "model_generation": "f3ea40ee-be13-4a51-bf7c-0395bbfcf15a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.052Z",
+    "updated_at": "2026-10-03T08:19:40.052Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6050dcda-1b24-4a90-9fa8-8958eb0f2cf0",
+  "fields": {
+    "model_generation": "b330523e-e8fd-47b5-bf79-1acd5bc20c8e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.575Z",
+    "updated_at": "2026-10-03T08:19:39.575Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "60611121-ef40-4036-a775-29aa7044cabe",
+  "fields": {
+    "model_generation": "96fec00a-05ec-40ec-8ebc-5ef0ac772576",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.338Z",
+    "updated_at": "2026-10-03T08:19:39.338Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "607e1cab-feff-4a97-a4ca-4b9eb897be79",
+  "fields": {
+    "model_generation": "aa420f56-55d2-4c40-8ad2-2b265e02a58c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.503Z",
+    "updated_at": "2026-10-03T08:19:39.503Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6249a5fe-0dde-49ff-8e1c-ac7bd9b6c2db",
+  "fields": {
+    "model_generation": "964b1241-be80-44f4-a6b5-c6681f61f0e2",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.333Z",
+    "updated_at": "2026-10-03T08:19:39.333Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "630b1bfe-32f5-4042-a600-a47871393efa",
+  "fields": {
+    "model_generation": "c594eb44-31c7-454a-8253-46713267fbac",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.710Z",
+    "updated_at": "2026-10-03T08:19:39.710Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "63300a2a-559f-45f0-8dda-a6e6b92cea23",
+  "fields": {
+    "model_generation": "6553fe4a-a918-423c-a92f-ab07863dd57b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.850Z",
+    "updated_at": "2026-10-03T08:19:38.850Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "65533111-7045-4c5b-b64c-8ac5a59e29c1",
+  "fields": {
+    "model_generation": "79367b4c-9056-4efa-86e6-5ce0b97d6d56",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.029Z",
+    "updated_at": "2026-10-03T08:19:39.029Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "66c7b03d-30db-4a04-ac12-2e566206ac03",
+  "fields": {
+    "model_generation": "c7cc68e6-b8b9-4b9b-9fd7-4df258771004",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.730Z",
+    "updated_at": "2026-10-03T08:19:39.730Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6716a679-a878-46e5-986d-9492aa1e5874",
+  "fields": {
+    "model_generation": "44a6759d-8101-464c-92fd-3c8d02e3b7ef",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.590Z",
+    "updated_at": "2026-10-03T08:19:38.590Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6732f318-fec5-4370-b2af-237d409bd3f7",
+  "fields": {
+    "model_generation": "cf1c6974-a359-4238-97f9-9f974057598b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.786Z",
+    "updated_at": "2026-10-03T08:19:39.786Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "67df3ecb-9b46-44e1-b13a-fbc83b445da8",
+  "fields": {
+    "model_generation": "ddd6375e-9a83-42fd-97d4-9cab944fcdce",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.908Z",
+    "updated_at": "2026-10-03T08:19:39.908Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "67f04c9d-620f-46cd-ac0d-a33264587222",
+  "fields": {
+    "model_generation": "7018f1da-f40b-42e3-afd6-d3c36626b5f8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.946Z",
+    "updated_at": "2026-10-03T08:19:38.946Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "688e955e-9001-477f-8cf4-d4d66a2f1a4f",
+  "fields": {
+    "model_generation": "270686c4-aedf-4dd7-873a-b61d84b747b9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.345Z",
+    "updated_at": "2026-10-03T08:19:38.345Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6b1fbb0b-addd-4d2c-923f-afcc94ebfcbd",
+  "fields": {
+    "model_generation": "1f4b0655-d4ff-485d-8636-1acf4fe24dcf",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.271Z",
+    "updated_at": "2026-10-03T08:19:38.271Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6bb9be4b-4602-4caf-8b76-c1f169c9204f",
+  "fields": {
+    "model_generation": "b98ed0ce-44f3-423d-88c9-5ad6ac16a279",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.609Z",
+    "updated_at": "2026-10-03T08:19:39.609Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6c842360-e6ad-450f-ad8c-dfa915904635",
+  "fields": {
+    "model_generation": "efb1b9d2-7f8a-4c82-8a2e-f79c9942733e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.021Z",
+    "updated_at": "2026-10-03T08:19:40.021Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6cb7010a-698d-462c-a069-2d0d55570769",
+  "fields": {
+    "model_generation": "2be344a2-b151-4e44-a73d-ffa868270ab7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.387Z",
+    "updated_at": "2026-10-03T08:19:38.387Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6cd275e3-4c3d-4f21-adde-b4be103062e6",
+  "fields": {
+    "model_generation": "a1d96cd3-d88b-4730-8cbc-89ae699e9729",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.425Z",
+    "updated_at": "2026-10-03T08:19:39.425Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6e505954-16cf-458b-ae57-00c54a848a00",
+  "fields": {
+    "model_generation": "fb1d9914-f0ec-427f-a8a7-438131514fc6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.120Z",
+    "updated_at": "2026-10-03T08:19:40.120Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6e82fde1-8c38-4da2-86f3-ac223f3b3357",
+  "fields": {
+    "model_generation": "adb3883f-504a-4456-a2a2-5066f04db081",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.528Z",
+    "updated_at": "2026-10-03T08:19:39.528Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6f0066bb-f199-481e-9db4-888a4e2d8444",
+  "fields": {
+    "model_generation": "227032c2-d095-4e72-847a-62d80474ed46",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.307Z",
+    "updated_at": "2026-10-03T08:19:38.307Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6f1cb4c6-6a06-4574-b352-dce5e27fe28d",
+  "fields": {
+    "model_generation": "4299509a-4e80-4445-b3b3-2ba583edcb91",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.560Z",
+    "updated_at": "2026-10-03T08:19:38.560Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "6feace42-8d4d-4ff3-948d-14ae8428c93d",
+  "fields": {
+    "model_generation": "c90f2af8-2abf-45c2-9e8e-71970fe75f6b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.750Z",
+    "updated_at": "2026-10-03T08:19:39.750Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "704a1458-4f9d-4232-9971-47634c03e398",
+  "fields": {
+    "model_generation": "0c148dc6-5fa1-4b0d-b9c6-c32672a5fd57",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.132Z",
+    "updated_at": "2026-10-03T08:19:38.132Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7088b088-8fb0-474f-8d36-c7029d700b0e",
+  "fields": {
+    "model_generation": "76e0171f-e796-4dfd-9b7c-e55f640c20c8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.004Z",
+    "updated_at": "2026-10-03T08:19:39.004Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "710b3bbb-fb41-404a-ba31-f87459e3bb71",
+  "fields": {
+    "model_generation": "f22f0783-2e1f-4a13-8984-22579b9f58b0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.029Z",
+    "updated_at": "2026-10-03T08:19:40.029Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "72402c43-e67d-4318-8aea-35e5f847586e",
+  "fields": {
+    "model_generation": "fec68c41-c7c6-4685-b2d0-251c03f8adac",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.150Z",
+    "updated_at": "2026-10-03T08:19:40.150Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "726ebb9c-8b51-4196-8fb6-e942e5ae6057",
+  "fields": {
+    "model_generation": "109052f7-0d61-4174-b5ba-3e2342ed65e0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.163Z",
+    "updated_at": "2026-10-03T08:19:38.163Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "728ca317-db87-46dc-ac19-26b7a62bb217",
+  "fields": {
+    "model_generation": "88caaecd-3e98-4381-8858-8bf2bf92d452",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.207Z",
+    "updated_at": "2026-10-03T08:19:39.207Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7326f2de-3e02-483a-8f86-0b9b5c53ec81",
+  "fields": {
+    "model_generation": "77afb2d1-7c19-4a2a-91c9-dec6d11601d4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.010Z",
+    "updated_at": "2026-10-03T08:19:39.010Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "73d6eb50-64f0-45ac-96cb-be3b529cb61f",
+  "fields": {
+    "model_generation": "dd466126-8d36-4a65-ad3a-6243b786ff78",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.891Z",
+    "updated_at": "2026-10-03T08:19:39.891Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "749b8484-18cd-49b8-8f94-0d9de038b8b0",
+  "fields": {
+    "model_generation": "1e5478a2-f0f2-4005-a462-e82321c1c937",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.263Z",
+    "updated_at": "2026-10-03T08:19:38.263Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "74f9e467-616d-41b7-8f1a-56f2586ef068",
+  "fields": {
+    "model_generation": "f88d3477-f471-44e1-80a3-0e5f9f3e7ff7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.088Z",
+    "updated_at": "2026-10-03T08:19:40.088Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "754a09d7-0f96-4b0c-8cde-3e00e3286f4d",
+  "fields": {
+    "model_generation": "64504eb6-55e1-4126-b2b8-e792c886d0d6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.833Z",
+    "updated_at": "2026-10-03T08:19:38.833Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7706688c-efc6-4ab7-b7d6-3b2c9d63e004",
+  "fields": {
+    "model_generation": "47e12a76-2e6e-4923-a610-a757310ac20e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.620Z",
+    "updated_at": "2026-10-03T08:19:38.620Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "775785c3-07d1-4332-846f-b1dbaa2ea56c",
+  "fields": {
+    "model_generation": "4f03f434-b914-492e-a52c-ead02b6a5482",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.703Z",
+    "updated_at": "2026-10-03T08:19:38.703Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "784c91cf-b307-47c9-99b3-7c575986c3b8",
+  "fields": {
+    "model_generation": "bd519409-4e77-4ff6-b13a-68d16bc5256a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.647Z",
+    "updated_at": "2026-10-03T08:19:39.647Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "791abaf0-f5c6-4701-9783-49926d015b76",
+  "fields": {
+    "model_generation": "eb5a62d9-459c-474b-8c42-34782aba1cf3",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.012Z",
+    "updated_at": "2026-10-03T08:19:40.012Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "798dfb69-8cbf-4a76-ac4d-9d4703f08658",
+  "fields": {
+    "model_generation": "15435239-4083-426f-a7b8-7a3a6bcf3625",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.200Z",
+    "updated_at": "2026-10-03T08:19:38.200Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7a847e22-720b-4242-915b-1c9a589c432a",
+  "fields": {
+    "model_generation": "424b68b9-6d84-4381-bc1e-572c0503e031",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.555Z",
+    "updated_at": "2026-10-03T08:19:38.555Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7aa2f2dc-e7fe-4d41-918c-49367469bcb1",
+  "fields": {
+    "model_generation": "e52ef3d9-65ed-4110-8a6f-f2621184e31b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.961Z",
+    "updated_at": "2026-10-03T08:19:39.961Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7ad695f9-a5d7-4f6e-93d7-25860faed1eb",
+  "fields": {
+    "model_generation": "42f28213-57be-4565-8408-9b37e4b7142f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.571Z",
+    "updated_at": "2026-10-03T08:19:38.571Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7b4a3b96-c6c2-418b-9ea2-49da554644c0",
+  "fields": {
+    "model_generation": "29c52ff5-64d4-424c-8f7c-09fba2fc5415",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.377Z",
+    "updated_at": "2026-10-03T08:19:38.377Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7b78ef3d-313a-45c3-9826-bbecfc08888a",
+  "fields": {
+    "model_generation": "343e662d-cc6b-4b5d-a6af-e44391d8f978",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.488Z",
+    "updated_at": "2026-10-03T08:19:38.488Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7bac0d5e-5508-4777-a540-fc5cb29e14e4",
+  "fields": {
+    "model_generation": "2442611f-6399-4cb8-916c-6794d813d1fb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.335Z",
+    "updated_at": "2026-10-03T08:19:38.335Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7bc29d83-dba1-4d34-806c-ba0dfec48baa",
+  "fields": {
+    "model_generation": "4db4142a-a2d1-4b57-a067-651126c51132",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.687Z",
+    "updated_at": "2026-10-03T08:19:38.687Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7bec8629-1574-48a4-9aef-dee59da1048a",
+  "fields": {
+    "model_generation": "4985dd81-5ee5-47ba-8d7a-1d10fab7b8d4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.648Z",
+    "updated_at": "2026-10-03T08:19:38.648Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7c17a82a-8bad-491e-85bf-0153dc35ac14",
+  "fields": {
+    "model_generation": "699c91a8-d75d-4c21-a041-58ed8c2de966",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.889Z",
+    "updated_at": "2026-10-03T08:19:38.889Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7c46687f-03c1-4fbb-ad95-d07e95642b28",
+  "fields": {
+    "model_generation": "a414a90e-a0c7-453e-bb1b-45e2896d64e5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.450Z",
+    "updated_at": "2026-10-03T08:19:39.450Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7ccb0ab0-6fb7-4a22-ae80-90f930db7ba1",
+  "fields": {
+    "model_generation": "4f5e1128-3dc8-4ccf-abc2-770fa4e2e0f5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.712Z",
+    "updated_at": "2026-10-03T08:19:38.712Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7cce4185-8c9d-4d93-943b-651e16effd3d",
+  "fields": {
+    "model_generation": "b2a7ef71-0b33-44bc-a022-bd198d937515",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.570Z",
+    "updated_at": "2026-10-03T08:19:39.570Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7ee07837-b8cf-4316-bc1a-396035d7042a",
+  "fields": {
+    "model_generation": "5a10b03b-41e0-404a-96eb-76de6991c3f4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.749Z",
+    "updated_at": "2026-10-03T08:19:38.749Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7f352ebd-f2b4-472b-bd36-c8817f14ab12",
+  "fields": {
+    "model_generation": "ac6d2013-1fea-4467-a3cb-3e7af98efe12",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.512Z",
+    "updated_at": "2026-10-03T08:19:39.512Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7f541ddd-6849-49f1-9bab-a0860ea7d626",
+  "fields": {
+    "model_generation": "742701f7-7c02-495d-ab6e-eea24509aded",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.971Z",
+    "updated_at": "2026-10-03T08:19:38.971Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "7fad3602-2a29-4c66-9197-e71a4f822282",
+  "fields": {
+    "model_generation": "7e73e303-ae53-4360-a29e-999a2f06832b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.108Z",
+    "updated_at": "2026-10-03T08:19:39.108Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "807451d1-955f-407d-94ac-bdc7614d5eae",
+  "fields": {
+    "model_generation": "610c6ea4-405b-4c2c-8187-356cd931e8a8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.800Z",
+    "updated_at": "2026-10-03T08:19:38.800Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "81380ff1-04f6-49c0-b770-8f8bac62b41f",
+  "fields": {
+    "model_generation": "e2ce6246-9b9e-4332-95f4-0151ddf0e2b8",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.946Z",
+    "updated_at": "2026-10-03T08:19:39.946Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "829d742b-043e-4390-b336-343eb7e53a7b",
+  "fields": {
+    "model_generation": "17a6bff5-6cdb-4b6b-b7e4-5c41e117fcd5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.216Z",
+    "updated_at": "2026-10-03T08:19:38.216Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8430449f-0a6b-412b-9b9c-24b00b1a1b41",
+  "fields": {
+    "model_generation": "12709494-3cc7-465a-953f-4ee8698e4496",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.176Z",
+    "updated_at": "2026-10-03T08:19:38.176Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8438a09b-5556-46c1-a3ed-d2b4a6d6d5c3",
+  "fields": {
+    "model_generation": "97eb7086-2f16-46b4-8ebc-02c0781cdb00",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.349Z",
+    "updated_at": "2026-10-03T08:19:39.349Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "84b3ab22-439a-4a56-8453-b8e6ece0202b",
+  "fields": {
+    "model_generation": "fae68a47-1f3b-4563-acdc-ff8a97b628c7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.113Z",
+    "updated_at": "2026-10-03T08:19:40.113Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "855b006b-6fbd-43ec-9afc-66acd83abef5",
+  "fields": {
+    "model_generation": "346c97cd-b67a-4168-b743-9efb55d8d3b1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.495Z",
+    "updated_at": "2026-10-03T08:19:38.495Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "85682661-0ac9-4485-90aa-4078d596b18f",
+  "fields": {
+    "model_generation": "a99f3297-41e1-4bcd-b965-b2a20661d760",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.489Z",
+    "updated_at": "2026-10-03T08:19:39.489Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "87ef32e0-abb1-42af-a051-5505591b034e",
+  "fields": {
+    "model_generation": "65e5b1df-88b2-4662-a71e-37acc9734dbd",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.865Z",
+    "updated_at": "2026-10-03T08:19:38.865Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8835c98d-a8b0-493b-b7a7-acdf3e51ad03",
+  "fields": {
+    "model_generation": "fb7afbba-b957-43ca-81f4-035377fb5797",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.125Z",
+    "updated_at": "2026-10-03T08:19:40.125Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "886ffc98-bf20-4114-bf23-1e0259921c4f",
+  "fields": {
+    "model_generation": "d4d3e9a6-39c4-498b-a3a5-8804e54ab70d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.815Z",
+    "updated_at": "2026-10-03T08:19:39.815Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "89a17c2d-bc29-4228-a721-df7e02a2d481",
+  "fields": {
+    "model_generation": "99a4d882-12d5-48d9-8aae-f0d4c270bc24",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.364Z",
+    "updated_at": "2026-10-03T08:19:39.364Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8aaae961-8055-4569-8f36-d6f331e8e39e",
+  "fields": {
+    "model_generation": "459a41f6-f410-4f74-8efd-22b0d13874d0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.600Z",
+    "updated_at": "2026-10-03T08:19:38.600Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8b440af6-d9e5-4df0-bc7a-40c9f57837ef",
+  "fields": {
+    "model_generation": "a642f126-179d-444e-82e8-c6640342a24d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.455Z",
+    "updated_at": "2026-10-03T08:19:39.455Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8b7fc28b-e30b-4e64-b959-bcb8a19c0559",
+  "fields": {
+    "model_generation": "dd4f0a86-4cde-4b17-85c7-002309e4250b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.895Z",
+    "updated_at": "2026-10-03T08:19:39.895Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8bca5aea-8d9e-46ad-80e1-413f628e5f6d",
+  "fields": {
+    "model_generation": "5cd7e987-7115-48d2-9e61-629f021eb569",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.770Z",
+    "updated_at": "2026-10-03T08:19:38.770Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8d241875-bc54-429b-b24a-2eccda19f794",
+  "fields": {
+    "model_generation": "09454028-8697-4a55-b43c-97ef8ceb0866",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.095Z",
+    "updated_at": "2026-10-03T08:19:38.095Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8df3951e-c68a-4977-917e-6ece7611c3c3",
+  "fields": {
+    "model_generation": "4e4ef9e4-ed68-4c29-ba5f-dccd8fdd0da4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.692Z",
+    "updated_at": "2026-10-03T08:19:38.692Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8e57639f-65ff-4825-bf28-c0abac5a0706",
+  "fields": {
+    "model_generation": "d5e0f268-de5f-4abb-a169-b4c6ac8c03a6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.842Z",
+    "updated_at": "2026-10-03T08:19:39.842Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8f60d7db-c0a2-4188-a236-adde79dc6bea",
+  "fields": {
+    "model_generation": "6b83ac82-83fd-4d25-9d70-6bbfc46fb539",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.899Z",
+    "updated_at": "2026-10-03T08:19:38.899Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "8fcc719e-c13a-4c71-a6c2-9989d2314b80",
+  "fields": {
+    "model_generation": "6e37c755-6f96-4746-9583-e81576928c16",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.926Z",
+    "updated_at": "2026-10-03T08:19:38.926Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9019b814-6057-4f79-a520-8d59437782d4",
+  "fields": {
+    "model_generation": "00b871f1-bb3d-40a0-9753-0be938dbc5de",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.035Z",
+    "updated_at": "2026-10-03T08:19:38.035Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "903e0194-44a6-4a05-a8e7-f92d2846abc9",
+  "fields": {
+    "model_generation": "d9b2012d-f7da-4803-9d6f-4868b61dcdb5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.861Z",
+    "updated_at": "2026-10-03T08:19:39.861Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "919b5d87-c821-4b27-bea6-5be3796d32da",
+  "fields": {
+    "model_generation": "31c64f29-2fa4-4a74-a7ce-f5dccdf8a090",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.463Z",
+    "updated_at": "2026-10-03T08:19:38.463Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "91ef49c5-009b-4f58-bf68-82bbc2859f2f",
+  "fields": {
+    "model_generation": "2da40831-7de3-42de-9a7c-f6a649341f35",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.433Z",
+    "updated_at": "2026-10-03T08:19:38.433Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "95c19082-b938-4d0e-8b35-0d2d07835f87",
+  "fields": {
+    "model_generation": "8e193803-27cb-4bfb-84e0-6a6d3844ae9d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.255Z",
+    "updated_at": "2026-10-03T08:19:39.255Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "95c7c35b-230c-49bb-ba45-f482540737da",
+  "fields": {
+    "model_generation": "65768f82-e6f6-4578-9464-b1239d7a8cce",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.860Z",
+    "updated_at": "2026-10-03T08:19:38.860Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "96655fea-084b-4a28-9a97-65d65835e209",
+  "fields": {
+    "model_generation": "b1d0826b-c395-4589-bc21-be84a880d37e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.560Z",
+    "updated_at": "2026-10-03T08:19:39.560Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9690accd-8e28-4ceb-94e7-5fb7ca5c1e0d",
+  "fields": {
+    "model_generation": "e5f51c63-b802-4543-867c-0aedaf6cb0b4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.985Z",
+    "updated_at": "2026-10-03T08:19:39.985Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "96b1f0ac-8503-42d4-b223-b578bf7c52fa",
+  "fields": {
+    "model_generation": "e5d1d4dc-b240-4c8a-8f08-438484fe9d55",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.976Z",
+    "updated_at": "2026-10-03T08:19:39.976Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "96b722ee-88b6-4347-a04b-78b5018e69fa",
+  "fields": {
+    "model_generation": "e68db078-a032-4032-a1c6-7ef0bbbdb8bc",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.988Z",
+    "updated_at": "2026-10-03T08:19:39.988Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "96edb9aa-1d7e-448d-9e89-6afd0d6ec505",
+  "fields": {
+    "model_generation": "91889c9e-3df1-4fe9-9363-cccd00da1264",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.284Z",
+    "updated_at": "2026-10-03T08:19:39.284Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "970687a6-d3cb-4eed-8b1e-178543c78ef1",
+  "fields": {
+    "model_generation": "6e9a0faf-4f74-4c0d-9a06-d1ec9128a534",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.933Z",
+    "updated_at": "2026-10-03T08:19:38.933Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9709a87b-47a1-49e6-96cc-7f9682f44b9a",
+  "fields": {
+    "model_generation": "7a9b24a6-ad37-47cf-8d93-dd7dc9b12424",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.045Z",
+    "updated_at": "2026-10-03T08:19:39.045Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "98861955-375a-48ed-a78c-df807118d8c7",
+  "fields": {
+    "model_generation": "039c21a9-cd67-4f28-9bd9-b772329f8981",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.053Z",
+    "updated_at": "2026-10-03T08:19:38.053Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "988b399f-22a1-45be-8da8-8cee5b4fe715",
+  "fields": {
+    "model_generation": "9351564e-ff7a-46cd-8703-5297afae1662",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.313Z",
+    "updated_at": "2026-10-03T08:19:39.313Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9936daed-9378-478d-ae06-99aff58cd085",
+  "fields": {
+    "model_generation": "8f8c25d1-7603-4905-8d39-c454f8d0bf04",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.264Z",
+    "updated_at": "2026-10-03T08:19:39.264Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "999808fd-f420-41e4-a064-6384a2b1616d",
+  "fields": {
+    "model_generation": "80bcd906-7ffa-4ab4-9179-22de9ed23195",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.123Z",
+    "updated_at": "2026-10-03T08:19:39.123Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9ad53ec4-592d-4466-b2a1-f85adb9f890c",
+  "fields": {
+    "model_generation": "adbc2e7f-7cdd-4739-9881-be62c7f99af4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.537Z",
+    "updated_at": "2026-10-03T08:19:39.537Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9b026078-a75a-4af1-bc7f-0c56faa5a4af",
+  "fields": {
+    "model_generation": "236cb82f-1de1-49f2-b7e5-b1eaf3f6d155",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.330Z",
+    "updated_at": "2026-10-03T08:19:38.330Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9b1f3276-47e5-4a02-9ea9-cf1cc1f43252",
+  "fields": {
+    "model_generation": "77b4e10b-b337-4ec3-9b7c-223d75777ce5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.016Z",
+    "updated_at": "2026-10-03T08:19:39.016Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9d0055a0-f8e9-4d29-940f-3ba134188c3a",
+  "fields": {
+    "model_generation": "7caf9e7c-4e65-4bd6-8e4e-0e3db9a145cb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.082Z",
+    "updated_at": "2026-10-03T08:19:39.082Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9d1a52ed-b806-46e5-af1e-9359e9c2e6d0",
+  "fields": {
+    "model_generation": "ac3be664-9b1b-4f58-8cf9-12b4735ad39a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.508Z",
+    "updated_at": "2026-10-03T08:19:39.508Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9ec6ab6e-bd25-45d6-b99c-fbf1f592b0ef",
+  "fields": {
+    "model_generation": "0095d320-7f13-49ee-b807-103899bf2a8b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:37.998Z",
+    "updated_at": "2026-10-03T08:19:37.998Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "9f9188b7-569c-4168-a524-63a0f0ffebf3",
+  "fields": {
+    "model_generation": "2c4cf3fd-6c24-42d0-9745-06eba315e1c0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.400Z",
+    "updated_at": "2026-10-03T08:19:38.400Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a0f491e7-76f9-4161-b3e6-ca0ee2297dfd",
+  "fields": {
+    "model_generation": "2c79537d-2c8a-4a60-9234-861b367457b2",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.406Z",
+    "updated_at": "2026-10-03T08:19:38.406Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a25cbe9d-79e7-4896-8d6e-88d2c5b3aa46",
+  "fields": {
+    "model_generation": "3cb7c043-351b-4c73-8014-d09934c03200",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.522Z",
+    "updated_at": "2026-10-03T08:19:38.522Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a2cb5126-eb6c-40e5-95b6-8ef7738398aa",
+  "fields": {
+    "model_generation": "98a68788-02a5-4ece-bf07-fde2d3bd4f72",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.359Z",
+    "updated_at": "2026-10-03T08:19:39.359Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a3b62b7e-ca09-4f87-9968-c7a4a78e0030",
+  "fields": {
+    "model_generation": "a0dc702c-a935-4ccf-b3dc-6315f60314b1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.422Z",
+    "updated_at": "2026-10-03T08:19:39.422Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a4e02130-aad4-4e7d-97f6-2d71fada9c24",
+  "fields": {
+    "model_generation": "812fd9a7-6420-47fa-ae5b-b9ab872d29bc",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.133Z",
+    "updated_at": "2026-10-03T08:19:39.133Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a5034b92-b2bf-474f-a003-0844baa0da68",
+  "fields": {
+    "model_generation": "876c3629-2a3a-4977-bdb0-6cf35b073e4e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.183Z",
+    "updated_at": "2026-10-03T08:19:39.183Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a50e5b50-181f-49ea-a49e-ec75b86865d8",
+  "fields": {
+    "model_generation": "823ee427-a1ef-4242-b80e-973c404914b7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.139Z",
+    "updated_at": "2026-10-03T08:19:39.139Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a5474e6c-657b-4690-8711-ad99e210cd26",
+  "fields": {
+    "model_generation": "70b92e70-09f5-41c4-8b01-b9d2b61e66c6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.950Z",
+    "updated_at": "2026-10-03T08:19:38.950Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a556c0bd-fe76-4911-9e43-ca356cb1df7b",
+  "fields": {
+    "model_generation": "adaa7404-a2e4-4cd3-82b2-02eed2fc4a19",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.525Z",
+    "updated_at": "2026-10-03T08:19:39.525Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a5cda4c2-5c77-40e2-b543-16992c90591f",
+  "fields": {
+    "model_generation": "cd8d4c10-c5ba-46f9-b54f-af98b949ece6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.775Z",
+    "updated_at": "2026-10-03T08:19:39.775Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a62bfa90-55a5-4c75-85e8-b312abc0d458",
+  "fields": {
+    "model_generation": "602eada7-dc3a-4a08-b2b8-91e9e27b2313",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.790Z",
+    "updated_at": "2026-10-03T08:19:38.790Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a7494aa6-5a7a-41ac-9c1d-4f75885338f7",
+  "fields": {
+    "model_generation": "62910eca-183e-4d28-9ca1-a31b2ee6e657",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.808Z",
+    "updated_at": "2026-10-03T08:19:38.808Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a781830e-9b50-4a6d-b457-29c55a07f356",
+  "fields": {
+    "model_generation": "be8feb7c-4ece-4901-b0f4-2181d8353171",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.654Z",
+    "updated_at": "2026-10-03T08:19:39.654Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a8691340-cae8-49e2-86e0-2f4c1e46cfdc",
+  "fields": {
+    "model_generation": "d21e99bf-0e70-4eb6-ae48-c65981fa74c7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.796Z",
+    "updated_at": "2026-10-03T08:19:39.796Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "a86b0adb-93a0-4b57-bd4c-00cc21e1a8a3",
+  "fields": {
+    "model_generation": "8887e335-58ba-4eb8-a4ef-117e81baab0d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.203Z",
+    "updated_at": "2026-10-03T08:19:39.203Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "aa14669a-b3dd-4a30-82f6-c78de9fb648a",
+  "fields": {
+    "model_generation": "2e866fba-a0a5-4458-8c7d-2f5c034f7766",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.440Z",
+    "updated_at": "2026-10-03T08:19:38.440Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "aa6bad74-4475-48e3-9fd0-757c18d3f42e",
+  "fields": {
+    "model_generation": "7b13f6d2-21cc-4f73-a185-4237b633ba45",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.055Z",
+    "updated_at": "2026-10-03T08:19:39.055Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ab272578-528b-4e02-9fde-08cb10a62a67",
+  "fields": {
+    "model_generation": "d9c3c8ae-eaa2-473a-8022-584d60f01c0f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.865Z",
+    "updated_at": "2026-10-03T08:19:39.865Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "aba71115-5cc5-445a-97cc-88c43589fab7",
+  "fields": {
+    "model_generation": "19822658-fbfe-474b-a11b-8223f91a0906",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.244Z",
+    "updated_at": "2026-10-03T08:19:38.244Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "abd9f4ed-4149-464e-b2c1-c38e33ced77c",
+  "fields": {
+    "model_generation": "a6b203fa-df54-4b45-9b78-aacfb8dbfa0e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.459Z",
+    "updated_at": "2026-10-03T08:19:39.459Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ac5a0b60-c0d7-4ba0-bab1-a2e0551f39d9",
+  "fields": {
+    "model_generation": "65455eda-181e-4195-b41b-c51caef13357",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.846Z",
+    "updated_at": "2026-10-03T08:19:38.846Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ac9c93c4-e782-41eb-bcd3-0e5f918e0006",
+  "fields": {
+    "model_generation": "a7144f63-c37b-4d90-a0e1-d78268cefb94",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.463Z",
+    "updated_at": "2026-10-03T08:19:39.463Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ace02f5a-d1e0-4a2f-83e3-b556d3faf67c",
+  "fields": {
+    "model_generation": "6c96f319-9408-403b-a236-3a849dc17cec",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.916Z",
+    "updated_at": "2026-10-03T08:19:38.916Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ad1cf3bf-d7f5-4a8d-989c-c7bcf101c818",
+  "fields": {
+    "model_generation": "f64e74fd-fca4-4bf3-9d1c-82d9336c0312",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.073Z",
+    "updated_at": "2026-10-03T08:19:40.073Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ad660c23-343c-4628-859f-842dc91f5c24",
+  "fields": {
+    "model_generation": "27d45880-716a-4bf1-a60a-1cec4d01599b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.355Z",
+    "updated_at": "2026-10-03T08:19:38.355Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ae176301-4cd6-4230-8082-da630fb88420",
+  "fields": {
+    "model_generation": "d753de4c-f0a4-488a-98e5-db0d204abd5a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.846Z",
+    "updated_at": "2026-10-03T08:19:39.846Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b05cd77c-0598-48ca-9dc7-8e963a31f63c",
+  "fields": {
+    "model_generation": "4f50846c-fb14-4d41-9f3c-7feb45d94d1f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.707Z",
+    "updated_at": "2026-10-03T08:19:38.707Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b09f2ea7-f00f-4925-985f-8ef3ccf4007e",
+  "fields": {
+    "model_generation": "c965f41a-0425-452d-95ba-f1c878382767",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.755Z",
+    "updated_at": "2026-10-03T08:19:39.755Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b0e039b4-c0e6-4152-b789-085476c90d4f",
+  "fields": {
+    "model_generation": "7b7ec319-8bf3-491d-982f-866fbd60793a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.068Z",
+    "updated_at": "2026-10-03T08:19:39.068Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b11b3494-99f0-4a0c-829c-031bd0734af1",
+  "fields": {
+    "model_generation": "12247315-349f-4490-ac41-469a9f8a6f47",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.171Z",
+    "updated_at": "2026-10-03T08:19:38.171Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b2022c1e-610c-42d0-8fc7-21363a24bdb1",
+  "fields": {
+    "model_generation": "18e8cb6d-7a09-4316-ab63-10a5f69924d9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.239Z",
+    "updated_at": "2026-10-03T08:19:38.239Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b2acc170-affa-4316-ac72-a26602b45a1e",
+  "fields": {
+    "model_generation": "6abe54e6-0ec6-46d3-8982-024dec3044b3",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.894Z",
+    "updated_at": "2026-10-03T08:19:38.894Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b332e920-40dd-416f-ae58-2aa8130d1292",
+  "fields": {
+    "model_generation": "7b2ff14d-6fa9-4197-b150-108fc2a6de74",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.059Z",
+    "updated_at": "2026-10-03T08:19:39.059Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b4207181-64ef-49be-9549-5dcf74ad8d82",
+  "fields": {
+    "model_generation": "f53001fe-3144-4962-bb1a-80c825fb1657",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.057Z",
+    "updated_at": "2026-10-03T08:19:40.057Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b4eee521-10e8-4b75-b8db-d3cd91962109",
+  "fields": {
+    "model_generation": "bff1e27f-7b3d-4c92-bfaa-0a4ff00d46f3",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.674Z",
+    "updated_at": "2026-10-03T08:19:39.674Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b51ccc92-c9e4-49d4-8c49-c0f5cd48773b",
+  "fields": {
+    "model_generation": "58bb4f05-18a9-4025-9b8e-c9d4f4784e52",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.740Z",
+    "updated_at": "2026-10-03T08:19:38.740Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b67dfc17-6cd7-439b-b7c7-d2aad35746c6",
+  "fields": {
+    "model_generation": "9e31b628-5ee7-4431-b44e-43abe7eef396",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.408Z",
+    "updated_at": "2026-10-03T08:19:39.408Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b6c1982e-c942-4a1b-aa9e-3b0c43c562bc",
+  "fields": {
+    "model_generation": "7ee0277c-f2ed-4b0b-aa3f-96c002df1712",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.112Z",
+    "updated_at": "2026-10-03T08:19:39.112Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b6cb7d11-bee0-4216-ba92-753c19f31254",
+  "fields": {
+    "model_generation": "1c5a656b-2edd-4208-9025-38a98edadeff",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.258Z",
+    "updated_at": "2026-10-03T08:19:38.258Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b73111aa-1bb6-42fb-92e2-a67dab310984",
+  "fields": {
+    "model_generation": "c7c3f325-2b89-40cd-afa2-b7d693c956b9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.726Z",
+    "updated_at": "2026-10-03T08:19:39.726Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b759606f-e2a1-407d-9277-a11167fd0e74",
+  "fields": {
+    "model_generation": "ee27718f-558f-4969-8acc-7aed2afd26c0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.016Z",
+    "updated_at": "2026-10-03T08:19:40.016Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b878b91a-ec0c-4789-8cc1-d92740cf487f",
+  "fields": {
+    "model_generation": "4be56005-4c74-4660-b548-cf1eb066c735",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.669Z",
+    "updated_at": "2026-10-03T08:19:38.669Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b8ba276e-b0b3-4441-8691-7a152b7f969e",
+  "fields": {
+    "model_generation": "9f75436c-5c60-4502-b79c-012b61be3f4d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.413Z",
+    "updated_at": "2026-10-03T08:19:39.413Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b9020724-c347-4d1e-846c-ba1a8cd8850b",
+  "fields": {
+    "model_generation": "f982eedf-170e-4141-a4eb-94400ca4acec",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.098Z",
+    "updated_at": "2026-10-03T08:19:40.098Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b99963b7-6823-4c5b-8382-67f2ff529f16",
+  "fields": {
+    "model_generation": "297fc2f9-93d4-4c90-896f-6cd96ce56647",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.371Z",
+    "updated_at": "2026-10-03T08:19:38.371Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "b9b67f82-bb82-457c-9aea-3a377d0673a8",
+  "fields": {
+    "model_generation": "f5640da2-78f2-43e2-a15f-f82df774961b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.063Z",
+    "updated_at": "2026-10-03T08:19:40.063Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ba6ed77d-6c1e-409c-9f13-6497b7d1e54e",
+  "fields": {
+    "model_generation": "5b510d18-a216-4872-baec-ff52f17eb8ee",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.760Z",
+    "updated_at": "2026-10-03T08:19:38.760Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "baab916e-07de-4c8c-b235-3a51f9c742b0",
+  "fields": {
+    "model_generation": "5e8a6a09-0902-463d-a725-bb0924b03cbe",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.775Z",
+    "updated_at": "2026-10-03T08:19:38.775Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "bb6bb112-6f6f-49c0-8df7-30623c57f89d",
+  "fields": {
+    "model_generation": "1c235f93-231a-4911-a84f-d53ce15eb083",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.253Z",
+    "updated_at": "2026-10-03T08:19:38.253Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "bbca8b79-c163-45b1-9d47-b70bd77e4656",
+  "fields": {
+    "model_generation": "9470dad5-cfa7-4f8a-af90-ae67aad1a2b1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.323Z",
+    "updated_at": "2026-10-03T08:19:39.323Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "bdb41394-b9ba-4c7a-a101-f314d7d6d121",
+  "fields": {
+    "model_generation": "bf18a773-8eb6-48f2-90b5-091bcd67681e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.664Z",
+    "updated_at": "2026-10-03T08:19:39.664Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "bdd4756a-bca8-446e-bc0d-07b480e150b7",
+  "fields": {
+    "model_generation": "840c61d4-fccc-4501-bac7-b10bc8fb6aa3",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.159Z",
+    "updated_at": "2026-10-03T08:19:39.159Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "beaf019e-f6e9-4e55-877e-44959323ffe1",
+  "fields": {
+    "model_generation": "ff802265-48c7-4d76-86f8-cac84ce8f9e5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.155Z",
+    "updated_at": "2026-10-03T08:19:40.155Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c04a2d4f-41d4-45d7-a774-41ee6f434291",
+  "fields": {
+    "model_generation": "5edc6f53-8fca-42e6-9355-25d14725c8f4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.780Z",
+    "updated_at": "2026-10-03T08:19:38.780Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c07d2a34-649b-4f68-b48f-b462be3989dd",
+  "fields": {
+    "model_generation": "6484f02e-e633-4975-8c6e-5f16ad951c9e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.838Z",
+    "updated_at": "2026-10-03T08:19:38.838Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c0e82f9e-a79d-43f4-b6fa-266c8437cbe7",
+  "fields": {
+    "model_generation": "0f775562-b31f-43f4-9e4d-3c56e47cc0cf",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.153Z",
+    "updated_at": "2026-10-03T08:19:38.153Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c11bdec9-44aa-48b2-872e-6b94a0db4b75",
+  "fields": {
+    "model_generation": "91f7c961-898d-42cf-89b5-d972af0bed23",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.299Z",
+    "updated_at": "2026-10-03T08:19:39.299Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c1a760b6-2f23-4246-90a7-4676d7d7d937",
+  "fields": {
+    "model_generation": "0a923b29-a9a2-4870-b64c-9acef4431097",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.099Z",
+    "updated_at": "2026-10-03T08:19:38.099Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c1b9624c-405b-438d-bb5f-1262402017d7",
+  "fields": {
+    "model_generation": "8ab5f961-e28d-4946-95a7-f6f4840a8203",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.222Z",
+    "updated_at": "2026-10-03T08:19:39.222Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c296f729-9524-439b-be85-94822bff10ad",
+  "fields": {
+    "model_generation": "189452c5-2f4f-4eb4-aabf-b63bc57e9056",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.234Z",
+    "updated_at": "2026-10-03T08:19:38.234Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c302ee97-fa71-4cb3-b646-7452cec2284f",
+  "fields": {
+    "model_generation": "da6549a2-c38c-49ce-8b70-c7fc9a6e2f35",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.869Z",
+    "updated_at": "2026-10-03T08:19:39.869Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c39333bb-b045-4a83-bb8c-3991c1b15b58",
+  "fields": {
+    "model_generation": "b5d03978-083d-48ac-80e9-291da4a6f4b4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.590Z",
+    "updated_at": "2026-10-03T08:19:39.590Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c3d4b1c1-39df-45dd-86ed-7d26b090c00c",
+  "fields": {
+    "model_generation": "b43cab03-c7d1-4455-b485-6b89913b772f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.582Z",
+    "updated_at": "2026-10-03T08:19:39.582Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c6896c92-10b8-4948-873c-5271677bd67d",
+  "fields": {
+    "model_generation": "2c1ded6e-512c-44ae-a198-0d110a391c3d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.393Z",
+    "updated_at": "2026-10-03T08:19:38.393Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c77f8c8a-6591-47b3-b5b4-6aa903708c66",
+  "fields": {
+    "model_generation": "485e651b-4855-4219-bbd5-74ad9fc18a83",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.637Z",
+    "updated_at": "2026-10-03T08:19:38.637Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c80dd73a-5603-4f63-8351-d7bc97742f87",
+  "fields": {
+    "model_generation": "6920bdb1-214b-4daa-9768-be249930b825",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.876Z",
+    "updated_at": "2026-10-03T08:19:38.876Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c8c79a59-1e0a-4f21-bbcd-c2f0639da0ea",
+  "fields": {
+    "model_generation": "7ac04853-b676-4361-b189-e15af0a2d8ea",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.049Z",
+    "updated_at": "2026-10-03T08:19:39.049Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c97d56d2-bdf8-4bdd-8183-ce293825a804",
+  "fields": {
+    "model_generation": "9d544640-8931-46c3-8129-33d34b2f6cd0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.399Z",
+    "updated_at": "2026-10-03T08:19:39.399Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c9b1e57b-060b-42c1-8912-3877b4d0a46b",
+  "fields": {
+    "model_generation": "d8377f41-cc6e-425e-9409-85e820dd0889",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.851Z",
+    "updated_at": "2026-10-03T08:19:39.851Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "c9fd34f0-16aa-4f19-ab83-26453f811882",
+  "fields": {
+    "model_generation": "2830bc83-1071-41dc-a69c-80871a974e56",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.366Z",
+    "updated_at": "2026-10-03T08:19:38.366Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "caa96379-6334-46b0-9a2b-76b8cba1c8f5",
+  "fields": {
+    "model_generation": "b202a90d-7232-4363-b9a3-e7d7f05ea35d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.565Z",
+    "updated_at": "2026-10-03T08:19:39.565Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "cac0bb92-1ab7-4c11-aabf-5eb84d33ac13",
+  "fields": {
+    "model_generation": "80e894d8-af16-4fca-8d4b-5b4aa4aa2b9d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.129Z",
+    "updated_at": "2026-10-03T08:19:39.129Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "cb05aedf-ea64-4ece-be94-6ded40895123",
+  "fields": {
+    "model_generation": "97877595-8a71-42de-a78a-26515e01f97c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.341Z",
+    "updated_at": "2026-10-03T08:19:39.341Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "cc888bd2-15b4-45f3-a94e-57217451e741",
+  "fields": {
+    "model_generation": "fd184455-508e-4bc4-b5ea-53758c480f8b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.135Z",
+    "updated_at": "2026-10-03T08:19:40.135Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "cf0f15d2-8c93-4fb7-8abc-1ebaf611855a",
+  "fields": {
+    "model_generation": "0323673e-e277-4903-9315-70ff6a4f0039",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.047Z",
+    "updated_at": "2026-10-03T08:19:38.047Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "cf128a9d-b2c5-46b2-ad90-662c7df54f93",
+  "fields": {
+    "model_generation": "185b6f3c-aedf-430b-a832-ec5dbc5f6bc5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.221Z",
+    "updated_at": "2026-10-03T08:19:38.221Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "cf3b67c8-8ade-42ad-ba25-c63d6793e80c",
+  "fields": {
+    "model_generation": "dd8aad92-dff1-4688-8364-1e3b796f3729",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.900Z",
+    "updated_at": "2026-10-03T08:19:39.900Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "cf8e798f-6482-4657-ad47-294d43963eba",
+  "fields": {
+    "model_generation": "a819b679-58f4-472e-8ffa-70ed647d103e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.480Z",
+    "updated_at": "2026-10-03T08:19:39.480Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "cfd6481b-7b02-46c0-a8e4-3221a99794e1",
+  "fields": {
+    "model_generation": "a73c6b09-a773-4abf-80aa-5668fd442b1b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.467Z",
+    "updated_at": "2026-10-03T08:19:39.467Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d07a05f5-aeda-4488-bf1c-16b7e036ccb8",
+  "fields": {
+    "model_generation": "f3b47e1b-2e0a-4814-9088-a9787529fea9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.042Z",
+    "updated_at": "2026-10-03T08:19:40.042Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d0d6b8e0-ef42-4ba8-ab85-a0e1ef5638df",
+  "fields": {
+    "model_generation": "91493aed-6407-4ad9-bb8a-8a9ad8cf657d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.280Z",
+    "updated_at": "2026-10-03T08:19:39.280Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d298aae3-a396-4620-a035-89a818a4bcdf",
+  "fields": {
+    "model_generation": "d595a7ca-6277-4b85-8506-9309fdccccbb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.827Z",
+    "updated_at": "2026-10-03T08:19:39.827Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d2cf9132-ab0d-4a07-a2a4-96afcb63125c",
+  "fields": {
+    "model_generation": "efbf3be0-94a7-4f4c-9a59-b02be26cbee6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.025Z",
+    "updated_at": "2026-10-03T08:19:40.025Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d3e3b990-86d3-41cf-9a88-4ec8dd00db40",
+  "fields": {
+    "model_generation": "a041a11f-9ec7-48ec-9a55-04bd0dc12256",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.417Z",
+    "updated_at": "2026-10-03T08:19:39.417Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d43c8d88-3e78-4924-845d-d8c84ff5341f",
+  "fields": {
+    "model_generation": "837aa30d-534f-4828-af02-e8ac40735585",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.148Z",
+    "updated_at": "2026-10-03T08:19:39.148Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d458fb5e-ebc0-4903-8123-3d279dbcc677",
+  "fields": {
+    "model_generation": "7580ccb7-73d1-41de-8c1e-d66d917b3c72",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.988Z",
+    "updated_at": "2026-10-03T08:19:38.988Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d46262f3-1894-4e87-a265-f7719b1b72a5",
+  "fields": {
+    "model_generation": "2a5a796a-e476-404e-9b94-f30ea5cdfea5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.382Z",
+    "updated_at": "2026-10-03T08:19:38.382Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d4bfa442-c8ba-4b9e-815f-1798ffe4eadc",
+  "fields": {
+    "model_generation": "d8ed459f-d09d-470a-aa23-4f28a5c3e5c4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.855Z",
+    "updated_at": "2026-10-03T08:19:39.855Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d57443e1-7f65-41f7-a095-33767eff625e",
+  "fields": {
+    "model_generation": "bf862f6e-d533-4ac0-b0eb-cc854664b8b4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.669Z",
+    "updated_at": "2026-10-03T08:19:39.669Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d615a0a0-f6dd-4f87-b395-ef57cb761dfd",
+  "fields": {
+    "model_generation": "e1aea95c-f301-42c1-bfc1-49fa8fb330f7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.929Z",
+    "updated_at": "2026-10-03T08:19:39.929Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d631f8b2-aedd-43e3-98d9-92610a3866dc",
+  "fields": {
+    "model_generation": "693b18ea-57ab-4800-91c4-18fcea73aef5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.880Z",
+    "updated_at": "2026-10-03T08:19:38.880Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d690a263-4e4a-4f52-8ecd-3ebf5a797736",
+  "fields": {
+    "model_generation": "91bec18d-8a3f-4478-a74c-f2a649dcce86",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.289Z",
+    "updated_at": "2026-10-03T08:19:39.289Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d6fbca44-a922-42cc-be90-5a36daa202a7",
+  "fields": {
+    "model_generation": "7dff0a7d-d3dd-473a-bf78-d70db8385c8f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.102Z",
+    "updated_at": "2026-10-03T08:19:39.102Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d7231794-b737-4b3c-9a3d-2cc508dfc5bb",
+  "fields": {
+    "model_generation": "1ff978cb-67d8-407b-8814-471e59a1cb3f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.284Z",
+    "updated_at": "2026-10-03T08:19:38.284Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d73a794c-f8c0-412b-8837-fd1b7f371e71",
+  "fields": {
+    "model_generation": "51b1fec9-da15-4276-a9e1-da34a60f785b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.717Z",
+    "updated_at": "2026-10-03T08:19:38.717Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d73acc46-2e4b-419c-8799-ced19ed12aea",
+  "fields": {
+    "model_generation": "cb4a3284-29cd-44cd-b399-02b8dd8d71b6",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.765Z",
+    "updated_at": "2026-10-03T08:19:39.765Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d8a1d34a-9b9a-4569-9970-d905a530bc5c",
+  "fields": {
+    "model_generation": "f3da4567-cf4e-4237-9e3e-e2708b49a0cb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.047Z",
+    "updated_at": "2026-10-03T08:19:40.047Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d92edc08-493a-4f49-b083-4b100831435a",
+  "fields": {
+    "model_generation": "d421bf08-33b9-450d-9208-f72dda19e243",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.811Z",
+    "updated_at": "2026-10-03T08:19:39.811Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "d9eb894f-02cb-4066-a70d-99f0c8a6f56d",
+  "fields": {
+    "model_generation": "84c78ced-0c07-4de6-8ac5-b962f57b29ea",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.163Z",
+    "updated_at": "2026-10-03T08:19:39.163Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "db5495fe-f0ab-49e1-be3a-c282689efe44",
+  "fields": {
+    "model_generation": "7696a82b-d44e-4c5c-b723-bb27c3c0e6fb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.999Z",
+    "updated_at": "2026-10-03T08:19:38.999Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "dc37bf3c-8557-4cd4-ab47-b970399896c8",
+  "fields": {
+    "model_generation": "2d693038-bbae-44d6-a8ef-fce328e8e6b1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.420Z",
+    "updated_at": "2026-10-03T08:19:38.420Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "dd3b053e-f6d9-47b2-a1fc-10a67f09314b",
+  "fields": {
+    "model_generation": "7856b13b-2f57-43dc-aeae-c1a97de44cb1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.021Z",
+    "updated_at": "2026-10-03T08:19:39.021Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "dd3d8728-3fe9-4603-8ffe-d59a7b361bb4",
+  "fields": {
+    "model_generation": "d2546d48-2d2c-4a96-8928-163992453f38",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.801Z",
+    "updated_at": "2026-10-03T08:19:39.801Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "dd963e90-bfa2-4bab-9433-89cb1435aaa2",
+  "fields": {
+    "model_generation": "3406b591-a547-4486-82ae-615a8a209c3f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.483Z",
+    "updated_at": "2026-10-03T08:19:38.483Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "de95ea99-427c-4c6a-a4d5-1c4211c3c063",
+  "fields": {
+    "model_generation": "109c92b5-4452-4b95-9ce0-b492744be6a9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.167Z",
+    "updated_at": "2026-10-03T08:19:38.167Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "df20be5b-9aaf-4096-aafe-0d5752f158de",
+  "fields": {
+    "model_generation": "6d22bda1-ed35-4b1d-b292-7a1115332ada",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.921Z",
+    "updated_at": "2026-10-03T08:19:38.921Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "df2fa80d-5fa0-42f0-bd12-6cad06101597",
+  "fields": {
+    "model_generation": "dc33ce2e-fd73-470a-af24-c13d376c2c93",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.886Z",
+    "updated_at": "2026-10-03T08:19:39.886Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "df684bbb-2507-4917-b541-c59733373f43",
+  "fields": {
+    "model_generation": "de3b02bc-c7d7-48c7-bd0c-812fd4109ea7",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.915Z",
+    "updated_at": "2026-10-03T08:19:39.915Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e0772e30-49dd-4090-a7dd-f8afb96f6ede",
+  "fields": {
+    "model_generation": "2f3bec94-e724-48d1-b220-9224eb1ba3dc",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.446Z",
+    "updated_at": "2026-10-03T08:19:38.446Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e0d22424-bc8e-451d-83bd-75cedf6dd9b6",
+  "fields": {
+    "model_generation": "fe51a726-e73d-4350-9042-eb532bd8f6ae",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.141Z",
+    "updated_at": "2026-10-03T08:19:40.141Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e2692d67-8576-4168-a4a7-59209bd63e0e",
+  "fields": {
+    "model_generation": "b37d23db-344b-4d5e-a22d-5dfd9259244d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.578Z",
+    "updated_at": "2026-10-03T08:19:39.578Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e32828c6-9a95-4e40-87a4-3a44a86cab46",
+  "fields": {
+    "model_generation": "6571c846-dc75-482c-b5bf-f69cae5b9008",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.855Z",
+    "updated_at": "2026-10-03T08:19:38.855Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e3b20f66-4886-4fe0-ac9f-15422385d3ac",
+  "fields": {
+    "model_generation": "d5c4ec24-bd85-4006-925d-8b1c80f7db67",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.838Z",
+    "updated_at": "2026-10-03T08:19:39.838Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e438a277-513e-439d-a640-88b5b007b9be",
+  "fields": {
+    "model_generation": "085a77b2-2a48-49b6-a2bf-e6a0a2a44309",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.081Z",
+    "updated_at": "2026-10-03T08:19:38.081Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e4a6c63c-f9e8-4b36-9863-8f08afb6a07c",
+  "fields": {
+    "model_generation": "ad938ea6-5e6f-4581-bea2-1e08e6c1ee9f",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.521Z",
+    "updated_at": "2026-10-03T08:19:39.521Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e4ddc4e4-3d70-401f-bb28-3850c1a17e5b",
+  "fields": {
+    "model_generation": "cbff1e72-7b1e-463d-9026-43596219b7c4",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.770Z",
+    "updated_at": "2026-10-03T08:19:39.770Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e5ae69c2-ba51-4247-9991-a4ba77b3b31d",
+  "fields": {
+    "model_generation": "adb8cd88-3c4b-4a3e-980f-99b2b58b088c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.532Z",
+    "updated_at": "2026-10-03T08:19:39.532Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e6174fd6-59a5-4057-a768-2dded4caa492",
+  "fields": {
+    "model_generation": "dec799ea-a3b6-4dcf-abe5-5c1cd59c4233",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.921Z",
+    "updated_at": "2026-10-03T08:19:39.921Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e62d9195-c6c7-4040-8969-cc591645f8d9",
+  "fields": {
+    "model_generation": "7d632c35-f99c-4079-980e-41a7f0e9b229",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.092Z",
+    "updated_at": "2026-10-03T08:19:39.092Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e67705bf-6349-420f-a821-437c2189a080",
+  "fields": {
+    "model_generation": "aa128289-8ab2-4605-a6aa-b1b02591b936",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.497Z",
+    "updated_at": "2026-10-03T08:19:39.497Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e78c1f6a-c66a-4eca-886d-624de2799273",
+  "fields": {
+    "model_generation": "8d721bc2-649d-4c8c-9386-45420b1ba0bc",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.249Z",
+    "updated_at": "2026-10-03T08:19:39.249Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e7e131f8-a846-4eda-92d0-8560ce36fd28",
+  "fields": {
+    "model_generation": "73e068b0-93a9-4a19-9fa9-0b3ee95d544c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.966Z",
+    "updated_at": "2026-10-03T08:19:38.966Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e849451e-a1cd-4895-8ba1-99c4383bebff",
+  "fields": {
+    "model_generation": "101ca1b8-ec2e-49ed-b029-30d5baeb0f71",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.158Z",
+    "updated_at": "2026-10-03T08:19:38.158Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e8d1fb71-ffec-4cbd-a7e1-b57bf3fbeaf6",
+  "fields": {
+    "model_generation": "1f7868e4-6000-4b0e-a883-78544716f8e1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.275Z",
+    "updated_at": "2026-10-03T08:19:38.275Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "e8da9b4b-3e54-4eef-81f6-842a41ef93a3",
+  "fields": {
+    "model_generation": "2d5c35ad-443a-4ced-9a6d-650fdff94250",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.411Z",
+    "updated_at": "2026-10-03T08:19:38.411Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ea760e71-4e3f-461a-9662-0ecbf290d1fc",
+  "fields": {
+    "model_generation": "c1de3d35-9963-47d1-895e-efa5a68cf5df",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.696Z",
+    "updated_at": "2026-10-03T08:19:39.696Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "eb1d3f7c-adbe-4ebd-baaa-4ccb016a46f4",
+  "fields": {
+    "model_generation": "fac97c28-c8ce-4d0f-8a69-4f5c90ca851a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.109Z",
+    "updated_at": "2026-10-03T08:19:40.109Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "eb28de0f-a046-4145-a319-fbffd087d0ad",
+  "fields": {
+    "model_generation": "22a1ac79-b6e6-48b0-950c-9c24c7a8eaee",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.312Z",
+    "updated_at": "2026-10-03T08:19:38.312Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "eb765267-7655-42cd-ad70-0de07ac236cf",
+  "fields": {
+    "model_generation": "a203211c-15af-47c7-a55c-3e383cdf7608",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.430Z",
+    "updated_at": "2026-10-03T08:19:39.430Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "eb7ec369-c6ff-4895-b012-6dd5c465787a",
+  "fields": {
+    "model_generation": "ce1cf4ce-b63f-4d8c-96bd-89aeeea44445",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.783Z",
+    "updated_at": "2026-10-03T08:19:39.783Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ebb8c027-2fb2-4f3d-802c-4f5b32a5f8c6",
+  "fields": {
+    "model_generation": "c81a996c-de78-4606-b7f7-75c4c0c0f0ec",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.736Z",
+    "updated_at": "2026-10-03T08:19:39.736Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ebf7c1c8-9827-4d00-96af-0b31156e086b",
+  "fields": {
+    "model_generation": "f2cffe9f-c8ba-479c-a9cb-3c58e6097e71",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.033Z",
+    "updated_at": "2026-10-03T08:19:40.033Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ec039459-c3dd-4473-92ce-4430823b5275",
+  "fields": {
+    "model_generation": "72fa5eae-fcd2-430c-baee-a469326f4e17",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.960Z",
+    "updated_at": "2026-10-03T08:19:38.960Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ed40f5c9-29d9-4852-b11d-dac2c36b8ff0",
+  "fields": {
+    "model_generation": "8a8d94e2-0219-4b94-a8f6-2f178d962438",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.218Z",
+    "updated_at": "2026-10-03T08:19:39.218Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "edd7278b-d7b9-4397-a56e-e3acaae3127c",
+  "fields": {
+    "model_generation": "5b6ef23a-61ff-4a8a-b439-3bb6580abc7d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.765Z",
+    "updated_at": "2026-10-03T08:19:38.765Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "edd75fd5-7bbc-4204-b1f2-5a0ae6fcf620",
+  "fields": {
+    "model_generation": "2241adb0-c192-4ef4-8f7b-78caf99fa412",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.303Z",
+    "updated_at": "2026-10-03T08:19:38.303Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ee13b1dd-759b-4805-a68e-3413b676bbd1",
+  "fields": {
+    "model_generation": "e68ea7f8-a679-413c-839a-383e7e76e7a0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.992Z",
+    "updated_at": "2026-10-03T08:19:39.992Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ef5202c2-e87c-4f80-bef5-65eb6b94fc3a",
+  "fields": {
+    "model_generation": "4755ce80-3738-442c-b2ea-a9349ac004f1",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.616Z",
+    "updated_at": "2026-10-03T08:19:38.616Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f2fa7969-3817-4ac5-99ef-00651e9693a3",
+  "fields": {
+    "model_generation": "78b0caf6-ecbe-4647-806e-4d14cb02da65",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.025Z",
+    "updated_at": "2026-10-03T08:19:39.025Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f324a32a-9b40-4d83-acbb-e1bc5b92228e",
+  "fields": {
+    "model_generation": "f2ebd463-544c-434c-a3ca-c09b29feb4ff",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.038Z",
+    "updated_at": "2026-10-03T08:19:40.038Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f3608279-8c6e-47f2-a0c7-30c2a480b68a",
+  "fields": {
+    "model_generation": "0b3d769b-526b-499d-96ae-05875098addb",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.112Z",
+    "updated_at": "2026-10-03T08:19:38.112Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f39299f3-40ce-4a17-a2bf-0cb50f7fdfb4",
+  "fields": {
+    "model_generation": "99dedfb4-3261-43b9-a46c-89bec186fcae",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.368Z",
+    "updated_at": "2026-10-03T08:19:39.368Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f3b66d41-97d9-4627-86fe-b017719fd9de",
+  "fields": {
+    "model_generation": "9e310aba-5cd4-4855-99e3-2057b56b4a34",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.404Z",
+    "updated_at": "2026-10-03T08:19:39.404Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f4de7cf1-e067-46aa-ab56-e36b0265bd9e",
+  "fields": {
+    "model_generation": "21cdf05f-0b63-4abe-9a8d-6e77dc67bb82",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.299Z",
+    "updated_at": "2026-10-03T08:19:38.299Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f5cfbf6a-beff-4a88-90e7-62c692459080",
+  "fields": {
+    "model_generation": "7462e7e5-7ff1-4871-865d-1c0b8211d7f9",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.977Z",
+    "updated_at": "2026-10-03T08:19:38.977Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f6b70a27-8d0d-4c04-adfc-26e67e8bc9a7",
+  "fields": {
+    "model_generation": "32927ec1-2424-45dc-8270-5d4af9e99825",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.467Z",
+    "updated_at": "2026-10-03T08:19:38.467Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f7882695-7ede-4eac-bf7d-0f17f6ea9299",
+  "fields": {
+    "model_generation": "083e30ab-eae5-4e58-8239-b9ba065b5147",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.077Z",
+    "updated_at": "2026-10-03T08:19:38.077Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "f938a7b5-3069-404c-93a6-9bfdd9077b6a",
+  "fields": {
+    "model_generation": "8ae91607-fc18-445b-9a34-e75d4a17af71",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.232Z",
+    "updated_at": "2026-10-03T08:19:39.232Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fa59bac9-b30f-407f-b141-1f72cef0375a",
+  "fields": {
+    "model_generation": "0c207dee-4125-418e-9e9d-3f299d3d6cc5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.137Z",
+    "updated_at": "2026-10-03T08:19:38.137Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fa6c2ded-e622-43fe-9f67-04fa4cc6dcd6",
+  "fields": {
+    "model_generation": "9ab18129-a48e-44ec-be3b-a2df3eab1e58",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.378Z",
+    "updated_at": "2026-10-03T08:19:39.378Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fa9564cf-e4a1-48a6-b825-a39ec87345e6",
+  "fields": {
+    "model_generation": "a2b82640-772a-4655-b22f-15625a3f3e5c",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.441Z",
+    "updated_at": "2026-10-03T08:19:39.441Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fabb4b56-45e7-4ebf-8d12-995c4c9bcebe",
+  "fields": {
+    "model_generation": "36055310-36f0-4b98-99d5-22bc1cfb800e",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.512Z",
+    "updated_at": "2026-10-03T08:19:38.512Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fb0ce88b-2010-4b45-81f3-18f98b11ac47",
+  "fields": {
+    "model_generation": "bb438d7b-4b6f-4b6c-9fe9-af6757ebb089",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.628Z",
+    "updated_at": "2026-10-03T08:19:39.628Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fb9afb34-c432-4cda-87e2-b434a9879c6b",
+  "fields": {
+    "model_generation": "2d9e6544-4a1e-4e04-9162-1229f7d6a730",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.426Z",
+    "updated_at": "2026-10-03T08:19:38.426Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fc597f6e-a311-442b-b3a4-d3ab8bfd228e",
+  "fields": {
+    "model_generation": "34fcfab9-0236-4193-ac9e-f059dd5205f5",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.507Z",
+    "updated_at": "2026-10-03T08:19:38.507Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fc95df6e-7567-414a-a3a2-91da37eab9af",
+  "fields": {
+    "model_generation": "fe8f9e45-cc7f-4ff5-b3e8-c6aa72cb4562",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.146Z",
+    "updated_at": "2026-10-03T08:19:40.146Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fd0b9ecb-2769-45be-a754-2eedf73d5c15",
+  "fields": {
+    "model_generation": "ae55edcd-afc4-43c8-a585-7051e1c392f0",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.549Z",
+    "updated_at": "2026-10-03T08:19:39.549Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fd30bc4d-591b-416e-b032-99d5fb80251e",
+  "fields": {
+    "model_generation": "f59676b3-35c7-4744-9458-01f5bc14b83a",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:40.068Z",
+    "updated_at": "2026-10-03T08:19:40.068Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fd542dfb-966d-42aa-aedc-4cb87b097e94",
+  "fields": {
+    "model_generation": "17670026-f7b9-49c4-8254-827886d77a31",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.209Z",
+    "updated_at": "2026-10-03T08:19:38.209Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fd5ee6a0-f7ad-4b3a-898a-00c16cb7b8f7",
+  "fields": {
+    "model_generation": "480cd652-7fad-45e3-b4be-a3acdf52429b",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.626Z",
+    "updated_at": "2026-10-03T08:19:38.626Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "fe32b063-63cf-4033-bfd6-692a6f592323",
+  "fields": {
+    "model_generation": "86b36682-edda-4744-9685-6f57ad49040d",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:39.178Z",
+    "updated_at": "2026-10-03T08:19:39.178Z"
+  }
+},
+{
+  "model": "catalog.basemodel",
+  "pk": "ffd5279d-cd75-4127-be4f-1ce5a6549ac5",
+  "fields": {
+    "model_generation": "74bd8588-a011-4af8-b381-62cf8447ecde",
+    "body_style": null,
+    "year": 2026,
+    "created_at": "2026-10-03T08:19:38.982Z",
+    "updated_at": "2026-10-03T08:19:38.982Z"
+  }
+}
+]

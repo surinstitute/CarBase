@@ -14,7 +14,7 @@ if [ "${DISABLE_DB_MIGRATIONS}" != "true" ] && [ ! -f ./db_status ]; then
 
     uv run --no-sync manage.py makemigrations
     uv run --no-sync manage.py migrate
-    #uv run --no-sync manage.py loaddata catalog_seed
+    #uv run --no-sync manage.py loaddata makes
 
     # Mark initialization as done
     echo "Successfuly migrated DB!"

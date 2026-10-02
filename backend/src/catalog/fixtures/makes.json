@@ -1,0 +1,767 @@
+[
+{
+  "model": "catalog.make",
+  "pk": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+  "fields": {
+    "name": "Ford",
+    "slug": "ford",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+  "fields": {
+    "name": "Acura",
+    "slug": "acura",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "11b232a7-14e6-42e1-8275-161741a70d86",
+  "fields": {
+    "name": "Great Wall Motor",
+    "slug": "great-wall-motor",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "122bfdc1-f55f-4c35-a419-3e95fde7aae5",
+  "fields": {
+    "name": "Peugeot",
+    "slug": "peugeot",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+  "fields": {
+    "name": "Hyundai",
+    "slug": "hyundai",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "1fb4ccc5-2733-408b-a17a-7ad514ce7ee6",
+  "fields": {
+    "name": "Lynk&Co",
+    "slug": "lynkco",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+  "fields": {
+    "name": "Lexus",
+    "slug": "lexus",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+  "fields": {
+    "name": "Nissan",
+    "slug": "nissan",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "25d5750f-e7ae-4e0c-9afe-6de8d17c21c1",
+  "fields": {
+    "name": "Zeekr",
+    "slug": "zeekr",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+  "fields": {
+    "name": "Lincoln",
+    "slug": "lincoln",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "2dc75bc2-3e0f-4bfc-a440-bb92a54791b8",
+  "fields": {
+    "name": "Mitsubishi",
+    "slug": "mitsubishi",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+  "fields": {
+    "name": "KIA",
+    "slug": "kia",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+  "fields": {
+    "name": "Infiniti",
+    "slug": "infiniti",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "31935404-5e70-4615-94db-828440d6fb54",
+  "fields": {
+    "name": "Dodge",
+    "slug": "dodge",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "33019fa7-4065-4736-876e-e1860afb9917",
+  "fields": {
+    "name": "Bentley",
+    "slug": "bentley",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+  "fields": {
+    "name": "Mazda",
+    "slug": "mazda",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+  "fields": {
+    "name": "Audi",
+    "slug": "audi",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+  "fields": {
+    "name": "Toyota",
+    "slug": "toyota",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "3e8c2641-b898-4ff7-871c-5cb46afa3c54",
+  "fields": {
+    "name": "Chirey",
+    "slug": "chirey",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "4410df40-c840-4ce0-adb8-181f6039d146",
+  "fields": {
+    "name": "JAC",
+    "slug": "jac",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "4c83700f-0f6e-4c20-a1a2-88a95656ed07",
+  "fields": {
+    "name": "Fiat",
+    "slug": "fiat",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+  "fields": {
+    "name": "Honda",
+    "slug": "honda",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "517739bb-ed03-4dff-878c-29c2f55b8b6a",
+  "fields": {
+    "name": "CUPRA",
+    "slug": "cupra",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "639a67b6-454b-42cc-9f1f-2b2465c08bb2",
+  "fields": {
+    "name": "Porsche",
+    "slug": "porsche",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "73ab3f70-4592-449a-a779-dae6fef10850",
+  "fields": {
+    "name": "Changan",
+    "slug": "changan",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+  "fields": {
+    "name": "MG Motor",
+    "slug": "mg-motor",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "79a45653-bdbf-4ff9-b888-1833c949f660",
+  "fields": {
+    "name": "GM",
+    "slug": "gm",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "83bc37bf-8c17-425a-90a9-ba48cc0b09c7",
+  "fields": {
+    "name": "MINI",
+    "slug": "mini",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "857de3e7-b658-46e5-bba5-df5edfc1397f",
+  "fields": {
+    "name": "Jeep",
+    "slug": "jeep",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "8689c6e2-5690-497c-9cba-c8fb6f0694fe",
+  "fields": {
+    "name": "Volvo",
+    "slug": "volvo",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+  "fields": {
+    "name": "Baic",
+    "slug": "baic",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "8f438eb1-7056-42c4-999f-6af6f509df71",
+  "fields": {
+    "name": "Leapmotor",
+    "slug": "leapmotor",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "9077bb30-045c-42e0-8901-f167f4151d89",
+  "fields": {
+    "name": "Foton",
+    "slug": "foton",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "98d46a84-da37-4ecb-ae08-599bf3812965",
+  "fields": {
+    "name": "Geely",
+    "slug": "geely",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "a4ff3182-8062-4af0-a619-38a028e936cf",
+  "fields": {
+    "name": "Alfa Romeo",
+    "slug": "alfa-romeo",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "ab05faa4-5bbe-4423-bcb0-89bc5bfa99d4",
+  "fields": {
+    "name": "Cadillac",
+    "slug": "cadillac",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "b199b40d-a69a-49a5-983c-413fd4e48110",
+  "fields": {
+    "name": "RAM",
+    "slug": "ram",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "b7dffd71-8170-411c-a8c4-e28e99c725c4",
+  "fields": {
+    "name": "Lynk & Co",
+    "slug": "lynk-co",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "be7751fd-5073-49b2-807c-822df1cc7e28",
+  "fields": {
+    "name": "Land Rover",
+    "slug": "land-rover",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "c4798747-d32d-4226-85b3-206de6ce475e",
+  "fields": {
+    "name": "SEAT",
+    "slug": "seat",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "ca94dbf4-a967-4921-b2f0-4f091b11696d",
+  "fields": {
+    "name": "DFSK",
+    "slug": "dfsk",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "dd537959-3814-4f4c-84b4-16aba5ce816e",
+  "fields": {
+    "name": "Subaru",
+    "slug": "subaru",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+  "fields": {
+    "name": "BMW",
+    "slug": "bmw",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "e4cacefe-dbea-410b-9807-8614b2a8e0ef",
+  "fields": {
+    "name": "GMC",
+    "slug": "gmc",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "e72fb050-b241-4d92-9580-850c86e7259b",
+  "fields": {
+    "name": "Buick",
+    "slug": "buick",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "ea806967-ff5d-426f-8498-24e06a1cc0e1",
+  "fields": {
+    "name": "Suzuki",
+    "slug": "suzuki",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "eab5565b-9352-472f-a080-477b73343237",
+  "fields": {
+    "name": "Volkswagen",
+    "slug": "volkswagen",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "f1b40233-1a6b-4ada-a52a-b447cef039eb",
+  "fields": {
+    "name": "Omoda",
+    "slug": "omoda",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+  "fields": {
+    "name": "Soueast",
+    "slug": "soueast",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "f8700eb4-4cbe-44cf-ae2b-c363b17bf141",
+  "fields": {
+    "name": "Renault",
+    "slug": "renault",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+},
+{
+  "model": "catalog.make",
+  "pk": "fbbfe648-7ade-4c7b-82ed-549b417e0b75",
+  "fields": {
+    "name": "Mercedes Benz",
+    "slug": "mercedes-benz",
+    "description": "",
+    "website": "",
+    "phone": "",
+    "legal_representative": "",
+    "icon_svg": "",
+    "country": null,
+    "group": null
+  }
+}
+]

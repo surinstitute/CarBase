@@ -1,0 +1,5566 @@
+[
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0095d320-7f13-49ee-b807-103899bf2a8b",
+  "fields": {
+    "model": "Stelvio",
+    "make": "a4ff3182-8062-4af0-a619-38a028e936cf",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.690Z",
+    "updated_at": "2026-10-03T07:54:17.690Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "00b871f1-bb3d-40a0-9753-0be938dbc5de",
+  "fields": {
+    "model": "Terramont",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.402Z",
+    "updated_at": "2026-10-03T07:54:19.402Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "02726b8e-0bb0-49c7-9133-14fef85c3ddc",
+  "fields": {
+    "model": "Serie 3",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.825Z",
+    "updated_at": "2026-10-03T07:54:17.825Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0323673e-e277-4903-9315-70ff6a4f0039",
+  "fields": {
+    "model": "RIFTER",
+    "make": "122bfdc1-f55f-4c35-a419-3e95fde7aae5",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.125Z",
+    "updated_at": "2026-10-03T07:54:19.125Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "039c21a9-cd67-4f28-9bd9-b772329f8981",
+  "fields": {
+    "model": "Escalade",
+    "make": "ab05faa4-5bbe-4423-bcb0-89bc5bfa99d4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.323Z",
+    "updated_at": "2026-10-03T07:54:18.323Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "04a591a7-009a-479a-9d2a-345d28ce2784",
+  "fields": {
+    "model": "Ioniq",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.461Z",
+    "updated_at": "2026-10-03T07:54:18.461Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "05525843-b97a-4927-adb0-af7bf27015c4",
+  "fields": {
+    "model": "EQB",
+    "make": "fbbfe648-7ade-4c7b-82ed-549b417e0b75",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.862Z",
+    "updated_at": "2026-10-03T07:54:18.862Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "074d8aa7-4e47-421c-8678-a234310d3df0",
+  "fields": {
+    "model": "CS35PLUS",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.014Z",
+    "updated_at": "2026-10-03T07:54:19.014Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "083e30ab-eae5-4e58-8239-b9ba065b5147",
+  "fields": {
+    "model": "Serie 4",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.828Z",
+    "updated_at": "2026-10-03T07:54:17.828Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "085a77b2-2a48-49b6-a2bf-e6a0a2a44309",
+  "fields": {
+    "model": "M6",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.816Z",
+    "updated_at": "2026-10-03T07:54:17.816Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "09004d59-049e-4047-93ac-1b821ae391f3",
+  "fields": {
+    "model": "GWM P300",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.348Z",
+    "updated_at": "2026-10-03T07:54:18.348Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0938c256-c0e5-4641-962d-b678d8435698",
+  "fields": {
+    "model": "Territory",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.148Z",
+    "updated_at": "2026-10-03T07:54:18.148Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "09454028-8697-4a55-b43c-97ef8ceb0866",
+  "fields": {
+    "model": "E Sei 4",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.538Z",
+    "updated_at": "2026-10-03T07:54:18.538Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0a923b29-a9a2-4870-b64c-9acef4431097",
+  "fields": {
+    "model": "Serie 5",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.831Z",
+    "updated_at": "2026-10-03T07:54:17.831Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0aae3b90-85b1-4e48-b6d4-4519d446dbf4",
+  "fields": {
+    "model": "BJ20",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.967Z",
+    "updated_at": "2026-10-03T07:54:18.967Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0b0f7df6-4f2f-452d-ab66-e35d3c98ecd8",
+  "fields": {
+    "model": "E Sunray",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.541Z",
+    "updated_at": "2026-10-03T07:54:18.541Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0b3d769b-526b-499d-96ae-05875098addb",
+  "fields": {
+    "model": "Cherokee",
+    "make": "857de3e7-b658-46e5-bba5-df5edfc1397f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.964Z",
+    "updated_at": "2026-10-03T07:54:17.964Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0b4ba816-bd56-4cd9-9853-eb7c533386ca",
+  "fields": {
+    "model": "900",
+    "make": "b7dffd71-8170-411c-a8c4-e28e99c725c4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.811Z",
+    "updated_at": "2026-10-03T07:54:18.811Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0bcf64a1-8c02-4099-8b13-47d98cd66fbf",
+  "fields": {
+    "model": "Accord",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.390Z",
+    "updated_at": "2026-10-03T07:54:18.390Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0bf60f18-fdb2-47fa-9a3c-599223c1ee42",
+  "fields": {
+    "model": "EX5",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.210Z",
+    "updated_at": "2026-10-03T07:54:18.210Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0c148dc6-5fa1-4b0d-b9c6-c32672a5fd57",
+  "fields": {
+    "model": "C5",
+    "make": "f1b40233-1a6b-4ada-a52a-b447cef039eb",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.106Z",
+    "updated_at": "2026-10-03T07:54:19.106Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0c207dee-4125-418e-9e9d-3f299d3d6cc5",
+  "fields": {
+    "model": "X6",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.871Z",
+    "updated_at": "2026-10-03T07:54:17.871Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0d605b3b-1714-4f8e-92e2-3961fd583e98",
+  "fields": {
+    "model": "Monjaro",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.227Z",
+    "updated_at": "2026-10-03T07:54:18.227Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0dd02db8-98d1-4418-b2a1-1574b88b23db",
+  "fields": {
+    "model": "Sportage",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.677Z",
+    "updated_at": "2026-10-03T07:54:18.677Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "0f775562-b31f-43f4-9e4d-3c56e47cc0cf",
+  "fields": {
+    "model": "BRZ",
+    "make": "dd537959-3814-4f4c-84b4-16aba5ce816e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.237Z",
+    "updated_at": "2026-10-03T07:54:19.237Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "101ca1b8-ec2e-49ed-b029-30d5baeb0f71",
+  "fields": {
+    "model": "TX",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.756Z",
+    "updated_at": "2026-10-03T07:54:18.756Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "109052f7-0d61-4174-b5ba-3e2342ed65e0",
+  "fields": {
+    "model": "Cooper",
+    "make": "83bc37bf-8c17-425a-90a9-ba48cc0b09c7",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.934Z",
+    "updated_at": "2026-10-03T07:54:18.934Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "109c92b5-4452-4b95-9ce0-b492744be6a9",
+  "fields": {
+    "model": "CS75PLUS",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.023Z",
+    "updated_at": "2026-10-03T07:54:19.023Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "12247315-349f-4490-ac41-469a9f8a6f47",
+  "fields": {
+    "model": "ALSVIN",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.881Z",
+    "updated_at": "2026-10-03T07:54:17.881Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "12709494-3cc7-465a-953f-4ee8698e4496",
+  "fields": {
+    "model": "MG5",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.919Z",
+    "updated_at": "2026-10-03T07:54:18.919Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "14591cd8-e07d-4f5c-8c7d-d721d2d1d75b",
+  "fields": {
+    "model": "Rcz",
+    "make": "122bfdc1-f55f-4c35-a419-3e95fde7aae5",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.121Z",
+    "updated_at": "2026-10-03T07:54:19.121Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "14e47a6d-3396-4200-af60-0c158878b7e5",
+  "fields": {
+    "model": "JIMNY",
+    "make": "ea806967-ff5d-426f-8498-24e06a1cc0e1",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.261Z",
+    "updated_at": "2026-10-03T07:54:19.261Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "153d25fe-a59d-47c2-b86d-898a03b59f7b",
+  "fields": {
+    "model": "Kwid",
+    "make": "f8700eb4-4cbe-44cf-ae2b-c363b17bf141",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.186Z",
+    "updated_at": "2026-10-03T07:54:19.186Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "15435239-4083-426f-a7b8-7a3a6bcf3625",
+  "fields": {
+    "model": "GR Corolla",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.290Z",
+    "updated_at": "2026-10-03T07:54:19.290Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "159cb379-4313-4a77-85b3-b2f9243351d7",
+  "fields": {
+    "model": "T1",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.631Z",
+    "updated_at": "2026-10-03T07:54:18.631Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "17670026-f7b9-49c4-8254-827886d77a31",
+  "fields": {
+    "model": "Arona",
+    "make": "c4798747-d32d-4226-85b3-206de6ce475e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.191Z",
+    "updated_at": "2026-10-03T07:54:19.191Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "17a6bff5-6cdb-4b6b-b7e4-5c41e117fcd5",
+  "fields": {
+    "model": "S09",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.627Z",
+    "updated_at": "2026-10-03T07:54:18.627Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "185b6f3c-aedf-430b-a832-ec5dbc5f6bc5",
+  "fields": {
+    "model": "CX-5",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.823Z",
+    "updated_at": "2026-10-03T07:54:18.823Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1885829c-c266-4c8e-a623-11171974075f",
+  "fields": {
+    "model": "HSHEV",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.896Z",
+    "updated_at": "2026-10-03T07:54:18.896Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "189452c5-2f4f-4eb4-aabf-b63bc57e9056",
+  "fields": {
+    "model": "Junior",
+    "make": "a4ff3182-8062-4af0-a619-38a028e936cf",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.686Z",
+    "updated_at": "2026-10-03T07:54:17.686Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "18e8cb6d-7a09-4316-ab63-10a5f69924d9",
+  "fields": {
+    "model": "Frison",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.564Z",
+    "updated_at": "2026-10-03T07:54:18.564Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "19822658-fbfe-474b-a11b-8223f91a0906",
+  "fields": {
+    "model": "T2",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.595Z",
+    "updated_at": "2026-10-03T07:54:18.595Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1ba97bc3-e441-4698-807c-4849260a16cc",
+  "fields": {
+    "model": "Leon",
+    "make": "c4798747-d32d-4226-85b3-206de6ce475e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.212Z",
+    "updated_at": "2026-10-03T07:54:19.212Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1c235f93-231a-4911-a84f-d53ce15eb083",
+  "fields": {
+    "model": "Lobo",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.122Z",
+    "updated_at": "2026-10-03T07:54:18.122Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1c5a656b-2edd-4208-9025-38a98edadeff",
+  "fields": {
+    "model": "Mulsanne",
+    "make": "33019fa7-4065-4736-876e-e1860afb9917",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.776Z",
+    "updated_at": "2026-10-03T07:54:17.776Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1e5478a2-f0f2-4005-a462-e82321c1c937",
+  "fields": {
+    "model": "Q8",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.741Z",
+    "updated_at": "2026-10-03T07:54:17.741Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1f077dbb-71a8-4ec1-b0f8-b122fb6e6c00",
+  "fields": {
+    "model": "Macan",
+    "make": "639a67b6-454b-42cc-9f1f-2b2465c08bb2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.148Z",
+    "updated_at": "2026-10-03T07:54:19.148Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1f4b0655-d4ff-485d-8636-1acf4fe24dcf",
+  "fields": {
+    "model": "Koleos",
+    "make": "f8700eb4-4cbe-44cf-ae2b-c363b17bf141",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.182Z",
+    "updated_at": "2026-10-03T07:54:19.182Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1f7868e4-6000-4b0e-a883-78544716f8e1",
+  "fields": {
+    "model": "Tiggo 7",
+    "make": "3e8c2641-b898-4ff7-871c-5cb46afa3c54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.937Z",
+    "updated_at": "2026-10-03T07:54:17.937Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1fcd80dd-5530-45fa-bc1f-b3c6eac9e306",
+  "fields": {
+    "model": "eHS",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.882Z",
+    "updated_at": "2026-10-03T07:54:18.882Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "1ff978cb-67d8-407b-8814-471e59a1cb3f",
+  "fields": {
+    "model": "HUNTER CHASIS",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.906Z",
+    "updated_at": "2026-10-03T07:54:17.906Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "20c2844e-03f6-44b2-9783-05c124630c46",
+  "fields": {
+    "model": "Tiggo 8",
+    "make": "3e8c2641-b898-4ff7-871c-5cb46afa3c54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.943Z",
+    "updated_at": "2026-10-03T07:54:17.943Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "20ebb1c4-2ab0-4fc4-a7d1-e908dad5dc39",
+  "fields": {
+    "model": "e-tron",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.721Z",
+    "updated_at": "2026-10-03T07:54:17.721Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "21cdf05f-0b63-4abe-9a8d-6e77dc67bb82",
+  "fields": {
+    "model": "Swift",
+    "make": "ea806967-ff5d-426f-8498-24e06a1cc0e1",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.266Z",
+    "updated_at": "2026-10-03T07:54:19.266Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2241adb0-c192-4ef4-8f7b-78caf99fa412",
+  "fields": {
+    "model": "Avalanche",
+    "make": "e4cacefe-dbea-410b-9807-8614b2a8e0ef",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.247Z",
+    "updated_at": "2026-10-03T07:54:18.247Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "227032c2-d095-4e72-847a-62d80474ed46",
+  "fields": {
+    "model": "Serie 7",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.840Z",
+    "updated_at": "2026-10-03T07:54:17.840Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "22a1ac79-b6e6-48b0-950c-9c24c7a8eaee",
+  "fields": {
+    "model": "M5",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.813Z",
+    "updated_at": "2026-10-03T07:54:17.813Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "22ca3e28-1c88-448d-b16f-996b052bcaa9",
+  "fields": {
+    "model": "Kicks",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.069Z",
+    "updated_at": "2026-10-03T07:54:19.069Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "230306ff-aabb-4f00-9f23-85d32d17da75",
+  "fields": {
+    "model": "CX-30",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.819Z",
+    "updated_at": "2026-10-03T07:54:18.819Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "23475a27-78b9-449e-b94e-e0d6e1619d29",
+  "fields": {
+    "model": "Range Rover",
+    "make": "be7751fd-5073-49b2-807c-822df1cc7e28",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.702Z",
+    "updated_at": "2026-10-03T07:54:18.702Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "236cb82f-1de1-49f2-b7e5-b1eaf3f6d155",
+  "fields": {
+    "model": "ORA 03",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.364Z",
+    "updated_at": "2026-10-03T07:54:18.364Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2442611f-6399-4cb8-916c-6794d813d1fb",
+  "fields": {
+    "model": "Tiggo 4",
+    "make": "3e8c2641-b898-4ff7-871c-5cb46afa3c54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.933Z",
+    "updated_at": "2026-10-03T07:54:17.933Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "26b9e587-73a3-45b4-9bf5-c26b35febdf1",
+  "fields": {
+    "model": "Commander",
+    "make": "857de3e7-b658-46e5-bba5-df5edfc1397f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.968Z",
+    "updated_at": "2026-10-03T07:54:17.968Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "270686c4-aedf-4dd7-873a-b61d84b747b9",
+  "fields": {
+    "model": "Insight",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.418Z",
+    "updated_at": "2026-10-03T07:54:18.418Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "27ccfaca-ffd9-47e6-a105-dad39b516545",
+  "fields": {
+    "model": "Countryman",
+    "make": "83bc37bf-8c17-425a-90a9-ba48cc0b09c7",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.940Z",
+    "updated_at": "2026-10-03T07:54:18.940Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "27d45880-716a-4bf1-a60a-1cec4d01599b",
+  "fields": {
+    "model": "Journey",
+    "make": "31935404-5e70-4615-94db-828440d6fb54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.985Z",
+    "updated_at": "2026-10-03T07:54:17.985Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "27f332f5-55f4-4257-bafb-9519b5d95580",
+  "fields": {
+    "model": "Wagoneer",
+    "make": "857de3e7-b658-46e5-bba5-df5edfc1397f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.019Z",
+    "updated_at": "2026-10-03T07:54:18.019Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2830bc83-1071-41dc-a69c-80871a974e56",
+  "fields": {
+    "model": "B10",
+    "make": "8f438eb1-7056-42c4-999f-6af6f509df71",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.719Z",
+    "updated_at": "2026-10-03T07:54:18.719Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "297fc2f9-93d4-4c90-896f-6cd96ce56647",
+  "fields": {
+    "model": "Sonet",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.670Z",
+    "updated_at": "2026-10-03T07:54:18.670Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "29c52ff5-64d4-424c-8f7c-09fba2fc5415",
+  "fields": {
+    "model": "Acadia",
+    "make": "e4cacefe-dbea-410b-9807-8614b2a8e0ef",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.243Z",
+    "updated_at": "2026-10-03T07:54:18.243Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2a5a796a-e476-404e-9b94-f30ea5cdfea5",
+  "fields": {
+    "model": "EV3",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.637Z",
+    "updated_at": "2026-10-03T07:54:18.637Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2be344a2-b151-4e44-a73d-ffa868270ab7",
+  "fields": {
+    "model": "Tiggo 7 Pro e+",
+    "make": "3e8c2641-b898-4ff7-871c-5cb46afa3c54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.941Z",
+    "updated_at": "2026-10-03T07:54:17.941Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2c1ded6e-512c-44ae-a198-0d110a391c3d",
+  "fields": {
+    "model": "XC40",
+    "make": "8689c6e2-5690-497c-9cba-c8fb6f0694fe",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.443Z",
+    "updated_at": "2026-10-03T07:54:19.443Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2c4cf3fd-6c24-42d0-9745-06eba315e1c0",
+  "fields": {
+    "model": "EQC",
+    "make": "fbbfe648-7ade-4c7b-82ed-549b417e0b75",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.865Z",
+    "updated_at": "2026-10-03T07:54:18.865Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2c79537d-2c8a-4a60-9234-861b367457b2",
+  "fields": {
+    "model": "LX",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.743Z",
+    "updated_at": "2026-10-03T07:54:18.743Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2d5c35ad-443a-4ced-9a6d-650fdff94250",
+  "fields": {
+    "model": "600",
+    "make": "ca94dbf4-a967-4921-b2f0-4f091b11696d",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.054Z",
+    "updated_at": "2026-10-03T07:54:19.054Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2d693038-bbae-44d6-a8ef-fce328e8e6b1",
+  "fields": {
+    "model": "Highlander",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.305Z",
+    "updated_at": "2026-10-03T07:54:19.305Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2d9e6544-4a1e-4e04-9162-1229f7d6a730",
+  "fields": {
+    "model": "MG4",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.914Z",
+    "updated_at": "2026-10-03T07:54:18.914Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2da40831-7de3-42de-9a7c-f6a649341f35",
+  "fields": {
+    "model": "ZDX",
+    "make": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.678Z",
+    "updated_at": "2026-10-03T07:54:17.678Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2e866fba-a0a5-4458-8c7d-2f5c034f7766",
+  "fields": {
+    "model": "Explorer",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.082Z",
+    "updated_at": "2026-10-03T07:54:18.082Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2f3bec94-e724-48d1-b220-9224eb1ba3dc",
+  "fields": {
+    "model": "Crosstrek",
+    "make": "dd537959-3814-4f4c-84b4-16aba5ce816e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.219Z",
+    "updated_at": "2026-10-03T07:54:19.219Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "2fa7d40d-e491-4bb0-b2b1-35bd9cb1a913",
+  "fields": {
+    "model": "Grand Caravan",
+    "make": "857de3e7-b658-46e5-bba5-df5edfc1397f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.976Z",
+    "updated_at": "2026-10-03T07:54:17.976Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "30585eb7-150c-4f38-9a94-5979f4b80711",
+  "fields": {
+    "model": "Formentor",
+    "make": "517739bb-ed03-4dff-878c-29c2f55b8b6a",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.203Z",
+    "updated_at": "2026-10-03T07:54:19.203Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "31c64f29-2fa4-4a74-a7ce-f5dccdf8a090",
+  "fields": {
+    "model": "Bronco",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.049Z",
+    "updated_at": "2026-10-03T07:54:18.049Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "32927ec1-2424-45dc-8270-5d4af9e99825",
+  "fields": {
+    "model": "Solara",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.337Z",
+    "updated_at": "2026-10-03T07:54:19.337Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "33212f2d-f893-49f6-acd3-15762930dda6",
+  "fields": {
+    "model": "Sportback",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.758Z",
+    "updated_at": "2026-10-03T07:54:17.758Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "337537fd-8331-46fb-b237-e7dc58f1562b",
+  "fields": {
+    "model": "Frontier",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.060Z",
+    "updated_at": "2026-10-03T07:54:19.060Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "3406b591-a547-4486-82ae-615a8a209c3f",
+  "fields": {
+    "model": "X",
+    "make": "25d5750f-e7ae-4e0c-9afe-6de8d17c21c1",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.460Z",
+    "updated_at": "2026-10-03T07:54:19.460Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "343e662d-cc6b-4b5d-a6af-e44391d8f978",
+  "fields": {
+    "model": "EU5",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.980Z",
+    "updated_at": "2026-10-03T07:54:18.980Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "346c97cd-b67a-4168-b743-9efb55d8d3b1",
+  "fields": {
+    "model": "F-450",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.098Z",
+    "updated_at": "2026-10-03T07:54:18.098Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "34a62083-8597-4a4f-b151-0ad41138d335",
+  "fields": {
+    "model": "i5",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.799Z",
+    "updated_at": "2026-10-03T07:54:17.799Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "34fcfab9-0236-4193-ac9e-f059dd5205f5",
+  "fields": {
+    "model": "Cityray",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.192Z",
+    "updated_at": "2026-10-03T07:54:18.192Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "36055310-36f0-4b98-99d5-22bc1cfb800e",
+  "fields": {
+    "model": "Tera",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.426Z",
+    "updated_at": "2026-10-03T07:54:19.426Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "3cac24e8-c806-4e1f-94bf-aa9bd02b23bb",
+  "fields": {
+    "model": "A3",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.701Z",
+    "updated_at": "2026-10-03T07:54:17.701Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "3cb7c043-351b-4c73-8014-d09934c03200",
+  "fields": {
+    "model": "QX80",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.506Z",
+    "updated_at": "2026-10-03T07:54:18.506Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "3ea3f006-c14e-4a37-b8f3-b1171751939a",
+  "fields": {
+    "model": "E 10X",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.548Z",
+    "updated_at": "2026-10-03T07:54:18.548Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "3f04a44b-d152-48f3-a24c-bcdd3086e577",
+  "fields": {
+    "model": "QX65",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.498Z",
+    "updated_at": "2026-10-03T07:54:18.498Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "3f103a41-bc3f-4ee4-b4d1-9dc974ee5597",
+  "fields": {
+    "model": "GML X150",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.568Z",
+    "updated_at": "2026-10-03T07:54:18.568Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "3fd42f7a-25af-483c-a475-87cc961f9b50",
+  "fields": {
+    "model": "X25",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.992Z",
+    "updated_at": "2026-10-03T07:54:18.992Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "414cd94c-c205-4e9c-a4d0-9ee79fc09485",
+  "fields": {
+    "model": "NEW STAR TRUCK",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.917Z",
+    "updated_at": "2026-10-03T07:54:17.917Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "424b68b9-6d84-4381-bc1e-572c0503e031",
+  "fields": {
+    "model": "Envista",
+    "make": "e72fb050-b241-4d92-9580-850c86e7259b",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.313Z",
+    "updated_at": "2026-10-03T07:54:18.313Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4299509a-4e80-4445-b3b3-2ba583edcb91",
+  "fields": {
+    "model": "F700",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.612Z",
+    "updated_at": "2026-10-03T07:54:18.612Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "429cc327-e9e0-4697-9324-85ed7590bf0f",
+  "fields": {
+    "model": "Range Rover Sport",
+    "make": "be7751fd-5073-49b2-807c-822df1cc7e28",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.710Z",
+    "updated_at": "2026-10-03T07:54:18.710Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "42f28213-57be-4565-8408-9b37e4b7142f",
+  "fields": {
+    "model": "Mustang Mach-E",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.140Z",
+    "updated_at": "2026-10-03T07:54:18.140Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "43d52ad5-9555-49a2-b3fc-36b4c0a1545a",
+  "fields": {
+    "model": "K4",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.661Z",
+    "updated_at": "2026-10-03T07:54:18.661Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "448e2c45-9429-4e73-853d-1471d3a8d702",
+  "fields": {
+    "model": "X70",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.599Z",
+    "updated_at": "2026-10-03T07:54:18.599Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "449d7c18-ab38-42fd-a50a-088891bf4395",
+  "fields": {
+    "model": "RAIZE",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.318Z",
+    "updated_at": "2026-10-03T07:54:19.318Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "44a6759d-8101-464c-92fd-3c8d02e3b7ef",
+  "fields": {
+    "model": "Rav4",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.323Z",
+    "updated_at": "2026-10-03T07:54:19.323Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "454ed782-5748-473c-ae68-3e7bf702d4a7",
+  "fields": {
+    "model": "Mazda 2",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.847Z",
+    "updated_at": "2026-10-03T07:54:18.847Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "459a41f6-f410-4f74-8efd-22b0d13874d0",
+  "fields": {
+    "model": "E J4",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.523Z",
+    "updated_at": "2026-10-03T07:54:18.523Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4692e392-f5e0-4701-9543-1108858b7bfe",
+  "fields": {
+    "model": "EQA",
+    "make": "fbbfe648-7ade-4c7b-82ed-549b417e0b75",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.859Z",
+    "updated_at": "2026-10-03T07:54:18.859Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4738dda1-7f6b-4801-8ad4-c59c44edba4f",
+  "fields": {
+    "model": "CS55PLUS",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.019Z",
+    "updated_at": "2026-10-03T07:54:19.019Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4755ce80-3738-442c-b2ea-a9349ac004f1",
+  "fields": {
+    "model": "Tonale",
+    "make": "a4ff3182-8062-4af0-a619-38a028e936cf",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.693Z",
+    "updated_at": "2026-10-03T07:54:17.693Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "47e12a76-2e6e-4923-a610-a757310ac20e",
+  "fields": {
+    "model": "HAVAL Jolion",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.356Z",
+    "updated_at": "2026-10-03T07:54:18.356Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "480cd652-7fad-45e3-b4be-a3acdf52429b",
+  "fields": {
+    "model": "Bolt",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.265Z",
+    "updated_at": "2026-10-03T07:54:18.265Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "483af465-06cd-4e80-bb61-08aa6edcf3d1",
+  "fields": {
+    "model": "Range Rover Velar",
+    "make": "be7751fd-5073-49b2-807c-822df1cc7e28",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.714Z",
+    "updated_at": "2026-10-03T07:54:18.714Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "485e651b-4855-4219-bbd5-74ad9fc18a83",
+  "fields": {
+    "model": "Geometry C",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.214Z",
+    "updated_at": "2026-10-03T07:54:18.214Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "48fbd302-f323-4046-876a-6e179c3672ad",
+  "fields": {
+    "model": "RAM 4000",
+    "make": "b199b40d-a69a-49a5-983c-413fd4e48110",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.006Z",
+    "updated_at": "2026-10-03T07:54:18.006Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4985dd81-5ee5-47ba-8d7a-1d10fab7b8d4",
+  "fields": {
+    "model": "Baleno",
+    "make": "ea806967-ff5d-426f-8498-24e06a1cc0e1",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.243Z",
+    "updated_at": "2026-10-03T07:54:19.243Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4a0302f8-ce90-4a21-b75c-c81bfbc35532",
+  "fields": {
+    "model": "POER 500",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.376Z",
+    "updated_at": "2026-10-03T07:54:18.376Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4b65ba02-f03b-4320-b558-5e9d7f3d312f",
+  "fields": {
+    "model": "Genesis",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.448Z",
+    "updated_at": "2026-10-03T07:54:18.448Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4bb6aa6a-6bc4-4f35-acd5-cd88c76d3b5a",
+  "fields": {
+    "model": "Camaro",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.269Z",
+    "updated_at": "2026-10-03T07:54:18.269Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4be56005-4c74-4660-b548-cf1eb066c735",
+  "fields": {
+    "model": "S06",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.620Z",
+    "updated_at": "2026-10-03T07:54:18.620Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4c356e3b-21c1-4d7d-8d07-e5d34a258c48",
+  "fields": {
+    "model": "GR Yaris",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.299Z",
+    "updated_at": "2026-10-03T07:54:19.299Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4cea1713-0d7d-4bec-a8d7-aeb7dab2b91c",
+  "fields": {
+    "model": "A4",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.705Z",
+    "updated_at": "2026-10-03T07:54:17.705Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4db4142a-a2d1-4b57-a067-651126c51132",
+  "fields": {
+    "model": "Taos",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.398Z",
+    "updated_at": "2026-10-03T07:54:19.398Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4e4ef9e4-ed68-4c29-ba5f-dccd8fdd0da4",
+  "fields": {
+    "model": "E J7",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.527Z",
+    "updated_at": "2026-10-03T07:54:18.527Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4e9c371e-2f88-40f3-8545-0e11233c8b90",
+  "fields": {
+    "model": "911 Carrera",
+    "make": "639a67b6-454b-42cc-9f1f-2b2465c08bb2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.162Z",
+    "updated_at": "2026-10-03T07:54:19.162Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4f03f434-b914-492e-a52c-ead02b6a5482",
+  "fields": {
+    "model": "Ecosport",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.058Z",
+    "updated_at": "2026-10-03T07:54:18.058Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4f50846c-fb14-4d41-9f3c-7feb45d94d1f",
+  "fields": {
+    "model": "Argo",
+    "make": "4c83700f-0f6e-4c20-a1a2-88a95656ed07",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.024Z",
+    "updated_at": "2026-10-03T07:54:18.024Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "4f5e1128-3dc8-4ccf-abc2-770fa4e2e0f5",
+  "fields": {
+    "model": "Trax",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.339Z",
+    "updated_at": "2026-10-03T07:54:18.339Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "51b1fec9-da15-4276-a9e1-da34a60f785b",
+  "fields": {
+    "model": "Starray",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.237Z",
+    "updated_at": "2026-10-03T07:54:18.237Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5222c8a2-b24b-4060-9cc5-cd080fbc9db9",
+  "fields": {
+    "model": "Ram 1500",
+    "make": "b199b40d-a69a-49a5-983c-413fd4e48110",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.994Z",
+    "updated_at": "2026-10-03T07:54:17.994Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "52275fc1-44b9-48cd-9248-6b149a9c0229",
+  "fields": {
+    "model": "A1",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.698Z",
+    "updated_at": "2026-10-03T07:54:17.698Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5334c376-84c0-485c-863d-f399a42af417",
+  "fields": {
+    "model": "Camry",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.276Z",
+    "updated_at": "2026-10-03T07:54:19.276Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "55e12763-7a18-4878-9045-f603dad9e4c1",
+  "fields": {
+    "model": "TSX 2.4L",
+    "make": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.675Z",
+    "updated_at": "2026-10-03T07:54:17.675Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "58bb4f05-18a9-4025-9b8e-c9d4f4784e52",
+  "fields": {
+    "model": "Discovery",
+    "make": "be7751fd-5073-49b2-807c-822df1cc7e28",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.694Z",
+    "updated_at": "2026-10-03T07:54:18.694Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "598c3827-fa12-4b3d-9eca-387877176cec",
+  "fields": {
+    "model": "Virtus",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.419Z",
+    "updated_at": "2026-10-03T07:54:19.419Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5a10b03b-41e0-404a-96eb-76de6991c3f4",
+  "fields": {
+    "model": "4Runner",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.356Z",
+    "updated_at": "2026-10-03T07:54:19.356Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5b15321a-e30d-4cc4-be46-d50f969207c9",
+  "fields": {
+    "model": "WONDER",
+    "make": "9077bb30-045c-42e0-8901-f167f4151d89",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.187Z",
+    "updated_at": "2026-10-03T07:54:18.187Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5b510d18-a216-4872-baec-ff52f17eb8ee",
+  "fields": {
+    "model": "RAM 700",
+    "make": "b199b40d-a69a-49a5-983c-413fd4e48110",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.009Z",
+    "updated_at": "2026-10-03T07:54:18.009Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5b6ef23a-61ff-4a8a-b439-3bb6580abc7d",
+  "fields": {
+    "model": "X1",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.852Z",
+    "updated_at": "2026-10-03T07:54:17.852Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5cd7e987-7115-48d2-9e61-629f021eb569",
+  "fields": {
+    "model": "HUNTER PLUS",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.910Z",
+    "updated_at": "2026-10-03T07:54:17.910Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5e8a6a09-0902-463d-a725-bb0924b03cbe",
+  "fields": {
+    "model": "J7",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.591Z",
+    "updated_at": "2026-10-03T07:54:18.591Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5edc6f53-8fca-42e6-9355-25d14725c8f4",
+  "fields": {
+    "model": "LS",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.739Z",
+    "updated_at": "2026-10-03T07:54:18.739Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "5f0e1e11-e85e-4590-98f7-6394c1954a55",
+  "fields": {
+    "model": "Corvette",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.291Z",
+    "updated_at": "2026-10-03T07:54:18.291Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "602eada7-dc3a-4a08-b2b8-91e9e27b2313",
+  "fields": {
+    "model": "Tiggo 8 Pro e+",
+    "make": "3e8c2641-b898-4ff7-871c-5cb46afa3c54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.946Z",
+    "updated_at": "2026-10-03T07:54:17.946Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "60f71b6d-61e4-4759-aa75-f4a16cecd479",
+  "fields": {
+    "model": "GT",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.887Z",
+    "updated_at": "2026-10-03T07:54:18.887Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "610c6ea4-405b-4c2c-8187-356cd931e8a8",
+  "fields": {
+    "model": "C-HR",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.281Z",
+    "updated_at": "2026-10-03T07:54:19.281Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "626a7fe4-3e8c-4c0f-aaa0-db29ce3f5b0c",
+  "fields": {
+    "model": "X55",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.005Z",
+    "updated_at": "2026-10-03T07:54:19.005Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "62910eca-183e-4d28-9ca1-a31b2ee6e657",
+  "fields": {
+    "model": "Compass",
+    "make": "857de3e7-b658-46e5-bba5-df5edfc1397f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.981Z",
+    "updated_at": "2026-10-03T07:54:17.981Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6367324b-9779-4e53-9808-ce1829e69ce6",
+  "fields": {
+    "model": "MKZ",
+    "make": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.130Z",
+    "updated_at": "2026-10-03T07:54:18.130Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "639aefaf-d7ab-4451-883a-8680fb6015b4",
+  "fields": {
+    "model": "500",
+    "make": "ca94dbf4-a967-4921-b2f0-4f091b11696d",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.048Z",
+    "updated_at": "2026-10-03T07:54:19.048Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "63ccfa3d-7c02-4314-9a48-241e6d9f988a",
+  "fields": {
+    "model": "Outback",
+    "make": "dd537959-3814-4f4c-84b4-16aba5ce816e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.232Z",
+    "updated_at": "2026-10-03T07:54:19.232Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6404d8d4-ac6e-4255-977b-32454c22bd37",
+  "fields": {
+    "model": "XC90",
+    "make": "8689c6e2-5690-497c-9cba-c8fb6f0694fe",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.454Z",
+    "updated_at": "2026-10-03T07:54:19.454Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "64504eb6-55e1-4126-b2b8-e792c886d0d6",
+  "fields": {
+    "model": "Pilot",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.411Z",
+    "updated_at": "2026-10-03T07:54:18.411Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6484f02e-e633-4975-8c6e-5f16ad951c9e",
+  "fields": {
+    "model": "Durango",
+    "make": "31935404-5e70-4615-94db-828440d6fb54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.973Z",
+    "updated_at": "2026-10-03T07:54:17.973Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "65300631-72ce-4e1a-a60f-afc23450c36f",
+  "fields": {
+    "model": "Forte",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.645Z",
+    "updated_at": "2026-10-03T07:54:18.645Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "65455eda-181e-4195-b41b-c51caef13357",
+  "fields": {
+    "model": "Q6 etron",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.734Z",
+    "updated_at": "2026-10-03T07:54:17.734Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6553fe4a-a918-423c-a92f-ab07863dd57b",
+  "fields": {
+    "model": "Continental",
+    "make": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.771Z",
+    "updated_at": "2026-10-03T07:54:18.771Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6571c846-dc75-482c-b5bf-f69cae5b9008",
+  "fields": {
+    "model": "Q70",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.518Z",
+    "updated_at": "2026-10-03T07:54:18.518Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "65768f82-e6f6-4578-9464-b1239d7a8cce",
+  "fields": {
+    "model": "Nautilus",
+    "make": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.783Z",
+    "updated_at": "2026-10-03T07:54:18.783Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "65e5b1df-88b2-4662-a71e-37acc9734dbd",
+  "fields": {
+    "model": "ID.4",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.368Z",
+    "updated_at": "2026-10-03T07:54:19.368Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "677d53a1-e2a7-4fae-9908-a862f1bf9cd9",
+  "fields": {
+    "model": "Palisade",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.464Z",
+    "updated_at": "2026-10-03T07:54:18.464Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6920bdb1-214b-4daa-9768-be249930b825",
+  "fields": {
+    "model": "EQS",
+    "make": "fbbfe648-7ade-4c7b-82ed-549b417e0b75",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.873Z",
+    "updated_at": "2026-10-03T07:54:18.873Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "693b18ea-57ab-4800-91c4-18fcea73aef5",
+  "fields": {
+    "model": "Beat",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.257Z",
+    "updated_at": "2026-10-03T07:54:18.257Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "694def78-561e-4189-abd1-283313792984",
+  "fields": {
+    "model": "RS4",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.747Z",
+    "updated_at": "2026-10-03T07:54:17.747Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "699c91a8-d75d-4c21-a041-58ed8c2de966",
+  "fields": {
+    "model": "Bentayga",
+    "make": "33019fa7-4065-4736-876e-e1860afb9917",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.766Z",
+    "updated_at": "2026-10-03T07:54:17.766Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6abe54e6-0ec6-46d3-8982-024dec3044b3",
+  "fields": {
+    "model": "X2",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.856Z",
+    "updated_at": "2026-10-03T07:54:17.856Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6b83ac82-83fd-4d25-9d70-6bbfc46fb539",
+  "fields": {
+    "model": "K3",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.649Z",
+    "updated_at": "2026-10-03T07:54:18.649Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6bdb7239-b1e8-488b-b039-6f2ee177dc87",
+  "fields": {
+    "model": "500L",
+    "make": "4c83700f-0f6e-4c20-a1a2-88a95656ed07",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.041Z",
+    "updated_at": "2026-10-03T07:54:18.041Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6c30cfdf-4c84-42f9-96eb-17cea786f7f7",
+  "fields": {
+    "model": "Civic",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.398Z",
+    "updated_at": "2026-10-03T07:54:18.398Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6c96f319-9408-403b-a236-3a849dc17cec",
+  "fields": {
+    "model": "QX60",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.494Z",
+    "updated_at": "2026-10-03T07:54:18.494Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6d22bda1-ed35-4b1d-b292-7a1115332ada",
+  "fields": {
+    "model": "Seltos",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.665Z",
+    "updated_at": "2026-10-03T07:54:18.665Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6e37c755-6f96-4746-9583-e81576928c16",
+  "fields": {
+    "model": "HR-V",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.414Z",
+    "updated_at": "2026-10-03T07:54:18.414Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6e9a0faf-4f74-4c0d-9a06-d1ec9128a534",
+  "fields": {
+    "model": "TT",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.761Z",
+    "updated_at": "2026-10-03T07:54:17.761Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6f0b67fb-f786-4eeb-919a-3cea6a879a0c",
+  "fields": {
+    "model": "Mx-5",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.855Z",
+    "updated_at": "2026-10-03T07:54:18.855Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "6fd15ef2-6f74-4e1e-a74f-a1ef027354f8",
+  "fields": {
+    "model": "Partner",
+    "make": "122bfdc1-f55f-4c35-a419-3e95fde7aae5",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.115Z",
+    "updated_at": "2026-10-03T07:54:19.115Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7018f1da-f40b-42e3-afd6-d3c36626b5f8",
+  "fields": {
+    "model": "Niro",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.654Z",
+    "updated_at": "2026-10-03T07:54:18.654Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "70b92e70-09f5-41c4-8b01-b9d2b61e66c6",
+  "fields": {
+    "model": "X5",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.868Z",
+    "updated_at": "2026-10-03T07:54:17.868Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "71b5f5c1-63b0-4754-92b4-20eb49dc5341",
+  "fields": {
+    "model": "Expedition",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.078Z",
+    "updated_at": "2026-10-03T07:54:18.078Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "72fa5eae-fcd2-430c-baee-a469326f4e17",
+  "fields": {
+    "model": "Tiguan",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.407Z",
+    "updated_at": "2026-10-03T07:54:19.407Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "73e068b0-93a9-4a19-9fa9-0b3ee95d544c",
+  "fields": {
+    "model": "Sentra",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.087Z",
+    "updated_at": "2026-10-03T07:54:19.087Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "742701f7-7c02-495d-ab6e-eea24509aded",
+  "fields": {
+    "model": "Forester",
+    "make": "dd537959-3814-4f4c-84b4-16aba5ce816e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.223Z",
+    "updated_at": "2026-10-03T07:54:19.223Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7462e7e5-7ff1-4871-865d-1c0b8211d7f9",
+  "fields": {
+    "model": "Charger",
+    "make": "31935404-5e70-4615-94db-828440d6fb54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.959Z",
+    "updated_at": "2026-10-03T07:54:17.959Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "74bd8588-a011-4af8-b381-62cf8447ecde",
+  "fields": {
+    "model": "Xpander",
+    "make": "2dc75bc2-3e0f-4bfc-a440-bb92a54791b8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.962Z",
+    "updated_at": "2026-10-03T07:54:18.962Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7580ccb7-73d1-41de-8c1e-d66d917b3c72",
+  "fields": {
+    "model": "TLX",
+    "make": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.672Z",
+    "updated_at": "2026-10-03T07:54:17.672Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "75886185-245b-490a-a43c-f965b5862f21",
+  "fields": {
+    "model": "Okavango",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.231Z",
+    "updated_at": "2026-10-03T07:54:18.231Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7696a82b-d44e-4c5c-b723-bb27c3c0e6fb",
+  "fields": {
+    "model": "RAM 3500",
+    "make": "b199b40d-a69a-49a5-983c-413fd4e48110",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.001Z",
+    "updated_at": "2026-10-03T07:54:18.001Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "76e0171f-e796-4dfd-9b7c-e55f640c20c8",
+  "fields": {
+    "model": "Panamera",
+    "make": "639a67b6-454b-42cc-9f1f-2b2465c08bb2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.153Z",
+    "updated_at": "2026-10-03T07:54:19.153Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "77afb2d1-7c19-4a2a-91c9-dec6d11601d4",
+  "fields": {
+    "model": "Odyssey",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.422Z",
+    "updated_at": "2026-10-03T07:54:18.422Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "77b4e10b-b337-4ec3-9b7c-223d75777ce5",
+  "fields": {
+    "model": "MDX",
+    "make": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.660Z",
+    "updated_at": "2026-10-03T07:54:17.660Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7856b13b-2f57-43dc-aeae-c1a97de44cb1",
+  "fields": {
+    "model": "CX-3",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.815Z",
+    "updated_at": "2026-10-03T07:54:18.815Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "78b0caf6-ecbe-4647-806e-4d14cb02da65",
+  "fields": {
+    "model": "Integra",
+    "make": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.656Z",
+    "updated_at": "2026-10-03T07:54:17.656Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "79367b4c-9056-4efa-86e6-5ce0b97d6d56",
+  "fields": {
+    "model": "Cheyenne",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.284Z",
+    "updated_at": "2026-10-03T07:54:18.284Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7966c501-781c-4efa-b53a-940225462970",
+  "fields": {
+    "model": "X65",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.008Z",
+    "updated_at": "2026-10-03T07:54:19.008Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "79cb79fe-b97c-468d-b118-5e47c194c0e6",
+  "fields": {
+    "model": "HUNTER",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.028Z",
+    "updated_at": "2026-10-03T07:54:19.028Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7a9b24a6-ad37-47cf-8d93-dd7dc9b12424",
+  "fields": {
+    "model": "Avanza",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.272Z",
+    "updated_at": "2026-10-03T07:54:19.272Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7ac04853-b676-4361-b189-e15af0a2d8ea",
+  "fields": {
+    "model": "7X",
+    "make": "25d5750f-e7ae-4e0c-9afe-6de8d17c21c1",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.470Z",
+    "updated_at": "2026-10-03T07:54:19.470Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7b13f6d2-21cc-4f73-a185-4237b633ba45",
+  "fields": {
+    "model": "City",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.407Z",
+    "updated_at": "2026-10-03T07:54:18.407Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7b2ff14d-6fa9-4197-b150-108fc2a6de74",
+  "fields": {
+    "model": "Mondeo",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.133Z",
+    "updated_at": "2026-10-03T07:54:18.133Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7b6da1ef-6f2b-472e-8f24-1cc66bc89471",
+  "fields": {
+    "model": "Ram 2500",
+    "make": "b199b40d-a69a-49a5-983c-413fd4e48110",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.997Z",
+    "updated_at": "2026-10-03T07:54:17.997Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7b7ec319-8bf3-491d-982f-866fbd60793a",
+  "fields": {
+    "model": "1",
+    "make": "25d5750f-e7ae-4e0c-9afe-6de8d17c21c1",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.465Z",
+    "updated_at": "2026-10-03T07:54:19.466Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7bcb983e-5e09-4d24-96dc-a2ec91c12bd3",
+  "fields": {
+    "model": "G700",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.615Z",
+    "updated_at": "2026-10-03T07:54:18.615Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7c5ee81e-6be1-4683-a0a1-9b1296c722c5",
+  "fields": {
+    "model": "Ateca",
+    "make": "c4798747-d32d-4226-85b3-206de6ce475e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.197Z",
+    "updated_at": "2026-10-03T07:54:19.197Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7caf9e7c-4e65-4bd6-8e4e-0e3db9a145cb",
+  "fields": {
+    "model": "3008",
+    "make": "122bfdc1-f55f-4c35-a419-3e95fde7aae5",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.133Z",
+    "updated_at": "2026-10-03T07:54:19.133Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7cebdd08-2b8b-474f-be03-e406a7a28211",
+  "fields": {
+    "model": "RX",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.751Z",
+    "updated_at": "2026-10-03T07:54:18.751Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7d632c35-f99c-4079-980e-41a7f0e9b229",
+  "fields": {
+    "model": "RS6",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.744Z",
+    "updated_at": "2026-10-03T07:54:17.744Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7dbe5bef-1e14-440c-9bd4-f813052d5817",
+  "fields": {
+    "model": "X4",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.864Z",
+    "updated_at": "2026-10-03T07:54:17.864Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7dff0a7d-d3dd-473a-bf78-d70db8385c8f",
+  "fields": {
+    "model": "CX-50",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.827Z",
+    "updated_at": "2026-10-03T07:54:18.827Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7e73e303-ae53-4360-a29e-999a2f06832b",
+  "fields": {
+    "model": "Xtrail",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.095Z",
+    "updated_at": "2026-10-03T07:54:19.095Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7ee0277c-f2ed-4b0b-aa3f-96c002df1712",
+  "fields": {
+    "model": "Continental",
+    "make": "33019fa7-4065-4736-876e-e1860afb9917",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.769Z",
+    "updated_at": "2026-10-03T07:54:17.769Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "7f436b51-1e3a-4133-840a-ef320a9b25f1",
+  "fields": {
+    "model": "Serie 6",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.834Z",
+    "updated_at": "2026-10-03T07:54:17.834Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "80bcd906-7ffa-4ab4-9179-22de9ed23195",
+  "fields": {
+    "model": "Sorento",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.674Z",
+    "updated_at": "2026-10-03T07:54:18.674Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "80e894d8-af16-4fca-8d4b-5b4aa4aa2b9d",
+  "fields": {
+    "model": "2008",
+    "make": "122bfdc1-f55f-4c35-a419-3e95fde7aae5",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.129Z",
+    "updated_at": "2026-10-03T07:54:19.129Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "812fd9a7-6420-47fa-ae5b-b9ab872d29bc",
+  "fields": {
+    "model": "Gx3 Pro",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.220Z",
+    "updated_at": "2026-10-03T07:54:18.220Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "823ee427-a1ef-4242-b80e-973c404914b7",
+  "fields": {
+    "model": "Escape",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.066Z",
+    "updated_at": "2026-10-03T07:54:18.066Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "82760477-7941-4236-adfe-3bef57ba7c09",
+  "fields": {
+    "model": "HB20",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.457Z",
+    "updated_at": "2026-10-03T07:54:18.457Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "837aa30d-534f-4828-af02-e8ac40735585",
+  "fields": {
+    "model": "Encore",
+    "make": "e72fb050-b241-4d92-9580-850c86e7259b",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.305Z",
+    "updated_at": "2026-10-03T07:54:18.305Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "83adc2b5-8825-482b-9381-e25bd712a4b1",
+  "fields": {
+    "model": "Cruze",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.295Z",
+    "updated_at": "2026-10-03T07:54:18.295Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "840c61d4-fccc-4501-bac7-b10bc8fb6aa3",
+  "fields": {
+    "model": "UX",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.759Z",
+    "updated_at": "2026-10-03T07:54:18.759Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "84c78ced-0c07-4de6-8ac5-b962f57b29ea",
+  "fields": {
+    "model": "Nivus",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.373Z",
+    "updated_at": "2026-10-03T07:54:19.373Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "84e85e1c-8fac-44a5-90da-e37b16d027cf",
+  "fields": {
+    "model": "JAC8",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.582Z",
+    "updated_at": "2026-10-03T07:54:18.582Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "86696bd0-97b3-4498-9e90-fcc19de58199",
+  "fields": {
+    "model": "1",
+    "make": "1fb4ccc5-2733-408b-a17a-7ad514ce7ee6",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.793Z",
+    "updated_at": "2026-10-03T07:54:18.793Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "86b36682-edda-4744-9685-6f57ad49040d",
+  "fields": {
+    "model": "Boreal",
+    "make": "f8700eb4-4cbe-44cf-ae2b-c363b17bf141",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.173Z",
+    "updated_at": "2026-10-03T07:54:19.173Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "876c3629-2a3a-4977-bdb0-6cf35b073e4e",
+  "fields": {
+    "model": "Captiva",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.276Z",
+    "updated_at": "2026-10-03T07:54:18.276Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "87ba31e9-6da6-4b33-a42f-f79e60f353c2",
+  "fields": {
+    "model": "CS95",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.892Z",
+    "updated_at": "2026-10-03T07:54:17.892Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "885b4157-1224-4031-bea1-b2a814a908ad",
+  "fields": {
+    "model": "BR-V",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.394Z",
+    "updated_at": "2026-10-03T07:54:18.394Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "885f239d-3bd5-4a59-ac0c-8c6c7ec1b294",
+  "fields": {
+    "model": "JAC6",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.579Z",
+    "updated_at": "2026-10-03T07:54:18.579Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8887e335-58ba-4eb8-a4ef-117e81baab0d",
+  "fields": {
+    "model": "Mobi",
+    "make": "4c83700f-0f6e-4c20-a1a2-88a95656ed07",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.028Z",
+    "updated_at": "2026-10-03T07:54:18.028Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "88caaecd-3e98-4381-8858-8bf2bf92d452",
+  "fields": {
+    "model": "Pulse",
+    "make": "4c83700f-0f6e-4c20-a1a2-88a95656ed07",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.032Z",
+    "updated_at": "2026-10-03T07:54:18.032Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "88f0aeab-ad8e-4846-b3e5-18253e9330df",
+  "fields": {
+    "model": "Sonata",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.472Z",
+    "updated_at": "2026-10-03T07:54:18.472Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8a8d94e2-0219-4b94-a8f6-2f178d962438",
+  "fields": {
+    "model": "Impreza",
+    "make": "dd537959-3814-4f4c-84b4-16aba5ce816e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.228Z",
+    "updated_at": "2026-10-03T07:54:19.228Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8ab5f961-e28d-4946-95a7-f6f4840a8203",
+  "fields": {
+    "model": "Dashing",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.608Z",
+    "updated_at": "2026-10-03T07:54:18.608Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8acfe45a-791f-427e-b7c0-360f5256eb5f",
+  "fields": {
+    "model": "Bronco Sport",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.054Z",
+    "updated_at": "2026-10-03T07:54:18.054Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8ae91607-fc18-445b-9a34-e75d4a17af71",
+  "fields": {
+    "model": "A7",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.715Z",
+    "updated_at": "2026-10-03T07:54:17.715Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8c48ab18-4a90-4146-80b7-ecce201fbc8b",
+  "fields": {
+    "model": "U5",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.989Z",
+    "updated_at": "2026-10-03T07:54:18.989Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8d124d96-3083-4387-8852-179c8b6349a7",
+  "fields": {
+    "model": "Attitude",
+    "make": "31935404-5e70-4615-94db-828440d6fb54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.951Z",
+    "updated_at": "2026-10-03T07:54:17.951Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8d721bc2-649d-4c8c-9386-45420b1ba0bc",
+  "fields": {
+    "model": "HUNTER WORK",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.914Z",
+    "updated_at": "2026-10-03T07:54:17.914Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8e193803-27cb-4bfb-84e0-6a6d3844ae9d",
+  "fields": {
+    "model": "Creta",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.441Z",
+    "updated_at": "2026-10-03T07:54:18.441Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8f282358-0518-4f37-9627-73cb146c1bba",
+  "fields": {
+    "model": "Tiggo 2",
+    "make": "3e8c2641-b898-4ff7-871c-5cb46afa3c54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.930Z",
+    "updated_at": "2026-10-03T07:54:17.930Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "8f8c25d1-7603-4905-8d39-c454f8d0bf04",
+  "fields": {
+    "model": "Equinox",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.316Z",
+    "updated_at": "2026-10-03T07:54:18.316Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "903f445e-9646-4c65-8430-e6d854c21e1a",
+  "fields": {
+    "model": "M50S",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.984Z",
+    "updated_at": "2026-10-03T07:54:18.984Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "90731713-67a7-42cf-ab4f-9c81fdd8f414",
+  "fields": {
+    "model": "Prius",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.313Z",
+    "updated_at": "2026-10-03T07:54:19.313Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "91493aed-6407-4ad9-bb8a-8a9ad8cf657d",
+  "fields": {
+    "model": "E Sei 2",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.534Z",
+    "updated_at": "2026-10-03T07:54:18.534Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "91889c9e-3df1-4fe9-9363-cccd00da1264",
+  "fields": {
+    "model": "i7",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.804Z",
+    "updated_at": "2026-10-03T07:54:17.804Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "91bec18d-8a3f-4478-a74c-f2a649dcce86",
+  "fields": {
+    "model": "O5",
+    "make": "f1b40233-1a6b-4ada-a52a-b447cef039eb",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.111Z",
+    "updated_at": "2026-10-03T07:54:19.111Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "91c3e091-b8d5-4248-8e5d-0d41691e6745",
+  "fields": {
+    "model": "EC35",
+    "make": "ca94dbf4-a967-4921-b2f0-4f091b11696d",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.040Z",
+    "updated_at": "2026-10-03T07:54:19.040Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "91f7c961-898d-42cf-89b5-d972af0bed23",
+  "fields": {
+    "model": "Magnite",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.073Z",
+    "updated_at": "2026-10-03T07:54:19.073Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "91fa25a7-83fc-49c8-9372-b2baa4d7e887",
+  "fields": {
+    "model": "Tucson",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.685Z",
+    "updated_at": "2026-10-03T07:54:18.685Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "92f94e7c-bbdc-4747-9980-12a61dbe1dd4",
+  "fields": {
+    "model": "A5",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.709Z",
+    "updated_at": "2026-10-03T07:54:17.709Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9351564e-ff7a-46cd-8703-5297afae1662",
+  "fields": {
+    "model": "8",
+    "make": "b7dffd71-8170-411c-a8c4-e28e99c725c4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.803Z",
+    "updated_at": "2026-10-03T07:54:18.803Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "93d0a6f9-cc98-4b05-8ae2-2a11b53bf3e9",
+  "fields": {
+    "model": "CX-90",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.843Z",
+    "updated_at": "2026-10-03T07:54:18.843Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9470dad5-cfa7-4f8a-af90-ae67aad1a2b1",
+  "fields": {
+    "model": "Colorado",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.288Z",
+    "updated_at": "2026-10-03T07:54:18.288Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "95a3c55c-07f2-4d4f-a567-a037887d9017",
+  "fields": {
+    "model": "TUNLAND",
+    "make": "9077bb30-045c-42e0-8901-f167f4151d89",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.177Z",
+    "updated_at": "2026-10-03T07:54:18.177Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "964b1241-be80-44f4-a6b5-c6681f61f0e2",
+  "fields": {
+    "model": "X30",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.996Z",
+    "updated_at": "2026-10-03T07:54:18.996Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "96fec00a-05ec-40ec-8ebc-5ef0ac772576",
+  "fields": {
+    "model": "VIEW",
+    "make": "9077bb30-045c-42e0-8901-f167f4151d89",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.181Z",
+    "updated_at": "2026-10-03T07:54:18.181Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "97877595-8a71-42de-a78a-26515e01f97c",
+  "fields": {
+    "model": "Q7",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.738Z",
+    "updated_at": "2026-10-03T07:54:17.738Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "97be856e-78eb-4488-8ad6-c3ce787c1a83",
+  "fields": {
+    "model": "EX450",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.560Z",
+    "updated_at": "2026-10-03T07:54:18.560Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "97eb7086-2f16-46b4-8ebc-02c0781cdb00",
+  "fields": {
+    "model": "GX",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.728Z",
+    "updated_at": "2026-10-03T07:54:18.728Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9888f8c2-66a4-4855-87ee-964e3749d59a",
+  "fields": {
+    "model": "Eado Plus",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.898Z",
+    "updated_at": "2026-10-03T07:54:17.898Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "98a68788-02a5-4ece-bf07-fde2d3bd4f72",
+  "fields": {
+    "model": "Q60",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.514Z",
+    "updated_at": "2026-10-03T07:54:18.514Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "99a4d882-12d5-48d9-8aae-f0d4c270bc24",
+  "fields": {
+    "model": "Q50",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.510Z",
+    "updated_at": "2026-10-03T07:54:18.510Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "99dedfb4-3261-43b9-a46c-89bec186fcae",
+  "fields": {
+    "model": "S3",
+    "make": "9077bb30-045c-42e0-8901-f167f4151d89",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.167Z",
+    "updated_at": "2026-10-03T07:54:18.167Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "99e8dfca-972c-48e7-992e-26c1fdfee23c",
+  "fields": {
+    "model": "F-250",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.090Z",
+    "updated_at": "2026-10-03T07:54:18.090Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9ab18129-a48e-44ec-be3b-a2df3eab1e58",
+  "fields": {
+    "model": "EX30",
+    "make": "8689c6e2-5690-497c-9cba-c8fb6f0694fe",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.433Z",
+    "updated_at": "2026-10-03T07:54:19.433Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9c22bbf2-44db-4459-8ff0-473b0fda8e75",
+  "fields": {
+    "model": "UNI-K",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.922Z",
+    "updated_at": "2026-10-03T07:54:17.922Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9c85a175-ee4a-4810-9ce9-5d840330b532",
+  "fields": {
+    "model": "Serie 8",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.843Z",
+    "updated_at": "2026-10-03T07:54:17.843Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9ce71558-a6ff-499d-b797-bc715b27b7de",
+  "fields": {
+    "model": "Juke",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.064Z",
+    "updated_at": "2026-10-03T07:54:19.064Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9d544640-8931-46c3-8129-33d34b2f6cd0",
+  "fields": {
+    "model": "NX",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.747Z",
+    "updated_at": "2026-10-03T07:54:18.747Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9e310aba-5cd4-4855-99e3-2057b56b4a34",
+  "fields": {
+    "model": "E X350",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.545Z",
+    "updated_at": "2026-10-03T07:54:18.545Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9e31b628-5ee7-4431-b44e-43abe7eef396",
+  "fields": {
+    "model": "Montero",
+    "make": "2dc75bc2-3e0f-4bfc-a440-bb92a54791b8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.954Z",
+    "updated_at": "2026-10-03T07:54:18.954Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "9f75436c-5c60-4502-b79c-012b61be3f4d",
+  "fields": {
+    "model": "500X",
+    "make": "4c83700f-0f6e-4c20-a1a2-88a95656ed07",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.045Z",
+    "updated_at": "2026-10-03T07:54:18.045Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a041a11f-9ec7-48ec-9a55-04bd0dc12256",
+  "fields": {
+    "model": "Navigator",
+    "make": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.788Z",
+    "updated_at": "2026-10-03T07:54:18.788Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a0dc702c-a935-4ccf-b3dc-6315f60314b1",
+  "fields": {
+    "model": "E-Transit",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.071Z",
+    "updated_at": "2026-10-03T07:54:18.071Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a1d96cd3-d88b-4730-8cbc-89ae699e9729",
+  "fields": {
+    "model": "March",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.077Z",
+    "updated_at": "2026-10-03T07:54:19.077Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a203211c-15af-47c7-a55c-3e383cdf7608",
+  "fields": {
+    "model": "FRONX",
+    "make": "ea806967-ff5d-426f-8498-24e06a1cc0e1",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.248Z",
+    "updated_at": "2026-10-03T07:54:19.248Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a2932a84-7b43-46f4-b6b2-e892054952ad",
+  "fields": {
+    "model": "Óptima",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.657Z",
+    "updated_at": "2026-10-03T07:54:18.657Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a2b82640-772a-4655-b22f-15625a3f3e5c",
+  "fields": {
+    "model": "Uno",
+    "make": "4c83700f-0f6e-4c20-a1a2-88a95656ed07",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.037Z",
+    "updated_at": "2026-10-03T07:54:18.037Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a3a14aa9-d95e-414c-a7c5-620334678d17",
+  "fields": {
+    "model": "ZS",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.929Z",
+    "updated_at": "2026-10-03T07:54:18.929Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a414a90e-a0c7-453e-bb1b-45e2896d64e5",
+  "fields": {
+    "model": "QX50",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.485Z",
+    "updated_at": "2026-10-03T07:54:18.485Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a642f126-179d-444e-82e8-c6640342a24d",
+  "fields": {
+    "model": "MG7",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.924Z",
+    "updated_at": "2026-10-03T07:54:18.924Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a6b203fa-df54-4b45-9b78-aacfb8dbfa0e",
+  "fields": {
+    "model": "Blazer",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.261Z",
+    "updated_at": "2026-10-03T07:54:18.261Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a7144f63-c37b-4d90-a0e1-d78268cefb94",
+  "fields": {
+    "model": "iX3",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.790Z",
+    "updated_at": "2026-10-03T07:54:17.790Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a73c6b09-a773-4abf-80aa-5668fd442b1b",
+  "fields": {
+    "model": "R8",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.753Z",
+    "updated_at": "2026-10-03T07:54:17.753Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a74e1ea5-8180-4d00-82fb-494fc2316bc3",
+  "fields": {
+    "model": "Maverick",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.125Z",
+    "updated_at": "2026-10-03T07:54:18.125Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a78c9134-48c1-4c3b-817d-4ee63f527bf5",
+  "fields": {
+    "model": "HI-VAN",
+    "make": "9077bb30-045c-42e0-8901-f167f4151d89",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.158Z",
+    "updated_at": "2026-10-03T07:54:18.158Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a819b679-58f4-472e-8ffa-70ed647d103e",
+  "fields": {
+    "model": "Edge",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.062Z",
+    "updated_at": "2026-10-03T07:54:18.062Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a90d6615-cefc-4369-8410-11fda5c4060e",
+  "fields": {
+    "model": "X70 Plus",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.604Z",
+    "updated_at": "2026-10-03T07:54:18.604Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a99f3297-41e1-4bcd-b965-b2a20661d760",
+  "fields": {
+    "model": "RAM 1200",
+    "make": "b199b40d-a69a-49a5-983c-413fd4e48110",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.990Z",
+    "updated_at": "2026-10-03T07:54:17.990Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "a9fe4a15-cf83-4ec7-9754-bd73b2c5ec67",
+  "fields": {
+    "model": "Tucson",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.476Z",
+    "updated_at": "2026-10-03T07:54:18.476Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "aa128289-8ab2-4605-a6aa-b1b02591b936",
+  "fields": {
+    "model": "Range Rover Evoque",
+    "make": "be7751fd-5073-49b2-807c-822df1cc7e28",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.706Z",
+    "updated_at": "2026-10-03T07:54:18.706Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "aa420f56-55d2-4c40-8ad2-2b265e02a58c",
+  "fields": {
+    "model": "Tahoe",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.330Z",
+    "updated_at": "2026-10-03T07:54:18.330Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ac3be664-9b1b-4f58-8cf9-12b4735ad39a",
+  "fields": {
+    "model": "Sequoia",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.327Z",
+    "updated_at": "2026-10-03T07:54:19.327Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ac6d2013-1fea-4467-a3cb-3e7af98efe12",
+  "fields": {
+    "model": "Taycan",
+    "make": "639a67b6-454b-42cc-9f1f-2b2465c08bb2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.157Z",
+    "updated_at": "2026-10-03T07:54:19.157Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "acc1d194-cb11-421c-be21-fc5899b489e4",
+  "fields": {
+    "model": "F-150",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.087Z",
+    "updated_at": "2026-10-03T07:54:18.087Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ad938ea6-5e6f-4581-bea2-1e08e6c1ee9f",
+  "fields": {
+    "model": "CS35",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.884Z",
+    "updated_at": "2026-10-03T07:54:17.884Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "adaa7404-a2e4-4cd3-82b2-02eed2fc4a19",
+  "fields": {
+    "model": "BJ40",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.972Z",
+    "updated_at": "2026-10-03T07:54:18.972Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "adb3883f-504a-4456-a2a2-5066f04db081",
+  "fields": {
+    "model": "Taigun",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.392Z",
+    "updated_at": "2026-10-03T07:54:19.392Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "adb8cd88-3c4b-4a3e-980f-99b2b58b088c",
+  "fields": {
+    "model": "Transit",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.152Z",
+    "updated_at": "2026-10-03T07:54:18.152Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "adbc2e7f-7cdd-4739-9881-be62c7f99af4",
+  "fields": {
+    "model": "Giulia",
+    "make": "a4ff3182-8062-4af0-a619-38a028e936cf",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.683Z",
+    "updated_at": "2026-10-03T07:54:17.683Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ae305563-747d-46c9-b9bb-59395e38adcd",
+  "fields": {
+    "model": "F-350",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.094Z",
+    "updated_at": "2026-10-03T07:54:18.094Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ae55edcd-afc4-43c8-a585-7051e1c392f0",
+  "fields": {
+    "model": "A6",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.711Z",
+    "updated_at": "2026-10-03T07:54:17.711Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b13b8ccd-95c3-4c53-a8ca-0bfebd4bb862",
+  "fields": {
+    "model": "E Sei 1",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.530Z",
+    "updated_at": "2026-10-03T07:54:18.530Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b1d0826b-c395-4589-bc21-be84a880d37e",
+  "fields": {
+    "model": "QX55",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.490Z",
+    "updated_at": "2026-10-03T07:54:18.490Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b202a90d-7232-4363-b9a3-e7d7f05ea35d",
+  "fields": {
+    "model": "Elantra",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.445Z",
+    "updated_at": "2026-10-03T07:54:18.445Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b2a7ef71-0b33-44bc-a022-bd198d937515",
+  "fields": {
+    "model": "Arkana",
+    "make": "f8700eb4-4cbe-44cf-ae2b-c363b17bf141",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.167Z",
+    "updated_at": "2026-10-03T07:54:19.167Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b330523e-e8fd-47b5-bf79-1acd5bc20c8e",
+  "fields": {
+    "model": "Prologue",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.430Z",
+    "updated_at": "2026-10-03T07:54:18.430Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b37d23db-344b-4d5e-a22d-5dfd9259244d",
+  "fields": {
+    "model": "Envision",
+    "make": "e72fb050-b241-4d92-9580-850c86e7259b",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.308Z",
+    "updated_at": "2026-10-03T07:54:18.308Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b43cab03-c7d1-4455-b485-6b89913b772f",
+  "fields": {
+    "model": "Mazda 3",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.851Z",
+    "updated_at": "2026-10-03T07:54:18.851Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b59394e9-f8f8-4e8f-b94b-a95fff0cf0f8",
+  "fields": {
+    "model": "Aviator",
+    "make": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.763Z",
+    "updated_at": "2026-10-03T07:54:18.763Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b5d03978-083d-48ac-80e9-291da4a6f4b4",
+  "fields": {
+    "model": "IMLS7",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.900Z",
+    "updated_at": "2026-10-03T07:54:18.900Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b5f61d6b-de81-49de-9063-4a418a5dd89f",
+  "fields": {
+    "model": "UNI-T",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.035Z",
+    "updated_at": "2026-10-03T07:54:19.035Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b6484dc1-d7aa-4089-a8c8-d95f251f08fb",
+  "fields": {
+    "model": "Figo",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.111Z",
+    "updated_at": "2026-10-03T07:54:18.111Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b72325e8-6621-4f15-a4f4-ee7e0fdf9a05",
+  "fields": {
+    "model": "Cayenne",
+    "make": "639a67b6-454b-42cc-9f1f-2b2465c08bb2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.144Z",
+    "updated_at": "2026-10-03T07:54:19.144Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "b98ed0ce-44f3-423d-88c9-5ad6ac16a279",
+  "fields": {
+    "model": "EX2",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.206Z",
+    "updated_at": "2026-10-03T07:54:18.206Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ba3e6361-cc36-42c8-88ad-f5882d580700",
+  "fields": {
+    "model": "Emgrand",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.202Z",
+    "updated_at": "2026-10-03T07:54:18.202Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ba54c026-9716-4cb8-beab-9fc87b8825c2",
+  "fields": {
+    "model": "LC",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.736Z",
+    "updated_at": "2026-10-03T07:54:18.736Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ba98025b-c3b3-448f-ad9b-d55dcd80ef11",
+  "fields": {
+    "model": "CS75",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.889Z",
+    "updated_at": "2026-10-03T07:54:17.889Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "bb438d7b-4b6f-4b6c-9fe9-af6757ebb089",
+  "fields": {
+    "model": "Trailblazer",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.334Z",
+    "updated_at": "2026-10-03T07:54:18.334Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "bbac3f17-1dbd-40fa-9dfa-8b9046b02272",
+  "fields": {
+    "model": "GTI",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.363Z",
+    "updated_at": "2026-10-03T07:54:19.363Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "bccf9302-37dc-490c-a046-a5be503bc642",
+  "fields": {
+    "model": "Sienna",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.332Z",
+    "updated_at": "2026-10-03T07:54:19.332Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "bcf81911-214b-42af-92d8-6f7d0803cbd1",
+  "fields": {
+    "model": "9",
+    "make": "b7dffd71-8170-411c-a8c4-e28e99c725c4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.807Z",
+    "updated_at": "2026-10-03T07:54:18.807Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "bd519409-4e77-4ff6-b13a-68d16bc5256a",
+  "fields": {
+    "model": "Fiesta",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.107Z",
+    "updated_at": "2026-10-03T07:54:18.107Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "be8feb7c-4ece-4901-b0f4-2181d8353171",
+  "fields": {
+    "model": "CX-7",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.831Z",
+    "updated_at": "2026-10-03T07:54:18.831Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "becc8f01-15a5-4762-8f91-92d808ce6236",
+  "fields": {
+    "model": "TANK 300",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.381Z",
+    "updated_at": "2026-10-03T07:54:18.381Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "bf18a773-8eb6-48f2-90b5-091bcd67681e",
+  "fields": {
+    "model": "MKC",
+    "make": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.775Z",
+    "updated_at": "2026-10-03T07:54:18.775Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "bf862f6e-d533-4ac0-b0eb-cc854664b8b4",
+  "fields": {
+    "model": "Corolla",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.286Z",
+    "updated_at": "2026-10-03T07:54:19.286Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "bff1e27f-7b3d-4c92-bfaa-0a4ff00d46f3",
+  "fields": {
+    "model": "S07",
+    "make": "f7c3e851-6698-43d5-9a83-b50d87ce5ebc",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.623Z",
+    "updated_at": "2026-10-03T07:54:18.623Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c04ecdbf-5b67-414e-9dff-d543c0c0027d",
+  "fields": {
+    "model": "Defender",
+    "make": "be7751fd-5073-49b2-807c-822df1cc7e28",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.690Z",
+    "updated_at": "2026-10-03T07:54:18.690Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c0e2b4c8-529f-4c8e-b61b-38eadcc5f448",
+  "fields": {
+    "model": "Aceman",
+    "make": "83bc37bf-8c17-425a-90a9-ba48cc0b09c7",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.944Z",
+    "updated_at": "2026-10-03T07:54:18.944Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c19839f9-4392-4465-9e40-60c6424e2bf9",
+  "fields": {
+    "model": "i8",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.807Z",
+    "updated_at": "2026-10-03T07:54:17.807Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c1de3d35-9963-47d1-895e-efa5a68cf5df",
+  "fields": {
+    "model": "CR-V",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.403Z",
+    "updated_at": "2026-10-03T07:54:18.403Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c3a35e27-1918-4062-a3ce-a34123fd3e08",
+  "fields": {
+    "model": "Cavalier",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.280Z",
+    "updated_at": "2026-10-03T07:54:18.280Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c4ba450b-a630-4ded-befe-38d62f6c1c4f",
+  "fields": {
+    "model": "EQE",
+    "make": "fbbfe648-7ade-4c7b-82ed-549b417e0b75",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.869Z",
+    "updated_at": "2026-10-03T07:54:18.869Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c594eb44-31c7-454a-8253-46713267fbac",
+  "fields": {
+    "model": "NSX",
+    "make": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.665Z",
+    "updated_at": "2026-10-03T07:54:17.665Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c6782a37-f1e8-4fd8-87d2-96457590f033",
+  "fields": {
+    "model": "Excursion",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.074Z",
+    "updated_at": "2026-10-03T07:54:18.074Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c76f81ac-36c2-4f43-9398-a115e3a46fe8",
+  "fields": {
+    "model": "Jetta",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.377Z",
+    "updated_at": "2026-10-03T07:54:19.377Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c7c3f325-2b89-40cd-afa2-b7d693c956b9",
+  "fields": {
+    "model": "Versa",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.091Z",
+    "updated_at": "2026-10-03T07:54:19.091Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c7cc68e6-b8b9-4b9b-9fd7-4df258771004",
+  "fields": {
+    "model": "CYBERSTER",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.878Z",
+    "updated_at": "2026-10-03T07:54:18.878Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c81a996c-de78-4606-b7f7-75c4c0c0f0ec",
+  "fields": {
+    "model": "ADX",
+    "make": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.646Z",
+    "updated_at": "2026-10-03T07:54:17.646Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c84014a5-6c89-4420-807f-9cf8b31b3ac2",
+  "fields": {
+    "model": "Ora 5",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.368Z",
+    "updated_at": "2026-10-03T07:54:18.368Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c8cc2744-54e5-47a9-ba6f-723be4081bab",
+  "fields": {
+    "model": "Aveo",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.253Z",
+    "updated_at": "2026-10-03T07:54:18.253Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c90f2af8-2abf-45c2-9e8e-71970fe75f6b",
+  "fields": {
+    "model": "POER",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.372Z",
+    "updated_at": "2026-10-03T07:54:18.372Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "c965f41a-0425-452d-95ba-f1c878382767",
+  "fields": {
+    "model": "Tundra",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.346Z",
+    "updated_at": "2026-10-03T07:54:19.347Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "cb43f8b2-dd29-41a5-b5d4-61208b326822",
+  "fields": {
+    "model": "Accent",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.436Z",
+    "updated_at": "2026-10-03T07:54:18.436Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "cb4a3284-29cd-44cd-b399-02b8dd8d71b6",
+  "fields": {
+    "model": "Ranger",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.144Z",
+    "updated_at": "2026-10-03T07:54:18.144Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "cbff1e72-7b1e-463d-9026-43596219b7c4",
+  "fields": {
+    "model": "Telluride",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.681Z",
+    "updated_at": "2026-10-03T07:54:18.681Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "cd8d4c10-c5ba-46f9-b54f-af98b949ece6",
+  "fields": {
+    "model": "Z",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.099Z",
+    "updated_at": "2026-10-03T07:54:19.099Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "cdcec56d-80a3-43e1-a28d-3bfb71fbdedb",
+  "fields": {
+    "model": "JAC4",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.575Z",
+    "updated_at": "2026-10-03T07:54:18.575Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ce1cf4ce-b63f-4d8c-96bd-89aeeea44445",
+  "fields": {
+    "model": "JAC2",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.572Z",
+    "updated_at": "2026-10-03T07:54:18.572Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "cf1c6974-a359-4238-97f9-9f974057598b",
+  "fields": {
+    "model": "5008",
+    "make": "122bfdc1-f55f-4c35-a419-3e95fde7aae5",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.138Z",
+    "updated_at": "2026-10-03T07:54:19.138Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d1396a3e-3e6b-4cff-8505-65204d4000fc",
+  "fields": {
+    "model": "RDX",
+    "make": "1118213f-c7e3-435d-b018-7dbe6edd74e0",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.668Z",
+    "updated_at": "2026-10-03T07:54:17.668Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d21e99bf-0e70-4eb6-ae48-c65981fa74c7",
+  "fields": {
+    "model": "EV6",
+    "make": "2f203e0f-0814-4631-929b-d65706d1fb2f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.641Z",
+    "updated_at": "2026-10-03T07:54:18.641Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d2546d48-2d2c-4a96-8928-163992453f38",
+  "fields": {
+    "model": "Mustang",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.136Z",
+    "updated_at": "2026-10-03T07:54:18.136Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d3cb38ba-ea09-4933-856e-5d24c7803e3e",
+  "fields": {
+    "model": "TANK 500",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.385Z",
+    "updated_at": "2026-10-03T07:54:18.385Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d421bf08-33b9-450d-9208-f72dda19e243",
+  "fields": {
+    "model": "A8",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.718Z",
+    "updated_at": "2026-10-03T07:54:17.718Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d4d3e9a6-39c4-498b-a3a5-8804e54ab70d",
+  "fields": {
+    "model": "Saveiro",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.389Z",
+    "updated_at": "2026-10-03T07:54:19.389Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d5788991-f18c-4c7d-b48a-301e1f6f9025",
+  "fields": {
+    "model": "Coolray",
+    "make": "98d46a84-da37-4ecb-ae08-599bf3812965",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.197Z",
+    "updated_at": "2026-10-03T07:54:18.197Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d595a7ca-6277-4b85-8506-9309fdccccbb",
+  "fields": {
+    "model": "X35",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.000Z",
+    "updated_at": "2026-10-03T07:54:19.000Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d5aa9682-4a44-40e8-8262-8efe891069d8",
+  "fields": {
+    "model": "HS",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.892Z",
+    "updated_at": "2026-10-03T07:54:18.893Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d5c4ec24-bd85-4006-925d-8b1c80f7db67",
+  "fields": {
+    "model": "D20",
+    "make": "868aaa30-0fa7-46b3-99b1-d01e12bc6410",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.975Z",
+    "updated_at": "2026-10-03T07:54:18.975Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d5e0f268-de5f-4abb-a169-b4c6ac8c03a6",
+  "fields": {
+    "model": "Fusion",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.118Z",
+    "updated_at": "2026-10-03T07:54:18.118Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d753de4c-f0a4-488a-98e5-db0d204abd5a",
+  "fields": {
+    "model": "E 30x",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.553Z",
+    "updated_at": "2026-10-03T07:54:18.553Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d8377f41-cc6e-425e-9409-85e820dd0889",
+  "fields": {
+    "model": "Ignis",
+    "make": "ea806967-ff5d-426f-8498-24e06a1cc0e1",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.256Z",
+    "updated_at": "2026-10-03T07:54:19.256Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d8ed459f-d09d-470a-aa23-4f28a5c3e5c4",
+  "fields": {
+    "model": "X3",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.861Z",
+    "updated_at": "2026-10-03T07:54:17.861Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d9b2012d-f7da-4803-9d6f-4868b61dcdb5",
+  "fields": {
+    "model": "Z4",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.877Z",
+    "updated_at": "2026-10-03T07:54:17.877Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "d9c3c8ae-eaa2-473a-8022-584d60f01c0f",
+  "fields": {
+    "model": "E5",
+    "make": "ca94dbf4-a967-4921-b2f0-4f091b11696d",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.045Z",
+    "updated_at": "2026-10-03T07:54:19.045Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "da6549a2-c38c-49ce-8b70-c7fc9a6e2f35",
+  "fields": {
+    "model": "MG3",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.909Z",
+    "updated_at": "2026-10-03T07:54:18.909Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "dae45f5b-c66e-42e2-bc35-f062888e50cd",
+  "fields": {
+    "model": "Grand i10",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.453Z",
+    "updated_at": "2026-10-03T07:54:18.453Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "db561e8d-5971-42d3-a3ec-9ee8b01e8eb9",
+  "fields": {
+    "model": "Santa Fe",
+    "make": "1d5b4ed4-6f9e-4cb8-b549-dc5a2e880e68",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.469Z",
+    "updated_at": "2026-10-03T07:54:18.469Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "db5bf839-2657-48ec-bdc0-a296e5e4ab59",
+  "fields": {
+    "model": "Tacoma",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.342Z",
+    "updated_at": "2026-10-03T07:54:19.342Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "dc33ce2e-fd73-470a-af24-c13d376c2c93",
+  "fields": {
+    "model": "MG One",
+    "make": "74ac3c32-fa65-452d-a1b9-27bd259cf53e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.905Z",
+    "updated_at": "2026-10-03T07:54:18.905Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "dd466126-8d36-4a65-ad3a-6243b786ff78",
+  "fields": {
+    "model": "MILER",
+    "make": "9077bb30-045c-42e0-8901-f167f4151d89",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.162Z",
+    "updated_at": "2026-10-03T07:54:18.162Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "dd4f0a86-4cde-4b17-85c7-002309e4250b",
+  "fields": {
+    "model": "Yaris",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.352Z",
+    "updated_at": "2026-10-03T07:54:19.352Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "dd8aad92-dff1-4688-8364-1e3b796f3729",
+  "fields": {
+    "model": "Ford GT",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.114Z",
+    "updated_at": "2026-10-03T07:54:18.114Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ddd3562e-64c5-4c14-a84f-dca8c03cf05e",
+  "fields": {
+    "model": "HONOR S",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.902Z",
+    "updated_at": "2026-10-03T07:54:17.902Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ddd6375e-9a83-42fd-97d4-9cab944fcdce",
+  "fields": {
+    "model": "Q2",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.728Z",
+    "updated_at": "2026-10-03T07:54:17.728Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "de3b02bc-c7d7-48c7-bd0c-812fd4109ea7",
+  "fields": {
+    "model": "X7",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.875Z",
+    "updated_at": "2026-10-03T07:54:17.875Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "dec799ea-a3b6-4dcf-abe5-5c1cd59c4233",
+  "fields": {
+    "model": "Corsair",
+    "make": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.767Z",
+    "updated_at": "2026-10-03T07:54:18.767Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "dff03dae-b1b4-4ae5-8b1b-5214da63bd0b",
+  "fields": {
+    "model": "RS5",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.750Z",
+    "updated_at": "2026-10-03T07:54:17.750Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e1aea95c-f301-42c1-bfc1-49fa8fb330f7",
+  "fields": {
+    "model": "J4",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.587Z",
+    "updated_at": "2026-10-03T07:54:18.587Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e24ad59a-9dd6-4fca-87bb-19d30f8fbfbd",
+  "fields": {
+    "model": "DEEPAL S07",
+    "make": "73ab3f70-4592-449a-a779-dae6fef10850",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.895Z",
+    "updated_at": "2026-10-03T07:54:17.895Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e2557a30-c79e-4b97-aedf-00f7088791f3",
+  "fields": {
+    "model": "XC60",
+    "make": "8689c6e2-5690-497c-9cba-c8fb6f0694fe",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.449Z",
+    "updated_at": "2026-10-03T07:54:19.449Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e2ce6246-9b9e-4332-95f4-0151ddf0e2b8",
+  "fields": {
+    "model": "Arrizo 8",
+    "make": "3e8c2641-b898-4ff7-871c-5cb46afa3c54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.926Z",
+    "updated_at": "2026-10-03T07:54:17.926Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e495b6b2-bfcf-47e8-a84c-0ea4447f996a",
+  "fields": {
+    "model": "MKS",
+    "make": "284eef7e-ace4-4e86-b9aa-309fae54f521",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.779Z",
+    "updated_at": "2026-10-03T07:54:18.779Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e52ef3d9-65ed-4110-8a6f-f2621184e31b",
+  "fields": {
+    "model": "Q3",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.724Z",
+    "updated_at": "2026-10-03T07:54:17.724Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e593b6c9-df49-4d59-95dd-049ec223318d",
+  "fields": {
+    "model": "ES",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.724Z",
+    "updated_at": "2026-10-03T07:54:18.724Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e5b76723-c6eb-46e4-bcae-9dfc01987c44",
+  "fields": {
+    "model": "M3",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.810Z",
+    "updated_at": "2026-10-03T07:54:17.810Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e5d1d4dc-b240-4c8a-8f08-438484fe9d55",
+  "fields": {
+    "model": "iX",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.779Z",
+    "updated_at": "2026-10-03T07:54:17.779Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e5e770ba-ae51-4ad0-b56c-a9053f44b553",
+  "fields": {
+    "model": "IS",
+    "make": "208bfa90-76f7-49f5-ad17-9e80d9faadad",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.731Z",
+    "updated_at": "2026-10-03T07:54:18.731Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e5f51c63-b802-4543-867c-0aedaf6cb0b4",
+  "fields": {
+    "model": "Flying Spur",
+    "make": "33019fa7-4065-4736-876e-e1860afb9917",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.773Z",
+    "updated_at": "2026-10-03T07:54:17.773Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e68db078-a032-4032-a1c6-7ef0bbbdb8bc",
+  "fields": {
+    "model": "H7",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.360Z",
+    "updated_at": "2026-10-03T07:54:18.360Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e68ea7f8-a679-413c-839a-383e7e76e7a0",
+  "fields": {
+    "model": "2",
+    "make": "b7dffd71-8170-411c-a8c4-e28e99c725c4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.798Z",
+    "updated_at": "2026-10-03T07:54:18.798Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "e6c3f01d-5277-4386-a66c-8826d023913e",
+  "fields": {
+    "model": "Q5",
+    "make": "3cbb651e-2269-434c-b87e-59ce575f81e8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.731Z",
+    "updated_at": "2026-10-03T07:54:17.731Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ea91f166-cee5-4d8d-abf5-59a5a32ef845",
+  "fields": {
+    "model": "Yukon",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.343Z",
+    "updated_at": "2026-10-03T07:54:18.343Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "eaa30c5a-28d1-4dcc-b0db-c65e29255540",
+  "fields": {
+    "model": "QX30",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.481Z",
+    "updated_at": "2026-10-03T07:54:18.481Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "eb07e81e-9dbb-4125-9921-826ca32dc775",
+  "fields": {
+    "model": "Kardian",
+    "make": "f8700eb4-4cbe-44cf-ae2b-c363b17bf141",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.177Z",
+    "updated_at": "2026-10-03T07:54:19.177Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "eb5a62d9-459c-474b-8c42-34782aba1cf3",
+  "fields": {
+    "model": "Serie 1",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.819Z",
+    "updated_at": "2026-10-03T07:54:17.819Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ee27718f-558f-4969-8acc-7aed2afd26c0",
+  "fields": {
+    "model": "Canyon",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.273Z",
+    "updated_at": "2026-10-03T07:54:18.273Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "efb1b9d2-7f8a-4c82-8a2e-f79c9942733e",
+  "fields": {
+    "model": "Touareg",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.412Z",
+    "updated_at": "2026-10-03T07:54:19.412Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "efbf3be0-94a7-4f4c-9a59-b02be26cbee6",
+  "fields": {
+    "model": "GR Supra",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.295Z",
+    "updated_at": "2026-10-03T07:54:19.295Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f22f0783-2e1f-4a13-8984-22579b9f58b0",
+  "fields": {
+    "model": "CX-9",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.840Z",
+    "updated_at": "2026-10-03T07:54:18.840Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f2cffe9f-c8ba-479c-a9cb-3c58e6097e71",
+  "fields": {
+    "model": "iX2",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.786Z",
+    "updated_at": "2026-10-03T07:54:17.786Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f2ebd463-544c-434c-a3ca-c09b29feb4ff",
+  "fields": {
+    "model": "Serie 2",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.822Z",
+    "updated_at": "2026-10-03T07:54:17.822Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f3b47e1b-2e0a-4814-9088-a9787529fea9",
+  "fields": {
+    "model": "ESei4 Pro",
+    "make": "4410df40-c840-4ce0-adb8-181f6039d146",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.556Z",
+    "updated_at": "2026-10-03T07:54:18.556Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f3da4567-cf4e-4237-9e3e-e2708b49a0cb",
+  "fields": {
+    "model": "Challenger",
+    "make": "31935404-5e70-4615-94db-828440d6fb54",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.955Z",
+    "updated_at": "2026-10-03T07:54:17.955Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f3ea40ee-be13-4a51-bf7c-0395bbfcf15a",
+  "fields": {
+    "model": "i3",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.793Z",
+    "updated_at": "2026-10-03T07:54:17.793Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f53001fe-3144-4962-bb1a-80c825fb1657",
+  "fields": {
+    "model": "Evoque",
+    "make": "be7751fd-5073-49b2-807c-822df1cc7e28",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.698Z",
+    "updated_at": "2026-10-03T07:54:18.698Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f5640da2-78f2-43e2-a15f-f82df774961b",
+  "fields": {
+    "model": "EX90",
+    "make": "8689c6e2-5690-497c-9cba-c8fb6f0694fe",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.437Z",
+    "updated_at": "2026-10-03T07:54:19.437Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f59676b3-35c7-4744-9458-01f5bc14b83a",
+  "fields": {
+    "model": "Polo",
+    "make": "eab5565b-9352-472f-a080-477b73343237",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.384Z",
+    "updated_at": "2026-10-03T07:54:19.384Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f64e74fd-fca4-4bf3-9d1c-82d9336c0312",
+  "fields": {
+    "model": "XM",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.846Z",
+    "updated_at": "2026-10-03T07:54:17.846Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f6a34d86-a64e-4eb9-b9fa-3c2dbc030618",
+  "fields": {
+    "model": "Ibiza",
+    "make": "c4798747-d32d-4226-85b3-206de6ce475e",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.208Z",
+    "updated_at": "2026-10-03T07:54:19.208Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f6fea755-e10f-4770-9e0f-0b527bd8227c",
+  "fields": {
+    "model": "CX-70",
+    "make": "3529ef00-6045-4913-b87d-c2a36ba0cc22",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.836Z",
+    "updated_at": "2026-10-03T07:54:18.836Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f88d3477-f471-44e1-80a3-0e5f9f3e7ff7",
+  "fields": {
+    "model": "Suburban",
+    "make": "79a45653-bdbf-4ff9-b888-1833c949f660",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.326Z",
+    "updated_at": "2026-10-03T07:54:18.326Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f92ee422-7447-4dce-b741-8103cd0e4ab6",
+  "fields": {
+    "model": "Mirage",
+    "make": "2dc75bc2-3e0f-4bfc-a440-bb92a54791b8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.949Z",
+    "updated_at": "2026-10-03T07:54:18.949Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f982eedf-170e-4141-a4eb-94400ca4acec",
+  "fields": {
+    "model": "F-550",
+    "make": "0e0b4278-b86b-404c-bdd8-20a6134336ea",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.103Z",
+    "updated_at": "2026-10-03T07:54:18.103Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "f9c3579e-30bd-4c4f-8d86-e235788160e8",
+  "fields": {
+    "model": "TM",
+    "make": "9077bb30-045c-42e0-8901-f167f4151d89",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.173Z",
+    "updated_at": "2026-10-03T07:54:18.173Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fac97c28-c8ce-4d0f-8a69-4f5c90ca851a",
+  "fields": {
+    "model": "Renegade",
+    "make": "857de3e7-b658-46e5-bba5-df5edfc1397f",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.013Z",
+    "updated_at": "2026-10-03T07:54:18.014Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fae68a47-1f3b-4563-acdc-ff8a97b628c7",
+  "fields": {
+    "model": "QX70",
+    "make": "2ffdf76f-fd12-4fbd-a5b7-c41daf0293dd",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.502Z",
+    "updated_at": "2026-10-03T07:54:18.502Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fb1d9914-f0ec-427f-a8a7-438131514fc6",
+  "fields": {
+    "model": "Prelude",
+    "make": "4cf54fbf-9ee1-425b-8290-de35daca6056",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.426Z",
+    "updated_at": "2026-10-03T07:54:18.426Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fb7afbba-b957-43ca-81f4-035377fb5797",
+  "fields": {
+    "model": "Rogue",
+    "make": "21f9b8e8-df17-4b57-913f-2fb9fae604ab",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.082Z",
+    "updated_at": "2026-10-03T07:54:19.082Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fc82f6be-008d-4949-9c13-efbda2a5eb7f",
+  "fields": {
+    "model": "Hilux",
+    "make": "3de42193-d2fd-4185-96be-bab4d8ec08e4",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:19.309Z",
+    "updated_at": "2026-10-03T07:54:19.309Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fd184455-508e-4bc4-b5ea-53758c480f8b",
+  "fields": {
+    "model": "i4",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.796Z",
+    "updated_at": "2026-10-03T07:54:17.796Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fe51a726-e73d-4350-9042-eb532bd8f6ae",
+  "fields": {
+    "model": "HAVAL H6",
+    "make": "11b232a7-14e6-42e1-8275-161741a70d86",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.352Z",
+    "updated_at": "2026-10-03T07:54:18.352Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fe8f9e45-cc7f-4ff5-b3e8-c6aa72cb4562",
+  "fields": {
+    "model": "iX1",
+    "make": "e26cfc88-3a31-47e4-9468-67dfe35c19e2",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:17.783Z",
+    "updated_at": "2026-10-03T07:54:17.783Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "fec68c41-c7c6-4685-b2d0-251c03f8adac",
+  "fields": {
+    "model": "Outlander",
+    "make": "2dc75bc2-3e0f-4bfc-a440-bb92a54791b8",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.958Z",
+    "updated_at": "2026-10-03T07:54:18.958Z"
+  }
+},
+{
+  "model": "catalog.modelgeneration",
+  "pk": "ff802265-48c7-4d76-86f8-cac84ce8f9e5",
+  "fields": {
+    "model": "Enclave",
+    "make": "e72fb050-b241-4d92-9580-850c86e7259b",
+    "platform": null,
+    "generation_prefix": "Gen",
+    "generation_number": null,
+    "created_at": "2026-10-03T07:54:18.300Z",
+    "updated_at": "2026-10-03T07:54:18.300Z"
+  }
+}
+]
