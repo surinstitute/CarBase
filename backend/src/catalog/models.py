@@ -194,10 +194,10 @@ class ImageAsset(models.Model):
 
 class ModelImagePlacement(models.Model):
     class View(models.TextChoices):
-        LEFT_SIDE = "left_side", "Left side"
-        RIGHT_SIDE = "right_side", "Right side"
         FRONT = "front", "Front"
         REAR = "rear", "Rear"
+        LEFT_SIDE = "left_side", "Left side"
+        RIGHT_SIDE = "right_side", "Right side"
         SILHOUETTE = "silhouette", "Silhouette"
 
     base_model = models.ForeignKey(
@@ -216,7 +216,17 @@ class ModelImagePlacement(models.Model):
     is_visible = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ("sort_order", "id")
+        ordering = (
+            models.Case(
+                models.When(view="front", then=models.Value(0)),
+                models.When(view="rear", then=models.Value(1)),
+                models.When(view="left_side", then=models.Value(2)),
+                models.When(view="right_side", then=models.Value(3)),
+                default=models.Value(4),
+                output_field=models.IntegerField(),
+            ),
+            "id",
+        )
         constraints = [
             models.UniqueConstraint(
                 fields=("base_model", "view"),

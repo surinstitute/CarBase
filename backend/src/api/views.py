@@ -62,8 +62,7 @@ def _vehicle_queryset():
             Prefetch(
                 "model__image_placements",
                 queryset=ModelImagePlacement.objects.filter(is_visible=True)
-                .select_related("image")
-                .order_by("sort_order", "id"),
+                .select_related("image"),
                 to_attr="visible_image_placements",
             ),
             "charging_ports",
@@ -104,8 +103,7 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
             Prefetch(
                 "image_placements",
                 queryset=ModelImagePlacement.objects.filter(is_visible=True)
-                .select_related("image")
-                .order_by("sort_order", "id"),
+                .select_related("image"),
                 to_attr="visible_image_placements",
             )
         )

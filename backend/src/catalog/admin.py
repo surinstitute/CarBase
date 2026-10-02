@@ -445,12 +445,26 @@ class TopSpeedResultInline(admin.TabularInline):
     extra = 0
 
 
+class ImagePlacementFileInput(forms.FileInput):
+    def render(self, name, value, attrs=None, renderer=None):
+        file_input = super().render(name, value, attrs, renderer)
+        return format_html(
+            '{}<input type="text" hidden aria-hidden="true" tabindex="-1">',
+            file_input,
+        )
+
+
 class ModelImagePlacementInlineForm(forms.ModelForm):
-    image_file = forms.ImageField(label="Upload image", required=False)
+    image_file = forms.ImageField(
+        label="Upload image", required=False, widget=ImagePlacementFileInput
+    )
 
     class Meta:
         model = ModelImagePlacement
-        fields = ("image_file", "view", "alt_text", "sort_order", "is_visible")
+        fields = ("image_file", "view", "alt_text", "is_visible")
+
+    class Media:
+        js = ("catalog/js/image_placement_preview.js",)
 
     def clean(self):
         cleaned_data = super().clean()
@@ -491,8 +505,30 @@ class ModelImagePlacementInline(admin.TabularInline):
     model = ModelImagePlacement
     form = ModelImagePlacementInlineForm
     formset = ModelImagePlacementInlineFormSet
-    extra = 0
-    fields = ("image_file", "view", "alt_text", "sort_order", "is_visible")
+    extra = 1
+    fields = ("image_file", "image_preview", "view", "alt_text", "is_visible")
+    readonly_fields = ("image_preview",)
+
+    @admin.display(description="Image preview")
+    def image_preview(self, obj):
+        style = (
+            "display:block;max-width:180px;max-height:120px;object-fit:contain;"
+            "margin:.75rem 0;background:#fff;border:1px solid #d1d5db;"
+        )
+        if not obj.pk or not obj.image_id:
+            return format_html(
+                '<img class="image-placement-preview" hidden style="{}">', style
+            )
+
+        image_url = obj.image.file.url
+        return format_html(
+            '<img class="image-placement-preview" data-original-src="{}" '
+            'src="{}" alt="{}" style="{}">',
+            image_url,
+            image_url,
+            obj.image.title,
+            style,
+        )
 
 
 class BaseModelWarrantyInline(admin.StackedInline):
