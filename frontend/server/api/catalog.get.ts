@@ -3,12 +3,14 @@ import type { ApiPage, CatalogMake, CatalogModel, CatalogResponse, CatalogVehicl
 interface ApiMake {
   makeId: string
   name: string
+  slug: string
   group: string | null
 }
 
 interface ApiGroup {
   groupId: string
   name: string
+  slug: string
 }
 
 interface ApiModel {
@@ -76,7 +78,7 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
     ))
   )
 
-  const makesById = new Map(makesPage.results.map((make) => [make.makeId, make.name]))
+  const makesById = new Map(makesPage.results.map((make) => [make.makeId, make]))
   const detailsByModelId = new Map<string, {
     bodyStyles: Set<string>
     architectures: Set<string>
@@ -109,6 +111,7 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
     return {
       id: model.id,
       makeId: model.make,
+      makeSlug: makesById.get(model.make)?.slug ?? model.make,
       makeName: model.makeName,
       modelName: model.model,
       year: model.year,
@@ -124,13 +127,14 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
     }
   })
 
-  const makes: CatalogMake[] = makesPage.results.map(({ makeId, name }) => ({
+  const makes: CatalogMake[] = makesPage.results.map(({ makeId, name, slug, group }) => ({
     id: makeId,
     name,
-    groupId: makesPage.results.find((make) => make.makeId === makeId)?.group ?? null
+    slug,
+    groupId: group
   }))
 
-  const groups = groupsPage.results.map(({ groupId, name }) => ({ id: groupId, name }))
+  const groups = groupsPage.results.map(({ groupId, name, slug }) => ({ id: groupId, name, slug }))
 
   return {
     count: modelsPage.count,

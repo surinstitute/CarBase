@@ -7,13 +7,13 @@ import { Skeleton } from '@/components/ui/skeleton'
 import type { CatalogResponse } from '#shared/types/catalog'
 
 const route = useRoute()
-const groupId = computed(() => String(route.params.id))
+const groupSlug = computed(() => String(route.params.id))
 const { data, status } = useQuery({
   key: ['catalog'],
   query: () => $fetch<CatalogResponse>('/api/catalog')
 })
-const group = computed(() => data.value?.groups.find((item) => item.id === groupId.value))
-const makes = computed(() => data.value?.makes.filter((make) => make.groupId === groupId.value) ?? [])
+const group = computed(() => data.value?.groups.find((item) => item.slug === groupSlug.value))
+const makes = computed(() => data.value?.makes.filter((make) => make.groupId === group.value?.id) ?? [])
 const models = computed(() => {
   const makeIds = new Set(makes.value.map((make) => make.id))
   return data.value?.models.filter((model) => makeIds.has(model.makeId)) ?? []
@@ -56,11 +56,11 @@ const models = computed(() => {
       <div v-if="makes.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Card v-for="make in makes" :key="make.id" class="transition-shadow hover:shadow-md">
           <CardHeader>
-            <CardTitle><NuxtLink :to="`/makes/${make.id}`" class="underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
+            <CardTitle><NuxtLink :to="`/makes/${make.slug}`" class="underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
             <CardDescription>{{ models.filter((model) => model.makeId === make.id).length }} modelos</CardDescription>
           </CardHeader>
           <CardContent>
-            <NuxtLink :to="`/makes/${make.id}`" class="text-sm font-medium underline underline-offset-4">Ver marca</NuxtLink>
+            <NuxtLink :to="`/makes/${make.slug}`" class="text-sm font-medium underline underline-offset-4">Ver marca</NuxtLink>
           </CardContent>
         </Card>
       </div>

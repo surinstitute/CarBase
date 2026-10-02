@@ -8,6 +8,7 @@ export interface ApiPage<T> {
 export interface CatalogMake {
   id: string
   name: string
+  slug: string
   country?: string | null
   groupId: string | null
 }
@@ -15,6 +16,7 @@ export interface CatalogMake {
 export interface CatalogGroup {
   id: string
   name: string
+  slug: string
 }
 
 export interface CatalogVehicleRecord {
@@ -107,6 +109,7 @@ export interface CatalogRecall {
 export interface CatalogModel {
   id: string
   makeId: string
+  makeSlug: string
   makeName: string
   modelName: string
   year: number

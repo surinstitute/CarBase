@@ -37,7 +37,7 @@ function architectureLabel(architecture: string) {
         <NuxtLink :to="`/models/${model.id}`" class="transition-colors hover:text-muted-foreground">{{ model.modelName }}</NuxtLink>
       </CardTitle>
       <CardDescription>
-        <NuxtLink :to="`/makes/${model.makeId}`" class="hover:text-foreground">{{ model.makeName }}</NuxtLink>
+        <NuxtLink :to="`/makes/${model.makeSlug}`" class="hover:text-foreground">{{ model.makeName }}</NuxtLink>
         <span v-if="model.generation"> · {{ model.generation }}</span>
       </CardDescription>
     </CardHeader>

@@ -64,11 +64,11 @@ function modelCount(groupId: string) {
     <div v-else-if="filteredGroups.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Card v-for="group in filteredGroups" :key="group.id" class="transition-shadow hover:shadow-md">
         <CardHeader>
-          <CardTitle><NuxtLink :to="`/groups/${group.id}`" class="underline underline-offset-4">{{ group.name }}</NuxtLink></CardTitle>
+          <CardTitle><NuxtLink :to="`/groups/${group.slug}`" class="underline underline-offset-4">{{ group.name }}</NuxtLink></CardTitle>
           <CardDescription>{{ makeCount(group.id) }} marcas · {{ modelCount(group.id) }} modelos</CardDescription>
         </CardHeader>
         <CardContent>
-          <NuxtLink :to="`/groups/${group.id}`" class="text-sm font-medium underline underline-offset-4">Ver grupo</NuxtLink>
+          <NuxtLink :to="`/groups/${group.slug}`" class="text-sm font-medium underline underline-offset-4">Ver grupo</NuxtLink>
         </CardContent>
       </Card>
     </div>

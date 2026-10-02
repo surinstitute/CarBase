@@ -60,11 +60,11 @@ function modelCount(makeId: string) {
     <div v-else-if="filteredMakes.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Card v-for="make in filteredMakes" :key="make.id" class="transition-shadow hover:shadow-md">
         <CardHeader>
-          <CardTitle><NuxtLink :to="`/makes/${make.id}`" class="hover:underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
+          <CardTitle><NuxtLink :to="`/makes/${make.slug}`" class="hover:underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
           <CardDescription>{{ modelCount(make.id) }} modelos</CardDescription>
         </CardHeader>
         <CardContent>
-          <NuxtLink :to="`/makes/${make.id}`" class="text-sm font-medium underline underline-offset-4">Ver modelos</NuxtLink>
+          <NuxtLink :to="`/makes/${make.slug}`" class="text-sm font-medium underline underline-offset-4">Ver modelos</NuxtLink>
         </CardContent>
       </Card>
     </div>

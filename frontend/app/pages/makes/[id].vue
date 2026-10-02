@@ -8,12 +8,12 @@ import { countryFlag } from '@/lib/utils'
 import type { CatalogResponse } from '#shared/types/catalog'
 
 const route = useRoute()
-const makeId = computed(() => String(route.params.id))
+const makeSlug = computed(() => String(route.params.id))
 const { data, status } = useQuery({
   key: ['catalog'],
   query: () => $fetch<CatalogResponse>('/api/catalog')
 })
-const make = computed(() => data.value?.makes.find((item) => item.id === makeId.value))
+const make = computed(() => data.value?.makes.find((item) => item.slug === makeSlug.value))
 const models = computed(() => data.value?.models.filter((model) => model.makeId === makeId.value) ?? [])
 </script>
 

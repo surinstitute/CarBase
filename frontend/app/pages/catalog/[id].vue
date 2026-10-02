@@ -112,7 +112,7 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
       <BreadcrumbList>
         <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink to="/models">Modelos</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeId}`">{{ model.makeName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeSlug}`">{{ model.makeName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem><BreadcrumbPage>{{ model.modelName }}</BreadcrumbPage></BreadcrumbItem>
       </BreadcrumbList>
@@ -151,7 +151,7 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
             <dt class="text-muted-foreground">Plataforma</dt><dd class="font-medium">{{ model.platformName || 'No especificada' }}</dd>
             <dt class="text-muted-foreground">Carrocerías</dt><dd class="font-medium">{{ model.bodyStyles.join(', ') || 'No especificadas' }}</dd>
             <dt class="text-muted-foreground">Propulsiones</dt><dd class="font-medium capitalize">{{ architectureLabel(model.architectures) }}</dd>
-            <dt class="text-muted-foreground">Marca</dt><dd><NuxtLink :to="`/makes/${model.makeId}`" class="font-medium underline underline-offset-4">{{ model.makeName }}</NuxtLink></dd>
+            <dt class="text-muted-foreground">Marca</dt><dd><NuxtLink :to="`/makes/${model.makeSlug}`" class="font-medium underline underline-offset-4">{{ model.makeName }}</NuxtLink></dd>
           </dl>
         </CardContent>
       </Card>

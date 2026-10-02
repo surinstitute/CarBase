@@ -221,7 +221,7 @@ function performanceRows(value: unknown) {
       <BreadcrumbList>
         <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink to="/models">Modelos</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeId}`">{{ model.makeName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeSlug}`">{{ model.makeName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/models/${model.id}`">{{ model.modelName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
