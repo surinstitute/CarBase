@@ -491,9 +491,19 @@ UNFOLD = {
                         "link": reverse_lazy("admin:catalog_make_changelist"),
                     },
                     {
+                        "title": _("Generaciones"),
+                        "icon": "category",
+                        "link": reverse_lazy("admin:catalog_modelgeneration_changelist"),
+                    },
+                    {
                         "title": _("Modelos"),
                         "icon": "category",
                         "link": reverse_lazy("admin:catalog_basemodel_changelist"),
+                    },
+                    {
+                        "title": _("Vehiculos"),
+                        "icon": "directions_car",
+                        "link": reverse_lazy("admin:catalog_vehicle_changelist"),
                     },
                     {
                         "title": _("Motores"),
@@ -529,16 +539,6 @@ UNFOLD = {
                         "title": _("Plataformas"),
                         "icon": "label",
                         "link": reverse_lazy("admin:catalog_platform_changelist"),
-                    },
-                    {
-                        "title": _("Vehiculos"),
-                        "icon": "directions_car",
-                        "link": reverse_lazy("admin:catalog_vehicle_changelist"),
-                    },
-                    {
-                        "title": _("Grupos de catalogo"),
-                        "icon": "group_work",
-                        "link": reverse_lazy("admin:catalog_group_changelist"),
                     },
                 ],
             },

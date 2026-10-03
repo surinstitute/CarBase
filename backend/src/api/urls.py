@@ -9,6 +9,7 @@ from api.views import (
     FuelTankViewSet,
     GroupViewSet,
     MakeViewSet,
+    ModelGenerationViewSet,
     PlatformViewSet,
     RecallViewSet,
     PowerTrainViewSet,
@@ -19,6 +20,9 @@ from api.views import (
 router = routers.DefaultRouter()
 router.register("groups", GroupViewSet, basename="group")
 router.register("makes", MakeViewSet, basename="make")
+router.register(
+    "model-generations", ModelGenerationViewSet, basename="modelgeneration"
+)
 router.register("models", BaseModelViewSet, basename="basemodel")
 router.register("platforms", PlatformViewSet, basename="platform")
 router.register("engines", EngineViewSet, basename="engine")

@@ -52,25 +52,23 @@ from catalog.types import (
 )
 
 
-class BaseModel(models.Model):
+class ModelGeneration(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     model = models.CharField(max_length=255)
-    make = models.ForeignKey("Make", on_delete=models.CASCADE, related_name="models")
+    make = models.ForeignKey(
+        "Make", on_delete=models.CASCADE, related_name="model_generations"
+    )
     platform = models.ForeignKey(
         "Platform",
         on_delete=models.CASCADE,
-        related_name="base_models",
+        related_name="model_generations",
         null=True,
         blank=True,
     )
-    body_style = models.CharField(
-        max_length=255,
-        choices=BodyStyle.choices,
-        null=True,
-        blank=True,
+    generation_prefix = models.CharField(
+        max_length=32, null=True, blank=True, default="Gen"
     )
-    generation = models.CharField(max_length=255, null=True, blank=True)
-    year = models.IntegerField()
+    generation_number = models.PositiveSmallIntegerField(null=True, blank=True)
     objects = ParadeDBManager()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -79,17 +77,65 @@ class BaseModel(models.Model):
         indexes = [
             ParadeDBIndex(
                 fields={
-                    "generation": {"tokenizer": Tokenizer.unicode_words()},
+                    "generation_prefix": {"tokenizer": Tokenizer.unicode_words()},
                     "id": {},
                     "model": {"tokenizer": Tokenizer.unicode_words()},
                 },
                 key_field="id",
-                name="base_model_search_idx",
+                name="model_generation_search_idx",
             ),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=("make", "model", "generation_prefix", "generation_number"),
+                name="unique_model_generation_identifier",
+            )
         ]
 
     def __str__(self):
-        return f"{self.make.name} {self.model} {self.year}"
+        generation = f" {self.generation}" if self.generation else ""
+        return f"{self.make.name} {self.model}{generation}".strip()
+
+    def save(self, *args, **kwargs):
+        self.generation_prefix = self.generation_prefix or "Gen"
+        super().save(*args, **kwargs)
+
+    @property
+    def generation(self):
+        parts = [self.generation_prefix or "Gen", self.generation_number]
+        return "".join(str(part) for part in parts if part is not None) or None
+
+
+class BaseModel(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    model_generation = models.ForeignKey(
+        ModelGeneration,
+        on_delete=models.CASCADE,
+        related_name="model_years",
+    )
+    body_style = models.CharField(
+        max_length=255,
+        choices=BodyStyle.choices,
+        null=True,
+        blank=True,
+    )
+    year = models.IntegerField()
+    objects = ParadeDBManager()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=("model_generation", "year", "body_style"),
+                name="unique_model_year_body_style",
+                condition=models.Q(body_style__isnull=False),
+            )
+        ]
+
+    def __str__(self):
+        body_style = f" {self.get_body_style_display()}" if self.body_style else ""
+        return f"{self.model_generation} {self.year}{body_style}".strip()
 
 
 class BaseModelWarranty(models.Model):

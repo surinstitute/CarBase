@@ -17,6 +17,7 @@ from catalog.models import (
     Group,
     Make,
     ModelImagePlacement,
+    ModelGeneration,
     Platform,
     PowerTrain,
     PowerTrainArchitecture,
@@ -83,15 +84,42 @@ class MakeSerializer(serializers.ModelSerializer):
 
 
 class BaseModelSerializer(serializers.ModelSerializer):
-    makeName = serializers.CharField(source="make.name", read_only=True)
+    modelGenerationId = serializers.UUIDField(
+        source="model_generation_id", read_only=True
+    )
+    model = serializers.CharField(source="model_generation.model", read_only=True)
+    make = serializers.UUIDField(
+        source="model_generation.make.makeId", read_only=True
+    )
+    generation = serializers.SerializerMethodField()
+    platform = serializers.UUIDField(
+        source="model_generation.platform_id", read_only=True, allow_null=True
+    )
+    makeName = serializers.CharField(source="model_generation.make.name", read_only=True)
+    makeSlug = serializers.CharField(source="model_generation.make.slug", read_only=True)
     platformName = serializers.CharField(
-        source="platform.name", read_only=True, allow_null=True
+        source="model_generation.platform.name", read_only=True, allow_null=True
     )
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = BaseModel
-        fields = "__all__"
+        fields = (
+            "id",
+            "modelGenerationId",
+            "model",
+            "make",
+            "makeName",
+            "makeSlug",
+            "platform",
+            "platformName",
+            "generation",
+            "body_style",
+            "year",
+            "created_at",
+            "updated_at",
+            "image",
+        )
 
     def get_image(self, obj):
         placements = getattr(obj, "visible_image_placements", None)
@@ -114,6 +142,9 @@ class BaseModelSerializer(serializers.ModelSerializer):
             "alt": placement.alt_text or placement.image.title,
         }
 
+    def get_generation(self, obj):
+        return obj.model_generation.generation
+
 
 class BaseModelDetailSerializer(BaseModelSerializer):
     safetyRatings = serializers.SerializerMethodField()
@@ -121,9 +152,13 @@ class BaseModelDetailSerializer(BaseModelSerializer):
     images = serializers.SerializerMethodField()
     warranty = serializers.SerializerMethodField()
 
-    class Meta:
-        model = BaseModel
-        fields = "__all__"
+    class Meta(BaseModelSerializer.Meta):
+        fields = BaseModelSerializer.Meta.fields + (
+            "safetyRatings",
+            "variants",
+            "images",
+            "warranty",
+        )
 
     def get_safetyRatings(self, obj):
         return [
@@ -192,6 +227,39 @@ class PlatformSerializer(serializers.ModelSerializer):
     class Meta:
         model = Platform
         fields = "__all__"
+
+
+class ModelGenerationSerializer(serializers.ModelSerializer):
+    generation = serializers.SerializerMethodField()
+    makeName = serializers.CharField(source="make.name", read_only=True)
+    platformName = serializers.CharField(
+        source="platform.name", read_only=True, allow_null=True
+    )
+    startYear = serializers.IntegerField(
+        source="start_year", read_only=True, allow_null=True
+    )
+    endYear = serializers.IntegerField(
+        source="end_year", read_only=True, allow_null=True
+    )
+
+    class Meta:
+        model = ModelGeneration
+        fields = (
+            "id",
+            "model",
+            "make",
+            "makeName",
+            "generation",
+            "generation_prefix",
+            "generation_number",
+            "platform",
+            "platformName",
+            "startYear",
+            "endYear",
+        )
+
+    def get_generation(self, obj):
+        return obj.generation
 
 
 class EngineSerializer(serializers.ModelSerializer):
@@ -314,7 +382,11 @@ class RecallSerializer(serializers.ModelSerializer):
 
     def get_affectedModels(self, obj):
         return [
-            {"id": str(model.id), "name": model.model, "year": model.year}
+            {
+                "id": str(model.id),
+                "name": model.model_generation.model,
+                "year": model.year,
+            }
             for model in obj.affected_models.all()
         ]
 
@@ -383,21 +455,24 @@ class VehicleSerializer(serializers.ModelSerializer):
 
     def get_lineage(self, obj):
         lineage = {
-            "makeId": str(obj.model.make.makeId),
+            "makeId": str(obj.model.model_generation.make.makeId),
             "modelId": str(obj.model.id),
-            "makeName": obj.model.make.name,
-            "modelName": obj.model.model,
+            "modelGenerationId": str(obj.model.model_generation_id),
+            "makeName": obj.model.model_generation.make.name,
+            "modelName": obj.model.model_generation.model,
             "modelYear": obj.model.year,
         }
-        if obj.model.platform_id:
-            lineage["platformId"] = str(obj.model.platform.platformId)
-        if obj.model.generation:
-            lineage["generationId"] = obj.model.generation
+        model_generation = obj.model.model_generation
+        if model_generation.platform_id:
+            lineage["platformId"] = str(model_generation.platform.platformId)
+        if model_generation.generation:
+            lineage["generationId"] = model_generation.generation
         return lineage
 
     def get_configuration(self, obj):
         configuration = {
             "powertrain": self._serialize_powertrain(obj.powertrain),
+            "bodyStyle": obj.model.body_style,
         }
         if obj.transmissionId_id:
             configuration["transmissionId"] = str(obj.transmissionId.transmissionId)

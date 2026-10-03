@@ -28,6 +28,7 @@ from .models import (
     ImageAsset,
     Make,
     ModelImagePlacement,
+    ModelGeneration,
     ModelSafetyRating,
     Platform,
     PowerTrain,
@@ -579,7 +580,7 @@ class RegulatoryApprovalAdmin(GroupScopedAdminMixin, ModelAdmin):
         "standard",
         "vehicle__model__model",
     )
-    group_paths = ("vehicle__model__make__group",)
+    group_paths = ("vehicle__model__model_generation__make__group",)
     inlines = (ApprovalSourceDocumentInline,)
 
 
@@ -587,20 +588,25 @@ class RegulatoryApprovalAdmin(GroupScopedAdminMixin, ModelAdmin):
 class ApprovalSourceDocumentAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("url", "publisher", "document_type", "is_primary")
     search_fields = ("url", "title", "publisher")
-    group_paths = ("approval__vehicle__model__make__group",)
-    foreignkey_group_paths = {"approval": "vehicle__model__make__group"}
+    group_paths = ("approval__vehicle__model__model_generation__make__group",)
+    foreignkey_group_paths = {
+        "approval": "vehicle__model__model_generation__make__group"
+    }
 
 
 class VehicleLinkedAdmin(GroupScopedAdminMixin, ModelAdmin):
-    group_paths = ("vehicle__model__make__group",)
-    foreignkey_group_paths = {"vehicle": "model__make__group"}
+    group_paths = ("vehicle__model__model_generation__make__group",)
+    foreignkey_group_paths = {"vehicle": "model__model_generation__make__group"}
 
 
 @admin.register(SafetyPackage)
 class SafetyPackageAdmin(VehicleLinkedAdmin):
     form = SafetyPackageAdminForm
     list_display = ("vehicle",)
-    search_fields = ("vehicle__model__model", "vehicle__model__make__name")
+    search_fields = (
+        "vehicle__model__model_generation__model",
+        "vehicle__model__model_generation__make__name",
+    )
 
 
 @admin.register(ChargingPackage)
@@ -614,14 +620,20 @@ class ChargingPackageAdmin(VehicleLinkedAdmin):
         "v2h",
         "v2g",
     )
-    search_fields = ("vehicle__model__model", "vehicle__model__make__name")
+    search_fields = (
+        "vehicle__model__model_generation__model",
+        "vehicle__model__model_generation__make__name",
+    )
 
 
 @admin.register(ChargingPort)
 class ChargingPortAdmin(VehicleLinkedAdmin):
     form = ChargingPortAdminForm
     list_display = ("vehicle", "current_type", "connector", "location")
-    search_fields = ("vehicle__model__model", "vehicle__model__make__name")
+    search_fields = (
+        "vehicle__model__model_generation__model",
+        "vehicle__model__model_generation__make__name",
+    )
 
 
 @admin.register(ChargeTimeResult)
@@ -635,7 +647,11 @@ class ChargeTimeResultAdmin(VehicleLinkedAdmin):
         "duration_minutes",
         "is_primary",
     )
-    search_fields = ("vehicle__model__model", "vehicle__model__make__name", "note")
+    search_fields = (
+        "vehicle__model__model_generation__model",
+        "vehicle__model__model_generation__make__name",
+        "note",
+    )
 
 
 @admin.register(ComplianceRecord)
@@ -650,8 +666,8 @@ class ComplianceRecordAdmin(VehicleLinkedAdmin):
         "is_primary",
     )
     search_fields = (
-        "vehicle__model__model",
-        "vehicle__model__make__name",
+        "vehicle__model__model_generation__model",
+        "vehicle__model__model_generation__make__name",
         "region",
         "standard",
         "classification",
@@ -660,7 +676,10 @@ class ComplianceRecordAdmin(VehicleLinkedAdmin):
 
 
 class VehicleResultAdmin(VehicleLinkedAdmin):
-    search_fields = ("vehicle__model__model", "vehicle__model__make__name")
+    search_fields = (
+        "vehicle__model__model_generation__model",
+        "vehicle__model__model_generation__make__name",
+    )
 
 
 @admin.register(EfficiencyResult)
@@ -724,17 +743,37 @@ class ImageAssetAdmin(ModelAdmin):
 
 @admin.register(BaseModel)
 class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
-    list_display = ("id", "make", "model", "platform", "year", "generation")
-    search_fields = ("model", "make__name", "platform__name", "generation")
-    list_filter = ("year",)
-    autocomplete_fields = ("make", "platform")
-    group_paths = ("make__group",)
-    foreignkey_group_paths = {"make": "group", "platform": "groups"}
+    list_display = ("id", "model_generation", "year", "body_style")
+    search_fields = (
+        "model_generation__model",
+        "model_generation__make__name",
+        "model_generation__generation_prefix",
+    )
+    list_filter = ("year", "body_style")
+    autocomplete_fields = ("model_generation",)
+    group_paths = ("model_generation__make__group",)
+    foreignkey_group_paths = {"model_generation": "make__group"}
     inlines = (
         ModelImagePlacementInline,
         BaseModelWarrantyInline,
         ModelSafetyRatingInline,
     )
+
+
+@admin.register(ModelGeneration)
+class ModelGenerationAdmin(GroupScopedAdminMixin, ModelAdmin):
+    list_display = (
+        "id",
+        "make",
+        "model",
+        "generation_prefix",
+        "generation_number",
+        "platform",
+    )
+    search_fields = ("model", "make__name", "generation_prefix", "platform__name")
+    autocomplete_fields = ("make", "platform")
+    group_paths = ("make__group",)
+    foreignkey_group_paths = {"make": "group", "platform": "groups"}
 
 
 @admin.register(Make)
@@ -840,12 +879,15 @@ class PowerTrainAdmin(GroupScopedAdminMixin, ModelAdmin):
 @admin.register(VehicleMonthlySales)
 class VehicleMonthlySalesAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("vehicle", "month", "year", "units_sold")
-    search_fields = ("vehicle__model__model", "vehicle__model__make__name")
+    search_fields = (
+        "vehicle__model__model_generation__model",
+        "vehicle__model__model_generation__make__name",
+    )
     list_filter = ("year", "month")
     ordering = ("-year", "-month")
     autocomplete_fields = ("vehicle",)
-    group_paths = ("vehicle__model__make__group",)
-    foreignkey_group_paths = {"vehicle": "model__make__group"}
+    group_paths = ("vehicle__model__model_generation__make__group",)
+    foreignkey_group_paths = {"vehicle": "model__model_generation__make__group"}
 
 
 class RecallAdminForm(forms.ModelForm):
@@ -857,7 +899,11 @@ class RecallAdminForm(forms.ModelForm):
         cleaned_data = super().clean()
         maker = cleaned_data.get("maker")
         affected_models = cleaned_data.get("affected_models")
-        if maker and affected_models and affected_models.exclude(make=maker).exists():
+        if (
+            maker
+            and affected_models
+            and affected_models.exclude(model_generation__make=maker).exists()
+        ):
             raise ValidationError("Los modelos afectados deben pertenecer al maker del recall.")
         return cleaned_data
 
@@ -871,7 +917,7 @@ class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
         "title",
         "authority",
         "maker__name",
-        "affected_models__model",
+        "affected_models__model_generation__model",
     )
     list_filter = ("status", "maker__country", "published_date")
     ordering = ("-published_date", "id")
@@ -879,7 +925,9 @@ class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
     filter_horizontal = ("affected_models",)
     group_paths = ("maker__group",)
     foreignkey_group_paths = {"maker": "group"}
-    manytomany_group_paths = {"affected_models": "make__group"}
+    manytomany_group_paths = {
+        "affected_models": "model_generation__make__group"
+    }
 
 
 @admin.register(Vehicle)
@@ -913,9 +961,9 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
     )
     search_fields = (
         "id",
-        "model__model",
-        "model__make__name",
-        "model__platform__name",
+        "model__model_generation__model",
+        "model__model_generation__make__name",
+        "model__model_generation__platform__name",
         "powertrain__name",
         "transmissionId__name",
     )
@@ -928,16 +976,18 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         "powertrain_battery_packs_inline",
         "powertrain_fuel_tanks_inline",
     )
-    group_paths = ("model__make__group",)
+    group_paths = ("model__model_generation__make__group",)
     foreignkey_group_paths = {
-        "model": "make__group",
+        "model": "model_generation__make__group",
         "powertrain": "make__group",
         "transmissionId": "maker__group",
     }
 
-    @admin.display(ordering="model__platform", description="Platform")
+    @admin.display(
+        ordering="model__model_generation__platform", description="Platform"
+    )
     def platform(self, obj):
-        return obj.model.platform
+        return obj.model.model_generation.platform
 
     def _get_selected_powertrain(self, request, obj=None):
         if obj is not None:
