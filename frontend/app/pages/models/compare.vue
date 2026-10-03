@@ -180,17 +180,17 @@ function label(value: unknown) {
     <div class="flex flex-wrap items-end justify-between gap-4">
       <div>
         <p class="text-sm font-medium text-muted-foreground">Catálogo</p>
-        <h1 class="text-3xl font-bold tracking-tight">Comparar autos</h1>
+        <h1 class="text-3xl font-bold tracking-tight">Comparar modelos</h1>
       </div>
       <Button as-child variant="outline">
-        <NuxtLink to="/models">Añadir autos</NuxtLink>
+        <NuxtLink to="/vehicles">Añadir vehículos</NuxtLink>
       </Button>
     </div>
 
     <Card v-if="comparison.count.value < 2">
       <CardContent class="flex flex-col items-start gap-3 p-6">
         <p class="text-sm text-muted-foreground">Selecciona al menos dos autos para compararlos.</p>
-        <Button as-child><NuxtLink to="/models">Explorar modelos</NuxtLink></Button>
+        <Button as-child><NuxtLink to="/vehicles">Explorar vehículos</NuxtLink></Button>
       </CardContent>
     </Card>
 
