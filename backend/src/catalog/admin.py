@@ -866,6 +866,7 @@ class TransmissionAdmin(GroupScopedAdminMixin, ModelAdmin):
 class PowerTrainAdmin(GroupScopedAdminMixin, ModelAdmin):
     form = PowerTrainAdminForm
     list_display = ("powerTrainId", "name", "make", "architecture")
+    ordering = ("name", "powerTrainId")
     search_fields = ("name", "make__name")
     foreignkey_group_paths = {"make": "group"}
     inlines = (
