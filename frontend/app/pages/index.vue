@@ -19,20 +19,21 @@ const powertrainFilters = [
 ]
 
 function browseCatalog() {
-	navigateTo({ path: '/models', query: search.value.trim() ? { q: search.value.trim() } : undefined })
+	navigateTo({ path: '/vehicles', query: search.value.trim() ? { q: search.value.trim() } : undefined })
 }
 
 function browseBodyStyle(bodyStyle: string) {
-	navigateTo({ path: '/models', query: { body_style: bodyStyle } })
+	navigateTo({ path: '/vehicles', query: { body_style: bodyStyle } })
 }
 
 function browsePowertrain(powertrainType: string) {
-	navigateTo({ path: '/models', query: { powertrain_type: powertrainType } })
+	navigateTo({ path: '/vehicles', query: { powertrain_type: powertrainType } })
 }
 
 function browseAssemblyCountry(country: string) {
-	navigateTo({ path: '/models', query: { assembly_country: country } })
+	navigateTo({ path: '/vehicles', query: { assembly_country: country } })
 }
+
 </script>
 
 <template>

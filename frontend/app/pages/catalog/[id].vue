@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import type { CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord, CatalogWarrantyCoverage } from '#shared/types/catalog'
+import type { CatalogModel, CatalogModelDetail, CatalogResponse, CatalogSafetyRating, CatalogVehicleRecord, CatalogWarrantyCoverage } from '#shared/types/catalog'
 
 const route = useRoute()
 const modelId = computed(() => String(route.params.id))
@@ -15,6 +15,34 @@ const comparison = useCarComparison()
 const { data: model, status } = useQuery({
   key: () => ['model-detail', modelId.value],
   query: () => $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
+})
+const { data: generationBodyStyles } = useQuery({
+  key: () => ['generation-body-styles', model.value?.makeId, model.value?.modelName, model.value?.modelGenerationId],
+  query: async (): Promise<CatalogModel[]> => {
+    if (!model.value) return []
+    const response = await $fetch<CatalogResponse>('/api/catalog', {
+      query: { model: model.value.modelName }
+    })
+    return response.models
+      .filter((item) => (
+        item.makeId === model.value?.makeId
+        && item.modelGenerationId === model.value?.modelGenerationId
+      ))
+  }
+})
+const generationModels = computed(() => generationBodyStyles.value
+  ?.filter((item) => item.baseBodyStyle === model.value?.baseBodyStyle)
+  .sort((left, right) => left.year - right.year) ?? [])
+const bodyStyleOptions = computed(() => {
+  const bodyStyles = new Map<string, CatalogModel>()
+
+  for (const item of generationBodyStyles.value ?? []) {
+    if (item.year === model.value?.year && item.baseBodyStyle) {
+      bodyStyles.set(item.baseBodyStyle, item)
+    }
+  }
+
+  return [...bodyStyles.entries()].map(([name, item]) => ({ name, item }))
 })
 const detailImages = computed(() => {
   if (!model.value) return []
@@ -40,6 +68,10 @@ const modelDetailRows = computed(() => {
 
 function architectureLabel(architectures: string[]) {
   return architectures.length ? architectures.map((architecture) => architecture.replaceAll('_', ' ')).join(', ') : 'No especificada'
+}
+
+function bodyStyleLabel(bodyStyle: string) {
+  return `${bodyStyle.charAt(0).toUpperCase()}${bodyStyle.slice(1)}`
 }
 
 function formatValue(value: unknown) {
@@ -100,6 +132,7 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
   }
   return terms.join(' / ')
 }
+
 </script>
 
 <template>
@@ -114,9 +147,24 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
         <BreadcrumbSeparator />
         <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeSlug}`">{{ model.makeName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem><BreadcrumbPage>{{ model.modelName }}</BreadcrumbPage></BreadcrumbItem>
+        <BreadcrumbItem v-if="model.generation"><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeSlug}/models/${model.modelName}`">{{ model.modelName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbSeparator v-if="model.generation" />
+        <BreadcrumbItem v-if="model.baseBodyStyle"><BreadcrumbPage>{{ model.generation || model.modelName }}</BreadcrumbPage></BreadcrumbItem>
+        <BreadcrumbSeparator v-if="model.baseBodyStyle" />
+        <BreadcrumbItem><BreadcrumbPage>{{ model.baseBodyStyle ? bodyStyleLabel(model.baseBodyStyle) : model.generation || model.modelName }}</BreadcrumbPage></BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
+    <nav v-if="generationModels.length" class="flex gap-2 overflow-x-auto border-t pt-6" aria-label="Años de la generación">
+      <NuxtLink
+        v-for="generationModel in generationModels"
+        :key="generationModel.id"
+        :to="`/models/${generationModel.id}`"
+        class="shrink-0 rounded-md border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        :class="generationModel.id === model.id ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-muted'"
+      >
+        {{ generationModel.year }}
+      </NuxtLink>
+    </nav>
     <div class="grid items-start gap-6 lg:grid-cols-2">
       <div class="space-y-2">
         <img v-if="activeImage" :src="activeImage.url" :alt="activeImage.alt" class="aspect-4/3 w-full rounded-xl border object-cover">
@@ -149,7 +197,19 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
             <dt class="text-muted-foreground">Año modelo</dt><dd class="font-medium">{{ model.year }}</dd>
             <dt class="text-muted-foreground">Generación</dt><dd class="font-medium">{{ model.generation || 'No especificada' }}</dd>
             <dt class="text-muted-foreground">Plataforma</dt><dd class="font-medium">{{ model.platformName || 'No especificada' }}</dd>
-            <dt class="text-muted-foreground">Carrocerías</dt><dd class="font-medium">{{ model.bodyStyles.join(', ') || 'No especificadas' }}</dd>
+            <dt class="text-muted-foreground">Carrocerías</dt>
+            <dd v-if="bodyStyleOptions.length > 1" class="flex w-fit rounded-sm bg-muted p-0.5" aria-label="Carrocerías disponibles">
+              <NuxtLink
+                v-for="bodyStyle in bodyStyleOptions"
+                :key="bodyStyle.item.id"
+                :to="`/models/${bodyStyle.item.id}`"
+                class="rounded-sm px-1.5 py-0.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                :class="bodyStyle.item.id === model.id ? 'bg-background text-foreground shadow-xs' : 'text-muted-foreground hover:text-foreground'"
+              >
+                {{ bodyStyle.name }}
+              </NuxtLink>
+            </dd>
+            <dd v-else class="font-medium">{{ model.bodyStyles.join(', ') || 'No especificadas' }}</dd>
             <dt class="text-muted-foreground">Propulsiones</dt><dd class="font-medium capitalize">{{ architectureLabel(model.architectures) }}</dd>
             <dt class="text-muted-foreground">Marca</dt><dd><NuxtLink :to="`/makes/${model.makeSlug}`" class="font-medium underline underline-offset-4">{{ model.makeName }}</NuxtLink></dd>
           </dl>

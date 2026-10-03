@@ -5,7 +5,7 @@ export default defineEventHandler(async (event): Promise<ApiPage<CatalogVehicleR
   const query = getQuery(event)
   const params = new URLSearchParams()
 
-  for (const name of ['q', 'page']) {
+  for (const name of ['q', 'page', 'make', 'group', 'year', 'powertrain_type', 'assembly_country', 'safety', 'sort']) {
     const value = query[name]
     if (typeof value === 'string' && value.trim()) {
       params.set(name, value.trim())

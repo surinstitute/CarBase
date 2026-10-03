@@ -7,6 +7,7 @@ const isDark = computed(() => colorMode.value === 'dark')
 const isMenuOpen = ref(false)
 const navigationLinks = [
   { label: 'Modelos', to: '/models' },
+  { label: 'Vehículos', to: '/vehicles' },
   { label: 'Marcas', to: '/makes' },
   { label: 'Grupos', to: '/groups' },
   { label: 'Recalls', to: '/recalls' }

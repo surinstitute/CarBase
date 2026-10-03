@@ -8,9 +8,11 @@ import type {
 
 interface ApiModelDetail {
   id: string
+  modelGenerationId: string
   model: string
   make: string
   makeName: string
+  makeSlug: string
   platform: string | null
   platformName: string | null
   generation: string | null
@@ -46,7 +48,9 @@ export default defineEventHandler(async (event): Promise<CatalogModelDetail> => 
 
   return {
     id: model.id,
+    modelGenerationId: model.modelGenerationId,
     makeId: model.make,
+    makeSlug: model.makeSlug,
     makeName: model.makeName,
     modelName: model.model,
     year: model.year,
@@ -55,6 +59,7 @@ export default defineEventHandler(async (event): Promise<CatalogModelDetail> => 
     updated_at: model.updated_at,
     platformId: model.platform,
     platformName: model.platformName,
+    baseBodyStyle: model.body_style,
     bodyStyles: model.body_style ? [model.body_style] : [],
     architectures: [...new Set(architectures)],
     vehicles: variants,

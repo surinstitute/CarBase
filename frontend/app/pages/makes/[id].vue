@@ -7,6 +7,14 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { countryFlag } from '@/lib/utils'
 import type { CatalogResponse } from '#shared/types/catalog'
 
+interface ModelCard {
+  id: string
+  model: CatalogResponse['models'][number]
+  years: number[]
+  bodyStyles: string[]
+  generations: string[]
+}
+
 const route = useRoute()
 const makeSlug = computed(() => String(route.params.id))
 const { data, status } = useQuery({
@@ -14,7 +22,31 @@ const { data, status } = useQuery({
   query: () => $fetch<CatalogResponse>('/api/catalog')
 })
 const make = computed(() => data.value?.makes.find((item) => item.slug === makeSlug.value))
-const models = computed(() => data.value?.models.filter((model) => model.makeId === makeId.value) ?? [])
+const models = computed(() => data.value?.models.filter((model) => model.makeId === make.value?.id) ?? [])
+const modelCards = computed<ModelCard[]>(() => {
+  const cards = new Map<string, ModelCard>()
+
+  for (const model of models.value) {
+    const card = cards.get(model.modelName)
+    if (card) {
+      card.years.push(model.year)
+      card.bodyStyles = [...new Set([...card.bodyStyles, ...model.bodyStyles])]
+      if (model.generation && !card.generations.includes(model.generation)) {
+        card.generations.push(model.generation)
+      }
+      continue
+    }
+    cards.set(model.modelName, {
+      id: model.modelName,
+      model,
+      years: [model.year],
+      bodyStyles: model.bodyStyles,
+      generations: model.generation ? [model.generation] : []
+    })
+  }
+
+  return [...cards.values()]
+})
 </script>
 
 <template>
@@ -41,11 +73,11 @@ const models = computed(() => data.value?.models.filter((model) => model.makeId 
         <h1 class="text-3xl font-bold tracking-tight">{{ make.name }}</h1>
         <p v-if="make.country" class="text-sm text-muted-foreground">{{ countryFlag(make.country) }} Origen: {{ make.country }}</p>
       </div>
-      <Badge variant="secondary">{{ models.length }} modelos</Badge>
+      <Badge variant="secondary">{{ modelCards.length }} modelos</Badge>
     </header>
 
-    <div v-if="models.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <CatalogModelCard v-for="model in models" :key="model.id" :model="model" />
+    <div v-if="modelCards.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <CatalogModelCard v-for="card in modelCards" :key="card.id" :model="card.model" :years="card.years" :body-styles="card.bodyStyles" :generations="card.generations" :show-body-styles="false" />
     </div>
     <Card v-else>
       <CardContent class="p-6 text-sm text-muted-foreground">Esta marca aún no tiene modelos base en el catálogo.</CardContent>

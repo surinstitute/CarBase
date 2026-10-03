@@ -15,12 +15,14 @@ interface ApiGroup {
 
 interface ApiModel {
   id: string
+  modelGenerationId: string
   model: string
   make: string
   makeName: string
   platform: string | null
   platformName: string | null
   generation: string | null
+  body_style: string | null
   year: number
   created_at: string
   updated_at: string
@@ -110,6 +112,7 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
 
     return {
       id: model.id,
+      modelGenerationId: model.modelGenerationId,
       makeId: model.make,
       makeSlug: makesById.get(model.make)?.slug ?? model.make,
       makeName: model.makeName,
@@ -120,7 +123,11 @@ export default defineEventHandler(async (event): Promise<CatalogResponse> => {
       updated_at: model.updated_at,
       platformId: model.platform,
       platformName: model.platformName,
-      bodyStyles: [...(details?.bodyStyles ?? [])],
+      baseBodyStyle: model.body_style,
+      bodyStyles: [...new Set([
+        ...(model.body_style ? [model.body_style] : []),
+        ...(details?.bodyStyles ?? [])
+      ])],
       architectures: [...(details?.architectures ?? [])],
       vehicles: details?.vehicles ?? [],
       image: model.image ?? details?.image

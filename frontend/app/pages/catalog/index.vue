@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { CatalogResponse } from '#shared/types/catalog'
+import type { CatalogModelCardsResponse } from '#shared/types/catalog'
 
 const filters = useCatalogFiltersStore()
 const { search } = storeToRefs(filters)
@@ -22,10 +22,7 @@ function queryValue(name: string) {
 
 filters.search = queryValue('q')
 filters.makeId = queryValue('make') || 'all'
-filters.year = queryValue('year') || 'all'
 filters.bodyStyle = queryValue('body_style') || 'all'
-filters.powertrainType = queryValue('powertrain_type') || 'all'
-filters.assemblyCountry = queryValue('assembly_country') || 'all'
 
 const requestedPage = Number.parseInt(queryValue('page'), 10)
 const page = ref(Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1)
@@ -34,15 +31,12 @@ const catalogQuery = computed(() => ({
   page: String(page.value),
   ...(debouncedSearch.value.trim() ? { q: debouncedSearch.value.trim() } : {}),
   ...(filters.makeId !== 'all' ? { make: filters.makeId } : {}),
-  ...(filters.year !== 'all' ? { year: filters.year } : {}),
-  ...(filters.bodyStyle !== 'all' ? { body_style: filters.bodyStyle } : {}),
-  ...(filters.powertrainType !== 'all' ? { powertrain_type: filters.powertrainType } : {}),
-  ...(filters.assemblyCountry !== 'all' ? { assembly_country: filters.assemblyCountry } : {})
+  ...(filters.bodyStyle !== 'all' ? { body_style: filters.bodyStyle } : {})
 }))
 
 const { data, status } = useQuery({
-  key: () => ['catalog', catalogQuery.value],
-  query: () => $fetch<CatalogResponse>('/api/catalog', { query: catalogQuery.value })
+  key: () => ['model-cards', catalogQuery.value],
+  query: () => $fetch<CatalogModelCardsResponse>('/api/model-cards', { query: catalogQuery.value })
 })
 
 watch(catalogQuery, (query) => {
@@ -51,22 +45,37 @@ watch(catalogQuery, (query) => {
   }
 })
 
-const years = computed(() => data.value?.filterOptions.years ?? [])
 const bodyStyles = computed(() => data.value?.filterOptions.bodyStyles ?? [])
-const powertrainTypes = computed(() => data.value?.filterOptions.powertrainTypes ?? [])
-const assemblyCountries = computed(() => data.value?.filterOptions.assemblyCountries ?? [])
 const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 10)))
+const modelCards = computed(() => data.value?.results.map((card) => ({
+  id: card.id,
+  model: {
+    id: card.generations[0]?.modelId ?? card.id,
+    makeSlug: card.makeSlug,
+    makeName: card.makeName,
+    modelName: card.modelName,
+    year: card.startYear,
+    generation: null,
+    platformName: null,
+    bodyStyles: [],
+    architectures: []
+  },
+  years: [card.startYear, card.endYear],
+  generationLinks: card.generations.map((generation) => ({
+    label: generation.label,
+    route: `/models/${generation.modelId}`
+  }))
+})) ?? [])
 
 watch(() => filters.makeId, () => {
-  filters.year = 'all'
   page.value = 1
 })
 
-watch([() => debouncedSearch.value, () => filters.year, () => filters.assemblyCountry], () => {
+watch(() => debouncedSearch.value, () => {
   page.value = 1
 })
 
-watch([() => filters.bodyStyle, () => filters.powertrainType], () => {
+watch(() => filters.bodyStyle, () => {
   page.value = 1
 })
 
@@ -82,10 +91,6 @@ function bodyStyleLabel(bodyStyle: string) {
   return labels[bodyStyle] ?? bodyStyle
 }
 
-function powertrainTypeLabel(powertrainType: string) {
-  const labels: Record<string, string> = { combustion: 'Combustión', hybrid: 'Híbrido', plug_in_hybrid: 'Híbrido enchufable', electric: 'Eléctrico' }
-  return labels[powertrainType] ?? powertrainType
-}
 </script>
 
 <template>
@@ -107,14 +112,7 @@ function powertrainTypeLabel(powertrainType: string) {
             <span>Marca</span>
             <NativeSelect v-model="filters.makeId" class="w-full" aria-label="Filtrar por marca">
               <NativeSelectOption value="all">Todas las marcas</NativeSelectOption>
-              <NativeSelectOption v-for="make in data?.makes" :key="make.id" :value="make.id">{{ make.name }}</NativeSelectOption>
-            </NativeSelect>
-          </div>
-          <div class="grid gap-2 text-sm font-medium">
-            <span>Año</span>
-            <NativeSelect v-model="filters.year" class="w-full" :disabled="!years.length" aria-label="Filtrar por año">
-              <NativeSelectOption value="all">Todos los años</NativeSelectOption>
-              <NativeSelectOption v-for="year in years" :key="year" :value="String(year)">{{ year }}</NativeSelectOption>
+              <NativeSelectOption v-for="make in data?.filterOptions.makes" :key="make.id" :value="make.id">{{ make.name }}</NativeSelectOption>
             </NativeSelect>
           </div>
           <div class="grid gap-2 text-sm font-medium">
@@ -124,35 +122,21 @@ function powertrainTypeLabel(powertrainType: string) {
               <NativeSelectOption v-for="bodyStyle in bodyStyles" :key="bodyStyle" :value="bodyStyle">{{ bodyStyleLabel(bodyStyle) }}</NativeSelectOption>
             </NativeSelect>
           </div>
-          <div class="grid gap-2 text-sm font-medium">
-            <span>Propulsión</span>
-            <NativeSelect v-model="filters.powertrainType" class="w-full" :disabled="!powertrainTypes.length" aria-label="Filtrar por tipo de propulsión">
-              <NativeSelectOption value="all">Todas las propulsiones</NativeSelectOption>
-              <NativeSelectOption v-for="powertrainType in powertrainTypes" :key="powertrainType" :value="powertrainType">{{ powertrainTypeLabel(powertrainType) }}</NativeSelectOption>
-            </NativeSelect>
-          </div>
-          <div class="grid gap-2 text-sm font-medium">
-            <span>País de armado</span>
-            <NativeSelect v-model="filters.assemblyCountry" class="w-full" :disabled="!assemblyCountries.length" aria-label="Filtrar por país de armado">
-              <NativeSelectOption value="all">Todos los países</NativeSelectOption>
-              <NativeSelectOption v-for="country in assemblyCountries" :key="country.code" :value="country.code">{{ country.name }}</NativeSelectOption>
-            </NativeSelect>
-          </div>
           <Button type="button" variant="outline" @click="resetFilters">Limpiar</Button>
         </CardContent>
       </Card>
 
     <div class="flex items-center justify-between gap-4">
       <h2 class="text-lg font-semibold tracking-tight">Modelos base</h2>
-      <Badge variant="secondary">{{ data?.count ?? 0 }} resultados</Badge>
+      <Badge variant="secondary">{{ modelCards.length }} resultados</Badge>
     </div>
 
     <p v-if="status === 'error'" role="alert" class="text-sm text-destructive">No se pudo cargar el catálogo. Revisa que la API esté disponible.</p>
     <div v-else-if="status === 'pending'" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Skeleton v-for="item in 6" :key="item" class="h-80" />
     </div>
-    <div v-else-if="data?.models.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <CatalogModelCard v-for="model in data.models" :key="model.id" :model="model" />
+    <div v-else-if="modelCards.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <CatalogModelCard v-for="card in modelCards" :key="card.id" :model="card.model" :years="card.years" :generations="card.generationLinks.map((generation) => generation.label)" :generation-links="card.generationLinks" :show-body-styles="false" />
     </div>
     <Card v-else>
       <CardContent class="flex flex-col items-center gap-2 p-8 text-center">

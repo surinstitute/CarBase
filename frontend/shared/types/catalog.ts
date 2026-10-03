@@ -108,6 +108,7 @@ export interface CatalogRecall {
 
 export interface CatalogModel {
   id: string
+  modelGenerationId: string
   makeId: string
   makeSlug: string
   makeName: string
@@ -118,6 +119,7 @@ export interface CatalogModel {
   updated_at: string
   platformId: string | null
   platformName: string | null
+  baseBodyStyle: string | null
   bodyStyles: string[]
   architectures: string[]
   vehicles: CatalogVehicleRecord[]
@@ -149,6 +151,31 @@ export interface CatalogModelDetail extends CatalogModel {
   safetyRatings: CatalogSafetyRating[]
   images: CatalogModelImage[]
   warranty: CatalogWarranty | null
+}
+
+export interface CatalogModelCard {
+  id: string
+  makeId: string
+  makeName: string
+  makeSlug: string
+  modelName: string
+  startYear: number
+  endYear: number
+  generations: Array<{
+    label: string
+    modelId: string
+  }>
+}
+
+export interface CatalogModelCardsResponse {
+  count: number
+  next: string | null
+  previous: string | null
+  filterOptions: {
+    makes: Array<Pick<CatalogMake, 'id' | 'name' | 'slug'>>
+    bodyStyles: string[]
+  }
+  results: CatalogModelCard[]
 }
 
 export interface CatalogResponse {
