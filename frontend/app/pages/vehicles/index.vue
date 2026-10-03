@@ -90,26 +90,24 @@ function modelContext(vehicle: CatalogVehicleRecord): Pick<CatalogModel, 'id' | 
 <template>
   <div>
     <section class="border-b bg-muted/30">
-      <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-12 sm:py-16 lg:grid-cols-[1fr_minmax(20rem,0.8fr)] lg:items-end">
-        <div class="space-y-3">
-          <p class="text-sm font-medium text-muted-foreground">Explorar vehículos</p>
-          <h1 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">Busca entre todas las versiones</h1>
-          <p class="max-w-xl text-muted-foreground">Cada variante, con su propia configuración y ficha.</p>
-        </div>
-        <form class="flex gap-2" role="search" @submit.prevent="submitSearch">
-          <label for="vehicles-search" class="sr-only">Buscar marca, modelo o versión</label>
-          <Input id="vehicles-search" v-model="search" placeholder="Marca, modelo o versión" class="min-w-0 flex-1 bg-background" />
-          <Button type="submit" aria-label="Buscar vehículos">
-            <Icon name="tabler:search" class="size-4" aria-hidden="true" />
-            <span class="hidden sm:inline">Buscar</span>
-          </Button>
-        </form>
+      <div class="mx-auto w-full max-w-6xl space-y-2 px-4 py-10">
+        <p class="text-sm font-medium text-muted-foreground">Explorar</p>
+        <h1 class="text-3xl font-bold tracking-tight">Catálogo de vehículos</h1>
       </div>
     </section>
 
     <section class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
       <Card>
-        <CardContent class="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 sm:p-6 xl:grid-cols-4 xl:items-end">
+        <CardContent class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-2 xl:grid-cols-4 xl:items-end">
+          <form class="grid gap-2 text-sm font-medium" role="search" @submit.prevent="submitSearch">
+            <label for="vehicles-search">Buscar</label>
+            <div class="flex gap-2">
+              <Input id="vehicles-search" v-model="search" placeholder="Marca, modelo o versión" class="min-w-0 flex-1" />
+              <Button type="submit" size="icon" aria-label="Buscar vehículos" title="Buscar vehículos">
+                <Icon name="tabler:search" class="size-4" aria-hidden="true" />
+              </Button>
+            </div>
+          </form>
           <label class="grid gap-2 text-sm font-medium">Marca
             <NativeSelect v-model="make" class="w-full" :disabled="!filterOptions?.makes.length" aria-label="Filtrar vehículos por marca">
               <NativeSelectOption value="all">Todas las marcas</NativeSelectOption>
