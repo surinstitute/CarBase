@@ -14,7 +14,7 @@ if [ "${DISABLE_DB_MIGRATIONS}" != "true" ] && [ ! -f ./db_status ]; then
 
     uv run --no-sync manage.py makemigrations
     uv run --no-sync manage.py migrate
-    #uv run --no-sync manage.py loaddata makes
+    #uv run --no-sync manage.py loaddata makes model_generations base_models
 
     # Mark initialization as done
     echo "Successfuly migrated DB!"
