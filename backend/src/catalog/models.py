@@ -224,8 +224,9 @@ def model_image_upload_to(instance, filename):
     if base_model is None:
         raise ValueError("Model images must be uploaded from a model placement.")
 
-    make_slug = slugify(base_model.make.name) or "unknown-make"
-    model_slug = slugify(base_model.model) or "unknown-model"
+    model_generation = base_model.model_generation
+    make_slug = slugify(model_generation.make.name) or "unknown-make"
+    model_slug = slugify(model_generation.model) or "unknown-model"
     extension = Path(filename).suffix.lower()
     return (
         f"catalog/images/{make_slug}/{model_slug}/"
