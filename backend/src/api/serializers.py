@@ -489,6 +489,9 @@ class VehicleSerializer(serializers.ModelSerializer):
         safety = self._serialize_safety(instance)
         if safety:
             data["safety"] = safety
+        climate = self._serialize_climate(instance)
+        if climate:
+            data["climate"] = climate
         charging = self._serialize_charging(instance)
         if charging:
             data.setdefault("configuration", {})["charging"] = charging
@@ -727,9 +730,10 @@ class VehicleSerializer(serializers.ModelSerializer):
         return {"value": value, "unit": unit}
 
     def _serialize_safety(self, obj):
-        safety_package = getattr(obj, "safety_package", None)
-        if safety_package is None:
+        safety_assignment = getattr(obj, "safety_package_assignment", None)
+        if safety_assignment is None:
             return None
+        safety_package = safety_assignment.safety_package
 
         safety = {}
 
@@ -805,6 +809,49 @@ class VehicleSerializer(serializers.ModelSerializer):
 
         return safety
 
+    def _serialize_climate(self, obj):
+        climate_assignment = getattr(obj, "climate_package_assignment", None)
+        if climate_assignment is None:
+            return None
+        climate_package = climate_assignment.climate_package
+
+        climate = {"name": climate_package.name}
+        for output_key, model_field in (
+            ("zoneCount", "zone_count"),
+            ("automaticClimateControl", "automatic_climate_control"),
+            ("rearClimateControl", "rear_climate_control"),
+            ("cabinAirFilter", "cabin_air_filter"),
+            ("airPurificationSystem", "air_purification_system"),
+            ("remotePreconditioning", "remote_preconditioning"),
+            ("heatPump", "heat_pump"),
+            ("heatedFrontSeats", "heated_front_seats"),
+            ("heatedRearSeats", "heated_rear_seats"),
+            ("heatedSteeringWheel", "heated_steering_wheel"),
+        ):
+            value = getattr(climate_package, model_field)
+            if value is not None:
+                climate[output_key] = value
+
+        for output_key, model_field, unit in (
+            ("coolingCapacity", "cooling_capacity_kw", "kW"),
+            ("coolingPowerDraw", "cooling_power_draw_kw", "kW"),
+            ("refrigerantCharge", "refrigerant_charge_g", "g"),
+            ("refrigerantGwp", "refrigerant_gwp", "CO2e/kg"),
+            ("coolingCop", "cooling_cop", "kW thermal/kW electric"),
+        ):
+            value = getattr(climate_package, model_field)
+            if value is not None:
+                climate[output_key] = self._measurement(value, unit)
+
+        for output_key, model_field in (
+            ("refrigerantType", "refrigerant_type"),
+            ("compressorType", "compressor_type"),
+        ):
+            value = getattr(climate_package, model_field)
+            if value is not None:
+                climate[output_key] = value
+        return climate
+
     def _build_safety_section(self, safety_package, field_map):
         section = {}
         for output_key, model_field in field_map.items():
@@ -815,7 +862,12 @@ class VehicleSerializer(serializers.ModelSerializer):
 
     def _serialize_charging(self, obj):
         charging = {}
-        charging_package = getattr(obj, "charging_package", None)
+        charging_assignment = getattr(obj, "charging_package_assignment", None)
+        charging_package = (
+            charging_assignment.charging_package
+            if charging_assignment is not None
+            else None
+        )
 
         if charging_package is not None:
             ac_charging = self._serialize_charging_capability(

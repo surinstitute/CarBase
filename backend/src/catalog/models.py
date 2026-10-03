@@ -26,6 +26,7 @@ from catalog.types import (
     ChargingPortLocation,
     ChargingSupplyContext,
     ComplianceCategory,
+    CompressorType,
     ConverterRole,
     DistanceUnit,
     EfficiencyMetric,
@@ -728,10 +729,13 @@ class Recall(models.Model):
 
 
 class SafetyPackage(models.Model):
-    vehicle = models.OneToOneField(
-        Vehicle,
+    name = models.CharField(max_length=255)
+    group = models.ForeignKey(
+        Group,
         on_delete=models.CASCADE,
-        related_name="safety_package",
+        related_name="safety_packages",
+        null=True,
+        blank=True,
     )
     collisionWarnings_fcw = models.BooleanField(null=True, blank=True)
     collisionWarnings_ldw = models.BooleanField(null=True, blank=True)
@@ -767,14 +771,33 @@ class SafetyPackage(models.Model):
     )
 
     def __str__(self):
-        return f"Safety package for {self.vehicle}"
+        return self.name
 
 
-class ChargingPackage(models.Model):
+class VehicleSafetyPackage(models.Model):
     vehicle = models.OneToOneField(
         Vehicle,
         on_delete=models.CASCADE,
-        related_name="charging_package",
+        related_name="safety_package_assignment",
+    )
+    safety_package = models.ForeignKey(
+        SafetyPackage,
+        on_delete=models.CASCADE,
+        related_name="vehicle_assignments",
+    )
+
+    def __str__(self):
+        return f"{self.vehicle}: {self.safety_package}"
+
+
+class ChargingPackage(models.Model):
+    name = models.CharField(max_length=255)
+    group = models.ForeignKey(
+        Group,
+        on_delete=models.CASCADE,
+        related_name="charging_packages",
+        null=True,
+        blank=True,
     )
     ac_max_power_kw = models.FloatField(null=True, blank=True)
     ac_max_voltage_v = models.FloatField(null=True, blank=True)
@@ -788,7 +811,93 @@ class ChargingPackage(models.Model):
     v2g = models.BooleanField(null=True, blank=True)
 
     def __str__(self):
-        return f"Charging package for {self.vehicle}"
+        return self.name
+
+
+class ClimatePackage(models.Model):
+    climatePackageId = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False
+    )
+    name = models.CharField(max_length=255)
+    group = models.ForeignKey(
+        Group,
+        on_delete=models.CASCADE,
+        related_name="climate_packages",
+        null=True,
+        blank=True,
+    )
+    zone_count = models.PositiveSmallIntegerField(
+        "Climate zones", null=True, blank=True
+    )
+    automatic_climate_control = models.BooleanField(null=True, blank=True)
+    rear_climate_control = models.BooleanField(null=True, blank=True)
+    cabin_air_filter = models.BooleanField(null=True, blank=True)
+    air_purification_system = models.BooleanField(null=True, blank=True)
+    remote_preconditioning = models.BooleanField(null=True, blank=True)
+    heat_pump = models.BooleanField(null=True, blank=True)
+    heated_front_seats = models.BooleanField(null=True, blank=True)
+    heated_rear_seats = models.BooleanField(null=True, blank=True)
+    heated_steering_wheel = models.BooleanField(null=True, blank=True)
+    refrigerant_type = models.CharField(
+        "Refrigerant type", max_length=64, null=True, blank=True
+    )
+    refrigerant_gwp = models.FloatField(
+        "Refrigerant GWP (CO2e/kg)", null=True, blank=True
+    )
+    compressor_type = models.CharField(
+        "Compressor type",
+        max_length=32,
+        choices=CompressorType.choices,
+        null=True,
+        blank=True,
+    )
+    cooling_capacity_kw = models.FloatField(
+        "Cooling capacity (kW thermal)", null=True, blank=True
+    )
+    cooling_power_draw_kw = models.FloatField(
+        "Cooling power draw (kW electric)", null=True, blank=True
+    )
+    cooling_cop = models.FloatField(
+        "Cooling COP (kW thermal/kW electric)", null=True, blank=True
+    )
+    refrigerant_charge_g = models.FloatField(
+        "Refrigerant charge (g)", null=True, blank=True
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class VehicleClimatePackage(models.Model):
+    vehicle = models.OneToOneField(
+        Vehicle,
+        on_delete=models.CASCADE,
+        related_name="climate_package_assignment",
+    )
+    climate_package = models.ForeignKey(
+        ClimatePackage,
+        on_delete=models.CASCADE,
+        related_name="vehicle_assignments",
+    )
+
+    def __str__(self):
+        return f"{self.vehicle}: {self.climate_package}"
+
+
+class VehicleChargingPackage(models.Model):
+    vehicle = models.OneToOneField(
+        Vehicle,
+        on_delete=models.CASCADE,
+        related_name="charging_package_assignment",
+    )
+    charging_package = models.ForeignKey(
+        ChargingPackage,
+        on_delete=models.CASCADE,
+        related_name="vehicle_assignments",
+    )
+
+    def __str__(self):
+        return f"{self.vehicle}: {self.charging_package}"
 
 
 class ChargingPort(models.Model):

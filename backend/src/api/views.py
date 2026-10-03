@@ -52,9 +52,10 @@ def _vehicle_queryset():
             "model__model_generation__platform",
             "powertrain",
             "transmissionId",
+            "climate_package_assignment__climate_package",
             "model__model_generation__make",
-            "safety_package",
-            "charging_package",
+            "safety_package_assignment__safety_package",
+            "charging_package_assignment__charging_package",
         )
         .prefetch_related(
             "powertrain__engine_fitments__engine",

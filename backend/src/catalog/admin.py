@@ -18,6 +18,7 @@ from .models import (
     ChargeTimeResult,
     ChargingPackage,
     ChargingPort,
+    ClimatePackage,
     ComplianceRecord,
     EfficiencyResult,
     EmissionsResult,
@@ -43,11 +44,16 @@ from .models import (
     TopSpeedResult,
     Transmission,
     Vehicle,
+    VehicleChargingPackage,
+    VehicleClimatePackage,
     VehicleMonthlySales,
+    VehicleSafetyPackage,
 )
 from .types import PowerTrainArchitecture
 
 SAFETY_FEATURE_DESCRIPTIONS = {
+    "name": "Name used to identify this reusable safety package.",
+    "group": "Corporate group that owns or supplies this safety package.",
     "collisionWarnings_fcw": "Forward collision warning alerts the driver to a possible frontal collision.",
     "collisionWarnings_ldw": "Lane departure warning alerts when the vehicle leaves its lane unintentionally.",
     "collisionWarnings_bsw": "Blind spot warning detects vehicles in adjacent lanes that may be hard to see.",
@@ -73,6 +79,8 @@ SAFETY_FEATURE_DESCRIPTIONS = {
 }
 
 CHARGING_PACKAGE_FIELD_DESCRIPTIONS = {
+    "name": "Name used to identify this reusable charging package.",
+    "group": "Corporate group that owns or supplies this charging package.",
     "ac_max_power_kw": "Maximum alternating-current (AC) charging power, in kilowatts.",
     "ac_max_voltage_v": "Maximum alternating-current (AC) charging voltage, in volts.",
     "ac_max_current_a": "Maximum alternating-current (AC) charging current, in amperes.",
@@ -83,6 +91,28 @@ CHARGING_PACKAGE_FIELD_DESCRIPTIONS = {
     "v2l": "Allows the vehicle battery to power external devices (Vehicle-to-Load).",
     "v2h": "Allows the vehicle battery to power a home (Vehicle-to-Home).",
     "v2g": "Allows the vehicle battery to send power back to the electrical grid (Vehicle-to-Grid).",
+}
+
+CLIMATE_PACKAGE_FIELD_DESCRIPTIONS = {
+    "name": "Name used to identify this reusable climate package.",
+    "group": "Corporate group that owns or supplies this climate package.",
+    "zone_count": "Number of independently controlled climate zones.",
+    "automatic_climate_control": "Automatically regulates cabin temperature and airflow.",
+    "rear_climate_control": "Provides a dedicated climate control zone for rear passengers.",
+    "cabin_air_filter": "Filters dust, pollen, and other particles from incoming cabin air.",
+    "air_purification_system": "Actively improves cabin air quality beyond a standard filter.",
+    "remote_preconditioning": "Preconditions the cabin before occupants enter the vehicle.",
+    "heat_pump": "Uses a heat pump to warm or cool the cabin efficiently.",
+    "heated_front_seats": "Provides heating for the front seats.",
+    "heated_rear_seats": "Provides heating for the rear seats.",
+    "heated_steering_wheel": "Provides heating for the steering wheel.",
+    "refrigerant_type": "Refrigerant used by the air-conditioning system.",
+    "refrigerant_gwp": "100-year global warming potential, in kilograms of CO2e per kilogram of refrigerant.",
+    "compressor_type": "Air-conditioning compressor technology, such as fixed or variable displacement.",
+    "cooling_capacity_kw": "Nominal cabin cooling capacity, in kilowatts of thermal output.",
+    "cooling_power_draw_kw": "Nominal electrical power required while cooling, in kilowatts.",
+    "cooling_cop": "Coefficient of performance, in kilowatts thermal per kilowatt electric.",
+    "refrigerant_charge_g": "Refrigerant charge, in grams.",
 }
 
 ENGINE_FIELD_DESCRIPTIONS = {
@@ -151,6 +181,18 @@ class ChargingPackageAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, description in CHARGING_PACKAGE_FIELD_DESCRIPTIONS.items():
+            if field_name in self.fields:
+                self.fields[field_name].help_text = description
+
+
+class ClimatePackageAdminForm(forms.ModelForm):
+    class Meta:
+        model = ClimatePackage
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, description in CLIMATE_PACKAGE_FIELD_DESCRIPTIONS.items():
             if field_name in self.fields:
                 self.fields[field_name].help_text = description
 
@@ -377,11 +419,12 @@ class PowerTrainFuelTankInline(GroupScopedInlineMixin, admin.TabularInline):
     foreignkey_group_paths = {"fuel_tank": "maker__group"}
 
 
-class SafetyPackageInline(admin.StackedInline):
-    model = SafetyPackage
-    form = SafetyPackageAdminForm
+class VehicleSafetyPackageInline(GroupScopedInlineMixin, admin.StackedInline):
+    model = VehicleSafetyPackage
     extra = 0
     max_num = 1
+    autocomplete_fields = ("safety_package",)
+    foreignkey_group_paths = {"safety_package": "group"}
 
 
 class ModelSafetyRatingInline(admin.StackedInline):
@@ -389,11 +432,20 @@ class ModelSafetyRatingInline(admin.StackedInline):
     extra = 0
 
 
-class ChargingPackageInline(admin.StackedInline):
-    model = ChargingPackage
-    form = ChargingPackageAdminForm
+class VehicleClimatePackageInline(GroupScopedInlineMixin, admin.StackedInline):
+    model = VehicleClimatePackage
     extra = 0
     max_num = 1
+    autocomplete_fields = ("climate_package",)
+    foreignkey_group_paths = {"climate_package": "group"}
+
+
+class VehicleChargingPackageInline(GroupScopedInlineMixin, admin.StackedInline):
+    model = VehicleChargingPackage
+    extra = 0
+    max_num = 1
+    autocomplete_fields = ("charging_package",)
+    foreignkey_group_paths = {"charging_package": "group"}
 
 
 class ChargingPortInline(admin.TabularInline):
@@ -600,30 +652,44 @@ class VehicleLinkedAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 
 @admin.register(SafetyPackage)
-class SafetyPackageAdmin(VehicleLinkedAdmin):
+class SafetyPackageAdmin(GroupScopedAdminMixin, ModelAdmin):
     form = SafetyPackageAdminForm
-    list_display = ("vehicle",)
-    search_fields = (
-        "vehicle__model__model_generation__model",
-        "vehicle__model__model_generation__make__name",
-    )
+    list_display = ("name", "group")
+    search_fields = ("name", "group__name")
+    group_paths = ("group",)
+    owner_group_field = "group"
 
 
 @admin.register(ChargingPackage)
-class ChargingPackageAdmin(VehicleLinkedAdmin):
+class ChargingPackageAdmin(GroupScopedAdminMixin, ModelAdmin):
     form = ChargingPackageAdminForm
     list_display = (
-        "vehicle",
+        "name",
+        "group",
         "ac_max_power_kw",
         "dc_max_power_kw",
         "v2l",
         "v2h",
         "v2g",
     )
-    search_fields = (
-        "vehicle__model__model_generation__model",
-        "vehicle__model__model_generation__make__name",
+    search_fields = ("name", "group__name")
+    group_paths = ("group",)
+    owner_group_field = "group"
+
+
+@admin.register(ClimatePackage)
+class ClimatePackageAdmin(GroupScopedAdminMixin, ModelAdmin):
+    form = ClimatePackageAdminForm
+    list_display = (
+        "name",
+        "group",
+        "zone_count",
+        "automatic_climate_control",
+        "heat_pump",
     )
+    search_fields = ("name", "group__name")
+    group_paths = ("group",)
+    owner_group_field = "group"
 
 
 @admin.register(ChargingPort)
@@ -934,12 +1000,13 @@ class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
 @admin.register(Vehicle)
 class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
     electric_inlines = (
-        ChargingPackageInline,
+        VehicleChargingPackageInline,
         ChargingPortInline,
         ChargeTimeResultInline,
     )
     standard_inlines = (
-        SafetyPackageInline,
+        VehicleSafetyPackageInline,
+        VehicleClimatePackageInline,
         EfficiencyResultInline,
         RangeResultInline,
         EmissionsResultInline,
@@ -968,7 +1035,11 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         "powertrain__name",
         "transmissionId__name",
     )
-    autocomplete_fields = ("model", "powertrain", "transmissionId")
+    autocomplete_fields = (
+        "model",
+        "powertrain",
+        "transmissionId",
+    )
     readonly_fields = (
         "powertrain_inline",
         "transmission_inline",

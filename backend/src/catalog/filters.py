@@ -175,7 +175,7 @@ class VehicleFilter(django_filters.FilterSet):
         return queryset.filter(powertrain__architecture__in=architectures)
 
     def filter_safety(self, queryset, _name, value):
-        return queryset.filter(safety_package__isnull=not value)
+        return queryset.filter(safety_package_assignment__isnull=not value)
 
     def filter_sort(self, queryset, _name, value):
         if value == "az":

@@ -52,6 +52,13 @@ class MotorCoolingType(models.TextChoices):
     OTHER = "other", "Other"
 
 
+class CompressorType(models.TextChoices):
+    FIXED_DISPLACEMENT = "fixed_displacement", "Fixed displacement"
+    VARIABLE_DISPLACEMENT = "variable_displacement", "Variable displacement"
+    ELECTRIC_VARIABLE_SPEED = "electric_variable_speed", "Electric variable-speed"
+    OTHER = "other", "Other"
+
+
 class PowerTrainArchitecture(models.TextChoices):
     ICE = "ice", "Internal Combustion Engine"
     MILD_HYBRID = "mild_hybrid", "Mild Hybrid"
