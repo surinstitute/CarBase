@@ -125,6 +125,12 @@ class BaseModel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        indexes = [
+            models.Index(
+                fields=("body_style", "model_generation", "year"),
+                name="basemodel_body_gen_year_idx",
+            ),
+        ]
         constraints = [
             models.UniqueConstraint(
                 fields=("model_generation", "year", "body_style"),
