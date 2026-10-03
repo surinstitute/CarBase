@@ -7,10 +7,17 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
+from health_check import Database, Storage
+from health_check.views import HealthCheckView
 
 from api import urls as api_urls
 
 urlpatterns = [
+    path(
+        "health/",
+        HealthCheckView.as_view(checks=(Database, Storage)),
+        name="health_check",
+    ),
     # OpenAPI Schema
     path("api/schema/swagger-ui/", SpectacularSwaggerView.as_view(url_name="schema")),
     path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema")),

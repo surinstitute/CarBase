@@ -189,6 +189,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Health checks
+    "health_check",
     # Allauth
     "allauth",
     "allauth.account",
