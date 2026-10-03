@@ -665,6 +665,24 @@ class VehicleSerializer(serializers.ModelSerializer):
         if trunk_capacity:
             specs["trunkCapacity"] = trunk_capacity
 
+        cargo_floor_width = self._measurement(
+            obj.cargo_floor_width_between_wheel_houses_mm, "mm"
+        )
+        if cargo_floor_width:
+            specs["cargoFloorWidthBetweenWheelHouses"] = cargo_floor_width
+
+        front_cargo_capacity = self._measurement(
+            obj.front_cargo_capacity_liters, "L"
+        )
+        if front_cargo_capacity:
+            specs["frontCargoCapacity"] = front_cargo_capacity
+
+        max_cargo_capacity = self._measurement(
+            obj.max_cargo_capacity_seats_folded_liters, "L"
+        )
+        if max_cargo_capacity:
+            specs["maxCargoCapacitySeatsFolded"] = max_cargo_capacity
+
         if obj.door_count is not None:
             specs["doorCount"] = obj.door_count
 

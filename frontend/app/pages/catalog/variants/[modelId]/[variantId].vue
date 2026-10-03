@@ -34,9 +34,18 @@ const specs = computed(() => recordOf(variant.value?.specs))
 const performance = computed(() => recordOf(variant.value?.performance))
 const configuration = computed(() => recordOf(variant.value?.configuration))
 const specRows = computed(() => Object.entries(specs.value).map(([field, value]) => ({
+  key: field,
   field: fieldLabel(field),
   value: measurement(value)
 })))
+const storageSpecKeys = new Set([
+  'trunkCapacity',
+  'cargoFloorWidthBetweenWheelHouses',
+  'frontCargoCapacity',
+  'maxCargoCapacitySeatsFolded'
+])
+const generalSpecRows = computed(() => specRows.value.filter((row) => !storageSpecKeys.has(row.key)))
+const storageSpecRows = computed(() => specRows.value.filter((row) => storageSpecKeys.has(row.key)))
 const performanceSections = computed(() => Object.entries(performance.value)
   .map(([field, value]) => ({ field: fieldLabel(field), rows: performanceRows(value) }))
   .filter((section) => section.rows.length))
@@ -174,6 +183,9 @@ function fieldLabel(value: string) {
     wheelbase: 'Distancia entre ejes',
     curbWeight: 'Peso del vehículo',
     trunkCapacity: 'Capacidad de la cajuela',
+    cargoFloorWidthBetweenWheelHouses: 'Ancho del piso de carga entre pasos de rueda',
+    frontCargoCapacity: 'Capacidad de carga frontal',
+    maxCargoCapacitySeatsFolded: 'Capacidad de carga máx. con filas plegadas',
     doorCount: 'Puertas',
     passengerCapacity: 'Plazas',
     range: 'Autonomía',
@@ -256,16 +268,32 @@ function performanceRows(value: unknown) {
       <Card>
         <CardHeader>
           <CardTitle>Especificaciones</CardTitle>
-          <CardDescription>Dimensiones y capacidad.</CardDescription>
+          <CardDescription>Dimensiones, capacidad y chasis.</CardDescription>
         </CardHeader>
         <CardContent>
-          <dl v-if="specRows.length" class="space-y-3 text-sm">
-            <div v-for="row in specRows" :key="row.field" class="flex items-baseline justify-between gap-4 border-b pb-3 last:border-0 last:pb-0">
+          <dl v-if="generalSpecRows.length" class="space-y-3 text-sm">
+            <div v-for="row in generalSpecRows" :key="row.key" class="flex items-baseline justify-between gap-4 border-b pb-3 last:border-0 last:pb-0">
               <dt class="text-muted-foreground">{{ row.field }}</dt>
               <dd class="text-right font-medium">{{ row.value }}</dd>
             </div>
           </dl>
           <p v-else class="text-sm text-muted-foreground">No hay especificaciones disponibles.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Almacenamiento</CardTitle>
+          <CardDescription>Capacidad y dimensiones de carga.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <dl v-if="storageSpecRows.length" class="space-y-3 text-sm">
+            <div v-for="row in storageSpecRows" :key="row.key" class="flex items-baseline justify-between gap-4 border-b pb-3 last:border-0 last:pb-0">
+              <dt class="text-muted-foreground">{{ row.field }}</dt>
+              <dd class="text-right font-medium">{{ row.value }}</dd>
+            </div>
+          </dl>
+          <p v-else class="text-sm text-muted-foreground">No hay datos de almacenamiento disponibles.</p>
         </CardContent>
       </Card>
 

@@ -55,7 +55,8 @@ const comparisonSections = computed(() => {
         values: vehicles.map((vehicle: ComparisonVehicle) => latestSafetyRating(vehicle.modelId))
       }]
     },
-    { title: 'Especificaciones', rows: groupedRows(vehicles, specificationRows) },
+    { title: 'Especificaciones', rows: groupedRows(vehicles, generalSpecificationRows) },
+    { title: 'Almacenamiento', rows: groupedRows(vehicles, storageSpecificationRows) },
     { title: 'Rendimiento', rows: groupedRows(vehicles, vehiclePerformanceRows) },
     { title: 'Configuración', rows: groupedRows(vehicles, configurationRows) },
     { title: 'Seguridad', rows: groupedRows(vehicles, vehicleSafetyRows) }
@@ -75,9 +76,25 @@ function groupedRows(vehicles: ComparisonVehicle[], rowsForVehicle: (vehicle: Co
 
 function specificationRows(item: ComparisonVehicle) {
   return Object.entries(recordOf(item.vehicle.specs)).map(([field, value]) => ({
+    key: field,
     label: specificationLabel(field),
     value: measurement(value)
   }))
+}
+
+const storageSpecificationKeys = new Set([
+  'trunkCapacity',
+  'cargoFloorWidthBetweenWheelHouses',
+  'frontCargoCapacity',
+  'maxCargoCapacitySeatsFolded'
+])
+
+function generalSpecificationRows(item: ComparisonVehicle) {
+  return specificationRows(item).filter((row) => !storageSpecificationKeys.has(row.key))
+}
+
+function storageSpecificationRows(item: ComparisonVehicle) {
+  return specificationRows(item).filter((row) => storageSpecificationKeys.has(row.key))
 }
 
 function vehiclePerformanceRows(item: ComparisonVehicle) {
@@ -162,7 +179,7 @@ function measurement(value: unknown) {
 
 function specificationLabel(value: string) {
   const labels: Record<string, string> = {
-    length: 'Largo', width: 'Ancho', height: 'Alto', wheelbase: 'Distancia entre ejes', curbWeight: 'Peso del vehículo', trunkCapacity: 'Capacidad de la cajuela', doorCount: 'Puertas', passengerCapacity: 'Plazas', range: 'Autonomía', efficiency: 'Eficiencia', emissions: 'Emisiones', acceleration: 'Aceleración', topSpeed: 'Velocidad máxima', power: 'Potencia', torque: 'Par motor', frontBrakes: 'Frenos delanteros', rearBrakes: 'Frenos traseros', frontSuspension: 'Suspensión delantera', rearSuspension: 'Suspensión trasera', frontTire: 'Llantas delanteras', rearTire: 'Llantas traseras'
+    length: 'Largo', width: 'Ancho', height: 'Alto', wheelbase: 'Distancia entre ejes', curbWeight: 'Peso del vehículo', trunkCapacity: 'Capacidad de la cajuela', cargoFloorWidthBetweenWheelHouses: 'Ancho del piso de carga entre pasos de rueda', frontCargoCapacity: 'Capacidad de carga frontal', maxCargoCapacitySeatsFolded: 'Capacidad de carga máx. con filas plegadas', doorCount: 'Puertas', passengerCapacity: 'Plazas', range: 'Autonomía', efficiency: 'Eficiencia', emissions: 'Emisiones', acceleration: 'Aceleración', topSpeed: 'Velocidad máxima', power: 'Potencia', torque: 'Par motor', frontBrakes: 'Frenos delanteros', rearBrakes: 'Frenos traseros', frontSuspension: 'Suspensión delantera', rearSuspension: 'Suspensión trasera', frontTire: 'Llantas delanteras', rearTire: 'Llantas traseras'
   }
   return labels[value] ?? value.replace(/([a-z])([A-Z])/g, '$1 $2')
 }

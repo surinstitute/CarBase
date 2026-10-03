@@ -60,6 +60,7 @@ export interface CatalogVehicleRecord {
     } | null
     [field: string]: unknown
   }
+  specs?: Record<string, unknown>
   safety?: {
     collisionWarnings?: Partial<Record<'fcw' | 'ldw' | 'bsw' | 'rctw', boolean>>
     collisionIntervention?: Partial<Record<'aebCity' | 'aebPedestrian' | 'aebHighway' | 'aebRear', boolean>>

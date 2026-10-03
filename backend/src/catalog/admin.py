@@ -1053,6 +1053,17 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
                 },
             ),
             (
+                "Storage",
+                {
+                    "fields": (
+                        "trunk_capacity_liters",
+                        "cargo_floor_width_between_wheel_houses_mm",
+                        "front_cargo_capacity_liters",
+                        "max_cargo_capacity_seats_folded_liters",
+                    )
+                },
+            ),
+            (
                 "Transmission",
                 {"fields": ("transmission_inline",)},
             ),

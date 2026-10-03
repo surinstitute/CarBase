@@ -586,6 +586,13 @@ class Vehicle(models.Model):
     wheelbase_mm = models.FloatField(null=True, blank=True)
     curb_weight_kg = models.FloatField(null=True, blank=True)
     trunk_capacity_liters = models.FloatField(null=True, blank=True)
+    cargo_floor_width_between_wheel_houses_mm = models.FloatField(
+        null=True, blank=True
+    )
+    front_cargo_capacity_liters = models.FloatField(null=True, blank=True)
+    max_cargo_capacity_seats_folded_liters = models.FloatField(
+        null=True, blank=True
+    )
     door_count = models.PositiveIntegerField(null=True, blank=True)
     passenger_capacity = models.PositiveIntegerField(null=True, blank=True)
     front_brakes = models.CharField(
