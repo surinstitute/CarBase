@@ -61,6 +61,26 @@ export interface CatalogVehicleRecord {
     [field: string]: unknown
   }
   specs?: Record<string, unknown>
+  climate?: {
+    name: string
+    zoneCount?: number
+    automaticClimateControl?: boolean
+    rearClimateControl?: boolean
+    cabinAirFilter?: boolean
+    airPurificationSystem?: boolean
+    remotePreconditioning?: boolean
+    heatPump?: boolean
+    heatedFrontSeats?: boolean
+    heatedRearSeats?: boolean
+    heatedSteeringWheel?: boolean
+    refrigerantType?: string
+    refrigerantGwp?: { value: number, unit: 'CO2e/kg' }
+    compressorType?: string
+    coolingCapacity?: { value: number, unit: 'kW' }
+    coolingPowerDraw?: { value: number, unit: 'kW' }
+    coolingCop?: { value: number, unit: 'kW thermal/kW electric' }
+    refrigerantCharge?: { value: number, unit: 'g' }
+  } | null
   safety?: {
     collisionWarnings?: Partial<Record<'fcw' | 'ldw' | 'bsw' | 'rctw', boolean>>
     collisionIntervention?: Partial<Record<'aebCity' | 'aebPedestrian' | 'aebHighway' | 'aebRear', boolean>>

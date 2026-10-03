@@ -59,6 +59,7 @@ const comparisonSections = computed(() => {
     { title: 'Almacenamiento', rows: groupedRows(vehicles, storageSpecificationRows) },
     { title: 'Rendimiento', rows: groupedRows(vehicles, vehiclePerformanceRows) },
     { title: 'Configuración', rows: groupedRows(vehicles, configurationRows) },
+    { title: 'Climatización', rows: groupedRows(vehicles, climateRows) },
     { title: 'Seguridad', rows: groupedRows(vehicles, vehicleSafetyRows) }
   ].filter((section) => section.rows.length)
 
@@ -151,6 +152,46 @@ function vehicleSafetyRows(item: ComparisonVehicle) {
       value: safetyValue(values[field])
     }))
   })
+}
+
+function climateRows(item: ComparisonVehicle) {
+  const climate = recordOf(item.vehicle.climate)
+  const rows: Array<{ label: string, value: string }> = []
+  const features = {
+    automaticClimateControl: 'Climatización automática',
+    rearClimateControl: 'Climatización trasera',
+    cabinAirFilter: 'Filtro de aire de cabina',
+    airPurificationSystem: 'Sistema de purificación de aire',
+    remotePreconditioning: 'Preacondicionamiento remoto',
+    heatPump: 'Bomba de calor',
+    heatedFrontSeats: 'Asientos delanteros calefactables',
+    heatedRearSeats: 'Asientos traseros calefactables',
+    heatedSteeringWheel: 'Volante calefactable'
+  }
+
+  if (climate.zoneCount !== undefined) {
+    rows.push({ label: 'Zonas', value: String(climate.zoneCount) })
+  }
+  const measurements = {
+    refrigerantType: 'Refrigerante',
+    refrigerantGwp: 'GWP del refrigerante',
+    compressorType: 'Tipo de compresor',
+    coolingCapacity: 'Capacidad de enfriamiento',
+    coolingPowerDraw: 'Potencia en enfriamiento',
+    coolingCop: 'COP de enfriamiento',
+    refrigerantCharge: 'Carga de refrigerante'
+  }
+  for (const [key, label] of Object.entries(measurements)) {
+    if (climate[key] !== undefined) {
+      rows.push({ label, value: measurement(climate[key]) })
+    }
+  }
+  for (const [key, label] of Object.entries(features)) {
+    if (climate[key] !== undefined) {
+      rows.push({ label, value: climate[key] === true ? 'Disponible' : 'No disponible' })
+    }
+  }
+  return rows
 }
 
 function safetyValue(value: unknown) {

@@ -334,6 +334,7 @@ function performanceRows(value: unknown) {
     </div>
 
     <CatalogSafetyPackage :safety="variant.safety" />
+    <CatalogClimatePackage :climate="variant.climate" />
 
     <Collapsible class="space-y-3">
       <CollapsibleTrigger as-child>
