@@ -218,6 +218,7 @@ INSTALLED_APPS = [
 
 if DEBUG:
     INSTALLED_APPS += [
+        "orbit",
         "whitenoise.runserver_nostatic",
     ]
 
@@ -237,6 +238,9 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "hijack.middleware.HijackUserMiddleware"
 ]
+
+if DEBUG:
+    MIDDLEWARE.insert(1, "orbit.middleware.OrbitMiddleware")
 
 ######################################################################
 # Templates
