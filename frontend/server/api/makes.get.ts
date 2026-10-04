@@ -7,6 +7,7 @@ interface ApiMake {
   slug: string
   country: string | null
   group: string | null
+  icon_svg: string | null
   modelGenerationCount: number
   modelYearCount: number
   vehicleCount: number
@@ -24,6 +25,7 @@ export default defineEventHandler(async (event) => {
       slug: make.slug,
       country: make.country,
       groupId: make.group,
+      iconSvg: make.icon_svg,
       modelGenerationCount: make.modelGenerationCount,
       modelYearCount: make.modelYearCount,
       vehicleCount: make.vehicleCount

@@ -11,6 +11,7 @@ export interface CatalogMake {
   slug: string
   country?: string | null
   groupId: string | null
+  iconSvg?: string | null
   modelGenerationCount?: number
   modelYearCount?: number
   vehicleCount?: number

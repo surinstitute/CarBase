@@ -79,10 +79,13 @@ const modelCards = computed<ModelCard[]>(() => {
     </Breadcrumb>
 
     <header class="flex flex-wrap items-end justify-between gap-4 border-b pb-6">
-      <div class="space-y-2">
-        <p class="text-sm text-muted-foreground">Marca</p>
-        <h1 class="text-3xl font-bold tracking-tight">{{ make.name }}</h1>
-        <p v-if="make.country" class="text-sm text-muted-foreground">{{ countryFlag(make.country) }} Origen: {{ make.country }}</p>
+      <div class="flex items-center gap-4">
+        <img v-if="make.iconSvg" :src="make.iconSvg" alt="" class="size-16 object-contain">
+        <div class="space-y-2">
+          <p class="text-sm text-muted-foreground">Marca</p>
+          <h1 class="text-3xl font-bold tracking-tight">{{ make.name }}</h1>
+          <p v-if="make.country" class="text-sm text-muted-foreground">{{ countryFlag(make.country) }} Origen: {{ make.country }}</p>
+        </div>
       </div>
       <Badge variant="secondary">{{ modelCards.length }} modelos</Badge>
     </header>

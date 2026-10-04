@@ -64,7 +64,10 @@ const filteredMakes = computed(() => {
     <div v-else-if="filteredMakes.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Card v-for="make in filteredMakes" :key="make.id" class="transition-shadow hover:shadow-md">
         <CardHeader>
-          <CardTitle><NuxtLink :to="`/makes/${make.slug}`" class="hover:underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
+          <div class="flex items-center gap-3">
+            <img v-if="make.iconSvg" :src="make.iconSvg" alt="" class="size-10 object-contain">
+            <CardTitle><NuxtLink :to="`/makes/${make.slug}`" class="hover:underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
+          </div>
           <CardDescription>{{ make.modelYearCount ?? 0 }} modelos</CardDescription>
         </CardHeader>
         <CardContent>

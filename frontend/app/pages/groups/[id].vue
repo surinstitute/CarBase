@@ -71,7 +71,10 @@ const groupModels = computed(() => {
       <div v-if="groupMakes.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Card v-for="make in groupMakes" :key="make.id" class="transition-shadow hover:shadow-md">
           <CardHeader>
-            <CardTitle><NuxtLink :to="`/makes/${make.slug}`" class="underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
+            <div class="flex items-center gap-3">
+              <img v-if="make.iconSvg" :src="make.iconSvg" alt="" class="size-10 object-contain">
+              <CardTitle><NuxtLink :to="`/makes/${make.slug}`" class="underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
+            </div>
             <CardDescription>{{ groupModels.filter((model) => model.makeId === make.id).length }} modelos</CardDescription>
           </CardHeader>
           <CardContent>
