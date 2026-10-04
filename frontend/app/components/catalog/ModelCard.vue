@@ -86,13 +86,7 @@ function architectureLabel(architecture: string) {
 </script>
 
 <template>
-  <Card class="h-full gap-0 overflow-hidden p-0 transition-shadow hover:shadow-md">
-    <NuxtLink :to="modelOverviewRoute" class="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-      <img v-if="model.image" :src="model.image.url" :alt="model.image.alt" class="aspect-2/1 w-full object-cover">
-      <div v-else class="flex aspect-2/1 w-full items-center justify-center bg-muted text-muted-foreground">
-        <Icon name="tabler:car" class="size-10" aria-hidden="true" />
-      </div>
-    </NuxtLink>
+  <Card class="h-full transition-shadow hover:shadow-md">
     <CardHeader class="pt-6 pb-2">
       <Badge v-if="!visibleGenerations.length" variant="secondary" class="w-fit">{{ yearLabel }}</Badge>
       <CardTitle>

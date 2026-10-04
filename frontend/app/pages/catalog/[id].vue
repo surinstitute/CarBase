@@ -10,6 +10,11 @@ import type { ApiPage, CatalogModel, CatalogModelDetail, CatalogSafetyRating, Ca
 
 const route = useRoute()
 const modelId = computed(() => String(route.params.id))
+const modelOverviewRoute = computed(() => (
+  model.value
+    ? `/makes/${model.value.makeSlug}/models/${encodeURIComponent(model.value.modelName)}`
+    : '/models'
+))
 const selectedImageIndex = ref(0)
 const comparison = useCarComparison()
 const { data: model, status } = useQuery({
@@ -147,7 +152,7 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
         <BreadcrumbSeparator />
         <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeSlug}`">{{ model.makeName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem v-if="model.generation"><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeSlug}/models/${model.modelName}`">{{ model.modelName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbItem v-if="model.generation"><BreadcrumbLink as-child><NuxtLink :to="modelOverviewRoute">{{ model.modelName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator v-if="model.generation" />
         <BreadcrumbItem v-if="model.baseBodyStyle"><BreadcrumbPage>{{ model.generation || model.modelName }}</BreadcrumbPage></BreadcrumbItem>
         <BreadcrumbSeparator v-if="model.baseBodyStyle" />
@@ -191,6 +196,9 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
           <Badge variant="secondary" class="w-fit">{{ model.year }}</Badge>
           <h1 class="text-2xl font-semibold tracking-tight">{{ model.makeName }} {{ model.modelName }}</h1>
           <CardDescription>{{ model.generation || 'Modelo base' }}</CardDescription>
+          <NuxtLink :to="modelOverviewRoute" class="w-fit text-sm font-medium underline underline-offset-4">
+            Volver a {{ model.modelName }}
+          </NuxtLink>
         </CardHeader>
         <CardContent>
           <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">

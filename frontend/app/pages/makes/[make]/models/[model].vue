@@ -119,8 +119,14 @@ function yearLabel(years: number[]) {
             :to="`/models/${bodyStyle.model.id}`"
             class="block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <Card class="h-full transition-colors hover:bg-muted/50">
-              <CardHeader>
+            <Card class="h-full gap-0 overflow-hidden p-0 transition-colors hover:bg-muted/50">
+              <img
+                v-if="bodyStyle.model.image"
+                :src="bodyStyle.model.image.url"
+                :alt="bodyStyle.model.image.alt"
+                class="aspect-2/1 w-full object-cover"
+              >
+              <CardHeader class="pt-6">
                 <CardTitle>{{ bodyStyle.name }}</CardTitle>
                 <CardDescription>Ver años y versiones</CardDescription>
               </CardHeader>
