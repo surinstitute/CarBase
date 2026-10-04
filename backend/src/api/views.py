@@ -349,7 +349,7 @@ class VehicleViewSet(ReadOnlyModelViewSet):
         years = queryset.order_by("-model__year").values_list(
             "model__year", flat=True
         ).distinct()
-        countries = (
+        country_codes = (
             queryset.exclude(assembly_country__isnull=True)
             .exclude(assembly_country="")
             .order_by("assembly_country")
@@ -375,7 +375,7 @@ class VehicleViewSet(ReadOnlyModelViewSet):
                 "powertrainTypes": powertrain_types,
                 "assemblyCountries": [
                     {"code": code, "name": countries.name(code)}
-                    for code in countries
+                    for code in country_codes
                 ],
                 "makes": [
                     {"id": str(make.makeId), "name": make.name} for make in makes

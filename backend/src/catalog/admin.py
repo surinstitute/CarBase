@@ -810,6 +810,7 @@ class ImageAssetAdmin(ModelAdmin):
 @admin.register(BaseModel)
 class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("id", "model_generation", "year", "body_style")
+    ordering = ("-year", "id")
     search_fields = (
         "model_generation__model",
         "model_generation__make__name",
