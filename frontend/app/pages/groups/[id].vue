@@ -4,19 +4,34 @@ import { Badge } from '@/components/ui/badge'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { CatalogResponse } from '#shared/types/catalog'
+import type { ApiPage, CatalogGroup, CatalogMake, CatalogModel } from '#shared/types/catalog'
 
 const route = useRoute()
 const groupSlug = computed(() => String(route.params.id))
-const { data, status } = useQuery({
-  key: ['catalog'],
-  query: () => $fetch<CatalogResponse>('/api/catalog')
+const { data: groups, status: groupsStatus } = useQuery({
+  key: ['groups'],
+  query: () => $fetch<ApiPage<CatalogGroup>>('/api/groups')
 })
-const group = computed(() => data.value?.groups.find((item) => item.slug === groupSlug.value))
-const makes = computed(() => data.value?.makes.filter((make) => make.groupId === group.value?.id) ?? [])
-const models = computed(() => {
-  const makeIds = new Set(makes.value.map((make) => make.id))
-  return data.value?.models.filter((model) => makeIds.has(model.makeId)) ?? []
+const { data: makes, status: makesStatus } = useQuery({
+  key: ['makes'],
+  query: () => $fetch<ApiPage<CatalogMake>>('/api/makes')
+})
+const { data: models, status: modelsStatus } = useQuery({
+  key: ['models'],
+  query: () => $fetch<ApiPage<CatalogModel>>('/api/models')
+})
+const status = computed(() => (
+  groupsStatus.value === 'error' || makesStatus.value === 'error' || modelsStatus.value === 'error'
+    ? 'error'
+    : groupsStatus.value === 'pending' || makesStatus.value === 'pending' || modelsStatus.value === 'pending'
+      ? 'pending'
+      : 'success'
+))
+const group = computed(() => groups.value?.results.find((item) => item.slug === groupSlug.value))
+const groupMakes = computed(() => makes.value?.results.filter((make) => make.groupId === group.value?.id) ?? [])
+const groupModels = computed(() => {
+  const makeIds = new Set(groupMakes.value.map((make) => make.id))
+  return models.value?.results.filter((model) => makeIds.has(model.makeId)) ?? []
 })
 </script>
 
@@ -46,18 +61,18 @@ const models = computed(() => {
         <h1 class="text-3xl font-bold tracking-tight">{{ group.name }}</h1>
       </div>
       <div class="flex gap-2">
-        <Badge variant="secondary">{{ makes.length }} marcas</Badge>
-        <Badge variant="outline">{{ models.length }} modelos</Badge>
+        <Badge variant="secondary">{{ groupMakes.length }} marcas</Badge>
+        <Badge variant="outline">{{ groupModels.length }} modelos</Badge>
       </div>
     </header>
 
     <section class="space-y-3">
       <h2 class="text-xl font-semibold">Marcas</h2>
-      <div v-if="makes.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <Card v-for="make in makes" :key="make.id" class="transition-shadow hover:shadow-md">
+      <div v-if="groupMakes.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Card v-for="make in groupMakes" :key="make.id" class="transition-shadow hover:shadow-md">
           <CardHeader>
             <CardTitle><NuxtLink :to="`/makes/${make.slug}`" class="underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
-            <CardDescription>{{ models.filter((model) => model.makeId === make.id).length }} modelos</CardDescription>
+            <CardDescription>{{ groupModels.filter((model) => model.makeId === make.id).length }} modelos</CardDescription>
           </CardHeader>
           <CardContent>
             <NuxtLink :to="`/makes/${make.slug}`" class="text-sm font-medium underline underline-offset-4">Ver marca</NuxtLink>
@@ -69,10 +84,10 @@ const models = computed(() => {
       </Card>
     </section>
 
-    <section v-if="models.length" class="space-y-3">
+    <section v-if="groupModels.length" class="space-y-3">
       <h2 class="text-xl font-semibold">Modelos</h2>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <CatalogModelCard v-for="model in models" :key="model.id" :model="model" />
+        <CatalogModelCard v-for="model in groupModels" :key="model.id" :model="model" />
       </div>
     </section>
   </section>

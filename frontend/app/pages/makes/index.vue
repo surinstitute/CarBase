@@ -5,22 +5,33 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { CatalogResponse } from '#shared/types/catalog'
+import type { ApiPage, CatalogMake, CatalogModel } from '#shared/types/catalog'
 
 const search = ref('')
-const { data, status } = useQuery({
-  key: ['catalog'],
-  query: () => $fetch<CatalogResponse>('/api/catalog')
+const { data: makes, status: makesStatus } = useQuery({
+  key: ['makes'],
+  query: () => $fetch<ApiPage<CatalogMake>>('/api/makes')
 })
+const { data: models, status: modelsStatus } = useQuery({
+  key: ['models'],
+  query: () => $fetch<ApiPage<CatalogModel>>('/api/models')
+})
+const status = computed(() => (
+  makesStatus.value === 'error' || modelsStatus.value === 'error'
+    ? 'error'
+    : makesStatus.value === 'pending' || modelsStatus.value === 'pending'
+      ? 'pending'
+      : 'success'
+))
 const filteredMakes = computed(() => {
   const term = search.value.trim().toLocaleLowerCase()
-  return (data.value?.makes ?? [])
+  return (makes.value?.results ?? [])
     .filter((make) => make.name.toLocaleLowerCase().includes(term))
     .sort((first, second) => first.name.localeCompare(second.name))
 })
 
 function modelCount(makeId: string) {
-  return data.value?.models.filter((model) => model.makeId === makeId).length ?? 0
+  return models.value?.results.filter((model) => model.makeId === makeId).length ?? 0
 }
 </script>
 

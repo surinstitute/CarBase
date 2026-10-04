@@ -198,22 +198,3 @@ export interface CatalogModelCardsResponse {
   }
   results: CatalogModelCard[]
 }
-
-export interface CatalogResponse {
-  count: number
-  next: string | null
-  previous: string | null
-  filterOptions: {
-    models: string[]
-    years: number[]
-    bodyStyles: string[]
-    powertrainTypes: Array<'combustion' | 'hybrid' | 'plug_in_hybrid' | 'electric'>
-    assemblyCountries: Array<{
-      code: string
-      name: string
-    }>
-  }
-  groups: CatalogGroup[]
-  models: CatalogModel[]
-  makes: CatalogMake[]
-}

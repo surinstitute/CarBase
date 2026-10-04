@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import type { CatalogModel, CatalogModelDetail, CatalogResponse, CatalogSafetyRating, CatalogVehicleRecord, CatalogWarrantyCoverage } from '#shared/types/catalog'
+import type { ApiPage, CatalogModel, CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord, CatalogWarrantyCoverage } from '#shared/types/catalog'
 
 const route = useRoute()
 const modelId = computed(() => String(route.params.id))
@@ -20,10 +20,10 @@ const { data: generationBodyStyles } = useQuery({
   key: () => ['generation-body-styles', model.value?.makeId, model.value?.modelName, model.value?.modelGenerationId],
   query: async (): Promise<CatalogModel[]> => {
     if (!model.value) return []
-    const response = await $fetch<CatalogResponse>('/api/catalog', {
-      query: { model: model.value.modelName }
+    const response = await $fetch<ApiPage<CatalogModel>>('/api/models', {
+      query: { model: model.value.modelName, make: model.value.makeId }
     })
-    return response.models
+    return response.results
       .filter((item) => (
         item.makeId === model.value?.makeId
         && item.modelGenerationId === model.value?.modelGenerationId

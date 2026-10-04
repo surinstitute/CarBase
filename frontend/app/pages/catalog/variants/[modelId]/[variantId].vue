@@ -8,16 +8,16 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Skeleton } from '@/components/ui/skeleton'
 import { countryFlag, formatNumber } from '@/lib/utils'
-import type { CatalogResponse } from '#shared/types/catalog'
+import type { CatalogModelDetail } from '#shared/types/catalog'
 
 const route = useRoute()
 const modelId = computed(() => String(route.params.modelId))
 const variantId = computed(() => String(route.params.variantId))
 const { data, status } = useQuery({
-  key: ['catalog'],
-  query: () => $fetch<CatalogResponse>('/api/catalog')
+  key: () => ['model-detail', modelId.value],
+  query: () => $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
 })
-const model = computed(() => data.value?.models.find((item) => item.id === modelId.value))
+const model = computed(() => data.value)
 const variantIndex = computed(() => model.value?.vehicles.findIndex((item) => String(item.id) === variantId.value) ?? -1)
 const variant = computed(() => variantIndex.value >= 0 ? model.value?.vehicles[variantIndex.value] : undefined)
 const variantNumber = computed(() => variantIndex.value + 1)

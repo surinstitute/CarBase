@@ -5,11 +5,11 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Card, CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { countryFlag } from '@/lib/utils'
-import type { CatalogResponse } from '#shared/types/catalog'
+import type { ApiPage, CatalogMake, CatalogModel } from '#shared/types/catalog'
 
 interface ModelCard {
   id: string
-  model: CatalogResponse['models'][number]
+  model: CatalogModel
   years: number[]
   bodyStyles: string[]
   generations: string[]
@@ -17,16 +17,27 @@ interface ModelCard {
 
 const route = useRoute()
 const makeSlug = computed(() => String(route.params.id))
-const { data, status } = useQuery({
-  key: ['catalog'],
-  query: () => $fetch<CatalogResponse>('/api/catalog')
+const { data: makes, status: makesStatus } = useQuery({
+  key: ['makes'],
+  query: () => $fetch<ApiPage<CatalogMake>>('/api/makes')
 })
-const make = computed(() => data.value?.makes.find((item) => item.slug === makeSlug.value))
-const models = computed(() => data.value?.models.filter((model) => model.makeId === make.value?.id) ?? [])
+const { data: models, status: modelsStatus } = useQuery({
+  key: ['models'],
+  query: () => $fetch<ApiPage<CatalogModel>>('/api/models')
+})
+const status = computed(() => (
+  makesStatus.value === 'error' || modelsStatus.value === 'error'
+    ? 'error'
+    : makesStatus.value === 'pending' || modelsStatus.value === 'pending'
+      ? 'pending'
+      : 'success'
+))
+const make = computed(() => makes.value?.results.find((item) => item.slug === makeSlug.value))
+const makeModels = computed(() => models.value?.results.filter((model) => model.makeId === make.value?.id) ?? [])
 const modelCards = computed<ModelCard[]>(() => {
   const cards = new Map<string, ModelCard>()
 
-  for (const model of models.value) {
+  for (const model of makeModels.value) {
     const card = cards.get(model.modelName)
     if (card) {
       card.years.push(model.year)

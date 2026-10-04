@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { CatalogModel, CatalogResponse } from '#shared/types/catalog'
+import type { ApiPage, CatalogMake, CatalogModel } from '#shared/types/catalog'
 
 interface GenerationGroup {
   id: string
@@ -20,17 +20,28 @@ const route = useRoute()
 const makeSlug = computed(() => String(route.params.make))
 const modelName = computed(() => String(route.params.model))
 
-const { data, status } = useQuery({
-  key: () => ['model-overview', makeSlug.value, modelName.value],
-  query: () => $fetch<CatalogResponse>('/api/catalog', {
-    query: { model: modelName.value }
+const { data: makes, status: makesStatus } = useQuery({
+  key: ['makes'],
+  query: () => $fetch<ApiPage<CatalogMake>>('/api/makes')
+})
+const make = computed(() => makes.value?.results.find((item) => item.slug === makeSlug.value))
+const { data: modelPage, status: modelsStatus } = useQuery({
+  key: () => ['model-overview', make.value?.id, modelName.value],
+  query: () => $fetch<ApiPage<CatalogModel>>('/api/models', {
+    query: {
+      model: modelName.value,
+      ...(make.value ? { make: make.value.id } : {})
+    }
   })
 })
-
-const make = computed(() => data.value?.makes.find((item) => item.slug === makeSlug.value))
-const models = computed(() => data.value?.models.filter((item) => (
-  item.makeSlug === makeSlug.value && item.modelName.localeCompare(modelName.value, undefined, { sensitivity: 'accent' }) === 0
-)) ?? [])
+const status = computed(() => (
+  makesStatus.value === 'error' || modelsStatus.value === 'error'
+    ? 'error'
+    : makesStatus.value === 'pending' || modelsStatus.value === 'pending'
+      ? 'pending'
+      : 'success'
+))
+const models = computed(() => modelPage.value?.results ?? [])
 const generations = computed<GenerationGroup[]>(() => {
   const groups = new Map<string, GenerationGroup>()
 
