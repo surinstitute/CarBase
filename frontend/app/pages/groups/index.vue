@@ -5,25 +5,17 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { ApiPage, CatalogGroup, CatalogMake, CatalogModel } from '#shared/types/catalog'
+import type { ApiPage, CatalogGroup } from '#shared/types/catalog'
 
 const search = ref('')
 const { data: groups, status: groupsStatus } = useQuery({
   key: ['groups'],
   query: () => $fetch<ApiPage<CatalogGroup>>('/api/groups')
 })
-const { data: makes, status: makesStatus } = useQuery({
-  key: ['makes'],
-  query: () => $fetch<ApiPage<CatalogMake>>('/api/makes')
-})
-const { data: models, status: modelsStatus } = useQuery({
-  key: ['models'],
-  query: () => $fetch<ApiPage<CatalogModel>>('/api/models')
-})
 const status = computed(() => (
-  groupsStatus.value === 'error' || makesStatus.value === 'error' || modelsStatus.value === 'error'
+  groupsStatus.value === 'error'
     ? 'error'
-    : groupsStatus.value === 'pending' || makesStatus.value === 'pending' || modelsStatus.value === 'pending'
+    : groupsStatus.value === 'pending'
       ? 'pending'
       : 'success'
 ))
@@ -34,14 +26,6 @@ const filteredGroups = computed(() => {
     .sort((first, second) => first.name.localeCompare(second.name))
 })
 
-function makeCount(groupId: string) {
-  return makes.value?.results.filter((make) => make.groupId === groupId).length ?? 0
-}
-
-function modelCount(groupId: string) {
-  const makeIds = new Set(makes.value?.results.filter((make) => make.groupId === groupId).map((make) => make.id))
-  return models.value?.results.filter((model) => makeIds.has(model.makeId)).length ?? 0
-}
 </script>
 
 <template>
@@ -80,7 +64,7 @@ function modelCount(groupId: string) {
       <Card v-for="group in filteredGroups" :key="group.id" class="transition-shadow hover:shadow-md">
         <CardHeader>
           <CardTitle><NuxtLink :to="`/groups/${group.slug}`" class="underline underline-offset-4">{{ group.name }}</NuxtLink></CardTitle>
-          <CardDescription>{{ makeCount(group.id) }} marcas · {{ modelCount(group.id) }} modelos</CardDescription>
+          <CardDescription>{{ group.makeCount ?? 0 }} marcas · {{ group.modelYearCount ?? 0 }} modelos</CardDescription>
         </CardHeader>
         <CardContent>
           <NuxtLink :to="`/groups/${group.slug}`" class="text-sm font-medium underline underline-offset-4">Ver grupo</NuxtLink>

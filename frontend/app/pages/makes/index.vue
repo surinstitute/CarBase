@@ -5,21 +5,17 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { ApiPage, CatalogMake, CatalogModel } from '#shared/types/catalog'
+import type { ApiPage, CatalogMake } from '#shared/types/catalog'
 
 const search = ref('')
 const { data: makes, status: makesStatus } = useQuery({
   key: ['makes'],
   query: () => $fetch<ApiPage<CatalogMake>>('/api/makes')
 })
-const { data: models, status: modelsStatus } = useQuery({
-  key: ['models'],
-  query: () => $fetch<ApiPage<CatalogModel>>('/api/models')
-})
 const status = computed(() => (
-  makesStatus.value === 'error' || modelsStatus.value === 'error'
+  makesStatus.value === 'error'
     ? 'error'
-    : makesStatus.value === 'pending' || modelsStatus.value === 'pending'
+    : makesStatus.value === 'pending'
       ? 'pending'
       : 'success'
 ))
@@ -30,9 +26,6 @@ const filteredMakes = computed(() => {
     .sort((first, second) => first.name.localeCompare(second.name))
 })
 
-function modelCount(makeId: string) {
-  return models.value?.results.filter((model) => model.makeId === makeId).length ?? 0
-}
 </script>
 
 <template>
@@ -72,7 +65,7 @@ function modelCount(makeId: string) {
       <Card v-for="make in filteredMakes" :key="make.id" class="transition-shadow hover:shadow-md">
         <CardHeader>
           <CardTitle><NuxtLink :to="`/makes/${make.slug}`" class="hover:underline underline-offset-4">{{ make.name }}</NuxtLink></CardTitle>
-          <CardDescription>{{ modelCount(make.id) }} modelos</CardDescription>
+          <CardDescription>{{ make.modelYearCount ?? 0 }} modelos</CardDescription>
         </CardHeader>
         <CardContent>
           <NuxtLink :to="`/makes/${make.slug}`" class="text-sm font-medium underline underline-offset-4">Ver modelos</NuxtLink>

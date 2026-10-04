@@ -5,6 +5,9 @@ interface ApiGroup {
   groupId: string
   name: string
   slug: string
+  makeCount: number
+  modelYearCount: number
+  vehicleCount: number
 }
 
 export default defineEventHandler(async (event) => {
@@ -16,7 +19,10 @@ export default defineEventHandler(async (event) => {
     results: response.results.map((group): CatalogGroup => ({
       id: group.groupId,
       name: group.name,
-      slug: group.slug
+      slug: group.slug,
+      makeCount: group.makeCount,
+      modelYearCount: group.modelYearCount,
+      vehicleCount: group.vehicleCount
     }))
   }
 })

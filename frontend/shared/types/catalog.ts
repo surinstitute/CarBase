@@ -11,12 +11,18 @@ export interface CatalogMake {
   slug: string
   country?: string | null
   groupId: string | null
+  modelGenerationCount?: number
+  modelYearCount?: number
+  vehicleCount?: number
 }
 
 export interface CatalogGroup {
   id: string
   name: string
   slug: string
+  makeCount?: number
+  modelYearCount?: number
+  vehicleCount?: number
 }
 
 export interface CatalogVehicleRecord {
