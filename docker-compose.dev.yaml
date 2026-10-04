@@ -28,6 +28,7 @@ services:
       - ./backend/src:/app/src
       - ./backend/manage.py:/app/manage.py
       - ./backend/entrypoint.sh:/app/entrypoint.sh
+      - ./backend/first_run.sh:/app/first_run.sh
     healthcheck:
       test:
         [
@@ -35,7 +36,7 @@ services:
           "python",
           "-c",
           "import urllib.request;
-            urllib.request.urlopen('http://localhost:8000/djadmin/')",
+            urllib.request.urlopen('http://localhost:8000/health/')",
         ]
       interval: 2s
       timeout: 2s
