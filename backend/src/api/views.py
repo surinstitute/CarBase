@@ -245,6 +245,14 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
                 to_attr="visible_image_placements",
             )
         )
+        if self.action == "list":
+            queryset = queryset.prefetch_related(
+                Prefetch(
+                    "model_vehicles",
+                    queryset=Vehicle.objects.select_related("powertrain"),
+                    to_attr="catalog_vehicles",
+                )
+            )
         if self.action == "retrieve":
             queryset = queryset.select_related("warranty")
             queryset = queryset.prefetch_related(

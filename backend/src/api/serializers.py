@@ -101,6 +101,7 @@ class BaseModelSerializer(serializers.ModelSerializer):
         source="model_generation.platform.name", read_only=True, allow_null=True
     )
     image = serializers.SerializerMethodField()
+    architectures = serializers.SerializerMethodField()
 
     class Meta:
         model = BaseModel
@@ -119,6 +120,7 @@ class BaseModelSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
             "image",
+            "architectures",
         )
 
     def get_image(self, obj):
@@ -144,6 +146,21 @@ class BaseModelSerializer(serializers.ModelSerializer):
 
     def get_generation(self, obj):
         return obj.model_generation.generation
+
+    def get_architectures(self, obj):
+        vehicles = getattr(obj, "catalog_vehicles", None)
+        if vehicles is None:
+            vehicles = obj.model_vehicles.all()
+
+        return sorted(
+            {
+                ARCHITECTURE_MAP.get(
+                    vehicle.powertrain.architecture, vehicle.powertrain.architecture
+                )
+                for vehicle in vehicles
+                if vehicle.powertrain_id
+            }
+        )
 
 
 class BaseModelDetailSerializer(BaseModelSerializer):
@@ -330,7 +347,6 @@ class EMotorSerializer(serializers.ModelSerializer):
             "id",
             "motorType",
             "powerKw",
-            "position",
             "coolingType",
         )
 
