@@ -72,12 +72,22 @@ def mark_first_primary(items):
 
 
 class GroupSerializer(serializers.ModelSerializer):
+    makeCount = serializers.IntegerField(source="make_count", read_only=True)
+    modelYearCount = serializers.IntegerField(source="model_year_count", read_only=True)
+    vehicleCount = serializers.IntegerField(source="vehicle_count", read_only=True)
+
     class Meta:
         model = Group
         fields = "__all__"
 
 
 class MakeSerializer(serializers.ModelSerializer):
+    modelGenerationCount = serializers.IntegerField(
+        source="model_generation_count", read_only=True
+    )
+    modelYearCount = serializers.IntegerField(source="model_year_count", read_only=True)
+    vehicleCount = serializers.IntegerField(source="vehicle_count", read_only=True)
+
     class Meta:
         model = Make
         fields = "__all__"

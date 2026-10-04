@@ -1,4 +1,4 @@
-from django.db.models import Max, Min, Prefetch, Q
+from django.db.models import Count, Max, Min, Prefetch, Q
 from django_countries import countries
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
@@ -91,12 +91,27 @@ def _vehicle_queryset():
 
 
 class GroupViewSet(ReadOnlyModelViewSet):
-    queryset = Group.objects.all().order_by("name")
+    queryset = Group.objects.annotate(
+        make_count=Count("makes", distinct=True),
+        model_year_count=Count(
+            "makes__model_generations__model_years", distinct=True
+        ),
+        vehicle_count=Count(
+            "makes__model_generations__model_years__model_vehicles",
+            distinct=True,
+        ),
+    ).order_by("name")
     serializer_class = GroupSerializer
 
 
 class MakeViewSet(ReadOnlyModelViewSet):
-    queryset = Make.objects.select_related("group").all().order_by("name")
+    queryset = Make.objects.select_related("group").annotate(
+        model_generation_count=Count("model_generations", distinct=True),
+        model_year_count=Count("model_generations__model_years", distinct=True),
+        vehicle_count=Count(
+            "model_generations__model_years__model_vehicles", distinct=True
+        ),
+    ).order_by("name")
     serializer_class = MakeSerializer
 
 
