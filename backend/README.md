@@ -10,6 +10,11 @@ applies migrations not recorded in the database. After migration, it runs
 Do not run `makemigrations` during deployment. Generate and commit migrations
 with the corresponding model changes, then validate them in CI.
 
+To run multiple backend replicas, apply migrations and bootstrap once through a
+separate release job, then set `DISABLE_MIGRATIONS=true` on every web replica.
+With this value, the container starts Gunicorn without running migrations or
+`first_run.sh`.
+
 ## Environment bootstrap
 
 After intentionally changing its OIDC or superuser configuration, run:
