@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ModelDetailPage from '../catalog/[id].vue'
+import ModelDetailPage from '../../../../../catalog/[id].vue'
 
 const route = useRoute()
 </script>

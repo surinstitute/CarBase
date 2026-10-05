@@ -8,17 +8,36 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Skeleton } from '@/components/ui/skeleton'
 import { countryFlag, formatNumber } from '@/lib/utils'
+import { modelOverviewPath, modelYearPath, urlSegment } from '@/lib/model-path'
 import type { CatalogModelDetail } from '#shared/types/catalog'
 
 const route = useRoute()
-const modelId = computed(() => String(route.params.modelId))
+const modelId = computed(() => String(route.params.modelId ?? route.params.id ?? ''))
 const variantId = computed(() => String(route.params.variantId))
+const canonicalPath = computed(() => (
+  typeof route.params.generation === 'string'
+  && typeof route.params.modelYear === 'string'
+))
 const { data, status } = useQuery({
-  key: () => ['model-detail', modelId.value],
-  query: () => $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
+  key: () => ['model-detail', route.fullPath],
+  query: () => canonicalPath.value
+    ? $fetch<CatalogModelDetail>(`/api/model-by-path/${route.params.make}/${route.params.model}/${route.params.generation}/${route.params.modelYear}`)
+    : $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
 })
 const model = computed(() => data.value)
-const variantIndex = computed(() => model.value?.vehicles.findIndex((item) => String(item.id) === variantId.value) ?? -1)
+const modelOverviewRoute = computed(() => (
+  model.value
+    ? modelOverviewPath(model.value)
+    : '/models'
+))
+const modelYearRoute = computed(() => (
+  model.value ? modelYearPath(model.value) : '/models'
+))
+const variantIndex = computed(() => model.value?.vehicles.findIndex((item) => (
+  canonicalPath.value
+    ? urlSegment(item.variantName ?? String(item.id)) === variantId.value
+    : String(item.id) === variantId.value
+)) ?? -1)
 const variant = computed(() => variantIndex.value >= 0 ? model.value?.vehicles[variantIndex.value] : undefined)
 const variantNumber = computed(() => variantIndex.value + 1)
 const variantLabel = computed(() => variant.value?.variantName || `Variante ${variantNumber.value}`)
@@ -235,7 +254,9 @@ function performanceRows(value: unknown) {
         <BreadcrumbSeparator />
         <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${model.makeSlug}`">{{ model.makeName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/models/${model.id}`">{{ model.modelName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="modelOverviewRoute">{{ model.modelName }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="modelYearRoute">{{ model.year }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem><BreadcrumbPage>{{ variantLabel }}</BreadcrumbPage></BreadcrumbItem>
       </BreadcrumbList>
@@ -366,7 +387,7 @@ function performanceRows(value: unknown) {
   </section>
   <section v-else class="mx-auto w-full max-w-6xl space-y-4 px-4 py-8">
     <h1>{{ model ? 'Variante no encontrada' : 'Modelo no encontrado' }}</h1>
-    <NuxtLink :to="model ? `/models/${model.id}` : '/models'" class="underline underline-offset-4">
+    <NuxtLink :to="model ? modelYearRoute : '/models'" class="underline underline-offset-4">
       {{ model ? 'Volver al modelo' : 'Volver a modelos' }}
     </NuxtLink>
   </section>

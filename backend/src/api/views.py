@@ -1,4 +1,6 @@
 from django.db.models import Count, Max, Min, Prefetch, Q
+from django.http import Http404
+from django.utils.text import slugify
 from django_countries import countries
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
@@ -268,7 +270,7 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
                     to_attr="catalog_vehicles",
                 )
             )
-        if self.action == "retrieve":
+        if self.action in ("retrieve", "by_path"):
             queryset = queryset.select_related("warranty")
             queryset = queryset.prefetch_related(
                 "safety_ratings",
@@ -280,6 +282,48 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
         if self.action == "retrieve":
             return BaseModelDetailSerializer
         return BaseModelSerializer
+
+    @action(
+        detail=False,
+        methods=["get"],
+        url_path=(
+            r"by-path/(?P<make_slug>[^/.]+)/(?P<model_slug>[^/.]+)/"
+            r"(?P<generation_slug>[^/.]+)/(?P<model_year>[^/.]+)"
+        ),
+    )
+    def by_path(
+        self, request, make_slug, model_slug, generation_slug, model_year
+    ):
+        try:
+            year_text, body_style = model_year.split("-", maxsplit=1)
+            year = int(year_text)
+        except ValueError as error:
+            raise Http404("Invalid model-year path.") from error
+
+        candidates = self.get_queryset().filter(
+            model_generation__make__slug=make_slug,
+            year=year,
+        )
+        for base_model in candidates:
+            generation = base_model.model_generation
+            if (
+                slugify(generation.model) == model_slug
+                and slugify(generation.generation or "gen") == generation_slug
+                and (
+                    base_model.body_style == body_style
+                    or (
+                        body_style == "unspecified"
+                        and not base_model.body_style
+                    )
+                )
+            ):
+                return Response(
+                    BaseModelDetailSerializer(
+                        base_model, context={"request": request}
+                    ).data
+                )
+
+        raise Http404("Model-year not found.")
 
     @action(detail=False, methods=["get"], url_path="filter-options")
     def filter_options(self, request):

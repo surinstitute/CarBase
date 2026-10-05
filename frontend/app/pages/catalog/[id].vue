@@ -6,20 +6,32 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { modelOverviewPath, modelYearPath } from '@/lib/model-path'
 import type { ApiPage, CatalogModel, CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord, CatalogWarrantyCoverage } from '#shared/types/catalog'
 
 const route = useRoute()
-const modelId = computed(() => String(route.params.id))
+const modelId = computed(() => String(route.params.id ?? route.params.modelId ?? ''))
+const canonicalPath = computed(() => (
+  typeof route.params.generation === 'string'
+  && typeof route.params.modelYear === 'string'
+))
 const modelOverviewRoute = computed(() => (
   model.value
-    ? `/makes/${model.value.makeSlug}/models/${encodeURIComponent(model.value.modelName)}`
+    ? modelOverviewPath(model.value)
+    : '/models'
+))
+const modelYearRoute = computed(() => (
+  model.value
+    ? modelYearPath(model.value)
     : '/models'
 ))
 const selectedImageIndex = ref(0)
 const comparison = useCarComparison()
 const { data: model, status } = useQuery({
-  key: () => ['model-detail', modelId.value],
-  query: () => $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
+  key: () => ['model-detail', route.fullPath],
+  query: () => canonicalPath.value
+    ? $fetch<CatalogModelDetail>(`/api/model-by-path/${route.params.make}/${route.params.model}/${route.params.generation}/${route.params.modelYear}`)
+    : $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
 })
 const { data: generationBodyStyles } = useQuery({
   key: () => ['generation-body-styles', model.value?.makeId, model.value?.modelName, model.value?.modelGenerationId],
@@ -163,7 +175,7 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
       <NuxtLink
         v-for="generationModel in generationModels"
         :key="generationModel.id"
-        :to="`/models/${generationModel.id}`"
+        :to="modelYearPath(generationModel)"
         class="shrink-0 rounded-md border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         :class="generationModel.id === model.id ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-muted'"
       >
@@ -210,7 +222,7 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
               <NuxtLink
                 v-for="bodyStyle in bodyStyleOptions"
                 :key="bodyStyle.item.id"
-                :to="`/models/${bodyStyle.item.id}`"
+                :to="modelYearPath(bodyStyle.item)"
                 class="rounded-sm px-1.5 py-0.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 :class="bodyStyle.item.id === model.id ? 'bg-background text-foreground shadow-xs' : 'text-muted-foreground hover:text-foreground'"
               >

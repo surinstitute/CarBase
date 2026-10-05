@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
+import { modelYearPath } from '@/lib/model-path'
 import type { ApiPage, CatalogMake, CatalogModel } from '#shared/types/catalog'
 
 interface GenerationGroup {
@@ -75,24 +76,26 @@ function yearLabel(years: number[]) {
 </script>
 
 <template>
-  <section v-if="status === 'pending'" class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
-    <Skeleton class="h-8 w-48" />
-    <Skeleton class="h-24 w-full" />
-    <Skeleton v-for="item in 3" :key="item" class="h-64" />
-  </section>
-  <section v-else-if="status === 'error'" class="mx-auto w-full max-w-6xl px-4 py-8">
-    <p role="alert" class="text-sm text-destructive">No se pudo cargar el modelo.</p>
-  </section>
-  <section v-else-if="make && models.length" class="mx-auto w-full max-w-6xl space-y-8 px-4 py-8">
-    <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink to="/models">Modelos</NuxtLink></BreadcrumbLink></BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${make.slug}`">{{ make.name }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem><BreadcrumbPage>{{ modelName }}</BreadcrumbPage></BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
+  <NuxtPage v-if="route.params.generation" />
+  <template v-else>
+    <section v-if="status === 'pending'" class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
+      <Skeleton class="h-8 w-48" />
+      <Skeleton class="h-24 w-full" />
+      <Skeleton v-for="item in 3" :key="item" class="h-64" />
+    </section>
+    <section v-else-if="status === 'error'" class="mx-auto w-full max-w-6xl px-4 py-8">
+      <p role="alert" class="text-sm text-destructive">No se pudo cargar el modelo.</p>
+    </section>
+    <section v-else-if="make && models.length" class="mx-auto w-full max-w-6xl space-y-8 px-4 py-8">
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink to="/models">Modelos</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem><BreadcrumbLink as-child><NuxtLink :to="`/makes/${make.slug}`">{{ make.name }}</NuxtLink></BreadcrumbLink></BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem><BreadcrumbPage>{{ modelName }}</BreadcrumbPage></BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
     <header class="flex flex-wrap items-end justify-between gap-4 border-b pb-6">
       <div class="space-y-2">
@@ -116,7 +119,7 @@ function yearLabel(years: number[]) {
           <NuxtLink
             v-for="bodyStyle in generation.bodyStyles"
             :key="bodyStyle.name"
-            :to="`/models/${bodyStyle.model.id}`"
+            :to="modelYearPath(bodyStyle.model)"
             class="block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <Card class="h-full gap-0 overflow-hidden p-0 transition-colors hover:bg-muted/50">
@@ -126,18 +129,31 @@ function yearLabel(years: number[]) {
                 :alt="bodyStyle.model.image.alt"
                 class="aspect-2/1 w-full object-cover"
               >
-              <CardHeader class="pt-6">
-                <CardTitle>{{ bodyStyle.name }}</CardTitle>
-                <CardDescription>Ver años y versiones</CardDescription>
+              <CardHeader class="space-y-3 pt-5 pb-5">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="flex items-center gap-3">
+                    <div class="flex size-10 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+                      <Icon name="tabler:calendar" class="size-5" aria-hidden="true" />
+                    </div>
+                    <div class="space-y-1">
+                      <CardDescription>Año modelo</CardDescription>
+                      <CardTitle>{{ bodyStyle.model.year }}</CardTitle>
+                    </div>
+                  </div>
+                  <Icon name="tabler:arrow-right" class="mt-1 size-5 text-muted-foreground" aria-hidden="true" />
+                </div>
+                <CardDescription>{{ bodyStyle.name }}</CardDescription>
+                <p class="text-sm font-medium">Ver versiones</p>
               </CardHeader>
             </Card>
           </NuxtLink>
         </div>
       </section>
     </div>
-  </section>
-  <section v-else class="mx-auto w-full max-w-6xl space-y-4 px-4 py-8">
-    <h1 class="text-2xl font-semibold">Modelo no encontrado</h1>
-    <NuxtLink to="/models" class="underline underline-offset-4">Volver a modelos</NuxtLink>
-  </section>
+    </section>
+    <section v-else class="mx-auto w-full max-w-6xl space-y-4 px-4 py-8">
+      <h1 class="text-2xl font-semibold">Modelo no encontrado</h1>
+      <NuxtLink to="/models" class="underline underline-offset-4">Volver a modelos</NuxtLink>
+    </section>
+  </template>
 </template>

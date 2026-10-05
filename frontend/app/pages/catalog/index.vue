@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import { Skeleton } from '@/components/ui/skeleton'
+import { modelOverviewPath } from '@/lib/model-path'
 import type { CatalogModelCardsResponse } from '#shared/types/catalog'
 
 const filters = useCatalogFiltersStore()
@@ -63,7 +64,10 @@ const modelCards = computed(() => data.value?.results.map((card) => ({
   years: [card.startYear, card.endYear],
   generationLinks: card.generations.map((generation) => ({
     label: generation.label,
-    route: `/models/${generation.modelId}`
+    route: modelOverviewPath({
+      makeSlug: card.makeSlug,
+      modelName: card.modelName
+    })
   }))
 })) ?? [])
 

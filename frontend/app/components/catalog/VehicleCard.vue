@@ -2,10 +2,12 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { variantPath, vehicleIdPath } from '@/lib/model-path'
 import { formatNumber } from '@/lib/utils'
 import type { CatalogModel, CatalogVehicleRecord } from '#shared/types/catalog'
 
 type VehicleCardModel = Pick<CatalogModel, 'id' | 'makeId' | 'makeName' | 'modelName' | 'image'>
+  & Partial<Pick<CatalogModel, 'makeSlug' | 'generation' | 'year' | 'baseBodyStyle'>>
 
 const props = defineProps<{
   model: VehicleCardModel
@@ -16,6 +18,19 @@ const props = defineProps<{
 const comparison = useCarComparison()
 const image = computed(() => props.vehicle.images?.leftSide ?? props.vehicle.images?.silhouette ?? props.vehicle.images?.front)
 const isSelected = computed(() => comparison.selectedVehicles.value.some((selected) => selected.id === String(props.vehicle.id)))
+const vehiclePath = computed(() => {
+  if (!props.model.makeSlug || !props.model.year) {
+    return vehicleIdPath(props.model.id, props.vehicle.id)
+  }
+
+  return variantPath({
+    makeSlug: props.model.makeSlug,
+    modelName: props.model.modelName,
+    generation: props.model.generation ?? null,
+    year: props.model.year,
+    baseBodyStyle: props.model.baseBodyStyle ?? null
+  }, props.vehicle.variantName, props.vehicle.id)
+})
 
 function variantLabel() {
   return props.vehicle.variantName || `Variante ${(props.index ?? 0) + 1}`
@@ -55,7 +70,7 @@ function formatEnergyStorage(value: unknown) {
 
 <template>
   <Card class="h-full gap-0 overflow-hidden p-0 transition-shadow hover:shadow-md">
-    <NuxtLink :to="`/models/variants/${model.id}/${vehicle.id}`" class="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+    <NuxtLink :to="vehiclePath" class="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
       <img v-if="image" :src="image.url" :alt="image.alt" class="aspect-2/1 w-full object-cover">
       <div v-else class="flex aspect-2/1 w-full items-center justify-center bg-muted text-muted-foreground">
         <Icon name="tabler:car" class="size-10" aria-hidden="true" />
@@ -66,7 +81,7 @@ function formatEnergyStorage(value: unknown) {
         <div class="min-w-0 space-y-1">
           <CardDescription>{{ model.makeName }} {{ model.modelName }}</CardDescription>
           <CardTitle>
-            <NuxtLink :to="`/models/variants/${model.id}/${vehicle.id}`" class="underline underline-offset-4">
+            <NuxtLink :to="vehiclePath" class="underline underline-offset-4">
               {{ variantLabel() }}
             </NuxtLink>
           </CardTitle>
