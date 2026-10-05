@@ -13,6 +13,7 @@ import type { CatalogModelDetail } from '#shared/types/catalog'
 
 const route = useRoute()
 const { sharePermalink, status: permalinkShareStatus } = usePermalinkShare()
+const comparison = useCarComparison()
 const modelId = computed(() => String(route.params.modelId ?? route.params.id ?? ''))
 const variantId = computed(() => String(route.params.variantId))
 const canonicalPath = computed(() => (
@@ -42,6 +43,9 @@ const variantIndex = computed(() => model.value?.vehicles.findIndex((item) => (
 const variant = computed(() => variantIndex.value >= 0 ? model.value?.vehicles[variantIndex.value] : undefined)
 const variantNumber = computed(() => variantIndex.value + 1)
 const variantLabel = computed(() => variant.value?.variantName || `Variante ${variantNumber.value}`)
+const isSelectedForComparison = computed(() => variant.value
+  ? comparison.selectedVehicles.value.some((selected) => selected.id === String(variant.value?.id))
+  : false)
 const image = computed(() => variant.value?.images?.leftSide
   ?? variant.value?.images?.silhouette
   ?? variant.value?.images?.front
@@ -276,11 +280,24 @@ function performanceRows(value: unknown) {
       <div v-else class="flex aspect-4/3 items-center justify-center rounded-xl border bg-muted text-muted-foreground">
         <Icon name="tabler:car" class="size-12" aria-hidden="true" />
       </div>
-      <Card>
+      <Card class="relative">
         <CardHeader>
           <Badge variant="secondary" class="w-fit">{{ variant.lineage.modelYear }}</Badge>
           <h1 class="text-2xl font-semibold tracking-tight">{{ model.makeName }} {{ model.modelName }} · {{ variantLabel }}</h1>
           <CardDescription>Registro de vehículo #{{ variant.id }}</CardDescription>
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            class="absolute top-4 right-4 size-8 rounded-full"
+            :aria-label="isSelectedForComparison ? `Quitar ${variantLabel} de comparación` : `Añadir ${variantLabel} a comparación`"
+            :title="isSelectedForComparison ? 'Quitar de comparación' : comparison.isAtLimit.value ? 'Máximo de 4 autos seleccionados' : 'Añadir a comparación'"
+            :aria-pressed="isSelectedForComparison"
+            :disabled="!isSelectedForComparison && comparison.isAtLimit.value"
+            @click="comparison.toggle(model, variant)"
+          >
+            <Icon :name="isSelectedForComparison ? 'tabler:minus' : 'tabler:plus'" class="size-4" aria-hidden="true" />
+          </Button>
           <Button type="button" variant="outline" class="w-fit" @click="shareTechnicalPermalink">
             <Icon name="tabler:share-3" class="size-4" aria-hidden="true" />
             Compartir permalink
