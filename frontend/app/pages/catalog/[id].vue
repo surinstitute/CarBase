@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { modelOverviewPath, modelYearPath } from '@/lib/model-path'
+import { modelIdPath, modelOverviewPath, modelYearPath } from '@/lib/model-path'
 import type { ApiPage, CatalogModel, CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord, CatalogWarrantyCoverage } from '#shared/types/catalog'
 
 const route = useRoute()
@@ -27,6 +27,7 @@ const modelYearRoute = computed(() => (
 ))
 const selectedImageIndex = ref(0)
 const comparison = useCarComparison()
+const { sharePermalink, status: permalinkShareStatus } = usePermalinkShare()
 const { data: model, status } = useQuery({
   key: () => ['model-detail', route.fullPath],
   query: () => canonicalPath.value
@@ -150,6 +151,14 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
   return terms.join(' / ')
 }
 
+function shareTechnicalPermalink() {
+  if (!model.value) return
+  return sharePermalink(
+    modelIdPath(model.value.id),
+    `${model.value.makeName} ${model.value.modelName} ${model.value.year}`
+  )
+}
+
 </script>
 
 <template>
@@ -211,6 +220,13 @@ function formatWarrantyCoverage(coverage: CatalogWarrantyCoverage) {
           <NuxtLink :to="modelOverviewRoute" class="w-fit text-sm font-medium underline underline-offset-4">
             Volver a {{ model.modelName }}
           </NuxtLink>
+          <Button type="button" variant="outline" class="w-fit" @click="shareTechnicalPermalink">
+            <Icon name="tabler:share-3" class="size-4" aria-hidden="true" />
+            Compartir permalink
+          </Button>
+          <p v-if="permalinkShareStatus === 'shared'" role="status" class="text-sm text-muted-foreground">Permalink compartido.</p>
+          <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="text-sm text-muted-foreground">Permalink copiado.</p>
+          <p v-else-if="permalinkShareStatus === 'error'" role="alert" class="text-sm text-destructive">No se pudo compartir el permalink.</p>
         </CardHeader>
         <CardContent>
           <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">

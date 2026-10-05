@@ -8,10 +8,11 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Skeleton } from '@/components/ui/skeleton'
 import { countryFlag, formatNumber } from '@/lib/utils'
-import { modelOverviewPath, modelYearPath, urlSegment } from '@/lib/model-path'
+import { modelOverviewPath, modelYearPath, urlSegment, vehicleIdPath } from '@/lib/model-path'
 import type { CatalogModelDetail } from '#shared/types/catalog'
 
 const route = useRoute()
+const { sharePermalink, status: permalinkShareStatus } = usePermalinkShare()
 const modelId = computed(() => String(route.params.modelId ?? route.params.id ?? ''))
 const variantId = computed(() => String(route.params.variantId))
 const canonicalPath = computed(() => (
@@ -179,6 +180,14 @@ function formatValue(value: unknown) {
   return String(value)
 }
 
+function shareTechnicalPermalink() {
+  if (!model.value || !variant.value) return
+  return sharePermalink(
+    vehicleIdPath(model.value.id, variant.value.id),
+    `${model.value.makeName} ${model.value.modelName} ${variantLabel.value}`
+  )
+}
+
 function recordOf(value: unknown): Record<string, unknown> {
   return value !== null && typeof value === 'object' && !Array.isArray(value)
     ? value as Record<string, unknown>
@@ -272,6 +281,13 @@ function performanceRows(value: unknown) {
           <Badge variant="secondary" class="w-fit">{{ variant.lineage.modelYear }}</Badge>
           <h1 class="text-2xl font-semibold tracking-tight">{{ model.makeName }} {{ model.modelName }} · {{ variantLabel }}</h1>
           <CardDescription>Registro de vehículo #{{ variant.id }}</CardDescription>
+          <Button type="button" variant="outline" class="w-fit" @click="shareTechnicalPermalink">
+            <Icon name="tabler:share-3" class="size-4" aria-hidden="true" />
+            Compartir permalink
+          </Button>
+          <p v-if="permalinkShareStatus === 'shared'" role="status" class="text-sm text-muted-foreground">Permalink compartido.</p>
+          <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="text-sm text-muted-foreground">Permalink copiado.</p>
+          <p v-else-if="permalinkShareStatus === 'error'" role="alert" class="text-sm text-destructive">No se pudo compartir el permalink.</p>
         </CardHeader>
         <CardContent class="space-y-4">
           <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
