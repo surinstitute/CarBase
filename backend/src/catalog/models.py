@@ -554,6 +554,7 @@ class Vehicle(models.Model):
         USD = "USD", "Dólares estadounidenses"
         MXN = "MXN", "Pesos mexicanos"
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     model = models.ForeignKey(
         BaseModel, on_delete=models.CASCADE, related_name="model_vehicles"
     )
