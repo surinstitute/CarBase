@@ -6,11 +6,11 @@ const route = useRoute()
 const isDark = computed(() => colorMode.value === 'dark')
 const isMenuOpen = ref(false)
 const navigationLinks = [
-  { label: 'Modelos', to: '/models' },
-  { label: 'Comparar', to: '/models/compare' },
-  { label: 'Vehículos', to: '/vehicles' },
-  { label: 'Marcas', to: '/makes' },
   { label: 'Grupos', to: '/groups' },
+  { label: 'Marcas', to: '/makes' },
+  { label: 'Modelos', to: '/models' },
+  { label: 'Vehículos', to: '/vehicles' },
+  { label: 'Comparar', to: '/models/compare' },
   { label: 'Recalls', to: '/recalls' }
 ]
 
