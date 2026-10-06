@@ -979,10 +979,9 @@ class RecallAdminForm(forms.ModelForm):
 @admin.register(Recall)
 class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
     form = RecallAdminForm
-    list_display = ("recall_number", "title", "maker", "status", "published_date")
+    list_display = ("recall_number", "maker", "status", "published_date")
     search_fields = (
         "recall_number",
-        "title",
         "authority",
         "maker__name",
         "affected_models__model_generation__model",

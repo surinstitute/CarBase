@@ -707,7 +707,6 @@ class Recall(models.Model):
     )
     affected_models = models.ManyToManyField(BaseModel, related_name="recalls")
     recall_number = models.CharField(max_length=100)
-    title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     risk = models.TextField(blank=True)
     risk_consequence = models.TextField(blank=True)

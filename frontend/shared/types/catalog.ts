@@ -9,9 +9,13 @@ export interface CatalogMake {
   id: string
   name: string
   slug: string
+  description?: string
   country?: string | null
   groupId: string | null
   iconSvg?: string | null
+  website?: string
+  phone?: string
+  legalRepresentative?: string
   modelGenerationCount?: number
   modelYearCount?: number
   vehicleCount?: number
@@ -40,7 +44,6 @@ export interface CatalogVehicleRecord {
     authority: string
     recallNumber: string
     country: string | null
-    title: string
     description: string
     risk: string
     riskConsequence: string
@@ -115,8 +118,11 @@ export interface CatalogRecall {
   id: number
   makerId: string
   makerName: string
+  makerWebsite: string
+  makerPhone: string
+  makerLegalRepresentative: string
+  makerLogo: string | null
   recallNumber: string
-  title: string
   description: string
   risk: string
   riskConsequence: string

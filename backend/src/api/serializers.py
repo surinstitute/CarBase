@@ -375,6 +375,12 @@ class TransmissionSerializer(serializers.ModelSerializer):
 class RecallSerializer(serializers.ModelSerializer):
     makerId = serializers.UUIDField(source="maker.makeId", read_only=True)
     makerName = serializers.CharField(source="maker.name", read_only=True)
+    makerWebsite = serializers.URLField(source="maker.website", read_only=True)
+    makerPhone = serializers.CharField(source="maker.phone", read_only=True)
+    makerLegalRepresentative = serializers.CharField(
+        source="maker.legal_representative", read_only=True
+    )
+    makerLogo = serializers.SerializerMethodField()
     recallNumber = serializers.CharField(source="recall_number", read_only=True)
     publishedDate = serializers.DateField(source="published_date", read_only=True)
     riskConsequence = serializers.CharField(source="risk_consequence", read_only=True)
@@ -391,8 +397,11 @@ class RecallSerializer(serializers.ModelSerializer):
             "id",
             "makerId",
             "makerName",
+            "makerWebsite",
+            "makerPhone",
+            "makerLegalRepresentative",
+            "makerLogo",
             "recallNumber",
-            "title",
             "description",
             "risk",
             "riskConsequence",
@@ -405,6 +414,17 @@ class RecallSerializer(serializers.ModelSerializer):
             "damageReport",
             "affectedModels",
         )
+
+    def get_makerLogo(self, obj):
+        if not obj.maker.icon_svg:
+            return None
+
+        url = obj.maker.icon_svg.url
+        request = self.context.get("request")
+        if request is not None:
+            url = request.build_absolute_uri(url)
+
+        return url
 
     def get_affectedModels(self, obj):
         return [
@@ -462,7 +482,6 @@ class VehicleSerializer(serializers.ModelSerializer):
         return [
             {
                 "recallNumber": recall.recall_number,
-                "title": recall.title,
                 "description": recall.description,
                 "risk": recall.risk,
                 "riskConsequence": recall.risk_consequence,
