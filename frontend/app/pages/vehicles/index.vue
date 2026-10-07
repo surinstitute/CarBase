@@ -75,13 +75,17 @@ function resetFilters() {
   page.value = 1
 }
 
-function modelContext(vehicle: CatalogVehicleRecord): Pick<CatalogModel, 'id' | 'makeId' | 'makeName' | 'modelName' | 'image'> {
+function modelContext(vehicle: CatalogVehicleRecord): Pick<CatalogModel, 'id' | 'makeId' | 'makeSlug' | 'makeName' | 'modelName' | 'generation' | 'year' | 'baseBodyStyle' | 'image'> {
   const image = vehicle.images?.leftSide ?? vehicle.images?.silhouette ?? vehicle.images?.front
   return {
     id: vehicle.lineage.modelId,
     makeId: vehicle.lineage.makeId,
+    makeSlug: vehicle.lineage.makeSlug ?? '',
     makeName: vehicle.lineage.makeName ?? '',
     modelName: vehicle.lineage.modelName ?? '',
+    generation: typeof vehicle.lineage.generationId === 'string' ? vehicle.lineage.generationId : null,
+    year: vehicle.lineage.modelYear,
+    baseBodyStyle: vehicle.lineage.baseBodyStyle ?? null,
     ...(image ? { image } : {})
   }
 }

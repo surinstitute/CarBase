@@ -504,8 +504,10 @@ class VehicleSerializer(serializers.ModelSerializer):
             "modelId": str(obj.model.id),
             "modelGenerationId": str(obj.model.model_generation_id),
             "makeName": obj.model.model_generation.make.name,
+            "makeSlug": obj.model.model_generation.make.slug,
             "modelName": obj.model.model_generation.model,
             "modelYear": obj.model.year,
+            "baseBodyStyle": obj.model.body_style,
         }
         model_generation = obj.model.model_generation
         if model_generation.platform_id:
