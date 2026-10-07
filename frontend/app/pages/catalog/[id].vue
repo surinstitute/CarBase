@@ -224,16 +224,16 @@ function shareTechnicalPermalink() {
             type="button"
             variant="outline"
             size="icon"
-            class="absolute bottom-4 left-4 size-8 rounded-full"
+            class="absolute right-4 bottom-4 size-8 rounded-full"
             aria-label="Compartir permalink"
             title="Compartir permalink"
             @click="shareTechnicalPermalink"
           >
             <Icon name="tabler:share-3" class="size-4" aria-hidden="true" />
           </Button>
-          <p v-if="permalinkShareStatus === 'shared'" role="status" class="absolute bottom-14 left-6 text-sm text-muted-foreground">Permalink compartido.</p>
-          <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="absolute bottom-14 left-6 text-sm text-muted-foreground">Permalink copiado.</p>
-          <p v-else-if="permalinkShareStatus === 'error'" role="alert" class="absolute bottom-14 left-6 text-sm text-destructive">No se pudo compartir el permalink.</p>
+          <p v-if="permalinkShareStatus === 'shared'" role="status" class="absolute right-6 bottom-14 text-sm text-muted-foreground">Permalink compartido.</p>
+          <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="absolute right-6 bottom-14 text-sm text-muted-foreground">Permalink copiado.</p>
+          <p v-else-if="permalinkShareStatus === 'error'" role="alert" class="absolute right-6 bottom-14 text-sm text-destructive">No se pudo compartir el permalink.</p>
         </CardHeader>
         <CardContent>
           <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
