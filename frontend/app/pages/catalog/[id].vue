@@ -191,7 +191,7 @@ function shareTechnicalPermalink() {
         {{ generationModel.year }}
       </NuxtLink>
     </nav>
-    <div class="grid items-start gap-6 lg:grid-cols-2">
+    <div class="grid items-stretch gap-6 lg:grid-cols-2">
       <div class="space-y-2">
         <img v-if="activeImage" :src="activeImage.url" :alt="activeImage.alt" class="aspect-4/3 w-full rounded-xl border object-cover">
         <div v-else class="flex aspect-4/3 items-center justify-center rounded-xl border bg-muted text-muted-foreground">
@@ -212,7 +212,7 @@ function shareTechnicalPermalink() {
           </button>
         </div>
       </div>
-      <Card>
+      <Card class="relative h-full">
         <CardHeader>
           <Badge variant="secondary" class="w-fit">{{ model.year }}</Badge>
           <h1 class="text-2xl font-semibold tracking-tight">{{ model.makeName }} {{ model.modelName }}</h1>
@@ -220,13 +220,20 @@ function shareTechnicalPermalink() {
           <NuxtLink :to="modelOverviewRoute" class="w-fit text-sm font-medium underline underline-offset-4">
             Volver a {{ model.modelName }}
           </NuxtLink>
-          <Button type="button" variant="outline" class="w-fit" @click="shareTechnicalPermalink">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            class="absolute bottom-4 left-4 size-8 rounded-full"
+            aria-label="Compartir permalink"
+            title="Compartir permalink"
+            @click="shareTechnicalPermalink"
+          >
             <Icon name="tabler:share-3" class="size-4" aria-hidden="true" />
-            Compartir permalink
           </Button>
-          <p v-if="permalinkShareStatus === 'shared'" role="status" class="text-sm text-muted-foreground">Permalink compartido.</p>
-          <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="text-sm text-muted-foreground">Permalink copiado.</p>
-          <p v-else-if="permalinkShareStatus === 'error'" role="alert" class="text-sm text-destructive">No se pudo compartir el permalink.</p>
+          <p v-if="permalinkShareStatus === 'shared'" role="status" class="absolute bottom-14 left-6 text-sm text-muted-foreground">Permalink compartido.</p>
+          <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="absolute bottom-14 left-6 text-sm text-muted-foreground">Permalink copiado.</p>
+          <p v-else-if="permalinkShareStatus === 'error'" role="alert" class="absolute bottom-14 left-6 text-sm text-destructive">No se pudo compartir el permalink.</p>
         </CardHeader>
         <CardContent>
           <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
