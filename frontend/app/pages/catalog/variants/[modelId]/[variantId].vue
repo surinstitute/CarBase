@@ -99,12 +99,24 @@ const configurationSections = computed(() => {
     },
     {
       title: 'Motores de tracción',
-      rows: itemsOf(powertrain.tractionMotors).map((motor, index) => ({
+      rows: itemsOf(powertrain.tractionMotors).filter((motor) => motor.isPrimary !== true).map((motor, index) => ({
         label: label(motor.role) || `Motor ${index + 1}`,
         value: configurationDetails(motor, ['role'])
       })).filter((row) => row.value)
     }
   ].filter((section) => section.rows.length)
+})
+const primaryTractionMotors = computed(() => {
+  const powertrain = recordOf(configuration.value.powertrain)
+
+  return itemsOf(powertrain.tractionMotors)
+    .filter((motor) => motor.isPrimary === true)
+    .map((motor, index) => ({
+      name: typeof motor.motorName === 'string' && motor.motorName
+        ? motor.motorName
+        : `Motor ${index + 1}`,
+      rows: configurationRows(motor, ['motorName', 'isPrimary'])
+    }))
 })
 const labels: Record<string, string> = {
   battery_electric: 'Eléctrico de batería',
@@ -393,9 +405,16 @@ function performanceRows(value: unknown) {
           >
             <Icon :name="isSelectedForComparison ? 'tabler:minus' : 'tabler:plus'" class="size-4" aria-hidden="true" />
           </Button>
-          <Button type="button" variant="outline" class="absolute bottom-4 left-4 w-fit" @click="shareTechnicalPermalink">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            class="absolute bottom-4 left-4 size-8 rounded-full"
+            aria-label="Compartir permalink"
+            title="Compartir permalink"
+            @click="shareTechnicalPermalink"
+          >
             <Icon name="tabler:share-3" class="size-4" aria-hidden="true" />
-            Compartir permalink
           </Button>
           <p v-if="permalinkShareStatus === 'shared'" role="status" class="absolute bottom-14 left-6 text-sm text-muted-foreground">Permalink compartido.</p>
           <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="absolute bottom-14 left-6 text-sm text-muted-foreground">Permalink copiado.</p>
@@ -422,7 +441,7 @@ function performanceRows(value: unknown) {
         <CardDescription>Powertrain, almacenamiento de energía y motores de tracción.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div v-if="configurationSections.length" class="grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+        <div v-if="configurationSections.length || primaryTractionMotors.length" class="grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
           <section v-for="section in configurationSections" :key="section.title" class="space-y-3">
             <h3 class="text-sm font-medium">{{ section.title }}</h3>
             <dl class="space-y-3 text-sm">
@@ -431,6 +450,20 @@ function performanceRows(value: unknown) {
                 <dd class="max-w-2/3 text-right font-medium">{{ row.value }}</dd>
               </div>
             </dl>
+          </section>
+          <section v-if="primaryTractionMotors.length" class="space-y-3">
+            <h3 class="text-sm font-medium">Tracción</h3>
+            <div v-for="motor in primaryTractionMotors" :key="motor.name" class="space-y-2">
+              <h4 class="text-sm text-muted-foreground">{{ motor.name }}</h4>
+              <Table>
+                <TableBody>
+                  <TableRow v-for="row in motor.rows" :key="row.label">
+                    <TableCell class="p-2 text-muted-foreground">{{ row.label }}</TableCell>
+                    <TableCell class="p-2 text-right font-medium">{{ row.value }}</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
           </section>
         </div>
         <p v-else class="text-sm text-muted-foreground">No hay datos de configuración disponibles.</p>
