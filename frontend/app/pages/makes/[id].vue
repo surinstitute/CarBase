@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Card, CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import { countryFlag } from '@/lib/utils'
+import { countryFlag, countryName } from '@/lib/utils'
 import type { ApiPage, CatalogMake, CatalogModel } from '#shared/types/catalog'
 
 interface ModelCard {
@@ -90,7 +90,7 @@ const modelCards = computed<ModelCard[]>(() => {
 
         <div v-if="make.country || make.legalRepresentative" class="border-b pb-4 text-sm text-muted-foreground">
           <p v-if="make.legalRepresentative">{{ make.legalRepresentative }}</p>
-          <p v-if="make.country" class="flex items-center gap-2">Origen: {{ make.country }} <span class="text-2xl leading-none" aria-hidden="true">{{ countryFlag(make.country) }}</span></p>
+          <p v-if="make.country" class="flex items-center gap-2">Origen: {{ countryName(make.country) }} ({{ make.country }}) <span class="text-2xl leading-none" aria-hidden="true">{{ countryFlag(make.country) }}</span></p>
         </div>
       </div>
 

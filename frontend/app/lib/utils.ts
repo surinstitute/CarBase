@@ -13,6 +13,13 @@ export function countryFlag(country: string | null | undefined) {
   return String.fromCodePoint(...[...code].map((letter) => 127397 + letter.charCodeAt(0)))
 }
 
+export function countryName(country: string | null | undefined) {
+  const code = country?.trim().toUpperCase()
+  if (!code || !/^[A-Z]{2}$/.test(code)) return ''
+
+  return new Intl.DisplayNames('es-MX', { type: 'region' }).of(code) ?? code
+}
+
 export function formatNumber(value: number | string | null | undefined) {
   const number = typeof value === 'number' ? value : Number(value)
   if (!Number.isFinite(number)) return ''

@@ -510,6 +510,7 @@ class VehicleSerializer(serializers.ModelSerializer):
         model_generation = obj.model.model_generation
         if model_generation.platform_id:
             lineage["platformId"] = str(model_generation.platform.platformId)
+            lineage["platformName"] = model_generation.platform.name
         if model_generation.generation:
             lineage["generationId"] = model_generation.generation
         return lineage
@@ -664,6 +665,15 @@ class VehicleSerializer(serializers.ModelSerializer):
             {
                 "type": "combustion_engine",
                 "engineId": str(fitment.engine.engineId),
+                "engineName": fitment.engine.name,
+                "fuelType": ENGINE_FUEL_TYPE_MAP.get(
+                    fitment.engine.energy_source, "other"
+                ),
+                "displacementCc": fitment.engine.displacement_cc,
+                "powerKw": fitment.engine.power_kW,
+                "cylinderCount": fitment.engine.cylinder_count,
+                "aspiration": fitment.engine.aspiration,
+                "layout": fitment.engine.layout,
                 "role": fitment.role,
                 "isPrimary": fitment.is_primary,
             }
@@ -676,6 +686,11 @@ class VehicleSerializer(serializers.ModelSerializer):
         items = [
             {
                 "electricMotorId": str(fitment.e_motor.eMotorId),
+                "motorName": fitment.e_motor.name,
+                "motorType": fitment.e_motor.motor_type,
+                "powerKw": fitment.e_motor.power_kW,
+                "torqueNm": fitment.e_motor.torque_Nm,
+                "coolingType": fitment.e_motor.cooling_type,
                 "role": fitment.role,
                 "position": fitment.position,
                 "quantity": fitment.quantity,

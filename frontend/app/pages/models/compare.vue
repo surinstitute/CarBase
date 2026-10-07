@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import type { ComparisonVehicle } from '@/composables/useCarComparison'
-import { formatNumber } from '@/lib/utils'
+import { countryName, formatNumber } from '@/lib/utils'
 import type { CatalogSafetyRating } from '#shared/types/catalog'
 
 const comparison = useCarComparison()
@@ -44,7 +44,7 @@ const comparisonSections = computed(() => {
         { label: 'Versión', values: vehicles.map((item: ComparisonVehicle) => item.variantName || 'Versión no especificada') },
         { label: 'Año modelo', values: vehicles.map((item: ComparisonVehicle) => String(item.vehicle.lineage.modelYear)) },
         { label: 'Precio', values: vehicles.map((item: ComparisonVehicle) => item.vehicle.priceAmount ? `${formatNumber(item.vehicle.priceAmount)} ${item.vehicle.priceCurrency ?? ''}`.trim() : missingValue) },
-        { label: 'País de armado', values: vehicles.map((item: ComparisonVehicle) => String(item.vehicle.assemblyCountry ?? missingValue)) },
+        { label: 'País de armado', values: vehicles.map((item: ComparisonVehicle) => countryName(item.vehicle.assemblyCountry) || missingValue) },
         { label: 'Carrocería', values: vehicles.map((item: ComparisonVehicle) => String(item.vehicle.configuration.bodyStyle ?? missingValue)) }
       ]
     },

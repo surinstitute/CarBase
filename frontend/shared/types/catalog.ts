@@ -60,6 +60,8 @@ export interface CatalogVehicleRecord {
     makeName?: string
     modelName?: string
     modelYear: number
+    platformId?: string
+    platformName?: string
     [field: string]: unknown
   }
   configuration: {

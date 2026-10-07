@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Skeleton } from '@/components/ui/skeleton'
-import { countryFlag, formatNumber } from '@/lib/utils'
+import { countryFlag, countryName, formatNumber } from '@/lib/utils'
 import { modelOverviewPath, modelYearPath, urlSegment, vehicleIdPath } from '@/lib/model-path'
 import type { CatalogModelDetail } from '#shared/types/catalog'
 
@@ -73,32 +73,38 @@ const storageSpecRows = computed(() => specRows.value.filter((row) => storageSpe
 const performanceSections = computed(() => Object.entries(performance.value)
   .map(([field, value]) => ({ field: fieldLabel(field), rows: performanceRows(value) }))
   .filter((section) => section.rows.length))
-const configurationRows = computed(() => {
+const configurationSections = computed(() => {
   const powertrain = recordOf(configuration.value.powertrain)
-  const charging = recordOf(configuration.value.charging)
-  const rows: Array<{ field: string, value: string }> = []
-  const energySources = itemsOf(powertrain.energySources).map((item) => label(item.source)).filter(Boolean)
-  const energyStorage = itemsOf(powertrain.energyStorage).map((item) => [
-    label(item.type),
-    item.capacityKwh !== undefined ? `${formatNumber(String(item.capacityKwh))} kWh` : ''
-  ].filter(Boolean).join(' · ')).filter(Boolean)
-  const energyConverters = itemsOf(powertrain.energyConverters).map((item) => label(item.type)).filter(Boolean)
-  const tractionMotors = itemsOf(powertrain.tractionMotors).map((item) => [label(item.role), label(item.position), item.quantity ? `x${formatNumber(String(item.quantity))}` : ''].filter(Boolean).join(' · ')).filter(Boolean)
-  const acCharging = recordOf(charging.acCharging)
-  const dcCharging = recordOf(charging.dcCharging)
-  const ports = itemsOf(charging.ports).map((item) => [label(item.currentType), label(item.connector), label(item.location)].filter(Boolean).join(' · ')).filter(Boolean)
+  const powertrainRows = [
+    configurationRow('Arquitectura', powertrain.architecture),
+    configurationRow('Fuentes de energía', itemsOf(powertrain.energySources)
+      .map((source) => configurationDetails(source))
+      .filter(Boolean)
+      .join(', ')),
+    ...configurationRows(powertrain, ['architecture', 'energySources', 'energyStorage', 'tractionMotors']),
+    ...configurationRows(configuration.value, ['powertrain'])
+  ].filter((row): row is { label: string, value: string } => Boolean(row))
 
-  if (powertrain.architecture) rows.push({ field: 'Propulsión', value: label(powertrain.architecture) })
-  if (energySources.length) rows.push({ field: 'Fuente de energía', value: energySources.join(', ') })
-  if (energyStorage.length) rows.push({ field: 'Almacenamiento', value: energyStorage.join(', ') })
-  if (energyConverters.length) rows.push({ field: 'Convertidores', value: energyConverters.join(', ') })
-  if (tractionMotors.length) rows.push({ field: 'Motores', value: tractionMotors.join(', ') })
-  if (configuration.value.transmissionId) rows.push({ field: 'Transmisión', value: 'Incluida' })
-  if (acCharging.maxPowerKw !== undefined) rows.push({ field: 'Carga CA', value: `${formatNumber(String(acCharging.maxPowerKw))} kW` })
-  if (dcCharging.maxPowerKw !== undefined) rows.push({ field: 'Carga CC', value: `${formatNumber(String(dcCharging.maxPowerKw))} kW` })
-  if (ports.length) rows.push({ field: 'Puertos', value: ports.join(', ') })
-
-  return rows
+  return [
+    {
+      title: 'Powertrain',
+      rows: powertrainRows
+    },
+    {
+      title: 'Almacenamiento de energía',
+      rows: itemsOf(powertrain.energyStorage).map((storage, index) => ({
+        label: label(storage.type) || `Almacenamiento ${index + 1}`,
+        value: configurationDetails(storage, ['type'])
+      })).filter((row) => row.value)
+    },
+    {
+      title: 'Motores de tracción',
+      rows: itemsOf(powertrain.tractionMotors).map((motor, index) => ({
+        label: label(motor.role) || `Motor ${index + 1}`,
+        value: configurationDetails(motor, ['role'])
+      })).filter((row) => row.value)
+    }
+  ].filter((section) => section.rows.length)
 })
 const labels: Record<string, string> = {
   battery_electric: 'Eléctrico de batería',
@@ -122,6 +128,17 @@ const labels: Record<string, string> = {
   battery_pack: 'Batería',
   fuel_tank: 'Depósito de combustible',
   combustion_engine: 'Motor de combustión',
+  naturally_aspirated: 'Aspiración natural',
+  turbocharged: 'Turboalimentado',
+  supercharged: 'Sobrealimentado',
+  twincharged: 'Twincharged',
+  ac_induction: 'Inducción de CA',
+  permanent_magnet: 'Imán permanente',
+  externally_excited: 'Excitación externa',
+  switched_reluctance: 'Reluctancia conmutada',
+  air: 'Aire',
+  liquid: 'Líquido',
+  oil: 'Aceite',
   traction: 'Tracción',
   generator: 'Generador',
   front_axle: 'Eje delantero',
@@ -209,6 +226,30 @@ function label(value: unknown) {
 
 function fieldLabel(value: string) {
   const fieldLabels: Record<string, string> = {
+    architecture: 'Arquitectura',
+    energySources: 'Fuentes de energía',
+    source: 'Fuente',
+    type: 'Tipo',
+    isPrimary: 'Principal',
+    batteryPackId: 'ID de batería',
+    electricMotorId: 'ID de motor eléctrico',
+    capacityKwh: 'Capacidad',
+    engineName: 'Motor',
+    fuelType: 'Combustible',
+    displacementCc: 'Cilindrada',
+    cylinderCount: 'Cilindros',
+    aspiration: 'Aspiración',
+    layout: 'Disposición',
+    motorName: 'Motor',
+    motorType: 'Tipo de motor',
+    powerKw: 'Potencia',
+    torqueNm: 'Par motor',
+    coolingType: 'Refrigeración',
+    role: 'Función',
+    position: 'Posición',
+    quantity: 'Cantidad',
+    bodyStyle: 'Carrocería',
+    transmissionId: 'ID de transmisión',
     length: 'Largo',
     width: 'Ancho',
     height: 'Alto',
@@ -235,6 +276,60 @@ function fieldLabel(value: string) {
     rearTire: 'Llantas traseras'
   }
   return fieldLabels[value] ?? value.replace(/([a-z])([A-Z])/g, '$1 $2')
+}
+
+function configurationRow(label: string, value: unknown, field?: string) {
+  const formattedValue = configurationValue(value, field)
+  return formattedValue ? { label, value: formattedValue } : null
+}
+
+function configurationRows(
+  values: Record<string, unknown>,
+  excludedFields: string[]
+) {
+  return Object.entries(values)
+    .filter(([field]) => !excludedFields.includes(field) && !field.endsWith('Id'))
+    .flatMap(([field, value]) => {
+      if (value === null || value === undefined) return []
+      if (Array.isArray(value)) {
+        const details = value
+          .map((item) => configurationDetails(recordOf(item)))
+          .filter(Boolean)
+          .join(', ')
+        return configurationRow(fieldLabel(field), details) ?? []
+      }
+      if (Object.keys(recordOf(value)).length) {
+        return configurationRows(recordOf(value), []).map((row) => ({
+          label: `${fieldLabel(field)} · ${row.label}`,
+          value: row.value
+        }))
+      }
+      return configurationRow(fieldLabel(field), value, field) ?? []
+    })
+}
+
+function configurationDetails(
+  value: Record<string, unknown>,
+  excludedFields: string[] = []
+) {
+  return configurationRows(value, excludedFields)
+    .map((row) => `${row.label}: ${row.value}`)
+    .join(' · ')
+}
+
+function configurationValue(value: unknown, field?: string) {
+  if (typeof value === 'string') return label(value)
+  if (typeof value === 'boolean') return value ? 'Sí' : 'No'
+  if (typeof value !== 'number') return ''
+
+  const units: Record<string, string> = {
+    capacityKwh: 'kWh',
+    displacementCc: 'cc',
+    powerKw: 'kW',
+    torqueNm: 'Nm',
+    voltageV: 'V'
+  }
+  return `${formatNumber(String(value))}${field && units[field] ? ` ${units[field]}` : ''}`
 }
 
 function measurement(value: unknown) {
@@ -275,16 +370,16 @@ function performanceRows(value: unknown) {
       </BreadcrumbList>
     </Breadcrumb>
 
-    <div class="grid items-start gap-6 lg:grid-cols-2">
+    <div class="grid items-stretch gap-6 lg:grid-cols-2">
       <img v-if="image" :src="image.url" :alt="image.alt" class="aspect-4/3 w-full rounded-xl border object-cover">
       <div v-else class="flex aspect-4/3 items-center justify-center rounded-xl border bg-muted text-muted-foreground">
         <Icon name="tabler:car" class="size-12" aria-hidden="true" />
       </div>
-      <Card class="relative">
+      <Card class="relative h-full">
         <CardHeader>
           <Badge variant="secondary" class="w-fit">{{ variant.lineage.modelYear }}</Badge>
           <h1 class="text-2xl font-semibold tracking-tight">{{ model.makeName }} {{ model.modelName }} · {{ variantLabel }}</h1>
-          <CardDescription>Registro de vehículo #{{ variant.id }}</CardDescription>
+          <CardDescription>ID: {{ variant.id }}</CardDescription>
           <Button
             type="button"
             variant="outline"
@@ -298,25 +393,49 @@ function performanceRows(value: unknown) {
           >
             <Icon :name="isSelectedForComparison ? 'tabler:minus' : 'tabler:plus'" class="size-4" aria-hidden="true" />
           </Button>
-          <Button type="button" variant="outline" class="w-fit" @click="shareTechnicalPermalink">
+          <Button type="button" variant="outline" class="absolute bottom-4 left-4 w-fit" @click="shareTechnicalPermalink">
             <Icon name="tabler:share-3" class="size-4" aria-hidden="true" />
             Compartir permalink
           </Button>
-          <p v-if="permalinkShareStatus === 'shared'" role="status" class="text-sm text-muted-foreground">Permalink compartido.</p>
-          <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="text-sm text-muted-foreground">Permalink copiado.</p>
-          <p v-else-if="permalinkShareStatus === 'error'" role="alert" class="text-sm text-destructive">No se pudo compartir el permalink.</p>
+          <p v-if="permalinkShareStatus === 'shared'" role="status" class="absolute bottom-14 left-6 text-sm text-muted-foreground">Permalink compartido.</p>
+          <p v-else-if="permalinkShareStatus === 'copied'" role="status" class="absolute bottom-14 left-6 text-sm text-muted-foreground">Permalink copiado.</p>
+          <p v-else-if="permalinkShareStatus === 'error'" role="alert" class="absolute bottom-14 left-6 text-sm text-destructive">No se pudo compartir el permalink.</p>
         </CardHeader>
         <CardContent class="space-y-4">
           <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
             <dt class="text-muted-foreground">Año modelo</dt><dd class="font-medium">{{ variant.lineage.modelYear }}</dd>
             <dt class="text-muted-foreground">Generación</dt><dd class="font-medium">{{ variant.lineage.generationId ?? 'No especificada' }}</dd>
+            <template v-if="variant.lineage.platformName">
+              <dt class="text-muted-foreground">Plataforma</dt><dd class="font-medium">{{ variant.lineage.platformName }}</dd>
+            </template>
             <template v-if="variant.assemblyCountry">
-              <dt class="text-muted-foreground">País de armado</dt><dd class="font-medium">{{ countryFlag(String(variant.assemblyCountry)) }} {{ variant.assemblyCountry }}</dd>
+              <dt class="text-muted-foreground">País de armado</dt><dd class="font-medium">{{ countryName(String(variant.assemblyCountry)) }} ({{ variant.assemblyCountry }}) {{ countryFlag(String(variant.assemblyCountry)) }}</dd>
             </template>
           </dl>
         </CardContent>
       </Card>
     </div>
+
+    <Card>
+      <CardHeader>
+        <CardTitle>Configuración</CardTitle>
+        <CardDescription>Powertrain, almacenamiento de energía y motores de tracción.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div v-if="configurationSections.length" class="grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+          <section v-for="section in configurationSections" :key="section.title" class="space-y-3">
+            <h3 class="text-sm font-medium">{{ section.title }}</h3>
+            <dl class="space-y-3 text-sm">
+              <div v-for="row in section.rows" :key="row.label" class="flex items-baseline justify-between gap-4 border-b pb-3 last:border-0 last:pb-0">
+                <dt class="text-muted-foreground">{{ row.label }}</dt>
+                <dd class="max-w-2/3 text-right font-medium">{{ row.value }}</dd>
+              </div>
+            </dl>
+          </section>
+        </div>
+        <p v-else class="text-sm text-muted-foreground">No hay datos de configuración disponibles.</p>
+      </CardContent>
+    </Card>
 
     <div class="grid gap-6 lg:grid-cols-3">
       <Card>
@@ -370,21 +489,6 @@ function performanceRows(value: unknown) {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Configuración</CardTitle>
-          <CardDescription>Propulsión, almacenamiento y carga.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <dl v-if="configurationRows.length" class="space-y-3 text-sm">
-            <div v-for="row in configurationRows" :key="row.field" class="space-y-1 border-b pb-3 last:border-0 last:pb-0">
-              <dt class="text-muted-foreground">{{ row.field }}</dt>
-              <dd class="font-medium">{{ row.value }}</dd>
-            </div>
-          </dl>
-          <p v-else class="text-sm text-muted-foreground">No hay datos de configuración disponibles.</p>
-        </CardContent>
-      </Card>
     </div>
 
     <CatalogSafetyPackage :safety="variant.safety" />
