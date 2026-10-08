@@ -215,11 +215,11 @@ function shareTechnicalPermalink() {
       <Card class="relative h-full">
         <CardHeader>
           <Badge variant="secondary" class="w-fit">{{ model.year }}</Badge>
-          <h1 class="text-2xl font-semibold tracking-tight">{{ model.makeName }} {{ model.modelName }}</h1>
+          <h1 class="text-2xl font-semibold tracking-tight">
+            {{ model.makeName }}
+            <NuxtLink :to="modelOverviewRoute" class="underline underline-offset-4">{{ model.modelName }}</NuxtLink>
+          </h1>
           <CardDescription>{{ model.generation || 'Modelo base' }}</CardDescription>
-          <NuxtLink :to="modelOverviewRoute" class="w-fit text-sm font-medium underline underline-offset-4">
-            Volver a {{ model.modelName }}
-          </NuxtLink>
           <Button
             type="button"
             variant="outline"
