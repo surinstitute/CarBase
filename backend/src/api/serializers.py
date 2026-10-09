@@ -203,7 +203,7 @@ class BaseModelDetailSerializer(BaseModelSerializer):
         ]
 
     def get_variants(self, obj):
-        return VehicleSerializer(
+        return VehicleSummarySerializer(
             obj.model_vehicles.all(), many=True, context=self.context
         ).data
 
@@ -525,6 +525,7 @@ class VehicleSerializer(serializers.ModelSerializer):
         if obj.transmissionId_id:
             configuration["transmissionId"] = str(obj.transmissionId.transmissionId)
         return configuration
+
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
@@ -1017,6 +1018,65 @@ class VehicleSerializer(serializers.ModelSerializer):
         if result.note:
             data["note"] = result.note
         return data
+
+
+class VehicleSummarySerializer(VehicleSerializer):
+    class Meta:
+        model = Vehicle
+        fields = (
+            "id",
+            "variantName",
+            "priceAmount",
+            "priceCurrency",
+            "lineage",
+            "configuration",
+        )
+
+    def get_configuration(self, obj):
+        configuration = {"bodyStyle": obj.model.body_style}
+        powertrain = obj.powertrain
+        if powertrain is not None:
+            serialized_powertrain = {
+                "architecture": ARCHITECTURE_MAP.get(
+                    powertrain.architecture, powertrain.architecture
+                ),
+            }
+            energy_storage = self._build_energy_storage(powertrain)
+            if energy_storage:
+                serialized_powertrain["energyStorage"] = energy_storage
+
+            power_outputs = [
+                {
+                    "type": "combustion_engine",
+                    "powerKw": fitment.engine.power_kW,
+                }
+                for fitment in powertrain.engine_fitments.all()
+                if fitment.engine.power_kW is not None
+            ]
+            power_outputs.extend(
+                {
+                    "type": "electric_motor",
+                    "powerKw": fitment.e_motor.power_kW,
+                    "quantity": fitment.quantity,
+                }
+                for fitment in powertrain.motor_fitments.all()
+            )
+            if power_outputs:
+                serialized_powertrain["powerOutputs"] = power_outputs
+            configuration["powertrain"] = serialized_powertrain
+        else:
+            configuration["powertrain"] = None
+
+        if obj.transmissionId_id:
+            configuration["transmission"] = {
+                "name": obj.transmissionId.name,
+                "type": obj.transmissionId.type,
+                "gears": obj.transmissionId.gears,
+            }
+        return configuration
+
+    def to_representation(self, instance):
+        return serializers.ModelSerializer.to_representation(self, instance)
 
     def _serialize_performance(self, obj):
         performance = {}

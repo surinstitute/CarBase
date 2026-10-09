@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select'
 import { Skeleton } from '@/components/ui/skeleton'
+import { powertrainFilterLabel } from '@/lib/powertrain'
 import type { ApiPage, CatalogModel, CatalogVehicleRecord } from '#shared/types/catalog'
 
 const route = useRoute()
@@ -133,7 +134,7 @@ function modelContext(vehicle: CatalogVehicleRecord): Pick<CatalogModel, 'id' | 
           <label class="grid gap-2 text-sm font-medium">Propulsión
             <NativeSelect v-model="powertrainType" class="w-full" :disabled="!filterOptions?.powertrainTypes.length" aria-label="Filtrar vehículos por propulsión">
               <NativeSelectOption value="all">Todas las propulsiones</NativeSelectOption>
-              <NativeSelectOption v-for="option in filterOptions?.powertrainTypes" :key="option" :value="option">{{ option.replaceAll('_', ' ') }}</NativeSelectOption>
+              <NativeSelectOption v-for="option in filterOptions?.powertrainTypes" :key="option" :value="option">{{ powertrainFilterLabel(option) ?? option.replaceAll('_', ' ') }}</NativeSelectOption>
             </NativeSelect>
           </label>
           <label class="grid gap-2 text-sm font-medium">País de armado

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { modelIdPath, modelOverviewPath, modelYearPath } from '@/lib/model-path'
+import { powertrainArchitectureLabel } from '@/lib/powertrain'
 import type { ApiPage, CatalogModel, CatalogModelDetail, CatalogSafetyRating, CatalogVehicleRecord, CatalogWarrantyCoverage } from '#shared/types/catalog'
 
 const route = useRoute()
@@ -85,7 +86,9 @@ const modelDetailRows = computed(() => {
 })
 
 function architectureLabel(architectures: string[]) {
-  return architectures.length ? architectures.map((architecture) => architecture.replaceAll('_', ' ')).join(', ') : 'No especificada'
+  return architectures.length
+    ? architectures.map((architecture) => powertrainArchitectureLabel(architecture) ?? architecture.replaceAll('_', ' ')).join(', ')
+    : 'No especificada'
 }
 
 function bodyStyleLabel(bodyStyle: string) {

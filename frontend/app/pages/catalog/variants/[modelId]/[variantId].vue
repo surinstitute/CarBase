@@ -9,7 +9,8 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Skeleton } from '@/components/ui/skeleton'
 import { countryFlag, countryName, formatNumber } from '@/lib/utils'
 import { modelOverviewPath, modelYearPath, urlSegment, vehicleIdPath } from '@/lib/model-path'
-import type { CatalogModelDetail } from '#shared/types/catalog'
+import { powertrainArchitectureLabel } from '@/lib/powertrain'
+import type { CatalogModelDetail, CatalogVehicleRecord } from '#shared/types/catalog'
 
 const route = useRoute()
 const { sharePermalink, status: permalinkShareStatus } = usePermalinkShare()
@@ -22,11 +23,23 @@ const canonicalPath = computed(() => (
 ))
 const { data, status } = useQuery({
   key: () => ['model-detail', route.fullPath],
-  query: () => canonicalPath.value
-    ? $fetch<CatalogModelDetail>(`/api/model-by-path/${route.params.make}/${route.params.model}/${route.params.generation}/${route.params.modelYear}`)
-    : $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`)
+  query: async () => {
+    const model = await (canonicalPath.value
+      ? $fetch<CatalogModelDetail>(`/api/model-by-path/${route.params.make}/${route.params.model}/${route.params.generation}/${route.params.modelYear}`)
+      : $fetch<CatalogModelDetail>(`/api/models/${encodeURIComponent(modelId.value)}`))
+    const summary = model.vehicles.find((item) => (
+      canonicalPath.value
+        ? urlSegment(item.variantName ?? String(item.id)) === variantId.value
+        : String(item.id) === variantId.value
+    ))
+    const variant = summary
+      ? await $fetch<CatalogVehicleRecord>(`/api/vehicles/${encodeURIComponent(String(summary.id))}`)
+      : undefined
+
+    return { model, variant }
+  }
 })
-const model = computed(() => data.value)
+const model = computed(() => data.value?.model)
 const modelOverviewRoute = computed(() => (
   model.value
     ? modelOverviewPath(model.value)
@@ -40,7 +53,7 @@ const variantIndex = computed(() => model.value?.vehicles.findIndex((item) => (
     ? urlSegment(item.variantName ?? String(item.id)) === variantId.value
     : String(item.id) === variantId.value
 )) ?? -1)
-const variant = computed(() => variantIndex.value >= 0 ? model.value?.vehicles[variantIndex.value] : undefined)
+const variant = computed(() => data.value?.variant)
 const variantNumber = computed(() => variantIndex.value + 1)
 const variantLabel = computed(() => variant.value?.variantName || `Variante ${variantNumber.value}`)
 const isSelectedForComparison = computed(() => variant.value
@@ -119,17 +132,6 @@ const primaryTractionMotors = computed(() => {
     }))
 })
 const labels: Record<string, string> = {
-  battery_electric: 'Eléctrico de batería',
-  bev: 'Eléctrico de batería',
-  ice: 'Combustión interna',
-  mild_hybrid: 'Mild hybrid',
-  series_hybrid: 'Híbrido serie',
-  parallel_hybrid: 'Híbrido paralelo',
-  power_split_hybrid: 'Híbrido combinado',
-  phev: 'Híbrido enchufable',
-  plug_in_hybrid: 'Híbrido enchufable',
-  fcev: 'Pila de combustible',
-  fuel_cell_electric: 'Pila de combustible',
   grid_electricity: 'Electricidad de red',
   gasoline: 'Gasolina',
   diesel: 'Diésel',
@@ -233,7 +235,7 @@ function itemsOf(value: unknown): Record<string, unknown>[] {
 
 function label(value: unknown) {
   if (typeof value !== 'string') return ''
-  return labels[value] ?? value.replaceAll('_', ' ')
+  return powertrainArchitectureLabel(value) ?? labels[value] ?? value.replaceAll('_', ' ')
 }
 
 function fieldLabel(value: string) {

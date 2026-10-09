@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { POWERTRAIN_FILTERS } from '@/lib/powertrain'
 
 const search = ref('')
 const quickFilters = [
@@ -11,12 +12,10 @@ const quickFilters = [
 	{ label: 'Sedán', bodyStyle: 'sedan' },
 	{ label: 'Hatchback', bodyStyle: 'hatchback' }
 ]
-const powertrainFilters = [
-	{ label: 'Combustión', powertrainType: 'combustion' },
-	{ label: 'Híbrido', powertrainType: 'hybrid' },
-	{ label: 'Híbrido enchufable', powertrainType: 'plug_in_hybrid' },
-	{ label: 'Eléctrico', powertrainType: 'electric' }
-]
+const powertrainFilters = POWERTRAIN_FILTERS.map((filter) => ({
+	label: filter.label,
+	powertrainType: filter.value
+}))
 
 function browseCatalog() {
 	navigateTo({ path: '/vehicles', query: search.value.trim() ? { q: search.value.trim() } : undefined })

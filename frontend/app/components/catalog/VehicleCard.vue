@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { variantPath, vehicleIdPath } from '@/lib/model-path'
+import { powertrainFilterForArchitecture } from '@/lib/powertrain'
 import { formatNumber } from '@/lib/utils'
 import type { CatalogModel, CatalogVehicleRecord } from '#shared/types/catalog'
 
@@ -16,8 +17,19 @@ const props = defineProps<{
 }>()
 
 const comparison = useCarComparison()
-const image = computed(() => props.vehicle.images?.leftSide ?? props.vehicle.images?.silhouette ?? props.vehicle.images?.front)
+const image = computed(() => (
+  props.vehicle.images?.leftSide
+  ?? props.vehicle.images?.silhouette
+  ?? props.vehicle.images?.front
+  ?? props.model.image
+))
 const isSelected = computed(() => comparison.selectedVehicles.value.some((selected) => selected.id === String(props.vehicle.id)))
+const powertrainArchitecture = computed(() => props.vehicle.configuration.powertrain?.architecture)
+const powertrainFilter = computed(() => (
+  powertrainArchitecture.value
+    ? powertrainFilterForArchitecture(powertrainArchitecture.value)
+    : undefined
+))
 const vehiclePath = computed(() => {
   if (!props.model.makeSlug || !props.model.year) {
     return vehicleIdPath(props.model.id, props.vehicle.id)
@@ -41,12 +53,23 @@ function configurationRows() {
   if (!powertrain) return []
 
   const rows: Array<{ field: string; value: string }> = []
-  if (powertrain.architecture) {
-    rows.push({ field: 'Arquitectura', value: powertrain.architecture.replaceAll('_', ' ') })
-  }
   const energyStorage = formatEnergyStorage(powertrain.energyStorage)
   if (energyStorage) {
     rows.push({ field: 'Almacenamiento de energía', value: energyStorage })
+  }
+  const power = formatPowerOutputs(powertrain.powerOutputs)
+  if (power) {
+    rows.push({ field: 'Potencia', value: power })
+  }
+  const transmission = props.vehicle.configuration.transmission
+  if (transmission && typeof transmission === 'object') {
+    const details = transmission as Record<string, unknown>
+    const value = [
+      typeof details.name === 'string' ? details.name : '',
+      typeof details.type === 'string' ? details.type.replaceAll('_', ' ') : '',
+      typeof details.gears === 'number' ? `${details.gears} velocidades` : ''
+    ].filter(Boolean).join(' · ')
+    if (value) rows.push({ field: 'Transmisión', value })
   }
   return rows
 }
@@ -64,6 +87,21 @@ function formatEnergyStorage(value: unknown) {
         ? `${formatNumber(storage.fuelCapacity)} L`
         : ''
     return [type, capacity].filter(Boolean).join(' · ')
+  }).filter(Boolean).join(', ')
+}
+
+function formatPowerOutputs(value: unknown) {
+  if (!Array.isArray(value)) return ''
+
+  return value.map((item: unknown) => {
+    if (!item || typeof item !== 'object') return ''
+    const output = item as Record<string, unknown>
+    if (typeof output.powerKw !== 'number') return ''
+
+    const quantity = typeof output.quantity === 'number' && output.quantity > 1
+      ? ` ×${output.quantity}`
+      : ''
+    return `${formatNumber(output.powerKw)} kW${quantity}`
   }).filter(Boolean).join(', ')
 }
 </script>
@@ -111,6 +149,14 @@ function formatEnergyStorage(value: unknown) {
         <template v-if="vehicle.priceAmount">
           <dt class="text-muted-foreground">Precio</dt>
           <dd class="font-medium">{{ vehicle.priceCurrency }} {{ formatNumber(vehicle.priceAmount) }}</dd>
+        </template>
+        <template v-if="powertrainFilter">
+          <dt class="text-muted-foreground">Propulsión</dt>
+          <dd>
+            <NuxtLink :to="{ path: '/vehicles', query: { powertrain_type: powertrainFilter.value } }" class="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <Badge variant="outline">{{ powertrainFilter.label }}</Badge>
+            </NuxtLink>
+          </dd>
         </template>
         <template v-for="row in configurationRows()" :key="row.field">
           <dt class="text-muted-foreground">{{ row.field }}</dt>

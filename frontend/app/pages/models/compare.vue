@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import type { ComparisonVehicle } from '@/composables/useCarComparison'
+import { powertrainArchitectureLabel } from '@/lib/powertrain'
 import { countryName, formatNumber } from '@/lib/utils'
 import type { CatalogSafetyRating } from '#shared/types/catalog'
 
@@ -227,9 +228,11 @@ function specificationLabel(value: string) {
 
 function label(value: unknown) {
   const labels: Record<string, string> = {
-    battery_electric: 'Eléctrico de batería', ice: 'Combustión interna', mild_hybrid: 'Mild hybrid', series_hybrid: 'Híbrido serie', parallel_hybrid: 'Híbrido paralelo', power_split_hybrid: 'Híbrido combinado', phev: 'Híbrido enchufable', fuel_cell_electric: 'Pila de combustible', grid_electricity: 'Electricidad de red', gasoline: 'Gasolina', diesel: 'Diésel', battery_pack: 'Batería', fuel_tank: 'Depósito de combustible', combustion_engine: 'Motor de combustión', traction: 'Tracción', generator: 'Generador', front_axle: 'Eje delantero', rear_axle: 'Eje trasero', ac: 'CA', dc: 'CC', ac_dc: 'CA/CC'
+    grid_electricity: 'Electricidad de red', gasoline: 'Gasolina', diesel: 'Diésel', battery_pack: 'Batería', fuel_tank: 'Depósito de combustible', combustion_engine: 'Motor de combustión', traction: 'Tracción', generator: 'Generador', front_axle: 'Eje delantero', rear_axle: 'Eje trasero', ac: 'CA', dc: 'CC', ac_dc: 'CA/CC'
   }
-  return typeof value === 'string' ? labels[value] ?? value.replaceAll('_', ' ') : ''
+  return typeof value === 'string'
+    ? powertrainArchitectureLabel(value) ?? labels[value] ?? value.replaceAll('_', ' ')
+    : ''
 }
 </script>
 

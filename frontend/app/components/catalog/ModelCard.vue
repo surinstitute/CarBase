@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { powertrainArchitectureLabel } from '@/lib/powertrain'
 import type { CatalogModel } from '#shared/types/catalog'
 
 type ModelCardModel = Pick<
@@ -69,20 +70,6 @@ const generationLabel = computed(() => {
   return ranges.join(', ')
 })
 
-function architectureLabel(architecture: string) {
-  const labels: Record<string, string> = {
-    ice: 'Combustión',
-    mild_hybrid: 'Mild hybrid',
-    series_hybrid: 'Híbrido serie',
-    parallel_hybrid: 'Híbrido paralelo',
-    power_split_hybrid: 'Híbrido',
-    plug_in_hybrid: 'Híbrido enchufable',
-    battery_electric: 'Eléctrico',
-    fuel_cell_electric: 'Pila de combustible'
-  }
-
-  return labels[architecture] ?? architecture.replaceAll('_', ' ')
-}
 </script>
 
 <template>
@@ -112,7 +99,7 @@ function architectureLabel(architecture: string) {
         <Badge v-else-if="generationLabel" variant="secondary">{{ generationLabel }}</Badge>
         <Badge v-if="visibleGenerations.length" variant="outline">{{ yearLabel }}</Badge>
         <Badge v-if="showBodyStyles !== false" v-for="bodyStyle in visibleBodyStyles" :key="bodyStyle" variant="outline">{{ bodyStyle }}</Badge>
-        <Badge v-for="architecture in model.architectures" :key="architecture" variant="outline">{{ architectureLabel(architecture) }}</Badge>
+        <Badge v-for="architecture in model.architectures" :key="architecture" variant="outline">{{ powertrainArchitectureLabel(architecture) ?? architecture.replaceAll('_', ' ') }}</Badge>
       </div>
     </CardContent>
   </Card>

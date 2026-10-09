@@ -92,6 +92,25 @@ def _vehicle_queryset():
     )
 
 
+def _vehicle_summary_queryset():
+    return (
+        Vehicle.objects.select_related(
+            "model",
+            "model__model_generation__platform",
+            "model__model_generation__make",
+            "powertrain",
+            "transmissionId",
+        )
+        .prefetch_related(
+            "powertrain__engine_fitments__engine",
+            "powertrain__motor_fitments__e_motor",
+            "powertrain__battery_fitments__battery_pack",
+            "powertrain__fuel_fitments__fuel_tank",
+        )
+        .order_by("variant_name", "id")
+    )
+
+
 class GroupViewSet(ReadOnlyModelViewSet):
     queryset = Group.objects.annotate(
         make_count=Count("makes", distinct=True),
@@ -274,7 +293,7 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
             queryset = queryset.select_related("warranty")
             queryset = queryset.prefetch_related(
                 "safety_ratings",
-                Prefetch("model_vehicles", queryset=_vehicle_queryset()),
+                Prefetch("model_vehicles", queryset=_vehicle_summary_queryset()),
             )
         return queryset
 
