@@ -88,6 +88,7 @@ const performanceSections = computed(() => Object.entries(performance.value)
   .filter((section) => section.rows.length))
 const configurationSections = computed(() => {
   const powertrain = recordOf(configuration.value.powertrain)
+  const charging = recordOf(configuration.value.charging)
   const powertrainRows = [
     configurationRow('Arquitectura', powertrain.architecture),
     configurationRow('Fuentes de energía', itemsOf(powertrain.energySources)
@@ -95,13 +96,18 @@ const configurationSections = computed(() => {
       .filter(Boolean)
       .join(', ')),
     ...configurationRows(powertrain, ['architecture', 'energySources', 'energyStorage', 'tractionMotors']),
-    ...configurationRows(configuration.value, ['powertrain'])
+    ...configurationRows(configuration.value, ['powertrain', 'charging'])
   ].filter((row): row is { label: string, value: string } => Boolean(row))
+  const chargingRows = configurationRows(charging, [])
 
   return [
     {
       title: 'Powertrain',
       rows: powertrainRows
+    },
+    {
+      title: 'Carga',
+      rows: chargingRows
     },
     {
       title: 'Almacenamiento de energía',
@@ -146,6 +152,25 @@ const labels: Record<string, string> = {
   turbocharged: 'Turboalimentado',
   supercharged: 'Sobrealimentado',
   twincharged: 'Twincharged',
+  type1: 'Type 1',
+  type2: 'Type 2',
+  ccs1: 'CCS1',
+  ccs2: 'CCS2',
+  chademo: 'CHAdeMO',
+  gb_t: 'GB/T',
+  gb_dc: 'GB DC',
+  nacs: 'NACS',
+  tesla: 'Tesla',
+  other: 'Otro',
+  front_center: 'Delante, centro',
+  rear_center: 'Detrás, centro',
+  left: 'Izquierda',
+  right: 'Derecha',
+  home_standard_outlet: 'Casa: enchufe estándar',
+  home_dedicated_ac: 'Casa: CA dedicada',
+  public_ac: 'Pública: CA',
+  public_dc_fast: 'Pública: CC rápida',
+  public_dc_ultrafast: 'Pública: CC ultrarrápida',
   ac_induction: 'Inducción de CA',
   permanent_magnet: 'Imán permanente',
   externally_excited: 'Excitación externa',
@@ -244,6 +269,13 @@ function fieldLabel(value: string) {
     energySources: 'Fuentes de energía',
     source: 'Fuente',
     type: 'Tipo',
+    acCharging: 'Carga CA',
+    dcCharging: 'Carga CC',
+    bidirectionalCharging: 'Carga bidireccional',
+    maxPowerKw: 'Potencia máxima',
+    maxVoltageV: 'Voltaje máximo',
+    maxCurrentA: 'Corriente máxima',
+    phases: 'Fases',
     isPrimary: 'Principal',
     batteryPackId: 'ID de batería',
     electricMotorId: 'ID de motor eléctrico',
@@ -306,6 +338,16 @@ function configurationRows(
     .flatMap(([field, value]) => {
       if (value === null || value === undefined) return []
       if (Array.isArray(value)) {
+        if (field === 'ports' || field === 'chargeTimes') {
+          return value.flatMap((item, index) => {
+            const details = chargingEntryDetails(recordOf(item), field)
+            if (!details) return []
+            const entryLabel = field === 'ports'
+              ? `Puerto de carga ${index + 1}`
+              : `Tiempo de carga ${index + 1}`
+            return [{ label: entryLabel, value: details }]
+          })
+        }
         const details = value
           .map((item) => configurationDetails(recordOf(item)))
           .filter(Boolean)
@@ -339,11 +381,47 @@ function configurationValue(value: unknown, field?: string) {
   const units: Record<string, string> = {
     capacityKwh: 'kWh',
     displacementCc: 'cc',
+    maxCurrentA: 'A',
+    maxPowerKw: 'kW',
+    maxVoltageV: 'V',
     powerKw: 'kW',
     torqueNm: 'Nm',
     voltageV: 'V'
   }
   return `${formatNumber(String(value))}${field && units[field] ? ` ${units[field]}` : ''}`
+}
+
+function chargingEntryDetails(value: Record<string, unknown>, field: 'ports' | 'chargeTimes') {
+  if (field === 'ports') {
+    return [label(value.currentType), label(value.connector), label(value.location)]
+      .filter(Boolean)
+      .join(' · ')
+  }
+
+  const sourceCharge = typeof value.sourceStateOfChargePercent === 'number'
+    ? `${formatNumber(String(value.sourceStateOfChargePercent))} %`
+    : ''
+  const targetCharge = typeof value.targetStateOfChargePercent === 'number'
+    ? `${formatNumber(String(value.targetStateOfChargePercent))} %`
+    : ''
+  const chargeRange = [sourceCharge, targetCharge].filter(Boolean).join(' → ')
+  const duration = typeof value.durationMinutes === 'number'
+    ? `${formatNumber(String(value.durationMinutes))} min`
+    : ''
+  const power = typeof value.powerKw === 'number'
+    ? `${formatNumber(String(value.powerKw))} kW`
+    : ''
+
+  return [
+    label(value.currentType),
+    chargeRange,
+    duration,
+    label(value.connector),
+    label(value.supplyContext),
+    power,
+    value.isPrimary === true ? 'Principal' : '',
+    typeof value.note === 'string' ? value.note : ''
+  ].filter(Boolean).join(' · ')
 }
 
 function measurement(value: unknown) {
@@ -440,7 +518,7 @@ function performanceRows(value: unknown) {
     <Card>
       <CardHeader>
         <CardTitle>Configuración</CardTitle>
-        <CardDescription>Powertrain, almacenamiento de energía y motores de tracción.</CardDescription>
+        <CardDescription>Powertrain, almacenamiento de energía, motores de tracción y carga.</CardDescription>
       </CardHeader>
       <CardContent>
         <div v-if="configurationSections.length || primaryTractionMotors.length" class="grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
