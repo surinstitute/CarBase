@@ -28,8 +28,8 @@ from .models import (
     Group,
     ImageAsset,
     Make,
-    ModelImagePlacement,
     ModelGeneration,
+    ModelImagePlacement,
     ModelSafetyRating,
     Platform,
     PowerTrain,
@@ -972,7 +972,9 @@ class RecallAdminForm(forms.ModelForm):
             and affected_models
             and affected_models.exclude(model_generation__make=maker).exists()
         ):
-            raise ValidationError("Los modelos afectados deben pertenecer al maker del recall.")
+            raise ValidationError(
+                "Los modelos afectados deben pertenecer al maker del recall."
+            )
         return cleaned_data
 
 
@@ -992,9 +994,7 @@ class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
     filter_horizontal = ("affected_models",)
     group_paths = ("maker__group",)
     foreignkey_group_paths = {"maker": "group"}
-    manytomany_group_paths = {
-        "affected_models": "model_generation__make__group"
-    }
+    manytomany_group_paths = {"affected_models": "model_generation__make__group"}
 
 
 @admin.register(Vehicle)
@@ -1055,9 +1055,7 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         "transmissionId": "maker__group",
     }
 
-    @admin.display(
-        ordering="model__model_generation__platform", description="Platform"
-    )
+    @admin.display(ordering="model__model_generation__platform", description="Platform")
     def platform(self, obj):
         return obj.model.model_generation.platform
 

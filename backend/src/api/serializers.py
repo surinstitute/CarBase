@@ -1,31 +1,18 @@
 from rest_framework import serializers
 
 from catalog.models import (
-    AccelerationResult,
-    ApprovalSourceDocument,
     BaseModel,
     BatteryPack,
-    ChargeTimeResult,
-    ChargingPackage,
-    ChargingPort,
-    ComplianceRecord,
-    EfficiencyResult,
-    EmissionsResult,
     EMotor,
     Engine,
     FuelTank,
     Group,
     Make,
-    ModelImagePlacement,
     ModelGeneration,
     Platform,
     PowerTrain,
     PowerTrainArchitecture,
-    RangeResult,
     Recall,
-    RegulatoryApproval,
-    SafetyPackage,
-    TopSpeedResult,
     Transmission,
     Vehicle,
 )
@@ -98,15 +85,17 @@ class BaseModelSerializer(serializers.ModelSerializer):
         source="model_generation_id", read_only=True
     )
     model = serializers.CharField(source="model_generation.model", read_only=True)
-    make = serializers.UUIDField(
-        source="model_generation.make.makeId", read_only=True
-    )
+    make = serializers.UUIDField(source="model_generation.make.makeId", read_only=True)
     generation = serializers.SerializerMethodField()
     platform = serializers.UUIDField(
         source="model_generation.platform_id", read_only=True, allow_null=True
     )
-    makeName = serializers.CharField(source="model_generation.make.name", read_only=True)
-    makeSlug = serializers.CharField(source="model_generation.make.slug", read_only=True)
+    makeName = serializers.CharField(
+        source="model_generation.make.name", read_only=True
+    )
+    makeSlug = serializers.CharField(
+        source="model_generation.make.slug", read_only=True
+    )
     platformName = serializers.CharField(
         source="model_generation.platform.name", read_only=True, allow_null=True
     )
@@ -238,9 +227,7 @@ class BaseModelDetailSerializer(BaseModelSerializer):
         for name in ("basic", "drivetrain", "corrosion"):
             years = getattr(warranty, f"{name}_years")
             kilometers = getattr(warranty, f"{name}_kilometers")
-            kilometers_unlimited = getattr(
-                warranty, f"{name}_kilometers_unlimited"
-            )
+            kilometers_unlimited = getattr(warranty, f"{name}_kilometers_unlimited")
             if years is not None or kilometers is not None or kilometers_unlimited:
                 coverages[name] = {
                     "years": years,
@@ -315,7 +302,9 @@ class EngineSerializer(serializers.ModelSerializer):
 class BatteryPackSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(source="batteryPackId", read_only=True)
     grossCapacityKWh = serializers.SerializerMethodField()
-    usableCapacityKWh = serializers.FloatField(source="usable_capacity_kWh", read_only=True)
+    usableCapacityKWh = serializers.FloatField(
+        source="usable_capacity_kWh", read_only=True
+    )
     systemVoltage = serializers.SerializerMethodField()
 
     class Meta:
@@ -371,6 +360,7 @@ class TransmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transmission
         fields = "__all__"
+
 
 class RecallSerializer(serializers.ModelSerializer):
     makerId = serializers.UUIDField(source="maker.makeId", read_only=True)
@@ -489,9 +479,7 @@ class VehicleSerializer(serializers.ModelSerializer):
                 "actions": recall.actions,
                 "status": recall.status,
                 "publishedDate": (
-                    recall.published_date.isoformat()
-                    if recall.published_date
-                    else None
+                    recall.published_date.isoformat() if recall.published_date else None
                 ),
                 "sourceUrl": recall.source_url,
             }
@@ -526,7 +514,6 @@ class VehicleSerializer(serializers.ModelSerializer):
             configuration["transmissionId"] = str(obj.transmissionId.transmissionId)
         return configuration
 
-
     def to_representation(self, instance):
         data = super().to_representation(instance)
         images = self._serialize_images(instance)
@@ -557,9 +544,9 @@ class VehicleSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
         placements = getattr(obj.model, "visible_image_placements", None)
         if placements is None:
-            placements = obj.model.image_placements.filter(is_visible=True).select_related(
-                "image"
-            )
+            placements = obj.model.image_placements.filter(
+                is_visible=True
+            ).select_related("image")
 
         for placement in placements:
             url = placement.image.file.url
@@ -737,9 +724,7 @@ class VehicleSerializer(serializers.ModelSerializer):
         if cargo_floor_width:
             specs["cargoFloorWidthBetweenWheelHouses"] = cargo_floor_width
 
-        front_cargo_capacity = self._measurement(
-            obj.front_cargo_capacity_liters, "L"
-        )
+        front_cargo_capacity = self._measurement(obj.front_cargo_capacity_liters, "L")
         if front_cargo_capacity:
             specs["frontCargoCapacity"] = front_cargo_capacity
 
@@ -1018,7 +1003,6 @@ class VehicleSerializer(serializers.ModelSerializer):
         if result.note:
             data["note"] = result.note
         return data
-
 
     def _serialize_performance(self, obj):
         performance = {}

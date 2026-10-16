@@ -37,8 +37,8 @@ from catalog.models import (
     FuelTank,
     Group,
     Make,
-    ModelImagePlacement,
     ModelGeneration,
+    ModelImagePlacement,
     Platform,
     PowerTrain,
     Recall,
@@ -66,8 +66,9 @@ def _vehicle_queryset():
             "powertrain__fuel_fitments__fuel_tank",
             Prefetch(
                 "model__image_placements",
-                queryset=ModelImagePlacement.objects.filter(is_visible=True)
-                .select_related("image"),
+                queryset=ModelImagePlacement.objects.filter(
+                    is_visible=True
+                ).select_related("image"),
                 to_attr="visible_image_placements",
             ),
             "charging_ports",
@@ -114,9 +115,7 @@ def _vehicle_summary_queryset():
 class GroupViewSet(ReadOnlyModelViewSet):
     queryset = Group.objects.annotate(
         make_count=Count("makes", distinct=True),
-        model_year_count=Count(
-            "makes__model_generations__model_years", distinct=True
-        ),
+        model_year_count=Count("makes__model_generations__model_years", distinct=True),
         vehicle_count=Count(
             "makes__model_generations__model_years__model_vehicles",
             distinct=True,
@@ -126,21 +125,29 @@ class GroupViewSet(ReadOnlyModelViewSet):
 
 
 class MakeViewSet(ReadOnlyModelViewSet):
-    queryset = Make.objects.select_related("group").annotate(
-        model_generation_count=Count("model_generations", distinct=True),
-        model_year_count=Count("model_generations__model_years", distinct=True),
-        vehicle_count=Count(
-            "model_generations__model_years__model_vehicles", distinct=True
-        ),
-    ).order_by("name")
+    queryset = (
+        Make.objects.select_related("group")
+        .annotate(
+            model_generation_count=Count("model_generations", distinct=True),
+            model_year_count=Count("model_generations__model_years", distinct=True),
+            vehicle_count=Count(
+                "model_generations__model_years__model_vehicles", distinct=True
+            ),
+        )
+        .order_by("name")
+    )
     serializer_class = MakeSerializer
 
 
 class ModelGenerationViewSet(ReadOnlyModelViewSet):
-    queryset = ModelGeneration.objects.select_related("make", "platform").annotate(
-        start_year=Min("model_years__year"),
-        end_year=Max("model_years__year"),
-    ).order_by("make__name", "model", "generation_prefix", "generation_number")
+    queryset = (
+        ModelGeneration.objects.select_related("make", "platform")
+        .annotate(
+            start_year=Min("model_years__year"),
+            end_year=Max("model_years__year"),
+        )
+        .order_by("make__name", "model", "generation_prefix", "generation_number")
+    )
     serializer_class = ModelGenerationSerializer
 
     @action(detail=False, methods=["get"], url_path="cards")
@@ -264,21 +271,26 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
     filterset_class = BaseModelFilter
 
     def get_queryset(self):
-        queryset = BaseModel.objects.select_related(
-            "model_generation__make", "model_generation__platform"
-        ).order_by(
-            "model_generation__make__name",
-            "model_generation__model",
-            "model_generation__generation_prefix",
-            "model_generation__generation_number",
-            "year",
-            "body_style",
-        ).prefetch_related(
-            Prefetch(
-                "image_placements",
-                queryset=ModelImagePlacement.objects.filter(is_visible=True)
-                .select_related("image"),
-                to_attr="visible_image_placements",
+        queryset = (
+            BaseModel.objects.select_related(
+                "model_generation__make", "model_generation__platform"
+            )
+            .order_by(
+                "model_generation__make__name",
+                "model_generation__model",
+                "model_generation__generation_prefix",
+                "model_generation__generation_number",
+                "year",
+                "body_style",
+            )
+            .prefetch_related(
+                Prefetch(
+                    "image_placements",
+                    queryset=ModelImagePlacement.objects.filter(
+                        is_visible=True
+                    ).select_related("image"),
+                    to_attr="visible_image_placements",
+                )
             )
         )
         if self.action == "list":
@@ -310,9 +322,7 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
             r"(?P<generation_slug>[^/.]+)/(?P<model_year>[^/.]+)"
         ),
     )
-    def by_path(
-        self, request, make_slug, model_slug, generation_slug, model_year
-    ):
+    def by_path(self, request, make_slug, model_slug, generation_slug, model_year):
         try:
             year_text, body_style = model_year.split("-", maxsplit=1)
             year = int(year_text)
@@ -330,10 +340,7 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
                 and slugify(generation.generation or "gen") == generation_slug
                 and (
                     base_model.body_style == body_style
-                    or (
-                        body_style == "unspecified"
-                        and not base_model.body_style
-                    )
+                    or (body_style == "unspecified" and not base_model.body_style)
                 )
             ):
                 return Response(
@@ -351,17 +358,23 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
         ).qs
         model_name = request.query_params.get("model", "").strip()
 
-        model_names = queryset.order_by("model_generation__model").values_list(
-            "model_generation__model", flat=True
-        ).distinct()
+        model_names = (
+            queryset.order_by("model_generation__model")
+            .values_list("model_generation__model", flat=True)
+            .distinct()
+        )
 
         if model_name:
             queryset = queryset.filter(model_generation__model__iexact=model_name)
 
         years = queryset.order_by("-year").values_list("year", flat=True).distinct()
-        body_styles = queryset.exclude(body_style__isnull=True).exclude(
-            body_style=""
-        ).order_by("body_style").values_list("body_style", flat=True).distinct()
+        body_styles = (
+            queryset.exclude(body_style__isnull=True)
+            .exclude(body_style="")
+            .order_by("body_style")
+            .values_list("body_style", flat=True)
+            .distinct()
+        )
         country_codes = (
             queryset.exclude(model_vehicles__assembly_country__isnull=True)
             .exclude(model_vehicles__assembly_country="")
@@ -369,10 +382,7 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
             .distinct()
         )
         assembly_countries = sorted(
-            (
-                {"code": code, "name": countries.name(code)}
-                for code in country_codes
-            ),
+            ({"code": code, "name": countries.name(code)} for code in country_codes),
             key=lambda country: country["name"],
         )
         return Response(
@@ -412,9 +422,7 @@ class EMotorViewSet(ReadOnlyModelViewSet):
 
 
 class PowerTrainViewSet(ReadOnlyModelViewSet):
-    queryset = PowerTrain.objects.select_related("make").all().order_by(
-        "name"
-    )
+    queryset = PowerTrain.objects.select_related("make").all().order_by("name")
     serializer_class = PowerTrainSerializer
 
 
@@ -431,10 +439,14 @@ class VehicleViewSet(ReadOnlyModelViewSet):
 
     @action(detail=False, methods=["get"], url_path="filter-options")
     def filter_options(self, request):
-        queryset = VehicleFilter(request.query_params, queryset=Vehicle.objects.all()).qs
-        years = queryset.order_by("-model__year").values_list(
-            "model__year", flat=True
-        ).distinct()
+        queryset = VehicleFilter(
+            request.query_params, queryset=Vehicle.objects.all()
+        ).qs
+        years = (
+            queryset.order_by("-model__year")
+            .values_list("model__year", flat=True)
+            .distinct()
+        )
         country_codes = (
             queryset.exclude(assembly_country__isnull=True)
             .exclude(assembly_country="")
@@ -450,9 +462,11 @@ class VehicleViewSet(ReadOnlyModelViewSet):
         make_ids = queryset.values_list(
             "model__model_generation__make_id", flat=True
         ).distinct()
-        group_ids = queryset.values_list(
-            "model__model_generation__make__group_id", flat=True
-        ).exclude(model__model_generation__make__group_id__isnull=True).distinct()
+        group_ids = (
+            queryset.values_list("model__model_generation__make__group_id", flat=True)
+            .exclude(model__model_generation__make__group_id__isnull=True)
+            .distinct()
+        )
         makes = Make.objects.filter(makeId__in=make_ids).order_by("name")
         groups = Group.objects.filter(groupId__in=group_ids).order_by("name")
         return Response(
@@ -467,16 +481,18 @@ class VehicleViewSet(ReadOnlyModelViewSet):
                     {"id": str(make.makeId), "name": make.name} for make in makes
                 ],
                 "groups": [
-                    {"id": str(group.groupId), "name": group.name}
-                    for group in groups
+                    {"id": str(group.groupId), "name": group.name} for group in groups
                 ],
             }
         )
 
+
 class RecallViewSet(ReadOnlyModelViewSet):
-    queryset = Recall.objects.select_related("maker").prefetch_related(
-        "affected_models"
-    ).order_by("-published_date", "id")
+    queryset = (
+        Recall.objects.select_related("maker")
+        .prefetch_related("affected_models")
+        .order_by("-published_date", "id")
+    )
     serializer_class = RecallSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = RecallFilter

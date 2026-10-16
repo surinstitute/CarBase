@@ -19,8 +19,8 @@ from catalog.types import (
     ApprovalDomain,
     ApprovalStatus,
     BatteryChemistry,
-    BrakeType,
     BodyStyle,
+    BrakeType,
     ChargingConnector,
     ChargingCurrentType,
     ChargingPortLocation,
@@ -229,10 +229,7 @@ def model_image_upload_to(instance, filename):
     make_slug = slugify(model_generation.make.name) or "unknown-make"
     model_slug = slugify(model_generation.model) or "unknown-model"
     extension = Path(filename).suffix.lower()
-    return (
-        f"catalog/images/{make_slug}/{model_slug}/"
-        f"{uuid.uuid4().hex}{extension}"
-    )
+    return f"catalog/images/{make_slug}/{model_slug}/{uuid.uuid4().hex}{extension}"
 
 
 class ImageAsset(models.Model):
@@ -442,7 +439,9 @@ class Transmission(models.Model):
 
 
 class PowerTrain(models.Model):
-    powerTrainId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    powerTrainId = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False
+    )
     name = models.CharField(max_length=255)
     make = models.ForeignKey(Make, on_delete=models.CASCADE, related_name="powertrains")
     architecture = models.CharField(
@@ -588,21 +587,15 @@ class Vehicle(models.Model):
     wheelbase_mm = models.FloatField(null=True, blank=True)
     curb_weight_kg = models.FloatField(null=True, blank=True)
     trunk_capacity_liters = models.FloatField(null=True, blank=True)
-    cargo_floor_width_between_wheel_houses_mm = models.FloatField(
-        null=True, blank=True
-    )
+    cargo_floor_width_between_wheel_houses_mm = models.FloatField(null=True, blank=True)
     front_cargo_capacity_liters = models.FloatField(null=True, blank=True)
-    max_cargo_capacity_seats_folded_liters = models.FloatField(
-        null=True, blank=True
-    )
+    max_cargo_capacity_seats_folded_liters = models.FloatField(null=True, blank=True)
     door_count = models.PositiveIntegerField(null=True, blank=True)
     passenger_capacity = models.PositiveIntegerField(null=True, blank=True)
     front_brakes = models.CharField(
         max_length=32, choices=BrakeType.choices, blank=True
     )
-    rear_brakes = models.CharField(
-        max_length=32, choices=BrakeType.choices, blank=True
-    )
+    rear_brakes = models.CharField(max_length=32, choices=BrakeType.choices, blank=True)
     front_suspension = models.CharField(
         max_length=32, choices=SuspensionType.choices, blank=True
     )
@@ -613,16 +606,12 @@ class Vehicle(models.Model):
     front_tire_aspect_ratio = models.PositiveSmallIntegerField(
         null=True, blank=True, validators=[MaxValueValidator(100)]
     )
-    front_rim_diameter_inches = models.PositiveSmallIntegerField(
-        null=True, blank=True
-    )
+    front_rim_diameter_inches = models.PositiveSmallIntegerField(null=True, blank=True)
     rear_tire_width_mm = models.PositiveSmallIntegerField(null=True, blank=True)
     rear_tire_aspect_ratio = models.PositiveSmallIntegerField(
         null=True, blank=True, validators=[MaxValueValidator(100)]
     )
-    rear_rim_diameter_inches = models.PositiveSmallIntegerField(
-        null=True, blank=True
-    )
+    rear_rim_diameter_inches = models.PositiveSmallIntegerField(null=True, blank=True)
     objects = ParadeDBManager()
 
     class Meta:
@@ -654,10 +643,9 @@ class Vehicle(models.Model):
             populated = [getattr(self, field) is not None for field in fields]
             if any(populated) and not all(populated):
                 raise ValidationError(
-                    {
-                        field: "La medida de llanta requiere ancho, perfil y diámetro."
-                        for field in fields
-                    }
+                    dict.fromkeys(
+                        fields, "La medida de llanta requiere ancho, perfil y diámetro."
+                    )
                 )
 
 
@@ -712,7 +700,9 @@ class Recall(models.Model):
     risk_consequence = models.TextField(blank=True)
     countermeasure = models.TextField(blank=True)
     actions = models.TextField(blank=True)
-    status = models.CharField(max_length=20, choices=Status.choices, default=Status.OPEN)
+    status = models.CharField(
+        max_length=20, choices=Status.choices, default=Status.OPEN
+    )
     published_date = models.DateField(null=True, blank=True)
     total_units_affected = models.PositiveIntegerField(null=True, blank=True)
     source_url = models.URLField(blank=True)
@@ -766,9 +756,7 @@ class SafetyPackage(models.Model):
     visibilityAndControl_abs = models.BooleanField(null=True, blank=True)
     restraints_airbagSideFront = models.PositiveIntegerField(null=True, blank=True)
     restraints_airbagSideRear = models.PositiveIntegerField(null=True, blank=True)
-    restraints_headProtectionAirbag = models.PositiveIntegerField(
-        null=True, blank=True
-    )
+    restraints_headProtectionAirbag = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.name

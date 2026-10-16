@@ -25,6 +25,7 @@ dependencies = [
     "requests>=2.34.2",
     "django-health-check>=4.8.0",
     "django-orbit>=0.13.0",
+    "ruff>=0.17.1",
 ]
 
 [tool.ruff]

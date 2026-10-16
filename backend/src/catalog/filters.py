@@ -6,7 +6,6 @@ from paradedb.search import ParadeDB, PhrasePrefix
 from .models import BaseModel, ModelGeneration, Recall, Vehicle
 from .types import BodyStyle, PowerTrainArchitecture
 
-
 POWERTRAIN_TYPE_ARCHITECTURES = {
     "combustion": (PowerTrainArchitecture.ICE,),
     "hybrid": (
@@ -62,9 +61,7 @@ class BaseModelFilter(django_filters.FilterSet):
         normalized_value = (value or "").strip()
         if not normalized_value:
             return queryset
-        search_query = ParadeDB(
-            PhrasePrefix(normalized_value.lower())
-        )
+        search_query = ParadeDB(PhrasePrefix(normalized_value.lower()))
         matching_generations = list(
             ModelGeneration.objects.filter(
                 Q(model=search_query) | Q(generation_prefix=search_query)
@@ -82,9 +79,11 @@ class BaseModelFilter(django_filters.FilterSet):
             ],
             output_field=IntegerField(),
         )
-        return queryset.filter(model_generation_id__in=matching_generations).annotate(
-            search_rank=ordering
-        ).order_by("search_rank")
+        return (
+            queryset.filter(model_generation_id__in=matching_generations)
+            .annotate(search_rank=ordering)
+            .order_by("search_rank")
+        )
 
     def filter_powertrain_type(self, queryset, _name, value):
         architectures = POWERTRAIN_TYPE_ARCHITECTURES.get(value)
@@ -149,9 +148,7 @@ class VehicleFilter(django_filters.FilterSet):
         normalized_value = (value or "").strip()
         if not normalized_value:
             return queryset
-        search_query = ParadeDB(
-            PhrasePrefix(normalized_value.lower())
-        )
+        search_query = ParadeDB(PhrasePrefix(normalized_value.lower()))
         matching_generation_ids = ModelGeneration.objects.filter(
             Q(model=search_query) | Q(generation_prefix=search_query)
         ).values_list("pk", flat=True)
@@ -207,6 +204,7 @@ class VehicleFilter(django_filters.FilterSet):
             "id",
         )
 
+
 class RecallFilter(django_filters.FilterSet):
     q = django_filters.CharFilter(method="filter_search")
 
@@ -222,7 +220,5 @@ class RecallFilter(django_filters.FilterSet):
             Q(recall_number__icontains=normalized_value)
             | Q(title__icontains=normalized_value)
             | Q(maker__name__icontains=normalized_value)
-            | Q(
-                affected_models__model_generation__model__icontains=normalized_value
-            )
+            | Q(affected_models__model_generation__model__icontains=normalized_value)
         ).distinct()

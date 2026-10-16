@@ -236,7 +236,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "allauth.account.middleware.AccountMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "hijack.middleware.HijackUserMiddleware"
+    "hijack.middleware.HijackUserMiddleware",
 ]
 
 if DEBUG:
@@ -388,9 +388,7 @@ STATIC_URL = "/static/"
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
-S3_STORAGE_ENABLED = _env_bool(
-    "S3_STORAGE_ENABLED", _env_bool("USE_S3_STORAGE", False)
-)
+S3_STORAGE_ENABLED = _env_bool("S3_STORAGE_ENABLED", _env_bool("USE_S3_STORAGE", False))
 USE_S3_STORAGE = not DEBUG and S3_STORAGE_ENABLED
 
 if not USE_S3_STORAGE:
@@ -499,7 +497,9 @@ UNFOLD = {
                     {
                         "title": _("Generaciones"),
                         "icon": "category",
-                        "link": reverse_lazy("admin:catalog_modelgeneration_changelist"),
+                        "link": reverse_lazy(
+                            "admin:catalog_modelgeneration_changelist"
+                        ),
                     },
                     {
                         "title": _("Modelos"),

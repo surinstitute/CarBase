@@ -33,9 +33,7 @@ class Command(BaseCommand):
         client_secret = os.environ.get("OIDC_CLIENT_SECRET", "").strip()
 
         if not client_id or not client_secret:
-            raise CommandError(
-                "OIDC_CLIENT_ID and OIDC_CLIENT_SECRET are required"
-            )
+            raise CommandError("OIDC_CLIENT_ID and OIDC_CLIENT_SECRET are required")
 
         redirect_uri = os.environ.get("REDIRECT_URI", "").strip()
         redirect_uris = _env_list("OIDC_REDIRECT_URIS", default=[redirect_uri])
