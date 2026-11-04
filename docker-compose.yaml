@@ -1,33 +1,33 @@
 services:
   database:
-    image: paradedb/paradedb:latest
-    platform: linux/amd64
-    expose:
-      - "5432"
-    ports:
-      - "5432:5432"
+    image: paradedb/paradedb:0.26.4-pg17
+    restart: unless-stopped
     volumes:
-      - database:/var/lib/postgresql
+      - database:/var/lib/postgresql/data
     env_file:
       - backend/.env
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -h 127.0.0.1 -U $$POSTGRES_USER -d $$POSTGRES_DB" ]
-      interval: 2s
-      timeout: 2s
-      retries: 10
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     networks:
       - django-liberty
   backend:
+    restart: unless-stopped
     build:
       context: backend
     expose:
       - "8000"
     ports:
-      - "8000:8000"
+      - "${BACKEND_PORT:-8000}:8000"
     env_file:
       - backend/.env
-    volumes:
-      - backend:/app
+    environment:
+      DEBUG: "false"
+      POSTGRES_HOST: database
+      POSTGRES_PORT: "5432"
     healthcheck:
       test:
         [
@@ -37,21 +37,23 @@ services:
           "import urllib.request;
             urllib.request.urlopen('http://localhost:8000/health/')",
         ]
-      interval: 2s
-      timeout: 2s
-      retries: 10
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     depends_on:
       database:
         condition: service_healthy
     networks:
       - django-liberty
   frontend:
+    restart: unless-stopped
     build:
       context: frontend
     expose:
       - "3000"
     ports:
-      - "3000:3000"
+      - "${FRONTEND_PORT:-3000}:3000"
     environment:
       NUXT_DJANGO_API_URL: http://backend:8000/api
       NUXT_HOST: 0.0.0.0
@@ -65,9 +67,10 @@ services:
           "fetch('http://127.0.0.1:3000/').then((response) => { if
             (!response.ok) process.exit(1) }).catch(() => process.exit(1))",
         ]
-      interval: 5s
-      timeout: 3s
-      retries: 10
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     depends_on:
       backend:
         condition: service_healthy
@@ -79,5 +82,4 @@ networks:
     driver: bridge
 
 volumes:
-  backend:
   database:

@@ -52,7 +52,7 @@ const { data: filterOptions } = useQuery({
   }>('/api/vehicles/filter-options')
 })
 
-const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 10)))
+const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 12)))
 
 function submitSearch() {
   activeSearch.value = search.value

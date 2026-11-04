@@ -26,7 +26,7 @@ const { data, status } = useQuery({
   key: () => ['recalls', recallQuery.value],
   query: () => $fetch<ApiPage<CatalogRecall>>('/api/recalls', { query: recallQuery.value })
 })
-const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 10)))
+const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 12)))
 const makeSlugs = computed(() => new Map(
   makesData.value?.results.map(make => [make.id, make.slug] as const) ?? []
 ))

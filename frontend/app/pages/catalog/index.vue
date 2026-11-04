@@ -47,7 +47,7 @@ watch(catalogQuery, (query) => {
 })
 
 const bodyStyles = computed(() => data.value?.filterOptions.bodyStyles ?? [])
-const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 10)))
+const pageCount = computed(() => Math.max(1, Math.ceil((data.value?.count ?? 0) / 12)))
 const modelCards = computed(() => data.value?.results.map((card) => ({
   id: card.id,
   model: {
