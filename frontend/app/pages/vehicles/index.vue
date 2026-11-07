@@ -39,9 +39,6 @@ const assemblyCountry = ref(
     ? route.query.assembly_country
     : "all",
 );
-const safety = ref(
-  typeof route.query.safety === "string" ? route.query.safety : "all",
-);
 const safetyStars = ref(
   typeof route.query.safety_stars === "string"
     ? route.query.safety_stars
@@ -68,7 +65,6 @@ const query = computed(() => ({
   ...(assemblyCountry.value !== "all"
     ? { assembly_country: assemblyCountry.value }
     : {}),
-  ...(safety.value !== "all" ? { safety: safety.value } : {}),
   ...(safetyStars.value !== "all" ? { safety_stars: safetyStars.value } : {}),
   ...(sort.value !== "newest" ? { sort: sort.value } : {}),
 }));
@@ -121,7 +117,6 @@ function resetFilters() {
   year.value = "all";
   powertrainType.value = "all";
   assemblyCountry.value = "all";
-  safety.value = "all";
   safetyStars.value = "all";
   sort.value = "newest";
   page.value = 1;
@@ -293,24 +288,6 @@ function modelContext(
                 :key="country.code"
                 :value="country.code"
                 >{{ country.name }}</NativeSelectOption
-              >
-            </NativeSelect>
-          </label>
-          <label class="grid gap-2 text-sm font-medium"
-            >Seguridad
-            <NativeSelect
-              v-model="safety"
-              class="w-full"
-              aria-label="Filtrar vehículos por seguridad"
-            >
-              <NativeSelectOption value="all"
-                >Todos los vehículos</NativeSelectOption
-              >
-              <NativeSelectOption value="true"
-                >Con paquete de seguridad</NativeSelectOption
-              >
-              <NativeSelectOption value="false"
-                >Sin paquete de seguridad</NativeSelectOption
               >
             </NativeSelect>
           </label>

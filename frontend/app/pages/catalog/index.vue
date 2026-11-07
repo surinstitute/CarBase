@@ -11,8 +11,8 @@ import {
   NativeSelectOption,
 } from "@/components/ui/native-select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { modelOverviewPath } from "@/lib/model-path";
-import type { CatalogModelCardsResponse } from "#shared/types/catalog";
+import { modelYearPath } from "@/lib/model-path";
+import type { ApiPage, CatalogMake, CatalogModel } from "#shared/types/catalog";
 
 const filters = useCatalogFiltersStore();
 const { search } = storeToRefs(filters);
@@ -41,10 +41,26 @@ const catalogQuery = computed(() => ({
 }));
 
 const { data, status } = useQuery({
-  key: () => ["model-cards", catalogQuery.value],
+  key: () => ["catalog-model-years", catalogQuery.value],
   query: () =>
-    $fetch<CatalogModelCardsResponse>("/api/model-cards", {
+    $fetch<ApiPage<CatalogModel>>("/api/models", {
       query: catalogQuery.value,
+    }),
+});
+const { data: makes, status: makesStatus } = useQuery({
+  key: ["makes"],
+  query: () => $fetch<ApiPage<CatalogMake>>("/api/makes"),
+});
+const filterQuery = computed(() => ({
+  ...(debouncedSearch.value.trim() ? { q: debouncedSearch.value.trim() } : {}),
+  ...(filters.makeId !== "all" ? { make: filters.makeId } : {}),
+  ...(filters.bodyStyle !== "all" ? { body_style: filters.bodyStyle } : {}),
+}));
+const { data: filterOptions, status: filterOptionsStatus } = useQuery({
+  key: () => ["model-filter-options", filterQuery.value],
+  query: () =>
+    $fetch<{ bodyStyles: string[] }>("/api/models/filter-options", {
+      query: filterQuery.value,
     }),
 });
 
@@ -54,36 +70,10 @@ watch(catalogQuery, (query) => {
   }
 });
 
-const bodyStyles = computed(() => data.value?.filterOptions.bodyStyles ?? []);
+const bodyStyles = computed(() => filterOptions.value?.bodyStyles ?? []);
 const pageCount = computed(() =>
   Math.max(1, Math.ceil((data.value?.count ?? 0) / 12)),
 );
-const modelCards = computed(
-  () =>
-    data.value?.results.map((card) => ({
-      id: card.id,
-      model: {
-        id: card.generations[0]?.modelId ?? card.id,
-        makeSlug: card.makeSlug,
-        makeName: card.makeName,
-        modelName: card.modelName,
-        year: card.startYear,
-        generation: null,
-        platformName: null,
-        bodyStyles: [],
-        architectures: [],
-      },
-      years: [card.startYear, card.endYear],
-      generationLinks: card.generations.map((generation) => ({
-        label: generation.label,
-        route: modelOverviewPath({
-          makeSlug: card.makeSlug,
-          modelName: card.modelName,
-        }),
-      })),
-    })) ?? [],
-);
-
 watch(
   () => filters.makeId,
   () => {
@@ -161,7 +151,7 @@ function bodyStyleLabel(bodyStyle: string) {
                 >Todas las marcas</NativeSelectOption
               >
               <NativeSelectOption
-                v-for="make in data?.filterOptions.makes"
+                v-for="make in makes?.results"
                 :key="make.id"
                 :value="make.id"
                 >{{ make.name }}</NativeSelectOption
@@ -195,7 +185,7 @@ function bodyStyleLabel(bodyStyle: string) {
 
       <div class="flex items-center justify-between gap-4">
         <h2 class="text-lg font-semibold tracking-tight">Modelos base</h2>
-        <Badge variant="secondary">{{ modelCards.length }} resultados</Badge>
+        <Badge variant="secondary">{{ data?.count ?? 0 }} resultados</Badge>
       </div>
 
       <p
@@ -205,29 +195,31 @@ function bodyStyleLabel(bodyStyle: string) {
       >
         No se pudo cargar el catálogo. Revisa que la API esté disponible.
       </p>
+      <p
+        v-if="makesStatus === 'error' || filterOptionsStatus === 'error'"
+        role="alert"
+        class="text-sm text-destructive"
+      >
+        No se pudieron cargar las opciones de filtros. Revisa que la API esté disponible.
+      </p>
       <div
-        v-else-if="status === 'pending'"
+        v-if="status === 'pending'"
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
       >
         <Skeleton v-for="item in 6" :key="item" class="h-80" />
       </div>
       <div
-        v-else-if="modelCards.length"
+        v-else-if="status !== 'error' && data?.results.length"
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
       >
         <CatalogModelCard
-          v-for="card in modelCards"
-          :key="card.id"
-          :model="card.model"
-          :years="card.years"
-          :generations="
-            card.generationLinks.map((generation) => generation.label)
-          "
-          :generation-links="card.generationLinks"
-          :show-body-styles="false"
+          v-for="model in data.results"
+          :key="model.id"
+          :model="model"
+          :model-route="modelYearPath(model)"
         />
       </div>
-      <Card v-else>
+      <Card v-else-if="status !== 'error'">
         <CardContent class="flex flex-col items-center gap-2 p-8 text-center">
           <Icon
             name="tabler:car-off"

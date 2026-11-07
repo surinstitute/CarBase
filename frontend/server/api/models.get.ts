@@ -1,4 +1,4 @@
-import type { CatalogModel } from "#shared/types/catalog";
+import type { ApiPage, CatalogModel } from "#shared/types/catalog";
 import { fetchAllPages } from "../utils/django";
 
 interface ApiModel {
@@ -32,6 +32,7 @@ export default defineEventHandler(async (event) => {
     "body_style",
     "powertrain_type",
     "assembly_country",
+    "page",
   ]) {
     const value = query[name];
     if (typeof value === "string" && value.trim()) {
@@ -39,9 +40,10 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  const response = await fetchAllPages<ApiModel>(
-    `${apiBase}/models/${params.size ? `?${params}` : ""}`,
-  );
+  const url = `${apiBase}/models/${params.size ? `?${params}` : ""}`;
+  const response = params.has("page")
+    ? await $fetch<ApiPage<ApiModel>>(url)
+    : await fetchAllPages<ApiModel>(url);
 
   return {
     ...response,

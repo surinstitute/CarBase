@@ -31,6 +31,7 @@ const props = defineProps<{
   generations?: string[];
   generationLinks?: Array<{ label: string; route: string }>;
   showBodyStyles?: boolean;
+  modelRoute?: string;
 }>();
 
 const modelOverviewRoute = computed(
@@ -107,7 +108,7 @@ const generationLabel = computed(() => {
       >
       <CardTitle>
         <NuxtLink
-          :to="modelOverviewRoute"
+          :to="modelRoute ?? modelOverviewRoute"
           class="transition-colors hover:text-muted-foreground"
           >{{ model.modelName }}</NuxtLink
         >
@@ -141,13 +142,14 @@ const generationLabel = computed(() => {
         <Badge v-if="visibleGenerations.length" variant="outline">{{
           yearLabel
         }}</Badge>
-        <Badge
-          v-if="showBodyStyles !== false"
-          v-for="bodyStyle in visibleBodyStyles"
-          :key="bodyStyle"
-          variant="outline"
-          >{{ bodyStyle }}</Badge
-        >
+        <template v-if="showBodyStyles !== false">
+          <Badge
+            v-for="bodyStyle in visibleBodyStyles"
+            :key="bodyStyle"
+            variant="outline"
+            >{{ bodyStyle }}</Badge
+          >
+        </template>
         <Badge
           v-for="architecture in model.architectures"
           :key="architecture"
