@@ -1,9 +1,9 @@
 import django_filters
-from django.db.models import Case, F, IntegerField, Q, Value, When
+from django.db.models import Case, F, IntegerField, OuterRef, Q, Subquery, Value, When
 from paradedb.functions import Score
 from paradedb.search import ParadeDB, PhrasePrefix
 
-from .models import BaseModel, ModelGeneration, Recall, Vehicle
+from .models import BaseModel, ModelGeneration, ModelSafetyRating, Recall, Vehicle
 from .types import BodyStyle, PowerTrainArchitecture
 
 POWERTRAIN_TYPE_ARCHITECTURES = {
@@ -111,6 +111,10 @@ class VehicleFilter(django_filters.FilterSet):
         field_name="assembly_country", lookup_expr="iexact"
     )
     safety = django_filters.BooleanFilter(method="filter_safety")
+    safety_stars = django_filters.ChoiceFilter(
+        choices=[(str(stars), str(stars)) for stars in range(6)],
+        method="filter_safety_stars",
+    )
     sort = django_filters.ChoiceFilter(
         choices=(
             ("newest", "Newest"),
@@ -138,6 +142,7 @@ class VehicleFilter(django_filters.FilterSet):
             "powertrain_type",
             "assembly_country",
             "safety",
+            "safety_stars",
             "sort",
             "powertrain",
             "transmission",
@@ -173,6 +178,16 @@ class VehicleFilter(django_filters.FilterSet):
 
     def filter_safety(self, queryset, _name, value):
         return queryset.filter(safety_package_assignment__isnull=not value)
+
+    def filter_safety_stars(self, queryset, _name, value):
+        latest_stars = (
+            ModelSafetyRating.objects.filter(model_id=OuterRef("model_id"))
+            .order_by("-assessment_year", "program")
+            .values("overall_stars")[:1]
+        )
+        return queryset.alias(latest_safety_stars=Subquery(latest_stars)).filter(
+            latest_safety_stars=int(value)
+        )
 
     def filter_sort(self, queryset, _name, value):
         if value == "az":

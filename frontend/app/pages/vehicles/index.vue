@@ -42,6 +42,11 @@ const assemblyCountry = ref(
 const safety = ref(
   typeof route.query.safety === "string" ? route.query.safety : "all",
 );
+const safetyStars = ref(
+  typeof route.query.safety_stars === "string"
+    ? route.query.safety_stars
+    : "all",
+);
 const sort = ref(
   typeof route.query.sort === "string" ? route.query.sort : "newest",
 );
@@ -64,11 +69,16 @@ const query = computed(() => ({
     ? { assembly_country: assemblyCountry.value }
     : {}),
   ...(safety.value !== "all" ? { safety: safety.value } : {}),
+  ...(safetyStars.value !== "all" ? { safety_stars: safetyStars.value } : {}),
   ...(sort.value !== "newest" ? { sort: sort.value } : {}),
 }));
 
 watch(query, (value) => {
   router.replace({ path: "/vehicles", query: value });
+});
+
+watch(safetyStars, () => {
+  page.value = 1;
 });
 
 const { data, status } = useQuery({
@@ -112,6 +122,7 @@ function resetFilters() {
   powertrainType.value = "all";
   assemblyCountry.value = "all";
   safety.value = "all";
+  safetyStars.value = "all";
   sort.value = "newest";
   page.value = 1;
 }
@@ -302,6 +313,27 @@ function modelContext(
                 >Sin paquete de seguridad</NativeSelectOption
               >
             </NativeSelect>
+          </label>
+          <label class="grid gap-2 text-sm font-medium"
+            >Estrellas de seguridad
+            <NativeSelect
+              v-model="safetyStars"
+              class="w-full"
+              aria-label="Filtrar vehículos por estrellas de seguridad"
+            >
+              <NativeSelectOption value="all"
+                >Todas las calificaciones</NativeSelectOption
+              >
+              <NativeSelectOption
+                v-for="stars in 6"
+                :key="stars - 1"
+                :value="String(stars - 1)"
+                >{{ stars - 1 }} {{ stars === 2 ? "estrella" : "estrellas" }}</NativeSelectOption
+              >
+            </NativeSelect>
+            <span class="text-xs font-normal text-muted-foreground"
+              >Evaluación más reciente del modelo</span
+            >
           </label>
           <label class="grid gap-2 text-sm font-medium"
             >Ordenar por

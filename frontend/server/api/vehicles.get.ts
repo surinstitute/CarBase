@@ -15,6 +15,7 @@ export default defineEventHandler(
       "powertrain_type",
       "assembly_country",
       "safety",
+      "safety_stars",
       "sort",
     ]) {
       const value = query[name];
