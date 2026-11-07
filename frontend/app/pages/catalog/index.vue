@@ -200,7 +200,8 @@ function bodyStyleLabel(bodyStyle: string) {
         role="alert"
         class="text-sm text-destructive"
       >
-        No se pudieron cargar las opciones de filtros. Revisa que la API esté disponible.
+        No se pudieron cargar las opciones de filtros. Revisa que la API esté
+        disponible.
       </p>
       <div
         v-if="status === 'pending'"

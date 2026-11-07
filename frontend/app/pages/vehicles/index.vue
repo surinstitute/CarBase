@@ -8,6 +8,13 @@ import {
   NativeSelect,
   NativeSelectOption,
 } from "@/components/ui/native-select";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarProvider,
+} from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { powertrainFilterLabel } from "@/lib/powertrain";
 import type {
@@ -18,6 +25,22 @@ import type {
 
 const route = useRoute();
 const router = useRouter();
+const filtersOpen = ref(false);
+const desktopFiltersOpen = ref(true);
+const filterIcons = [
+  { id: "vehicles-search", label: "Buscar", icon: "tabler:search" },
+  { id: "vehicles-make", label: "Marca", icon: "tabler:car" },
+  { id: "vehicles-group", label: "Grupo", icon: "tabler:building" },
+  { id: "vehicles-year", label: "Año", icon: "tabler:calendar" },
+  { id: "vehicles-powertrain", label: "Propulsión", icon: "tabler:engine" },
+  { id: "vehicles-country", label: "País de armado", icon: "tabler:world" },
+  {
+    id: "vehicles-stars",
+    label: "Estrellas de seguridad",
+    icon: "tabler:star",
+  },
+  { id: "vehicles-sort", label: "Ordenar por", icon: "tabler:arrows-sort" },
+];
 const search = ref(typeof route.query.q === "string" ? route.query.q : "");
 const activeSearch = ref(search.value);
 const make = ref(
@@ -73,9 +96,12 @@ watch(query, (value) => {
   router.replace({ path: "/vehicles", query: value });
 });
 
-watch(safetyStars, () => {
-  page.value = 1;
-});
+watch(
+  [make, group, year, powertrainType, assemblyCountry, safetyStars, sort],
+  () => {
+    page.value = 1;
+  },
+);
 
 const { data, status } = useQuery({
   key: () => ["vehicles", query.value],
@@ -84,7 +110,7 @@ const { data, status } = useQuery({
       query: query.value,
     }),
 });
-const { data: filterOptions } = useQuery({
+const { data: filterOptions, status: filterOptionsStatus } = useQuery({
   key: ["vehicle-filter-options"],
   query: () =>
     $fetch<{
@@ -107,6 +133,11 @@ function submitSearch() {
 
 function goToPage(targetPage: number) {
   page.value = targetPage;
+}
+
+function expandFilter(id: string) {
+  desktopFiltersOpen.value = true;
+  nextTick(() => document.getElementById(id)?.focus());
 }
 
 function resetFilters() {
@@ -158,260 +189,398 @@ function modelContext(
 </script>
 
 <template>
-  <div>
-    <section class="border-b bg-muted/30">
-      <div class="mx-auto w-full max-w-6xl space-y-2 px-4 py-10">
-        <p class="text-sm font-medium text-muted-foreground">Explorar</p>
-        <h1 class="text-3xl font-bold tracking-tight">Catálogo de vehículos</h1>
-      </div>
-    </section>
-
-    <section class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
-      <Card>
-        <CardContent
-          class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-2 xl:grid-cols-4 xl:items-end"
+  <div class="flex flex-1 flex-col">
+    <section class="flex flex-1">
+      <SidebarProvider
+        class="min-h-0 flex-1 flex-col items-stretch md:flex-row"
+        :default-open="true"
+        :keyboard-shortcut="false"
+      >
+        <Button
+          type="button"
+          variant="outline"
+          class="mx-4 mt-4 w-[calc(100%-2rem)] justify-between md:hidden"
+          aria-controls="vehicle-filters"
+          :aria-expanded="filtersOpen"
+          @click="filtersOpen = !filtersOpen"
         >
-          <form
-            class="grid gap-2 text-sm font-medium"
-            role="search"
-            @submit.prevent="submitSearch"
-          >
-            <label for="vehicles-search">Buscar</label>
-            <div class="flex gap-2">
-              <Input
-                id="vehicles-search"
-                v-model="search"
-                placeholder="Marca, modelo o versión"
-                class="min-w-0 flex-1"
-              />
-              <Button
-                type="submit"
-                size="icon"
-                aria-label="Buscar vehículos"
-                title="Buscar vehículos"
-              >
-                <Icon name="tabler:search" class="size-4" aria-hidden="true" />
-              </Button>
-            </div>
-          </form>
-          <label class="grid gap-2 text-sm font-medium"
-            >Marca
-            <NativeSelect
-              v-model="make"
-              class="w-full"
-              :disabled="!filterOptions?.makes.length"
-              aria-label="Filtrar vehículos por marca"
-            >
-              <NativeSelectOption value="all"
-                >Todas las marcas</NativeSelectOption
-              >
-              <NativeSelectOption
-                v-for="option in filterOptions?.makes"
-                :key="option.id"
-                :value="option.id"
-                >{{ option.name }}</NativeSelectOption
-              >
-            </NativeSelect>
-          </label>
-          <label class="grid gap-2 text-sm font-medium"
-            >Grupo
-            <NativeSelect
-              v-model="group"
-              class="w-full"
-              :disabled="!filterOptions?.groups.length"
-              aria-label="Filtrar vehículos por grupo"
-            >
-              <NativeSelectOption value="all"
-                >Todos los grupos</NativeSelectOption
-              >
-              <NativeSelectOption
-                v-for="option in filterOptions?.groups"
-                :key="option.id"
-                :value="option.id"
-                >{{ option.name }}</NativeSelectOption
-              >
-            </NativeSelect>
-          </label>
-          <label class="grid gap-2 text-sm font-medium"
-            >Año
-            <NativeSelect
-              v-model="year"
-              class="w-full"
-              :disabled="!filterOptions?.years.length"
-              aria-label="Filtrar vehículos por año"
-            >
-              <NativeSelectOption value="all"
-                >Todos los años</NativeSelectOption
-              >
-              <NativeSelectOption
-                v-for="option in filterOptions?.years"
-                :key="option"
-                :value="String(option)"
-                >{{ option }}</NativeSelectOption
-              >
-            </NativeSelect>
-          </label>
-          <label class="grid gap-2 text-sm font-medium"
-            >Propulsión
-            <NativeSelect
-              v-model="powertrainType"
-              class="w-full"
-              :disabled="!filterOptions?.powertrainTypes.length"
-              aria-label="Filtrar vehículos por propulsión"
-            >
-              <NativeSelectOption value="all"
-                >Todas las propulsiones</NativeSelectOption
-              >
-              <NativeSelectOption
-                v-for="option in filterOptions?.powertrainTypes"
-                :key="option"
-                :value="option"
-                >{{
-                  powertrainFilterLabel(option) ?? option.replaceAll("_", " ")
-                }}</NativeSelectOption
-              >
-            </NativeSelect>
-          </label>
-          <label class="grid gap-2 text-sm font-medium"
-            >País de armado
-            <NativeSelect
-              v-model="assemblyCountry"
-              class="w-full"
-              :disabled="!filterOptions?.assemblyCountries.length"
-              aria-label="Filtrar vehículos por país de armado"
-            >
-              <NativeSelectOption value="all"
-                >Todos los países</NativeSelectOption
-              >
-              <NativeSelectOption
-                v-for="country in filterOptions?.assemblyCountries"
-                :key="country.code"
-                :value="country.code"
-                >{{ country.name }}</NativeSelectOption
-              >
-            </NativeSelect>
-          </label>
-          <label class="grid gap-2 text-sm font-medium"
-            >Estrellas de seguridad
-            <NativeSelect
-              v-model="safetyStars"
-              class="w-full"
-              aria-label="Filtrar vehículos por estrellas de seguridad"
-            >
-              <NativeSelectOption value="all"
-                >Todas las calificaciones</NativeSelectOption
-              >
-              <NativeSelectOption
-                v-for="stars in 6"
-                :key="stars - 1"
-                :value="String(stars - 1)"
-                >{{ stars - 1 }} {{ stars === 2 ? "estrella" : "estrellas" }}</NativeSelectOption
-              >
-            </NativeSelect>
-            <span class="text-xs font-normal text-muted-foreground"
-              >Evaluación más reciente del modelo</span
-            >
-          </label>
-          <label class="grid gap-2 text-sm font-medium"
-            >Ordenar por
-            <NativeSelect
-              v-model="sort"
-              class="w-full"
-              aria-label="Ordenar vehículos"
-            >
-              <NativeSelectOption value="newest"
-                >Año: más reciente</NativeSelectOption
-              >
-              <NativeSelectOption value="az">A-Z</NativeSelectOption>
-              <NativeSelectOption value="price_asc"
-                >Precio: menor a mayor</NativeSelectOption
-              >
-              <NativeSelectOption value="price_desc"
-                >Precio: mayor a menor</NativeSelectOption
-              >
-            </NativeSelect>
-          </label>
-          <Button type="button" variant="outline" @click="resetFilters"
-            >Limpiar</Button
-          >
-        </CardContent>
-      </Card>
-
-      <div class="flex items-center justify-between gap-4">
-        <h2 class="text-lg font-semibold">Vehículos</h2>
-        <Badge variant="secondary">{{ data?.count ?? 0 }} resultados</Badge>
-      </div>
-
-      <p
-        v-if="status === 'error'"
-        role="alert"
-        class="text-sm text-destructive"
-      >
-        No se pudieron cargar los vehículos. Revisa que la API esté disponible.
-      </p>
-      <div
-        v-else-if="status === 'pending'"
-        class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        <Skeleton v-for="item in 6" :key="item" class="h-80" />
-      </div>
-      <div
-        v-else-if="data?.results.length"
-        class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        <CatalogVehicleCard
-          v-for="(vehicle, index) in data.results"
-          :key="vehicle.id"
-          :model="modelContext(vehicle)"
-          :vehicle="vehicle"
-          :index="index"
-        />
-      </div>
-      <Card v-else>
-        <CardContent class="flex flex-col items-center gap-2 p-8 text-center">
+          <span class="flex items-center gap-2">
+            <Icon
+              name="tabler:adjustments-horizontal"
+              class="size-4"
+              aria-hidden="true"
+            />
+            Filtros
+          </span>
           <Icon
-            name="tabler:car-off"
-            class="size-8 text-muted-foreground"
+            :name="filtersOpen ? 'tabler:chevron-up' : 'tabler:chevron-down'"
+            class="size-4"
             aria-hidden="true"
           />
-          <h3 class="font-semibold">No hay vehículos para mostrar</h3>
-          <p class="text-sm text-muted-foreground">
-            Prueba otra búsqueda o vuelve más tarde.
-          </p>
-        </CardContent>
-      </Card>
+        </Button>
+        <Sidebar
+          id="vehicle-filters"
+          collapsible="none"
+          aria-label="Filtros de vehículos"
+          :class="[
+            'w-full border-b md:shrink-0 md:border-r md:border-b-0',
+            desktopFiltersOpen ? 'md:w-64' : 'md:w-14',
+            filtersOpen ? 'flex' : 'hidden md:flex',
+          ]"
+        >
+          <div
+            class="flex min-h-0 flex-col md:sticky md:top-14 md:max-h-[calc(100vh-3.5rem)]"
+          >
+            <SidebarHeader
+              class="space-y-1 px-4 pt-5"
+              :class="{ 'md:px-2': !desktopFiltersOpen }"
+            >
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                class="hidden md:inline-flex"
+                :aria-label="
+                  desktopFiltersOpen ? 'Colapsar filtros' : 'Expandir filtros'
+                "
+                :aria-expanded="desktopFiltersOpen"
+                aria-controls="vehicle-filter-fields"
+                @click="desktopFiltersOpen = !desktopFiltersOpen"
+              >
+                <Icon
+                  name="tabler:layout-sidebar"
+                  class="size-5"
+                  aria-hidden="true"
+                />
+              </Button>
+              <div :class="{ 'md:hidden': !desktopFiltersOpen }">
+                <h2 class="flex items-center gap-2 font-semibold">
+                  <Icon
+                    name="tabler:adjustments-horizontal"
+                    class="size-5"
+                    aria-hidden="true"
+                  />
+                  Filtros
+                </h2>
+                <p class="text-sm text-muted-foreground">
+                  Encuentra el vehículo que buscas.
+                </p>
+              </div>
+            </SidebarHeader>
+            <div
+              v-if="!desktopFiltersOpen"
+              class="hidden flex-col items-center gap-1 px-2 py-2 md:flex"
+            >
+              <Button
+                v-for="filter in filterIcons"
+                :key="filter.id"
+                type="button"
+                variant="ghost"
+                size="icon"
+                :aria-label="filter.label"
+                :title="filter.label"
+                @click="expandFilter(filter.id)"
+              >
+                <Icon :name="filter.icon" class="size-5" aria-hidden="true" />
+              </Button>
+            </div>
+            <SidebarContent
+              id="vehicle-filter-fields"
+              class="space-y-5 px-4 py-4"
+              :class="{ 'md:hidden': !desktopFiltersOpen }"
+            >
+              <p
+                v-if="filterOptionsStatus === 'error'"
+                role="alert"
+                class="text-sm text-destructive"
+              >
+                No se pudieron cargar las opciones de filtros. Revisa que la API
+                esté disponible.
+              </p>
+              <form
+                class="grid gap-2 text-sm font-medium"
+                role="search"
+                @submit.prevent="submitSearch"
+              >
+                <label for="vehicles-search">Buscar</label>
+                <div class="flex gap-2">
+                  <Input
+                    id="vehicles-search"
+                    v-model="search"
+                    placeholder="Marca, modelo o versión"
+                    class="min-w-0 flex-1"
+                  />
+                  <Button
+                    type="submit"
+                    size="icon"
+                    aria-label="Buscar vehículos"
+                    title="Buscar vehículos"
+                  >
+                    <Icon
+                      name="tabler:search"
+                      class="size-4"
+                      aria-hidden="true"
+                    />
+                  </Button>
+                </div>
+              </form>
+              <label class="grid gap-2 text-sm font-medium"
+                >Marca
+                <NativeSelect
+                  id="vehicles-make"
+                  v-model="make"
+                  class="w-full"
+                  :disabled="!filterOptions?.makes.length"
+                  aria-label="Filtrar vehículos por marca"
+                >
+                  <NativeSelectOption value="all"
+                    >Todas las marcas</NativeSelectOption
+                  >
+                  <NativeSelectOption
+                    v-for="option in filterOptions?.makes"
+                    :key="option.id"
+                    :value="option.id"
+                    >{{ option.name }}</NativeSelectOption
+                  >
+                </NativeSelect>
+              </label>
+              <label class="grid gap-2 text-sm font-medium"
+                >Grupo
+                <NativeSelect
+                  id="vehicles-group"
+                  v-model="group"
+                  class="w-full"
+                  :disabled="!filterOptions?.groups.length"
+                  aria-label="Filtrar vehículos por grupo"
+                >
+                  <NativeSelectOption value="all"
+                    >Todos los grupos</NativeSelectOption
+                  >
+                  <NativeSelectOption
+                    v-for="option in filterOptions?.groups"
+                    :key="option.id"
+                    :value="option.id"
+                    >{{ option.name }}</NativeSelectOption
+                  >
+                </NativeSelect>
+              </label>
+              <label class="grid gap-2 text-sm font-medium"
+                >Año
+                <NativeSelect
+                  id="vehicles-year"
+                  v-model="year"
+                  class="w-full"
+                  :disabled="!filterOptions?.years.length"
+                  aria-label="Filtrar vehículos por año"
+                >
+                  <NativeSelectOption value="all"
+                    >Todos los años</NativeSelectOption
+                  >
+                  <NativeSelectOption
+                    v-for="option in filterOptions?.years"
+                    :key="option"
+                    :value="String(option)"
+                    >{{ option }}</NativeSelectOption
+                  >
+                </NativeSelect>
+              </label>
+              <label class="grid gap-2 text-sm font-medium"
+                >Propulsión
+                <NativeSelect
+                  id="vehicles-powertrain"
+                  v-model="powertrainType"
+                  class="w-full"
+                  :disabled="!filterOptions?.powertrainTypes.length"
+                  aria-label="Filtrar vehículos por propulsión"
+                >
+                  <NativeSelectOption value="all"
+                    >Todas las propulsiones</NativeSelectOption
+                  >
+                  <NativeSelectOption
+                    v-for="option in filterOptions?.powertrainTypes"
+                    :key="option"
+                    :value="option"
+                    >{{
+                      powertrainFilterLabel(option) ??
+                      option.replaceAll("_", " ")
+                    }}</NativeSelectOption
+                  >
+                </NativeSelect>
+              </label>
+              <label class="grid gap-2 text-sm font-medium"
+                >País de armado
+                <NativeSelect
+                  id="vehicles-country"
+                  v-model="assemblyCountry"
+                  class="w-full"
+                  :disabled="!filterOptions?.assemblyCountries.length"
+                  aria-label="Filtrar vehículos por país de armado"
+                >
+                  <NativeSelectOption value="all"
+                    >Todos los países</NativeSelectOption
+                  >
+                  <NativeSelectOption
+                    v-for="country in filterOptions?.assemblyCountries"
+                    :key="country.code"
+                    :value="country.code"
+                    >{{ country.name }}</NativeSelectOption
+                  >
+                </NativeSelect>
+              </label>
+              <label class="grid gap-2 text-sm font-medium"
+                >Estrellas de seguridad
+                <NativeSelect
+                  id="vehicles-stars"
+                  v-model="safetyStars"
+                  class="w-full"
+                  aria-label="Filtrar vehículos por estrellas de seguridad"
+                >
+                  <NativeSelectOption value="all"
+                    >Todas las calificaciones</NativeSelectOption
+                  >
+                  <NativeSelectOption
+                    v-for="stars in 6"
+                    :key="stars - 1"
+                    :value="String(stars - 1)"
+                    >{{ stars - 1 }}
+                    {{
+                      stars === 2 ? "estrella" : "estrellas"
+                    }}</NativeSelectOption
+                  >
+                </NativeSelect>
+                <span class="text-xs font-normal text-muted-foreground"
+                  >Evaluación más reciente del modelo</span
+                >
+              </label>
+              <label class="grid gap-2 text-sm font-medium"
+                >Ordenar por
+                <NativeSelect
+                  id="vehicles-sort"
+                  v-model="sort"
+                  class="w-full"
+                  aria-label="Ordenar vehículos"
+                >
+                  <NativeSelectOption value="newest"
+                    >Año: más reciente</NativeSelectOption
+                  >
+                  <NativeSelectOption value="az">A-Z</NativeSelectOption>
+                  <NativeSelectOption value="price_asc"
+                    >Precio: menor a mayor</NativeSelectOption
+                  >
+                  <NativeSelectOption value="price_desc"
+                    >Precio: mayor a menor</NativeSelectOption
+                  >
+                </NativeSelect>
+              </label>
+            </SidebarContent>
+            <SidebarFooter
+              class="border-t p-4"
+              :class="{ 'md:hidden': !desktopFiltersOpen }"
+            >
+              <Button type="button" variant="outline" @click="resetFilters">
+                Limpiar filtros
+              </Button>
+            </SidebarFooter>
+          </div>
+        </Sidebar>
 
-      <nav
-        v-if="pageCount > 1"
-        class="flex items-center justify-center gap-3"
-        aria-label="Paginación de vehículos"
-      >
-        <Button
-          type="button"
-          variant="outline"
-          size="icon"
-          :disabled="page <= 1"
-          aria-label="Página anterior"
-          title="Página anterior"
-          @click="goToPage(page - 1)"
+        <div
+          class="mx-auto w-full min-w-0 max-w-6xl flex-1 space-y-6 px-4 py-8"
         >
-          <Icon name="tabler:chevron-left" class="size-4" aria-hidden="true" />
-        </Button>
-        <span class="text-sm text-muted-foreground"
-          >Página {{ page }} de {{ pageCount }}</span
-        >
-        <Button
-          type="button"
-          variant="outline"
-          size="icon"
-          :disabled="page >= pageCount"
-          aria-label="Página siguiente"
-          title="Página siguiente"
-          @click="goToPage(page + 1)"
-        >
-          <Icon name="tabler:chevron-right" class="size-4" aria-hidden="true" />
-        </Button>
-      </nav>
+          <div class="space-y-2">
+            <p class="text-sm font-medium text-muted-foreground">Explorar</p>
+            <h1 class="text-3xl font-bold tracking-tight">
+              Catálogo de vehículos
+            </h1>
+          </div>
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-lg font-semibold">Vehículos</h2>
+            <Badge variant="secondary">{{ data?.count ?? 0 }} resultados</Badge>
+          </div>
+
+          <p
+            v-if="status === 'error'"
+            role="alert"
+            class="text-sm text-destructive"
+          >
+            No se pudieron cargar los vehículos. Revisa que la API esté
+            disponible.
+          </p>
+          <div
+            v-else-if="status === 'pending'"
+            class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            <Skeleton v-for="item in 6" :key="item" class="h-80" />
+          </div>
+          <div
+            v-else-if="data?.results.length"
+            class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            <CatalogVehicleCard
+              v-for="(vehicle, index) in data.results"
+              :key="vehicle.id"
+              :model="modelContext(vehicle)"
+              :vehicle="vehicle"
+              :index="index"
+            />
+          </div>
+          <Card v-else>
+            <CardContent
+              class="flex flex-col items-center gap-2 p-8 text-center"
+            >
+              <Icon
+                name="tabler:car-off"
+                class="size-8 text-muted-foreground"
+                aria-hidden="true"
+              />
+              <h3 class="font-semibold">No hay vehículos para mostrar</h3>
+              <p class="text-sm text-muted-foreground">
+                Prueba otra búsqueda o vuelve más tarde.
+              </p>
+            </CardContent>
+          </Card>
+
+          <nav
+            v-if="pageCount > 1"
+            class="flex items-center justify-center gap-3"
+            aria-label="Paginación de vehículos"
+          >
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              :disabled="page <= 1"
+              aria-label="Página anterior"
+              title="Página anterior"
+              @click="goToPage(page - 1)"
+            >
+              <Icon
+                name="tabler:chevron-left"
+                class="size-4"
+                aria-hidden="true"
+              />
+            </Button>
+            <span class="text-sm text-muted-foreground"
+              >Página {{ page }} de {{ pageCount }}</span
+            >
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              :disabled="page >= pageCount"
+              aria-label="Página siguiente"
+              title="Página siguiente"
+              @click="goToPage(page + 1)"
+            >
+              <Icon
+                name="tabler:chevron-right"
+                class="size-4"
+                aria-hidden="true"
+              />
+            </Button>
+          </nav>
+        </div>
+      </SidebarProvider>
     </section>
   </div>
 </template>
