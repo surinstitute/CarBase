@@ -1,5 +1,3 @@
-from rest_framework import serializers
-
 from catalog.models import (
     BaseModel,
     BatteryPack,
@@ -16,6 +14,7 @@ from catalog.models import (
     Transmission,
     Vehicle,
 )
+from rest_framework import serializers
 
 ARCHITECTURE_MAP = {
     PowerTrainArchitecture.ICE: "ice",

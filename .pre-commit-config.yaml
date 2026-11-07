@@ -26,5 +26,6 @@ repos:
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
+        exclude: ^backend/src/main/templates/
         additional_dependencies:
           - prettier@3.0.2

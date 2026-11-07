@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ModelsListPage from '../catalog/index.vue'
+import ModelsListPage from "../catalog/index.vue";
 </script>
 
 <template>

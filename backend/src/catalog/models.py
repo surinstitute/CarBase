@@ -1,19 +1,6 @@
 import uuid
 from pathlib import Path
 
-from django.core.exceptions import ValidationError
-from django.core.validators import (
-    FileExtensionValidator,
-    MaxValueValidator,
-    MinValueValidator,
-)
-from django.db import models
-from django.utils.text import slugify
-from django_countries.fields import CountryField
-from paradedb.indexes import ParadeDBIndex
-from paradedb.queryset import ParadeDBManager
-from paradedb.search import Tokenizer
-
 from catalog.types import (
     AccelerationMetric,
     ApprovalDomain,
@@ -51,6 +38,18 @@ from catalog.types import (
     TractionPosition,
     TransmissionType,
 )
+from django.core.exceptions import ValidationError
+from django.core.validators import (
+    FileExtensionValidator,
+    MaxValueValidator,
+    MinValueValidator,
+)
+from django.db import models
+from django.utils.text import slugify
+from django_countries.fields import CountryField
+from paradedb.indexes import ParadeDBIndex
+from paradedb.queryset import ParadeDBManager
+from paradedb.search import Tokenizer
 
 
 class ModelGeneration(models.Model):

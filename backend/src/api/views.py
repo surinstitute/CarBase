@@ -1,3 +1,25 @@
+from catalog.filters import (
+    POWERTRAIN_TYPE_ARCHITECTURES,
+    BaseModelFilter,
+    RecallFilter,
+    VehicleFilter,
+)
+from catalog.models import (
+    BaseModel,
+    BatteryPack,
+    EMotor,
+    Engine,
+    FuelTank,
+    Group,
+    Make,
+    ModelGeneration,
+    ModelImagePlacement,
+    Platform,
+    PowerTrain,
+    Recall,
+    Transmission,
+    Vehicle,
+)
 from django.db.models import Count, Max, Min, Prefetch, Q
 from django.http import Http404
 from django.utils.text import slugify
@@ -22,28 +44,6 @@ from api.serializers import (
     RecallSerializer,
     TransmissionSerializer,
     VehicleSerializer,
-)
-from catalog.filters import (
-    POWERTRAIN_TYPE_ARCHITECTURES,
-    BaseModelFilter,
-    RecallFilter,
-    VehicleFilter,
-)
-from catalog.models import (
-    BaseModel,
-    BatteryPack,
-    EMotor,
-    Engine,
-    FuelTank,
-    Group,
-    Make,
-    ModelGeneration,
-    ModelImagePlacement,
-    Platform,
-    PowerTrain,
-    Recall,
-    Transmission,
-    Vehicle,
 )
 
 

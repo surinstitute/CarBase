@@ -1,10 +1,15 @@
 document.addEventListener("change", (event) => {
   const input = event.target;
-  if (!(input instanceof HTMLInputElement) || !input.name.endsWith("-image_file")) {
+  if (
+    !(input instanceof HTMLInputElement) ||
+    !input.name.endsWith("-image_file")
+  ) {
     return;
   }
 
-  const preview = input.closest(".form-row")?.querySelector(".image-placement-preview");
+  const preview = input
+    .closest(".form-row")
+    ?.querySelector(".image-placement-preview");
   if (!preview) {
     return;
   }

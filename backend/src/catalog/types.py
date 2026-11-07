@@ -19,7 +19,7 @@ class EngineAspiration(models.TextChoices):
 
 
 class EngineLayout(models.TextChoices):
-    I = "i", "Inline"
+    INLINE = "i", "Inline"
     V = "v", "V"
     BOXER = "boxer", "Boxer"
     W = "w", "W"

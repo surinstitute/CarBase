@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 
-const comparison = useCarComparison()
+const comparison = useCarComparison();
 </script>
 
 <template>
@@ -12,13 +12,29 @@ const comparison = useCarComparison()
   >
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-3">
       <div class="min-w-0">
-        <p class="text-sm font-semibold">{{ comparison.count.value }} de 4 autos seleccionados</p>
+        <p class="text-sm font-semibold">
+          {{ comparison.count.value }} de 4 autos seleccionados
+        </p>
         <p class="hidden truncate text-xs text-muted-foreground sm:block">
-          {{ comparison.selectedVehicles.value.map((vehicle) => `${vehicle.makeName} ${vehicle.modelName} ${vehicle.variantName || ''}`).join(' · ') }}
+          {{
+            comparison.selectedVehicles.value
+              .map(
+                (vehicle) =>
+                  `${vehicle.makeName} ${vehicle.modelName} ${
+                    vehicle.variantName || ""
+                  }`,
+              )
+              .join(" · ")
+          }}
         </p>
       </div>
       <div class="flex shrink-0 items-center gap-2">
-        <Button type="button" variant="ghost" size="sm" @click="comparison.clear()">
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          @click="comparison.clear()"
+        >
           Limpiar
         </Button>
         <Button v-if="comparison.canCompare.value" as-child size="sm">
@@ -27,7 +43,9 @@ const comparison = useCarComparison()
             Comparar
           </NuxtLink>
         </Button>
-        <span v-else class="text-xs text-muted-foreground">Añade otro para comparar</span>
+        <span v-else class="text-xs text-muted-foreground"
+          >Añade otro para comparar</span
+        >
       </div>
     </div>
   </aside>

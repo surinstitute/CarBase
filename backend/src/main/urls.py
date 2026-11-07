@@ -1,3 +1,4 @@
+from api import urls as api_urls
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -9,8 +10,6 @@ from drf_spectacular.views import (
 )
 from health_check import Database, Storage
 from health_check.views import HealthCheckView
-
-from api import urls as api_urls
 
 urlpatterns = [
     path(
