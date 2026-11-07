@@ -32,6 +32,7 @@ export default defineEventHandler(async (event) => {
     "body_style",
     "powertrain_type",
     "assembly_country",
+    "safety_stars",
     "page",
   ]) {
     const value = query[name];
@@ -47,26 +48,24 @@ export default defineEventHandler(async (event) => {
 
   return {
     ...response,
-    results: response.results.map(
-      (model): CatalogModel => ({
-        id: model.id,
-        modelGenerationId: model.modelGenerationId,
-        makeId: model.make,
-        makeSlug: model.makeSlug,
-        makeName: model.makeName,
-        modelName: model.model,
-        year: model.year,
-        generation: model.generation,
-        created_at: model.created_at,
-        updated_at: model.updated_at,
-        platformId: model.platform,
-        platformName: model.platformName,
-        baseBodyStyle: model.body_style,
-        bodyStyles: model.body_style ? [model.body_style] : [],
-        architectures: model.architectures,
-        vehicles: [],
-        image: model.image ?? undefined,
-      }),
-    ),
+    results: response.results.map((model): CatalogModel => ({
+      id: model.id,
+      modelGenerationId: model.modelGenerationId,
+      makeId: model.make,
+      makeSlug: model.makeSlug,
+      makeName: model.makeName,
+      modelName: model.model,
+      year: model.year,
+      generation: model.generation,
+      created_at: model.created_at,
+      updated_at: model.updated_at,
+      platformId: model.platform,
+      platformName: model.platformName,
+      baseBodyStyle: model.body_style,
+      bodyStyles: model.body_style ? [model.body_style] : [],
+      architectures: model.architectures,
+      vehicles: [],
+      image: model.image ?? undefined,
+    })),
   };
 });

@@ -28,6 +28,7 @@ filters.search = queryValue("q");
 filters.makeId = queryValue("make") || "all";
 filters.bodyStyle = queryValue("body_style") || "all";
 
+const safetyStars = ref(queryValue("safety_stars") || "all");
 const requestedPage = Number.parseInt(queryValue("page"), 10);
 const page = ref(
   Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
@@ -38,6 +39,7 @@ const catalogQuery = computed(() => ({
   ...(debouncedSearch.value.trim() ? { q: debouncedSearch.value.trim() } : {}),
   ...(filters.makeId !== "all" ? { make: filters.makeId } : {}),
   ...(filters.bodyStyle !== "all" ? { body_style: filters.bodyStyle } : {}),
+  ...(safetyStars.value !== "all" ? { safety_stars: safetyStars.value } : {}),
 }));
 
 const { data, status } = useQuery({
@@ -55,6 +57,7 @@ const filterQuery = computed(() => ({
   ...(debouncedSearch.value.trim() ? { q: debouncedSearch.value.trim() } : {}),
   ...(filters.makeId !== "all" ? { make: filters.makeId } : {}),
   ...(filters.bodyStyle !== "all" ? { body_style: filters.bodyStyle } : {}),
+  ...(safetyStars.value !== "all" ? { safety_stars: safetyStars.value } : {}),
 }));
 const { data: filterOptions, status: filterOptionsStatus } = useQuery({
   key: () => ["model-filter-options", filterQuery.value],
@@ -95,8 +98,13 @@ watch(
   },
 );
 
+watch(safetyStars, () => {
+  page.value = 1;
+});
+
 function resetFilters() {
   filters.reset();
+  safetyStars.value = "all";
   page.value = 1;
 }
 
@@ -177,6 +185,28 @@ function bodyStyleLabel(bodyStyle: string) {
               >
             </NativeSelect>
           </div>
+          <label class="grid gap-2 text-sm font-medium">
+            Estrellas de seguridad
+            <NativeSelect
+              v-model="safetyStars"
+              class="w-full"
+              aria-label="Filtrar modelos por estrellas de seguridad"
+            >
+              <NativeSelectOption value="all">
+                Todas las calificaciones
+              </NativeSelectOption>
+              <NativeSelectOption
+                v-for="stars in 6"
+                :key="stars - 1"
+                :value="String(stars - 1)"
+              >
+                {{ stars - 1 }} {{ stars === 2 ? "estrella" : "estrellas" }}
+              </NativeSelectOption>
+            </NativeSelect>
+            <span class="text-xs font-normal text-muted-foreground">
+              Evaluación más reciente del modelo
+            </span>
+          </label>
           <Button type="button" variant="outline" @click="resetFilters"
             >Limpiar</Button
           >

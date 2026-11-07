@@ -27,10 +27,11 @@ This command requires the OIDC and superuser environment variables. It is not
 needed for a new environment: the backend runs it automatically after its
 first migration.
 
-## Vehicle safety filter
+## Safety star filter
 
-`GET /api/vehicles/?safety_stars=0` through `safety_stars=5` filters by the
-exact star count of the model's most recent safety assessment. If assessments
-share the latest year, the program name determines their order, as in model
-details. Models without assessments are excluded. This filter can be combined
-with the existing `safety` filter for vehicles with or without a safety package.
+`GET /api/models/?safety_stars=0` and `GET /api/vehicles/?safety_stars=0`
+through `safety_stars=5` filter by the exact star count of the model's most
+recent safety assessment. If assessments share the latest year, the program
+name determines their order, as in model details. Models without assessments
+are excluded. For vehicles, this filter can be combined with the existing
+`safety` filter for vehicles with or without a safety package.

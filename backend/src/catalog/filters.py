@@ -21,6 +21,18 @@ POWERTRAIN_TYPE_ARCHITECTURES = {
         PowerTrainArchitecture.FCEV,
     ),
 }
+SAFETY_STAR_CHOICES = [(str(stars), str(stars)) for stars in range(6)]
+
+
+def filter_latest_safety_stars(queryset, model_field, value):
+    latest_stars = (
+        ModelSafetyRating.objects.filter(model_id=OuterRef(model_field))
+        .order_by("-assessment_year", "program")
+        .values("overall_stars")[:1]
+    )
+    return queryset.alias(latest_safety_stars=Subquery(latest_stars)).filter(
+        latest_safety_stars=int(value)
+    )
 
 
 class BaseModelFilter(django_filters.FilterSet):
@@ -43,6 +55,9 @@ class BaseModelFilter(django_filters.FilterSet):
         lookup_expr="iexact",
         distinct=True,
     )
+    safety_stars = django_filters.ChoiceFilter(
+        choices=SAFETY_STAR_CHOICES, method="filter_safety_stars"
+    )
 
     class Meta:
         model = BaseModel
@@ -55,6 +70,7 @@ class BaseModelFilter(django_filters.FilterSet):
             "body_style",
             "powertrain_type",
             "assembly_country",
+            "safety_stars",
         ]
 
     def filter_search(self, queryset, _name, value):
@@ -93,6 +109,9 @@ class BaseModelFilter(django_filters.FilterSet):
             model_vehicles__powertrain__architecture__in=architectures
         ).distinct()
 
+    def filter_safety_stars(self, queryset, _name, value):
+        return filter_latest_safety_stars(queryset, "pk", value)
+
 
 class VehicleFilter(django_filters.FilterSet):
     search = django_filters.CharFilter(method="filter_search")
@@ -112,7 +131,7 @@ class VehicleFilter(django_filters.FilterSet):
     )
     safety = django_filters.BooleanFilter(method="filter_safety")
     safety_stars = django_filters.ChoiceFilter(
-        choices=[(str(stars), str(stars)) for stars in range(6)],
+        choices=SAFETY_STAR_CHOICES,
         method="filter_safety_stars",
     )
     sort = django_filters.ChoiceFilter(
@@ -180,14 +199,7 @@ class VehicleFilter(django_filters.FilterSet):
         return queryset.filter(safety_package_assignment__isnull=not value)
 
     def filter_safety_stars(self, queryset, _name, value):
-        latest_stars = (
-            ModelSafetyRating.objects.filter(model_id=OuterRef("model_id"))
-            .order_by("-assessment_year", "program")
-            .values("overall_stars")[:1]
-        )
-        return queryset.alias(latest_safety_stars=Subquery(latest_stars)).filter(
-            latest_safety_stars=int(value)
-        )
+        return filter_latest_safety_stars(queryset, "model_id", value)
 
     def filter_sort(self, queryset, _name, value):
         if value == "az":

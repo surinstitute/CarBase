@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   const params = new URLSearchParams();
 
-  for (const name of ["q", "make", "body_style"]) {
+  for (const name of ["q", "make", "body_style", "safety_stars"]) {
     const value = query[name];
     if (typeof value === "string" && value.trim()) {
       params.set(name, value.trim());
