@@ -11,6 +11,8 @@ from api.serializers import (
     BaseModelDetailSerializer,
     BaseModelSerializer,
     BatteryPackSerializer,
+    CollectionDetailSerializer,
+    CollectionSerializer,
     CommercialModelDetailSerializer,
     CommercialModelSerializer,
     EMotorSerializer,
@@ -36,6 +38,8 @@ from catalog.filters import (
 from catalog.models import (
     BaseModel,
     BatteryPack,
+    Collection,
+    CollectionVehicle,
     CommercialModel,
     EMotor,
     Engine,
@@ -425,6 +429,42 @@ class VehicleViewSet(ReadOnlyModelViewSet):
                 ],
             }
         )
+
+
+class CollectionViewSet(ReadOnlyModelViewSet):
+    queryset = Collection.objects.filter(is_published=True).annotate(
+        vehicle_count=Count("items")
+    ).order_by("title", "id")
+    serializer_class = CollectionSerializer
+    lookup_field = "slug"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.action == "retrieve":
+            items = (
+                CollectionVehicle.objects.select_related(
+                    "vehicle__model__model_generation__commercial_model__make",
+                    "vehicle__model__model_generation__platform",
+                    "vehicle__powertrain",
+                    "vehicle__transmissionId",
+                )
+                .prefetch_related(
+                    "vehicle__powertrain__engine_fitments__engine",
+                    "vehicle__powertrain__motor_fitments__e_motor",
+                    "vehicle__powertrain__battery_fitments__battery_pack",
+                    "vehicle__powertrain__fuel_fitments__fuel_tank",
+                    "vehicle__monthly_sales",
+                    "vehicle__model__recalls",
+                )
+                .order_by("position", "id")
+            )
+            queryset = queryset.prefetch_related(Prefetch("items", queryset=items))
+        return queryset
+
+    def get_serializer_class(self):
+        if self.action == "retrieve":
+            return CollectionDetailSerializer
+        return super().get_serializer_class()
 
 
 class RecallViewSet(ReadOnlyModelViewSet):

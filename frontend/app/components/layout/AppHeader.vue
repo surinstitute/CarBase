@@ -10,6 +10,7 @@ const navigationLinks = [
   { label: "Marcas", to: "/makes" },
   { label: "Modelos", to: "/models" },
   { label: "Vehículos", to: "/vehicles" },
+  { label: "Colecciones", to: "/collections" },
   { label: "Comparar", to: "/models/compare" },
   { label: "Recalls", to: "/recalls" },
 ];

@@ -1,6 +1,10 @@
+from rest_framework import serializers
+
 from catalog.models import (
     BaseModel,
     BatteryPack,
+    Collection,
+    CollectionVehicle,
     CommercialModel,
     EMotor,
     Engine,
@@ -15,7 +19,6 @@ from catalog.models import (
     Transmission,
     Vehicle,
 )
-from rest_framework import serializers
 
 ARCHITECTURE_MAP = {
     PowerTrainArchitecture.ICE: "ice",
@@ -1342,3 +1345,29 @@ class VehicleSummarySerializer(VehicleSerializer):
 
     def to_representation(self, instance):
         return serializers.ModelSerializer.to_representation(self, instance)
+
+
+class CollectionSerializer(serializers.ModelSerializer):
+    vehicleCount = serializers.IntegerField(source="vehicle_count", read_only=True)
+
+    class Meta:
+        model = Collection
+        fields = ("id", "title", "slug", "description", "vehicleCount")
+
+
+class CollectionVehicleSerializer(serializers.ModelSerializer):
+    vehicle = VehicleSummarySerializer(read_only=True)
+    editorialNote = serializers.CharField(
+        source="editorial_note", read_only=True, allow_blank=True
+    )
+
+    class Meta:
+        model = CollectionVehicle
+        fields = ("position", "editorialNote", "vehicle")
+
+
+class CollectionDetailSerializer(CollectionSerializer):
+    vehicles = CollectionVehicleSerializer(source="items", many=True, read_only=True)
+
+    class Meta(CollectionSerializer.Meta):
+        fields = CollectionSerializer.Meta.fields + ("vehicles",)

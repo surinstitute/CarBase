@@ -4,6 +4,7 @@ from rest_framework import routers
 from api.views import (
     BaseModelViewSet,
     BatteryPackViewSet,
+    CollectionViewSet,
     CommercialModelViewSet,
     EMotorViewSet,
     EngineViewSet,
@@ -35,6 +36,7 @@ router.register("e-motors", EMotorViewSet, basename="emotor")
 router.register("powertrains", PowerTrainViewSet, basename="powertrain")
 router.register("transmissions", TransmissionViewSet, basename="transmission")
 router.register("vehicles", VehicleViewSet, basename="vehicle")
+router.register("collections", CollectionViewSet, basename="collection")
 router.register("recalls", RecallViewSet, basename="recall")
 
 urlpatterns = [

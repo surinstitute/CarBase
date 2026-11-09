@@ -671,6 +671,47 @@ class Vehicle(models.Model):
                 )
 
 
+class Collection(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
+    description = models.TextField()
+    is_published = models.BooleanField(default=False)
+    vehicles = models.ManyToManyField(
+        Vehicle,
+        through="CollectionVehicle",
+        related_name="collections",
+    )
+
+    class Meta:
+        ordering = ("title", "id")
+
+    def __str__(self):
+        return self.title
+
+
+class CollectionVehicle(models.Model):
+    collection = models.ForeignKey(
+        Collection, on_delete=models.CASCADE, related_name="items"
+    )
+    vehicle = models.ForeignKey(
+        Vehicle, on_delete=models.CASCADE, related_name="collection_items"
+    )
+    position = models.PositiveIntegerField(default=0, db_index=True)
+    editorial_note = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ("position", "id")
+        constraints = [
+            models.UniqueConstraint(
+                fields=("collection", "vehicle"),
+                name="unique_collection_vehicle",
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.collection}: {self.vehicle}"
+
+
 class VehicleMonthlySales(models.Model):
     class Month(models.IntegerChoices):
         JANUARY = 1, "Enero"

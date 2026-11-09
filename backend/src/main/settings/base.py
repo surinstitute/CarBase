@@ -512,6 +512,11 @@ UNFOLD = {
                         "link": reverse_lazy("admin:catalog_vehicle_changelist"),
                     },
                     {
+                        "title": _("Colecciones"),
+                        "icon": "collections_bookmark",
+                        "link": reverse_lazy("admin:catalog_collection_changelist"),
+                    },
+                    {
                         "title": _("Motores"),
                         "icon": "precision_manufacturing",
                         "link": reverse_lazy("admin:catalog_engine_changelist"),

@@ -143,6 +143,22 @@ export interface CatalogVehicleRecord {
   [field: string]: unknown;
 }
 
+export interface CatalogCollection {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  vehicleCount: number;
+}
+
+export interface CatalogCollectionDetail extends CatalogCollection {
+  vehicles: Array<{
+    position: number;
+    editorialNote: string;
+    vehicle: CatalogVehicleRecord;
+  }>;
+}
+
 export interface CatalogSafetyRating {
   program: "latin_ncap" | "euro_ncap" | "other";
   assessmentYear: number;

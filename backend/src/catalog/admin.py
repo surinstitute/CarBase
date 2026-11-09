@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.forms.models import BaseInlineFormSet
 from django.urls import reverse
 from django.utils.html import format_html, format_html_join
-from unfold.admin import ModelAdmin
+from unfold.admin import ModelAdmin, TabularInline
 
 from .models import (
     AccelerationResult,
@@ -18,8 +18,10 @@ from .models import (
     ChargeTimeResult,
     ChargingPackage,
     ChargingPort,
-    CommercialModel,
     ClimatePackage,
+    Collection,
+    CollectionVehicle,
+    CommercialModel,
     ComplianceRecord,
     EfficiencyResult,
     EmissionsResult,
@@ -1446,3 +1448,21 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         )
 
     powertrain_fuel_tanks_inline.short_description = "Fuel Tanks"
+
+
+class CollectionVehicleInline(TabularInline):
+    model = CollectionVehicle
+    fields = ("vehicle", "editorial_note", "position")
+    autocomplete_fields = ("vehicle",)
+    ordering_field = "position"
+    hide_ordering_field = True
+    extra = 0
+
+
+@admin.register(Collection)
+class CollectionAdmin(ModelAdmin):
+    list_display = ("title", "slug", "is_published")
+    list_filter = ("is_published",)
+    search_fields = ("title", "description")
+    prepopulated_fields = {"slug": ("title",)}
+    inlines = (CollectionVehicleInline,)

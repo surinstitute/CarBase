@@ -41,6 +41,14 @@ associated base models, using the same fields as `GET /api/model/`. The list is
 empty if the generation has no base models. The `/api/model-gen/` route is
 currently disabled.
 
+## Collections
+
+Collections are created in Django Admin with a title, description, and an
+ordered list of vehicles. Each vehicle can have an editorial note explaining
+why it was selected. Set `is_published` to make a collection visible.
+`GET /api/collections/` lists published collections; retrieve a collection by
+slug at `GET /api/collections/<slug>/`.
+
 ## Safety star filter
 
 `GET /api/models/?safety_stars=0` and `GET /api/vehicles/?safety_stars=0`
