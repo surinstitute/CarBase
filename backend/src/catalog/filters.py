@@ -3,7 +3,14 @@ from django.db.models import Case, F, IntegerField, OuterRef, Q, Subquery, Value
 from paradedb.functions import Score
 from paradedb.search import ParadeDB, PhrasePrefix
 
-from .models import BaseModel, ModelGeneration, ModelSafetyRating, Recall, Vehicle
+from .models import (
+    BaseModel,
+    CommercialModel,
+    ModelGeneration,
+    ModelSafetyRating,
+    Recall,
+    Vehicle,
+)
 from .types import BodyStyle, PowerTrainArchitecture
 
 POWERTRAIN_TYPE_ARCHITECTURES = {
@@ -35,12 +42,22 @@ def filter_latest_safety_stars(queryset, model_field, value):
     )
 
 
+class CommercialModelFilter(django_filters.FilterSet):
+    q = django_filters.CharFilter(field_name="name", lookup_expr="icontains")
+    make = django_filters.UUIDFilter(field_name="make_id")
+    name = django_filters.CharFilter(field_name="name", lookup_expr="iexact")
+
+    class Meta:
+        model = CommercialModel
+        fields = ["q", "make", "name"]
+
+
 class BaseModelFilter(django_filters.FilterSet):
-    search = django_filters.CharFilter(method="filter_search")
-    q = django_filters.CharFilter(method="filter_search")
-    make = django_filters.UUIDFilter(field_name="model_generation__make_id")
+    search = django_filters.CharFilter(method="filter_search", label="Search")
+    q = django_filters.CharFilter(method="filter_search", label="Search (q)")
+    make = django_filters.UUIDFilter(field_name="model_generation__commercial_model__make_id")
     model = django_filters.CharFilter(
-        field_name="model_generation__model", lookup_expr="iexact"
+        field_name="model_generation__commercial_model__name", lookup_expr="iexact"
     )
     year = django_filters.NumberFilter(field_name="year")
     body_style = django_filters.ChoiceFilter(
@@ -49,6 +66,7 @@ class BaseModelFilter(django_filters.FilterSet):
     powertrain_type = django_filters.ChoiceFilter(
         choices=[(value, value) for value in POWERTRAIN_TYPE_ARCHITECTURES],
         method="filter_powertrain_type",
+        label="Powertrain type",
     )
     assembly_country = django_filters.CharFilter(
         field_name="model_vehicles__assembly_country",
@@ -56,7 +74,7 @@ class BaseModelFilter(django_filters.FilterSet):
         distinct=True,
     )
     safety_stars = django_filters.ChoiceFilter(
-        choices=SAFETY_STAR_CHOICES, method="filter_safety_stars"
+        choices=SAFETY_STAR_CHOICES, method="filter_safety_stars", label="Safety stars"
     )
 
     class Meta:
@@ -80,11 +98,9 @@ class BaseModelFilter(django_filters.FilterSet):
         search_query = ParadeDB(PhrasePrefix(normalized_value.lower()))
         matching_generations = list(
             ModelGeneration.objects.filter(
-                Q(model=search_query) | Q(generation_prefix=search_query)
-            )
-            .annotate(score=Score())
-            .order_by("-score")
-            .values_list("pk", flat=True)
+                Q(commercial_model_id__in=CommercialModel.objects.filter(name=search_query).values("pk"))
+                | Q(pk__in=ModelGeneration.objects.filter(generation_prefix=search_query).values("pk"))
+            ).values_list("pk", flat=True)
         )
         if not matching_generations:
             return queryset.none()
@@ -114,25 +130,30 @@ class BaseModelFilter(django_filters.FilterSet):
 
 
 class VehicleFilter(django_filters.FilterSet):
-    search = django_filters.CharFilter(method="filter_search")
-    q = django_filters.CharFilter(method="filter_search")
+    search = django_filters.CharFilter(method="filter_search", label="Search")
+    q = django_filters.CharFilter(method="filter_search", label="Search (q)")
     model = django_filters.UUIDFilter(field_name="model_id")
-    make = django_filters.UUIDFilter(field_name="model__model_generation__make_id")
+    make = django_filters.UUIDFilter(field_name="model__model_generation__commercial_model__make_id")
     group = django_filters.UUIDFilter(
-        field_name="model__model_generation__make__group_id"
+        field_name="model__model_generation__commercial_model__make__group_id"
     )
     year = django_filters.NumberFilter(field_name="model__year")
+    body_style = django_filters.ChoiceFilter(
+        field_name="model__body_style", choices=BodyStyle.choices
+    )
     powertrain_type = django_filters.ChoiceFilter(
         choices=[(value, value) for value in POWERTRAIN_TYPE_ARCHITECTURES],
         method="filter_powertrain_type",
+        label="Powertrain type",
     )
     assembly_country = django_filters.CharFilter(
         field_name="assembly_country", lookup_expr="iexact"
     )
-    safety = django_filters.BooleanFilter(method="filter_safety")
+    safety = django_filters.BooleanFilter(method="filter_safety", label="Safety package")
     safety_stars = django_filters.ChoiceFilter(
         choices=SAFETY_STAR_CHOICES,
         method="filter_safety_stars",
+        label="Safety stars",
     )
     sort = django_filters.ChoiceFilter(
         choices=(
@@ -142,6 +163,7 @@ class VehicleFilter(django_filters.FilterSet):
             ("price_desc", "Price descending"),
         ),
         method="filter_sort",
+        label="Sort",
     )
     powertrain = django_filters.UUIDFilter(field_name="powertrain_id")
     transmission = django_filters.UUIDFilter(field_name="transmissionId_id")
@@ -158,6 +180,7 @@ class VehicleFilter(django_filters.FilterSet):
             "make",
             "group",
             "year",
+            "body_style",
             "powertrain_type",
             "assembly_country",
             "safety",
@@ -174,7 +197,8 @@ class VehicleFilter(django_filters.FilterSet):
             return queryset
         search_query = ParadeDB(PhrasePrefix(normalized_value.lower()))
         matching_generation_ids = ModelGeneration.objects.filter(
-            Q(model=search_query) | Q(generation_prefix=search_query)
+            Q(commercial_model_id__in=CommercialModel.objects.filter(name=search_query).values("pk"))
+            | Q(pk__in=ModelGeneration.objects.filter(generation_prefix=search_query).values("pk"))
         ).values_list("pk", flat=True)
         matching_model_ids = list(
             BaseModel.objects.filter(
@@ -204,36 +228,36 @@ class VehicleFilter(django_filters.FilterSet):
     def filter_sort(self, queryset, _name, value):
         if value == "az":
             return queryset.order_by(
-                "model__model_generation__make__name",
-                "model__model_generation__model",
+                "model__model_generation__commercial_model__make__name",
+                "model__model_generation__commercial_model__name",
                 "variant_name",
                 "id",
             )
         if value == "price_asc":
             return queryset.order_by(
                 F("price_amount").asc(nulls_last=True),
-                "model__model_generation__make__name",
-                "model__model_generation__model",
+                "model__model_generation__commercial_model__make__name",
+                "model__model_generation__commercial_model__name",
                 "id",
             )
         if value == "price_desc":
             return queryset.order_by(
                 F("price_amount").desc(nulls_last=True),
-                "model__model_generation__make__name",
-                "model__model_generation__model",
+                "model__model_generation__commercial_model__make__name",
+                "model__model_generation__commercial_model__name",
                 "id",
             )
         return queryset.order_by(
             "-model__year",
-            "model__model_generation__make__name",
-            "model__model_generation__model",
+            "model__model_generation__commercial_model__make__name",
+            "model__model_generation__commercial_model__name",
             "variant_name",
             "id",
         )
 
 
 class RecallFilter(django_filters.FilterSet):
-    q = django_filters.CharFilter(method="filter_search")
+    q = django_filters.CharFilter(method="filter_search", label="Search")
 
     class Meta:
         model = Recall
@@ -247,5 +271,5 @@ class RecallFilter(django_filters.FilterSet):
             Q(recall_number__icontains=normalized_value)
             | Q(title__icontains=normalized_value)
             | Q(maker__name__icontains=normalized_value)
-            | Q(affected_models__model_generation__model__icontains=normalized_value)
+            | Q(affected_models__model_generation__commercial_model__name__icontains=normalized_value)
         ).distinct()

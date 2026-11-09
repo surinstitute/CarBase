@@ -12,6 +12,7 @@ export default defineEventHandler(
       "make",
       "group",
       "year",
+      "body_style",
       "powertrain_type",
       "assembly_country",
       "safety",

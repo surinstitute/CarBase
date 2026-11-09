@@ -1,6 +1,19 @@
 import uuid
 from pathlib import Path
 
+from django.core.exceptions import ValidationError
+from django.core.validators import (
+    FileExtensionValidator,
+    MaxValueValidator,
+    MinValueValidator,
+)
+from django.db import models
+from django.utils.text import slugify
+from django_countries.fields import CountryField
+from paradedb.indexes import ParadeDBIndex
+from paradedb.queryset import ParadeDBManager
+from paradedb.search import Tokenizer
+
 from catalog.types import (
     AccelerationMetric,
     ApprovalDomain,
@@ -38,25 +51,36 @@ from catalog.types import (
     TractionPosition,
     TransmissionType,
 )
-from django.core.exceptions import ValidationError
-from django.core.validators import (
-    FileExtensionValidator,
-    MaxValueValidator,
-    MinValueValidator,
-)
-from django.db import models
-from django.utils.text import slugify
-from django_countries.fields import CountryField
-from paradedb.indexes import ParadeDBIndex
-from paradedb.queryset import ParadeDBManager
-from paradedb.search import Tokenizer
+
+
+class CommercialModel(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    make = models.ForeignKey(
+        "Make", on_delete=models.CASCADE, related_name="commercial_models"
+    )
+    name = models.CharField(max_length=255)
+    objects = ParadeDBManager()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=("make", "name"), name="unique_commercial_model")
+        ]
+        indexes = [
+            ParadeDBIndex(
+                fields={"id": {}, "name": {"tokenizer": Tokenizer.unicode_words()}},
+                key_field="id",
+                name="commercial_model_search_idx",
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.make.name} {self.name}"
 
 
 class ModelGeneration(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    model = models.CharField(max_length=255)
-    make = models.ForeignKey(
-        "Make", on_delete=models.CASCADE, related_name="model_generations"
+    commercial_model = models.ForeignKey(
+        CommercialModel, on_delete=models.CASCADE, related_name="generations"
     )
     platform = models.ForeignKey(
         "Platform",
@@ -79,7 +103,6 @@ class ModelGeneration(models.Model):
                 fields={
                     "generation_prefix": {"tokenizer": Tokenizer.unicode_words()},
                     "id": {},
-                    "model": {"tokenizer": Tokenizer.unicode_words()},
                 },
                 key_field="id",
                 name="model_generation_search_idx",
@@ -87,14 +110,14 @@ class ModelGeneration(models.Model):
         ]
         constraints = [
             models.UniqueConstraint(
-                fields=("make", "model", "generation_prefix", "generation_number"),
+                fields=("commercial_model", "generation_prefix", "generation_number"),
                 name="unique_model_generation_identifier",
             )
         ]
 
     def __str__(self):
         generation = f" {self.generation}" if self.generation else ""
-        return f"{self.make.name} {self.model}{generation}".strip()
+        return f"{self.commercial_model}{generation}".strip()
 
     def save(self, *args, **kwargs):
         self.generation_prefix = self.generation_prefix or "Gen"
@@ -225,8 +248,8 @@ def model_image_upload_to(instance, filename):
         raise ValueError("Model images must be uploaded from a model placement.")
 
     model_generation = base_model.model_generation
-    make_slug = slugify(model_generation.make.name) or "unknown-make"
-    model_slug = slugify(model_generation.model) or "unknown-model"
+    make_slug = slugify(model_generation.commercial_model.make.name) or "unknown-make"
+    model_slug = slugify(model_generation.commercial_model.name) or "unknown-model"
     extension = Path(filename).suffix.lower()
     return f"catalog/images/{make_slug}/{model_slug}/{uuid.uuid4().hex}{extension}"
 
@@ -718,7 +741,10 @@ class Recall(models.Model):
 
 
 class SafetyPackage(models.Model):
-    name = models.CharField(max_length=255)
+    """Safety equipment; empty feature values mean unknown or not reported."""
+
+    # Package Name and Owner
+    name = models.CharField(max_length=128)
     group = models.ForeignKey(
         Group,
         on_delete=models.CASCADE,
@@ -726,14 +752,29 @@ class SafetyPackage(models.Model):
         null=True,
         blank=True,
     )
+
+    # Collision warnings:
+    # FCW (Forward Collision Warning)
+    # LDW (Lane Departure Warning)
+    # BSW (Blind Spot Warning)
+    # RCTW (Rear Cross-Traffic Warning)
     collisionWarnings_fcw = models.BooleanField(null=True, blank=True)
     collisionWarnings_ldw = models.BooleanField(null=True, blank=True)
     collisionWarnings_bsw = models.BooleanField(null=True, blank=True)
     collisionWarnings_rctw = models.BooleanField(null=True, blank=True)
+
+    # AEB (Automatic Emergency Braking)
+    # For city, pedestrian, highway, and rear collision scenarios.
     collisionIntervention_aebCity = models.BooleanField(null=True, blank=True)
     collisionIntervention_aebPedestrian = models.BooleanField(null=True, blank=True)
     collisionIntervention_aebHighway = models.BooleanField(null=True, blank=True)
     collisionIntervention_aebRear = models.BooleanField(null=True, blank=True)
+
+    # Driving assistance:
+    # LKA (Lane Keeping Assist)
+    # LCA (Lane Centering Assist)
+    # ACC (Adaptive Cruise Control)
+    # and direct driver monitoring.
     drivingControlAssistance_lka = models.BooleanField(null=True, blank=True)
     drivingControlAssistance_lca = models.BooleanField(null=True, blank=True)
     drivingControlAssistance_acc = models.BooleanField(null=True, blank=True)
@@ -744,18 +785,35 @@ class SafetyPackage(models.Model):
             db_column="drv_ctrl_asst_direct_monitoring",
         )
     )
+
+    # Rear-seat safety:
+    # child safety features
+    # ROA (Rear Occupant Alert) or end-of-trip reminders.
     rearSeatSafety_childSafety = models.BooleanField(null=True, blank=True)
     rearSeatSafety_rearOccupantAlertEndOfTripReminder = models.BooleanField(
         null=True, blank=True
     )
+
+    # Visibility and control:
+    # DRL (Daytime Running Lights)
+    # rear-view camera
+    # ESC (Electronic Stability Control)
+    # traction control
+    # ABS (Anti-lock Braking System)
     visibilityAndControl_drl = models.BooleanField(null=True, blank=True)
     visibilityAndControl_rearViewCamera = models.BooleanField(null=True, blank=True)
     visibilityAndControl_esc = models.BooleanField(null=True, blank=True)
     visibilityAndControl_tractionControl = models.BooleanField(null=True, blank=True)
     visibilityAndControl_abs = models.BooleanField(null=True, blank=True)
+
+    # Restraints: counts of front/rear side, head-protection (curtain), and knee
+    # airbags; presence of belt pretensioners and belt load limiters.
     restraints_airbagSideFront = models.PositiveIntegerField(null=True, blank=True)
     restraints_airbagSideRear = models.PositiveIntegerField(null=True, blank=True)
     restraints_headProtectionAirbag = models.PositiveIntegerField(null=True, blank=True)
+    restraints_beltPretensioner = models.BooleanField(null=True, blank=True)
+    restraints_beltLoadLimiter = models.BooleanField(null=True, blank=True)
+    restraints_kneeAirbag = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.name

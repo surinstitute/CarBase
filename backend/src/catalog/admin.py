@@ -18,6 +18,7 @@ from .models import (
     ChargeTimeResult,
     ChargingPackage,
     ChargingPort,
+    CommercialModel,
     ClimatePackage,
     ComplianceRecord,
     EfficiencyResult,
@@ -76,6 +77,39 @@ SAFETY_FEATURE_DESCRIPTIONS = {
     "restraints_airbagSideFront": "Front side airbags protect the torso of front occupants in side impacts.",
     "restraints_airbagSideRear": "Rear side airbags protect rear occupants in side impacts.",
     "restraints_headProtectionAirbag": "Head protection airbags, often curtain airbags, help protect occupants' heads in side impacts or rollovers.",
+    "restraints_beltPretensioner": "Seat-belt pretensioners tighten belts during a collision.",
+    "restraints_beltLoadLimiter": "Seat-belt load limiters reduce restraint force on occupants during a collision.",
+    "restraints_kneeAirbag": "Number of knee airbags fitted to the vehicle.",
+}
+
+SAFETY_FEATURE_LABELS = {
+    "name": "Safety package name",
+    "group": "Corporate group",
+    "collisionWarnings_fcw": "Forward Collision Warning (FCW)",
+    "collisionWarnings_ldw": "Lane Departure Warning (LDW)",
+    "collisionWarnings_bsw": "Blind Spot Warning (BSW)",
+    "collisionWarnings_rctw": "Rear Cross-Traffic Warning (RCTW)",
+    "collisionIntervention_aebCity": "City Automatic Emergency Braking (AEB)",
+    "collisionIntervention_aebPedestrian": "Pedestrian Automatic Emergency Braking (AEB)",
+    "collisionIntervention_aebHighway": "Highway Automatic Emergency Braking (AEB)",
+    "collisionIntervention_aebRear": "Rear Automatic Emergency Braking (AEB)",
+    "drivingControlAssistance_lka": "Lane Keeping Assist (LKA)",
+    "drivingControlAssistance_lca": "Lane Centering Assist (LCA)",
+    "drivingControlAssistance_acc": "Adaptive Cruise Control (ACC)",
+    "drivingControlAssistance_activeDrivingAssistanceDirectDriverMonitoring": "Direct Driver Monitoring",
+    "rearSeatSafety_childSafety": "Rear-Seat Child Safety",
+    "rearSeatSafety_rearOccupantAlertEndOfTripReminder": "Rear Occupant Alert / End-of-Trip Reminder",
+    "visibilityAndControl_drl": "Daytime Running Lights (DRL)",
+    "visibilityAndControl_rearViewCamera": "Rear-View Camera",
+    "visibilityAndControl_esc": "Electronic Stability Control (ESC)",
+    "visibilityAndControl_tractionControl": "Traction Control",
+    "visibilityAndControl_abs": "Anti-lock Braking System (ABS)",
+    "restraints_airbagSideFront": "Front Side Airbags",
+    "restraints_airbagSideRear": "Rear Side Airbags",
+    "restraints_headProtectionAirbag": "Head-Protection Airbags",
+    "restraints_beltPretensioner": "Seat-Belt Pretensioner",
+    "restraints_beltLoadLimiter": "Seat-Belt Load Limiter",
+    "restraints_kneeAirbag": "Knee Airbags",
 }
 
 CHARGING_PACKAGE_FIELD_DESCRIPTIONS = {
@@ -171,6 +205,9 @@ class SafetyPackageAdminForm(forms.ModelForm):
         for field_name, description in SAFETY_FEATURE_DESCRIPTIONS.items():
             if field_name in self.fields:
                 self.fields[field_name].help_text = description
+        for field_name, label in SAFETY_FEATURE_LABELS.items():
+            if field_name in self.fields:
+                self.fields[field_name].label = label
 
 
 class ChargingPackageAdminForm(forms.ModelForm):
@@ -632,7 +669,7 @@ class RegulatoryApprovalAdmin(GroupScopedAdminMixin, ModelAdmin):
         "standard",
         "vehicle__model__model",
     )
-    group_paths = ("vehicle__model__model_generation__make__group",)
+    group_paths = ("vehicle__model__model_generation__commercial_model__make__group",)
     inlines = (ApprovalSourceDocumentInline,)
 
 
@@ -640,20 +677,90 @@ class RegulatoryApprovalAdmin(GroupScopedAdminMixin, ModelAdmin):
 class ApprovalSourceDocumentAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("url", "publisher", "document_type", "is_primary")
     search_fields = ("url", "title", "publisher")
-    group_paths = ("approval__vehicle__model__model_generation__make__group",)
+    group_paths = ("approval__vehicle__model__model_generation__commercial_model__make__group",)
     foreignkey_group_paths = {
-        "approval": "vehicle__model__model_generation__make__group"
+        "approval": "vehicle__model__model_generation__commercial_model__make__group"
     }
 
 
 class VehicleLinkedAdmin(GroupScopedAdminMixin, ModelAdmin):
-    group_paths = ("vehicle__model__model_generation__make__group",)
-    foreignkey_group_paths = {"vehicle": "model__model_generation__make__group"}
+    group_paths = ("vehicle__model__model_generation__commercial_model__make__group",)
+    foreignkey_group_paths = {"vehicle": "model__model_generation__commercial_model__make__group"}
 
 
 @admin.register(SafetyPackage)
 class SafetyPackageAdmin(GroupScopedAdminMixin, ModelAdmin):
     form = SafetyPackageAdminForm
+    fieldsets = (
+        ("Identity", {"fields": ("name", "group")}),
+        (
+            "Collision Warnings",
+            {
+                "fields": (
+                    "collisionWarnings_fcw",
+                    "collisionWarnings_ldw",
+                    "collisionWarnings_bsw",
+                    "collisionWarnings_rctw",
+                )
+            },
+        ),
+        (
+            "Collision Intervention",
+            {
+                "fields": (
+                    "collisionIntervention_aebCity",
+                    "collisionIntervention_aebPedestrian",
+                    "collisionIntervention_aebHighway",
+                    "collisionIntervention_aebRear",
+                )
+            },
+        ),
+        (
+            "Driving Assistance",
+            {
+                "fields": (
+                    "drivingControlAssistance_lka",
+                    "drivingControlAssistance_lca",
+                    "drivingControlAssistance_acc",
+                    "drivingControlAssistance_activeDrivingAssistanceDirectDriverMonitoring",
+                )
+            },
+        ),
+        (
+            "Rear Seat Safety",
+            {
+                "fields": (
+                    "rearSeatSafety_childSafety",
+                    "rearSeatSafety_rearOccupantAlertEndOfTripReminder",
+                )
+            },
+        ),
+        (
+            "Visibility and Control",
+            {
+                "fields": (
+                    "visibilityAndControl_drl",
+                    "visibilityAndControl_rearViewCamera",
+                    "visibilityAndControl_esc",
+                    "visibilityAndControl_tractionControl",
+                    "visibilityAndControl_abs",
+                )
+            },
+        ),
+        (
+            "Restraints",
+            {
+                "fields": (
+                    "restraints_airbagSideFront",
+                    "restraints_airbagSideRear",
+                    "restraints_headProtectionAirbag",
+                    "restraints_beltPretensioner",
+                    "restraints_beltLoadLimiter",
+                    "restraints_kneeAirbag",
+                )
+            },
+        ),
+    )
     list_display = ("name", "group")
     search_fields = ("name", "group__name")
     group_paths = ("group",)
@@ -697,8 +804,8 @@ class ChargingPortAdmin(VehicleLinkedAdmin):
     form = ChargingPortAdminForm
     list_display = ("vehicle", "current_type", "connector", "location")
     search_fields = (
-        "vehicle__model__model_generation__model",
-        "vehicle__model__model_generation__make__name",
+        "vehicle__model__model_generation__commercial_model__name",
+        "vehicle__model__model_generation__commercial_model__make__name",
     )
 
 
@@ -714,8 +821,8 @@ class ChargeTimeResultAdmin(VehicleLinkedAdmin):
         "is_primary",
     )
     search_fields = (
-        "vehicle__model__model_generation__model",
-        "vehicle__model__model_generation__make__name",
+        "vehicle__model__model_generation__commercial_model__name",
+        "vehicle__model__model_generation__commercial_model__make__name",
         "note",
     )
 
@@ -732,8 +839,8 @@ class ComplianceRecordAdmin(VehicleLinkedAdmin):
         "is_primary",
     )
     search_fields = (
-        "vehicle__model__model_generation__model",
-        "vehicle__model__model_generation__make__name",
+        "vehicle__model__model_generation__commercial_model__name",
+        "vehicle__model__model_generation__commercial_model__make__name",
         "region",
         "standard",
         "classification",
@@ -743,8 +850,8 @@ class ComplianceRecordAdmin(VehicleLinkedAdmin):
 
 class VehicleResultAdmin(VehicleLinkedAdmin):
     search_fields = (
-        "vehicle__model__model_generation__model",
-        "vehicle__model__model_generation__make__name",
+        "vehicle__model__model_generation__commercial_model__name",
+        "vehicle__model__model_generation__commercial_model__make__name",
     )
 
 
@@ -812,14 +919,14 @@ class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("id", "model_generation", "year", "body_style")
     ordering = ("-year", "id")
     search_fields = (
-        "model_generation__model",
-        "model_generation__make__name",
+        "model_generation__commercial_model__name",
+        "model_generation__commercial_model__make__name",
         "model_generation__generation_prefix",
     )
     list_filter = ("year", "body_style")
     autocomplete_fields = ("model_generation",)
-    group_paths = ("model_generation__make__group",)
-    foreignkey_group_paths = {"model_generation": "make__group"}
+    group_paths = ("model_generation__commercial_model__make__group",)
+    foreignkey_group_paths = {"model_generation": "commercial_model__make__group"}
     inlines = (
         ModelImagePlacementInline,
         BaseModelWarrantyInline,
@@ -831,16 +938,43 @@ class BaseModelAdmin(GroupScopedAdminMixin, ModelAdmin):
 class ModelGenerationAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = (
         "id",
-        "make",
-        "model",
+        "commercial_model",
         "generation_prefix",
         "generation_number",
         "platform",
     )
-    search_fields = ("model", "make__name", "generation_prefix", "platform__name")
-    autocomplete_fields = ("make", "platform")
+    search_fields = ("commercial_model__name", "commercial_model__make__name", "generation_prefix", "platform__name")
+    group_paths = ("commercial_model__make__group",)
+
+    def has_module_permission(self, request):
+        return False
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+class ModelGenerationInline(GroupScopedInlineMixin, admin.TabularInline):
+    model = ModelGeneration
+    fields = ("generation_prefix", "generation_number", "platform")
+    autocomplete_fields = ("platform",)
+    foreignkey_group_paths = {"platform": "groups"}
+    extra = 0
+
+
+@admin.register(CommercialModel)
+class CommercialModelAdmin(GroupScopedAdminMixin, ModelAdmin):
+    list_display = ("name", "make")
+    search_fields = ("name", "make__name")
+    autocomplete_fields = ("make",)
     group_paths = ("make__group",)
-    foreignkey_group_paths = {"make": "group", "platform": "groups"}
+    foreignkey_group_paths = {"make": "group"}
+    inlines = (ModelGenerationInline,)
 
 
 @admin.register(Make)
@@ -948,14 +1082,14 @@ class PowerTrainAdmin(GroupScopedAdminMixin, ModelAdmin):
 class VehicleMonthlySalesAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("vehicle", "month", "year", "units_sold")
     search_fields = (
-        "vehicle__model__model_generation__model",
-        "vehicle__model__model_generation__make__name",
+        "vehicle__model__model_generation__commercial_model__name",
+        "vehicle__model__model_generation__commercial_model__make__name",
     )
     list_filter = ("year", "month")
     ordering = ("-year", "-month")
     autocomplete_fields = ("vehicle",)
-    group_paths = ("vehicle__model__model_generation__make__group",)
-    foreignkey_group_paths = {"vehicle": "model__model_generation__make__group"}
+    group_paths = ("vehicle__model__model_generation__commercial_model__make__group",)
+    foreignkey_group_paths = {"vehicle": "model__model_generation__commercial_model__make__group"}
 
 
 class RecallAdminForm(forms.ModelForm):
@@ -970,7 +1104,7 @@ class RecallAdminForm(forms.ModelForm):
         if (
             maker
             and affected_models
-            and affected_models.exclude(model_generation__make=maker).exists()
+            and affected_models.exclude(model_generation__commercial_model__make=maker).exists()
         ):
             raise ValidationError(
                 "Los modelos afectados deben pertenecer al maker del recall."
@@ -986,7 +1120,7 @@ class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
         "recall_number",
         "authority",
         "maker__name",
-        "affected_models__model_generation__model",
+        "affected_models__model_generation__commercial_model__name",
     )
     list_filter = ("status", "maker__country", "published_date")
     ordering = ("-published_date", "id")
@@ -994,7 +1128,7 @@ class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
     filter_horizontal = ("affected_models",)
     group_paths = ("maker__group",)
     foreignkey_group_paths = {"maker": "group"}
-    manytomany_group_paths = {"affected_models": "model_generation__make__group"}
+    manytomany_group_paths = {"affected_models": "model_generation__commercial_model__make__group"}
 
 
 @admin.register(Vehicle)
@@ -1029,8 +1163,8 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
     )
     search_fields = (
         "id",
-        "model__model_generation__model",
-        "model__model_generation__make__name",
+        "model__model_generation__commercial_model__name",
+        "model__model_generation__commercial_model__make__name",
         "model__model_generation__platform__name",
         "powertrain__name",
         "transmissionId__name",
@@ -1048,9 +1182,9 @@ class VehicleAdmin(GroupScopedAdminMixin, ModelAdmin):
         "powertrain_battery_packs_inline",
         "powertrain_fuel_tanks_inline",
     )
-    group_paths = ("model__model_generation__make__group",)
+    group_paths = ("model__model_generation__commercial_model__make__group",)
     foreignkey_group_paths = {
-        "model": "model_generation__make__group",
+        "model": "model_generation__commercial_model__make__group",
         "powertrain": "make__group",
         "transmissionId": "maker__group",
     }

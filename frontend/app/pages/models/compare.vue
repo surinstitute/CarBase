@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import type { ComparisonVehicle } from "@/composables/useCarComparison";
 import { powertrainArchitectureLabel } from "@/lib/powertrain";
 import { countryName, formatNumber } from "@/lib/utils";
+import { safetySections } from "#shared/safety";
 import type { CatalogSafetyRating } from "#shared/types/catalog";
 
 const comparison = useCarComparison();
@@ -275,73 +276,11 @@ function configurationRows(item: ComparisonVehicle) {
 
 function vehicleSafetyRows(item: ComparisonVehicle) {
   const safety = recordOf(item.vehicle.safety);
-  const sections = [
-    {
-      title: "Alertas de colisión",
-      key: "collisionWarnings",
-      fields: {
-        fcw: "Alerta de colisión frontal",
-        ldw: "Alerta de salida de carril",
-        bsw: "Alerta de punto ciego",
-        rctw: "Alerta de tráfico cruzado trasero",
-      },
-    },
-    {
-      title: "Intervención de colisión",
-      key: "collisionIntervention",
-      fields: {
-        aebCity: "Frenado autónomo en ciudad",
-        aebPedestrian: "Frenado autónomo para peatones",
-        aebHighway: "Frenado autónomo en carretera",
-        aebRear: "Frenado autónomo trasero",
-      },
-    },
-    {
-      title: "Asistencia a la conducción",
-      key: "drivingControlAssistance",
-      fields: {
-        lka: "Asistencia de mantenimiento de carril",
-        lca: "Centrado de carril",
-        acc: "Control de crucero adaptativo",
-        activeDrivingAssistanceDirectDriverMonitoring:
-          "Monitorización del conductor",
-      },
-    },
-    {
-      title: "Seguridad y visibilidad",
-      key: "visibilityAndControl",
-      fields: {
-        drl: "Luces diurnas",
-        rearViewCamera: "Cámara trasera",
-        esc: "Control electrónico de estabilidad",
-        tractionControl: "Control de tracción",
-        abs: "Frenos antibloqueo",
-      },
-    },
-    {
-      title: "Seguridad trasera",
-      key: "rearSeatSafety",
-      fields: {
-        childSafety: "Seguridad infantil",
-        rearOccupantAlertEndOfTripReminder: "Recordatorio de ocupante trasero",
-      },
-    },
-    {
-      title: "Airbags",
-      key: "restraints",
-      fields: {
-        airbagSideFront: "Airbags laterales delanteros",
-        airbagSideRear: "Airbags laterales traseros",
-        headProtectionAirbag: "Airbags de protección de cabeza",
-      },
-    },
-  ];
-
-  return sections.flatMap((section) => {
+  return safetySections.flatMap((section) => {
     const values = recordOf(safety[section.key]);
-    return Object.entries(section.fields).map(([field, feature]) => ({
-      label: `${section.title} · ${feature}`,
-      value: safetyValue(values[field]),
+    return section.fields.map(({ key, label }) => ({
+      label: `${section.title} · ${label}`,
+      value: safetyValue(values[key]),
     }));
   });
 }

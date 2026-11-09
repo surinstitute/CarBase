@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-DISABLE_MIGRATIONS="${DISABLE_MIGRATIONS:-false}"
+DISABLE_MIGRATIONS="${DISABLE_MIGRATIONS:-true}"
 
 if [ "$DISABLE_MIGRATIONS" != "true" ] && [ "$DISABLE_MIGRATIONS" != "True" ]; then
     echo "Applying database migrations..."

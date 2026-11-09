@@ -27,6 +27,20 @@ This command requires the OIDC and superuser environment variables. It is not
 needed for a new environment: the backend runs it automatically after its
 first migration.
 
+## Commercial models
+
+`GET /api/model-commercial/` and `GET /api/model-commercial/<id>/` include
+`generationCount`, `startYear`, and `endYear` for each commercial model.
+The year range covers all of its base models. The count includes generations
+without base models; when no base model years exist, both years are `null`.
+The collection accepts `q` (case-insensitive name search), `make` (make UUID),
+and `name` (case-insensitive exact name) filters.
+
+`GET /api/model-generations/<id>/` includes a `models` list containing the
+associated base models, using the same fields as `GET /api/model/`. The list is
+empty if the generation has no base models. The `/api/model-gen/` route is
+currently disabled.
+
 ## Safety star filter
 
 `GET /api/models/?safety_stars=0` and `GET /api/vehicles/?safety_stars=0`
@@ -35,3 +49,9 @@ recent safety assessment. If assessments share the latest year, the program
 name determines their order, as in model details. Models without assessments
 are excluded. For vehicles, this filter can be combined with the existing
 `safety` filter for vehicles with or without a safety package.
+
+## Vehicle body style filter
+
+`GET /api/vehicles/?body_style=suv` filters vehicles by the body style of their
+associated base model. The filter accepts the same body style values as
+`GET /api/models/` and can be combined with the other vehicle filters.

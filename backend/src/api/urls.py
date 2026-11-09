@@ -4,6 +4,7 @@ from rest_framework import routers
 from api.views import (
     BaseModelViewSet,
     BatteryPackViewSet,
+    CommercialModelViewSet,
     EMotorViewSet,
     EngineViewSet,
     FuelTankViewSet,
@@ -20,6 +21,10 @@ from api.views import (
 router = routers.DefaultRouter()
 router.register("groups", GroupViewSet, basename="group")
 router.register("makes", MakeViewSet, basename="make")
+router.register("model-commercial", CommercialModelViewSet, basename="modelcommercial")
+# router.register("model-gen", ModelGenerationViewSet, basename="modelgen")
+router.register("model", BaseModelViewSet, basename="model")
+# Keep existing collection URLs available for current clients.
 router.register("model-generations", ModelGenerationViewSet, basename="modelgeneration")
 router.register("models", BaseModelViewSet, basename="basemodel")
 router.register("platforms", PlatformViewSet, basename="platform")

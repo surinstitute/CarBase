@@ -16,8 +16,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { modelYearPath } from "@/lib/model-path";
-import type { ApiPage, CatalogMake, CatalogModel } from "#shared/types/catalog";
+import { modelYearPath, urlSegment } from "@/lib/model-path";
+import type { ApiPage, CatalogMake, CatalogModel, CommercialModel } from "#shared/types/catalog";
 
 interface GenerationGroup {
   id: string;
@@ -40,20 +40,35 @@ const { data: makes, status: makesStatus } = useQuery({
 const make = computed(
   () => makes.value?.results.find((item) => item.slug === makeSlug.value),
 );
-const { data: modelPage, status: modelsStatus } = useQuery({
-  key: () => ["model-overview", make.value?.id, modelName.value],
+const { data: commercialModels, status: commercialStatus } = useQuery({
+  key: () => ["commercial-models-for-make", make.value?.id],
   query: () =>
-    $fetch<ApiPage<CatalogModel>>("/api/models", {
-      query: {
-        model: modelName.value,
-        ...(make.value ? { make: make.value.id } : {}),
-      },
-    }),
+    make.value
+      ? $fetch<ApiPage<CommercialModel>>("/api/model-commercial", {
+          query: { make: make.value.id },
+        })
+      : Promise.resolve(null),
+});
+const commercialModel = computed(() =>
+  commercialModels.value?.results.find(
+    (item) =>
+      item.name.toLowerCase() === modelName.value.toLowerCase() ||
+      urlSegment(item.name) === modelName.value,
+  ),
+);
+const { data: modelPage, status: modelsStatus } = useQuery({
+  key: () => ["model-overview", make.value?.id, commercialModel.value?.name],
+  query: () =>
+    make.value && commercialModel.value
+      ? $fetch<ApiPage<CatalogModel>>("/api/models", {
+          query: { model: commercialModel.value.name, make: make.value.id },
+        })
+      : Promise.resolve(null),
 });
 const status = computed(() =>
-  makesStatus.value === "error" || modelsStatus.value === "error"
+  makesStatus.value === "error" || commercialStatus.value === "error" || modelsStatus.value === "error"
     ? "error"
-    : makesStatus.value === "pending" || modelsStatus.value === "pending"
+    : makesStatus.value === "pending" || commercialStatus.value === "pending" || modelsStatus.value === "pending"
     ? "pending"
     : "success",
 );
@@ -119,7 +134,7 @@ function yearLabel(years: number[]) {
       </p>
     </section>
     <section
-      v-else-if="make && models.length"
+      v-else-if="make && commercialModel"
       class="mx-auto w-full max-w-6xl space-y-8 px-4 py-8"
     >
       <Breadcrumb>
@@ -139,7 +154,7 @@ function yearLabel(years: number[]) {
           >
           <BreadcrumbSeparator />
           <BreadcrumbItem
-            ><BreadcrumbPage>{{ modelName }}</BreadcrumbPage></BreadcrumbItem
+            ><BreadcrumbPage>{{ commercialModel.name }}</BreadcrumbPage></BreadcrumbItem
           >
         </BreadcrumbList>
       </Breadcrumb>
@@ -149,11 +164,14 @@ function yearLabel(years: number[]) {
       >
         <div class="space-y-2">
           <p class="text-sm text-muted-foreground">{{ make.name }}</p>
-          <h1 class="text-3xl font-bold tracking-tight">{{ modelName }}</h1>
+          <h1 class="text-3xl font-bold tracking-tight">{{ commercialModel.name }}</h1>
         </div>
-        <Badge variant="secondary">{{ generations.length }} generaciones</Badge>
+        <Badge variant="secondary">{{ commercialModel.generationCount }} generaciones</Badge>
       </header>
 
+      <p v-if="!generations.length" class="text-sm text-muted-foreground">
+        Este modelo todavía no tiene años modelo registrados.
+      </p>
       <div class="space-y-8">
         <section
           v-for="generation in generations"

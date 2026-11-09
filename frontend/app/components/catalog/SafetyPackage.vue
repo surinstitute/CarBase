@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { safetySections } from "#shared/safety";
 import type { CatalogVehicleRecord } from "#shared/types/catalog";
 
 const props = withDefaults(
@@ -21,96 +22,28 @@ const props = withDefaults(
   },
 );
 
-const safetySections = [
-  {
-    title: "Alertas de colisión",
-    fields: {
-      fcw: "Alerta de colisión frontal",
-      ldw: "Alerta de salida de carril",
-      bsw: "Alerta de punto ciego",
-      rctw: "Alerta de tráfico cruzado trasero",
-    },
-  },
-  {
-    title: "Intervención de colisión",
-    fields: {
-      aebCity: "Frenado autónomo en ciudad",
-      aebPedestrian: "Frenado autónomo para peatones",
-      aebHighway: "Frenado autónomo en carretera",
-      aebRear: "Frenado autónomo trasero",
-    },
-  },
-  {
-    title: "Asistencia a la conducción",
-    fields: {
-      lka: "Asistencia de mantenimiento de carril",
-      lca: "Centrado de carril",
-      acc: "Control de crucero adaptativo",
-      activeDrivingAssistanceDirectDriverMonitoring:
-        "Monitorización del conductor",
-    },
-  },
-  {
-    title: "Seguridad y visibilidad",
-    fields: {
-      drl: "Luces diurnas",
-      rearViewCamera: "Cámara trasera",
-      esc: "Control electrónico de estabilidad",
-      tractionControl: "Control de tracción",
-      abs: "Frenos antibloqueo",
-    },
-  },
-  {
-    title: "Seguridad trasera",
-    fields: {
-      childSafety: "Seguridad infantil",
-      rearOccupantAlertEndOfTripReminder: "Recordatorio de ocupante trasero",
-    },
-  },
-  {
-    title: "Airbags",
-    fields: {
-      airbagSideFront: "Airbags laterales delanteros",
-      airbagSideRear: "Airbags laterales traseros",
-      headProtectionAirbag: "Airbags de protección de cabeza",
-    },
-  },
-] as const;
-
 const detailSafetySections = computed(() =>
   safetySections.map((section) => ({
     title: section.title,
-    values: safetyRows(
-      props.safety?.[sectionKey(section.title)],
-      section.fields,
-    ),
+    values: safetyRows(props.safety?.[section.key], section.fields),
   })),
 );
 
-function sectionKey(title: (typeof safetySections)[number]["title"]) {
-  const keys = {
-    "Alertas de colisión": "collisionWarnings",
-    "Intervención de colisión": "collisionIntervention",
-    "Asistencia a la conducción": "drivingControlAssistance",
-    "Seguridad y visibilidad": "visibilityAndControl",
-    "Seguridad trasera": "rearSeatSafety",
-    Airbags: "restraints",
-  } as const;
-  return keys[title];
-}
-
-function safetyRows(value: unknown, fields: Record<string, string>) {
+function safetyRows(
+  value: unknown,
+  fields: readonly { key: string; label: string }[],
+) {
   const section =
     value && typeof value === "object" && !Array.isArray(value)
       ? (value as Record<string, unknown>)
       : {};
 
-  return Object.entries(fields).map(([field, label]) => ({
+  return fields.map(({ key, label }) => ({
     label,
-    value: section[field],
+    value: section[key],
     present:
-      section[field] === true ||
-      (typeof section[field] === "number" && section[field] > 0),
+      section[key] === true ||
+      (typeof section[key] === "number" && section[key] > 0),
   }));
 }
 </script>

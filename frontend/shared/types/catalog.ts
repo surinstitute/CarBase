@@ -21,6 +21,17 @@ export interface CatalogMake {
   vehicleCount?: number;
 }
 
+export interface CommercialModel {
+  id: string;
+  name: string;
+  make: string;
+  makeName: string;
+  makeSlug: string;
+  generationCount: number;
+  startYear: number | null;
+  endYear: number | null;
+}
+
 export interface CatalogGroup {
   id: string;
   name: string;
@@ -119,9 +130,13 @@ export interface CatalogVehicleRecord {
     >;
     restraints?: Partial<
       Record<
-        "airbagSideFront" | "airbagSideRear" | "headProtectionAirbag",
+        | "airbagSideFront"
+        | "airbagSideRear"
+        | "headProtectionAirbag"
+        | "kneeAirbag",
         number
-      >
+      > &
+        Record<"beltPretensioner" | "beltLoadLimiter", boolean>
     >;
   } | null;
   images?: Record<string, { url: string; alt: string }>;
@@ -210,29 +225,4 @@ export interface CatalogModelDetail extends CatalogModel {
   safetyRatings: CatalogSafetyRating[];
   images: CatalogModelImage[];
   warranty: CatalogWarranty | null;
-}
-
-export interface CatalogModelCard {
-  id: string;
-  makeId: string;
-  makeName: string;
-  makeSlug: string;
-  modelName: string;
-  startYear: number;
-  endYear: number;
-  generations: Array<{
-    label: string;
-    modelId: string;
-  }>;
-}
-
-export interface CatalogModelCardsResponse {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  filterOptions: {
-    makes: Array<Pick<CatalogMake, "id" | "name" | "slug">>;
-    bodyStyles: string[];
-  };
-  results: CatalogModelCard[];
 }

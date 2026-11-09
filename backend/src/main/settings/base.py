@@ -495,10 +495,10 @@ UNFOLD = {
                         "link": reverse_lazy("admin:catalog_make_changelist"),
                     },
                     {
-                        "title": _("Generaciones"),
+                        "title": _("Modelos comerciales"),
                         "icon": "category",
                         "link": reverse_lazy(
-                            "admin:catalog_modelgeneration_changelist"
+                            "admin:catalog_commercialmodel_changelist"
                         ),
                     },
                     {

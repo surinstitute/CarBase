@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VariantDetailPage from "../../../../../../catalog/variants/[modelId]/[variantId].vue";
+import VariantDetailPage from "@/components/catalog/VariantDetailPage.vue";
 </script>
 
 <template>

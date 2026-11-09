@@ -1,6 +1,7 @@
 from catalog.models import (
     BaseModel,
     BatteryPack,
+    CommercialModel,
     EMotor,
     Engine,
     FuelTank,
@@ -83,17 +84,17 @@ class BaseModelSerializer(serializers.ModelSerializer):
     modelGenerationId = serializers.UUIDField(
         source="model_generation_id", read_only=True
     )
-    model = serializers.CharField(source="model_generation.model", read_only=True)
-    make = serializers.UUIDField(source="model_generation.make.makeId", read_only=True)
+    model = serializers.CharField(source="model_generation.commercial_model.name", read_only=True)
+    make = serializers.UUIDField(source="model_generation.commercial_model.make.makeId", read_only=True)
     generation = serializers.SerializerMethodField()
     platform = serializers.UUIDField(
         source="model_generation.platform_id", read_only=True, allow_null=True
     )
     makeName = serializers.CharField(
-        source="model_generation.make.name", read_only=True
+        source="model_generation.commercial_model.make.name", read_only=True
     )
     makeSlug = serializers.CharField(
-        source="model_generation.make.slug", read_only=True
+        source="model_generation.commercial_model.make.slug", read_only=True
     )
     platformName = serializers.CharField(
         source="model_generation.platform.name", read_only=True, allow_null=True
@@ -244,7 +245,9 @@ class PlatformSerializer(serializers.ModelSerializer):
 
 class ModelGenerationSerializer(serializers.ModelSerializer):
     generation = serializers.SerializerMethodField()
-    makeName = serializers.CharField(source="make.name", read_only=True)
+    model = serializers.CharField(source="commercial_model.name", read_only=True)
+    make = serializers.UUIDField(source="commercial_model.make_id", read_only=True)
+    makeName = serializers.CharField(source="commercial_model.make.name", read_only=True)
     platformName = serializers.CharField(
         source="platform.name", read_only=True, allow_null=True
     )
@@ -273,6 +276,35 @@ class ModelGenerationSerializer(serializers.ModelSerializer):
 
     def get_generation(self, obj):
         return obj.generation
+
+
+class ModelGenerationDetailSerializer(ModelGenerationSerializer):
+    models = BaseModelSerializer(source="model_years", many=True, read_only=True)
+
+    class Meta(ModelGenerationSerializer.Meta):
+        fields = ModelGenerationSerializer.Meta.fields + ("models",)
+
+
+class CommercialModelSerializer(serializers.ModelSerializer):
+    makeName = serializers.CharField(source="make.name", read_only=True)
+    makeSlug = serializers.CharField(source="make.slug", read_only=True)
+    generationCount = serializers.IntegerField(source="generation_count", read_only=True)
+    startYear = serializers.IntegerField(source="start_year", read_only=True, allow_null=True)
+    endYear = serializers.IntegerField(source="end_year", read_only=True, allow_null=True)
+
+    class Meta:
+        model = CommercialModel
+        fields = (
+            "id", "name", "make", "makeName", "makeSlug",
+            "generationCount", "startYear", "endYear",
+        )
+
+
+class CommercialModelDetailSerializer(CommercialModelSerializer):
+    generations = ModelGenerationSerializer(many=True, read_only=True)
+
+    class Meta(CommercialModelSerializer.Meta):
+        fields = CommercialModelSerializer.Meta.fields + ("generations",)
 
 
 class EngineSerializer(serializers.ModelSerializer):
@@ -419,7 +451,7 @@ class RecallSerializer(serializers.ModelSerializer):
         return [
             {
                 "id": str(model.id),
-                "name": model.model_generation.model,
+                "name": model.model_generation.commercial_model.name,
                 "year": model.year,
             }
             for model in obj.affected_models.all()
@@ -487,12 +519,12 @@ class VehicleSerializer(serializers.ModelSerializer):
 
     def get_lineage(self, obj):
         lineage = {
-            "makeId": str(obj.model.model_generation.make.makeId),
+            "makeId": str(obj.model.model_generation.commercial_model.make.makeId),
             "modelId": str(obj.model.id),
             "modelGenerationId": str(obj.model.model_generation_id),
-            "makeName": obj.model.model_generation.make.name,
-            "makeSlug": obj.model.model_generation.make.slug,
-            "modelName": obj.model.model_generation.model,
+            "makeName": obj.model.model_generation.commercial_model.make.name,
+            "makeSlug": obj.model.model_generation.commercial_model.make.slug,
+            "modelName": obj.model.model_generation.commercial_model.name,
             "modelYear": obj.model.year,
             "baseBodyStyle": obj.model.body_style,
         }
@@ -849,6 +881,9 @@ class VehicleSerializer(serializers.ModelSerializer):
                 "airbagSideFront": "restraints_airbagSideFront",
                 "airbagSideRear": "restraints_airbagSideRear",
                 "headProtectionAirbag": "restraints_headProtectionAirbag",
+                "beltPretensioner": "restraints_beltPretensioner",
+                "beltLoadLimiter": "restraints_beltLoadLimiter",
+                "kneeAirbag": "restraints_kneeAirbag",
             },
         )
         if restraints:
