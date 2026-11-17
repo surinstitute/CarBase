@@ -17,7 +17,12 @@ import {
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { modelYearPath, urlSegment } from "@/lib/model-path";
-import type { ApiPage, CatalogMake, CatalogModel, CommercialModel } from "#shared/types/catalog";
+import type {
+  ApiPage,
+  CatalogMake,
+  CatalogModel,
+  CommercialModel,
+} from "#shared/types/catalog";
 
 interface GenerationGroup {
   id: string;
@@ -49,12 +54,13 @@ const { data: commercialModels, status: commercialStatus } = useQuery({
         })
       : Promise.resolve(null),
 });
-const commercialModel = computed(() =>
-  commercialModels.value?.results.find(
-    (item) =>
-      item.name.toLowerCase() === modelName.value.toLowerCase() ||
-      urlSegment(item.name) === modelName.value,
-  ),
+const commercialModel = computed(
+  () =>
+    commercialModels.value?.results.find(
+      (item) =>
+        item.name.toLowerCase() === modelName.value.toLowerCase() ||
+        urlSegment(item.name) === modelName.value,
+    ),
 );
 const { data: modelPage, status: modelsStatus } = useQuery({
   key: () => ["model-overview", make.value?.id, commercialModel.value?.name],
@@ -66,9 +72,13 @@ const { data: modelPage, status: modelsStatus } = useQuery({
       : Promise.resolve(null),
 });
 const status = computed(() =>
-  makesStatus.value === "error" || commercialStatus.value === "error" || modelsStatus.value === "error"
+  makesStatus.value === "error" ||
+  commercialStatus.value === "error" ||
+  modelsStatus.value === "error"
     ? "error"
-    : makesStatus.value === "pending" || commercialStatus.value === "pending" || modelsStatus.value === "pending"
+    : makesStatus.value === "pending" ||
+      commercialStatus.value === "pending" ||
+      modelsStatus.value === "pending"
     ? "pending"
     : "success",
 );
@@ -154,7 +164,9 @@ function yearLabel(years: number[]) {
           >
           <BreadcrumbSeparator />
           <BreadcrumbItem
-            ><BreadcrumbPage>{{ commercialModel.name }}</BreadcrumbPage></BreadcrumbItem
+            ><BreadcrumbPage>{{
+              commercialModel.name
+            }}</BreadcrumbPage></BreadcrumbItem
           >
         </BreadcrumbList>
       </Breadcrumb>
@@ -164,9 +176,13 @@ function yearLabel(years: number[]) {
       >
         <div class="space-y-2">
           <p class="text-sm text-muted-foreground">{{ make.name }}</p>
-          <h1 class="text-3xl font-bold tracking-tight">{{ commercialModel.name }}</h1>
+          <h1 class="text-3xl font-bold tracking-tight">
+            {{ commercialModel.name }}
+          </h1>
         </div>
-        <Badge variant="secondary">{{ commercialModel.generationCount }} generaciones</Badge>
+        <Badge variant="secondary"
+          >{{ commercialModel.generationCount }} generaciones</Badge
+        >
       </header>
 
       <p v-if="!generations.length" class="text-sm text-muted-foreground">

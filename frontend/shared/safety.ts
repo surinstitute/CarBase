@@ -28,7 +28,8 @@ export const safetySections = [
     fields: [
       {
         key: "aebCity",
-        label: "Frenado automático en ciudad (City Automatic Emergency Braking)",
+        label:
+          "Frenado automático en ciudad (City Automatic Emergency Braking)",
       },
       {
         key: "aebPedestrian",
@@ -42,8 +43,7 @@ export const safetySections = [
       },
       {
         key: "aebRear",
-        label:
-          "Frenado automático trasero (Rear Automatic Emergency Braking)",
+        label: "Frenado automático trasero (Rear Automatic Emergency Braking)",
       },
     ],
   },
@@ -98,7 +98,8 @@ export const safetySections = [
       },
       {
         key: "esc",
-        label: "Control electrónico de estabilidad (Electronic Stability Control, ESC)",
+        label:
+          "Control electrónico de estabilidad (Electronic Stability Control, ESC)",
       },
       {
         key: "tractionControl",

@@ -679,7 +679,9 @@ class RegulatoryApprovalAdmin(GroupScopedAdminMixin, ModelAdmin):
 class ApprovalSourceDocumentAdmin(GroupScopedAdminMixin, ModelAdmin):
     list_display = ("url", "publisher", "document_type", "is_primary")
     search_fields = ("url", "title", "publisher")
-    group_paths = ("approval__vehicle__model__model_generation__commercial_model__make__group",)
+    group_paths = (
+        "approval__vehicle__model__model_generation__commercial_model__make__group",
+    )
     foreignkey_group_paths = {
         "approval": "vehicle__model__model_generation__commercial_model__make__group"
     }
@@ -687,7 +689,9 @@ class ApprovalSourceDocumentAdmin(GroupScopedAdminMixin, ModelAdmin):
 
 class VehicleLinkedAdmin(GroupScopedAdminMixin, ModelAdmin):
     group_paths = ("vehicle__model__model_generation__commercial_model__make__group",)
-    foreignkey_group_paths = {"vehicle": "model__model_generation__commercial_model__make__group"}
+    foreignkey_group_paths = {
+        "vehicle": "model__model_generation__commercial_model__make__group"
+    }
 
 
 @admin.register(SafetyPackage)
@@ -945,7 +949,12 @@ class ModelGenerationAdmin(GroupScopedAdminMixin, ModelAdmin):
         "generation_number",
         "platform",
     )
-    search_fields = ("commercial_model__name", "commercial_model__make__name", "generation_prefix", "platform__name")
+    search_fields = (
+        "commercial_model__name",
+        "commercial_model__make__name",
+        "generation_prefix",
+        "platform__name",
+    )
     group_paths = ("commercial_model__make__group",)
 
     def has_module_permission(self, request):
@@ -1091,7 +1100,9 @@ class VehicleMonthlySalesAdmin(GroupScopedAdminMixin, ModelAdmin):
     ordering = ("-year", "-month")
     autocomplete_fields = ("vehicle",)
     group_paths = ("vehicle__model__model_generation__commercial_model__make__group",)
-    foreignkey_group_paths = {"vehicle": "model__model_generation__commercial_model__make__group"}
+    foreignkey_group_paths = {
+        "vehicle": "model__model_generation__commercial_model__make__group"
+    }
 
 
 class RecallAdminForm(forms.ModelForm):
@@ -1106,7 +1117,9 @@ class RecallAdminForm(forms.ModelForm):
         if (
             maker
             and affected_models
-            and affected_models.exclude(model_generation__commercial_model__make=maker).exists()
+            and affected_models.exclude(
+                model_generation__commercial_model__make=maker
+            ).exists()
         ):
             raise ValidationError(
                 "Los modelos afectados deben pertenecer al maker del recall."
@@ -1130,7 +1143,9 @@ class RecallAdmin(GroupScopedAdminMixin, ModelAdmin):
     filter_horizontal = ("affected_models",)
     group_paths = ("maker__group",)
     foreignkey_group_paths = {"maker": "group"}
-    manytomany_group_paths = {"affected_models": "model_generation__commercial_model__make__group"}
+    manytomany_group_paths = {
+        "affected_models": "model_generation__commercial_model__make__group"
+    }
 
 
 @admin.register(Vehicle)

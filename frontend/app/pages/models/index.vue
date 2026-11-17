@@ -11,9 +11,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { ApiPage, CatalogMake, CommercialModel } from "#shared/types/catalog";
+import type {
+  ApiPage,
+  CatalogMake,
+  CommercialModel,
+} from "#shared/types/catalog";
 
 const route = useRoute();
 const router = useRouter();
@@ -85,83 +92,140 @@ function yearLabel(model: CommercialModel) {
 
     <section class="mx-auto w-full max-w-6xl space-y-6 px-4 py-8">
       <Card>
-        <CardContent class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-3 md:items-end">
+        <CardContent
+          class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-3 md:items-end"
+        >
           <label class="grid gap-2 text-sm font-medium">
             Buscar
             <Input v-model="search" placeholder="Modelo" />
           </label>
           <label class="grid gap-2 text-sm font-medium">
             Marca
-            <NativeSelect v-model="make" class="w-full" aria-label="Filtrar por marca">
-              <NativeSelectOption value="all">Todas las marcas</NativeSelectOption>
+            <NativeSelect
+              v-model="make"
+              class="w-full"
+              aria-label="Filtrar por marca"
+            >
+              <NativeSelectOption value="all"
+                >Todas las marcas</NativeSelectOption
+              >
               <NativeSelectOption
                 v-for="item in makes?.results"
                 :key="item.id"
                 :value="item.id"
-              >{{ item.name }}</NativeSelectOption>
+                >{{ item.name }}</NativeSelectOption
+              >
             </NativeSelect>
           </label>
-          <Button type="button" variant="outline" @click="resetFilters">Limpiar</Button>
+          <Button type="button" variant="outline" @click="resetFilters"
+            >Limpiar</Button
+          >
         </CardContent>
       </Card>
 
       <div class="flex items-center justify-between gap-4">
-        <h2 class="text-lg font-semibold tracking-tight">Modelos comerciales</h2>
+        <h2 class="text-lg font-semibold tracking-tight">
+          Modelos comerciales
+        </h2>
         <Badge variant="secondary">{{ data?.count ?? 0 }} resultados</Badge>
       </div>
-      <p v-if="status === 'error'" role="alert" class="text-sm text-destructive">
+      <p
+        v-if="status === 'error'"
+        role="alert"
+        class="text-sm text-destructive"
+      >
         No se pudo cargar el catálogo. Revisa que la API esté disponible.
       </p>
-      <p v-if="makesStatus === 'error'" role="alert" class="text-sm text-destructive">
+      <p
+        v-if="makesStatus === 'error'"
+        role="alert"
+        class="text-sm text-destructive"
+      >
         No se pudieron cargar las marcas. Revisa que la API esté disponible.
       </p>
-      <div v-if="status === 'pending'" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        v-if="status === 'pending'"
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
         <Skeleton v-for="item in 6" :key="item" class="h-40" />
       </div>
       <div
         v-else-if="status !== 'error' && data?.results.length"
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
       >
-        <Card v-for="model in data.results" :key="model.id" class="h-full transition-shadow hover:shadow-md">
+        <Card
+          v-for="model in data.results"
+          :key="model.id"
+          class="h-full transition-shadow hover:shadow-md"
+        >
           <CardHeader>
             <CardTitle>
               <NuxtLink
-                :to="`/makes/${encodeURIComponent(model.makeSlug)}/models/${encodeURIComponent(model.name)}`"
+                :to="`/makes/${encodeURIComponent(
+                  model.makeSlug,
+                )}/models/${encodeURIComponent(model.name)}`"
                 class="transition-colors hover:text-muted-foreground"
-              >{{ model.name }}</NuxtLink>
+                >{{ model.name }}</NuxtLink
+              >
             </CardTitle>
             <CardDescription>
-              <NuxtLink :to="`/makes/${encodeURIComponent(model.makeSlug)}`" class="hover:text-foreground">
+              <NuxtLink
+                :to="`/makes/${encodeURIComponent(model.makeSlug)}`"
+                class="hover:text-foreground"
+              >
                 {{ model.makeName }}
               </NuxtLink>
             </CardDescription>
           </CardHeader>
           <CardContent class="flex flex-wrap gap-2">
             <Badge variant="secondary">
-              {{ model.generationCount }} {{ model.generationCount === 1 ? "generación" : "generaciones" }}
+              {{ model.generationCount }}
+              {{ model.generationCount === 1 ? "generación" : "generaciones" }}
             </Badge>
-            <Badge v-if="yearLabel(model)" variant="outline">{{ yearLabel(model) }}</Badge>
+            <Badge v-if="yearLabel(model)" variant="outline">{{
+              yearLabel(model)
+            }}</Badge>
           </CardContent>
         </Card>
       </div>
       <Card v-else-if="status !== 'error'">
         <CardContent class="flex flex-col items-center gap-2 p-8 text-center">
-          <Icon name="tabler:car-off" class="size-8 text-muted-foreground" aria-hidden="true" />
+          <Icon
+            name="tabler:car-off"
+            class="size-8 text-muted-foreground"
+            aria-hidden="true"
+          />
           <h3 class="font-semibold">No hay modelos para mostrar</h3>
-          <p class="text-sm text-muted-foreground">Prueba a cambiar los filtros o vuelve más tarde.</p>
+          <p class="text-sm text-muted-foreground">
+            Prueba a cambiar los filtros o vuelve más tarde.
+          </p>
         </CardContent>
       </Card>
-      <nav v-if="pageCount > 1" class="flex items-center justify-center gap-3" aria-label="Paginación">
+      <nav
+        v-if="pageCount > 1"
+        class="flex items-center justify-center gap-3"
+        aria-label="Paginación"
+      >
         <Button
-          type="button" variant="outline" size="icon" :disabled="!data?.previous"
-          aria-label="Página anterior" @click="page--"
+          type="button"
+          variant="outline"
+          size="icon"
+          :disabled="!data?.previous"
+          aria-label="Página anterior"
+          @click="page--"
         >
           <Icon name="tabler:chevron-left" class="size-4" aria-hidden="true" />
         </Button>
-        <span class="text-sm text-muted-foreground">Página {{ page }} de {{ pageCount }}</span>
+        <span class="text-sm text-muted-foreground"
+          >Página {{ page }} de {{ pageCount }}</span
+        >
         <Button
-          type="button" variant="outline" size="icon" :disabled="!data?.next"
-          aria-label="Página siguiente" @click="page++"
+          type="button"
+          variant="outline"
+          size="icon"
+          :disabled="!data?.next"
+          aria-label="Página siguiente"
+          @click="page++"
         >
           <Icon name="tabler:chevron-right" class="size-4" aria-hidden="true" />
         </Button>

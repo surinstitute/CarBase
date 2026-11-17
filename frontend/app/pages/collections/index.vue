@@ -71,7 +71,8 @@ const { data, status } = useQuery({
               <NuxtLink
                 :to="`/collections/${encodeURIComponent(collection.slug)}`"
                 class="hover:underline underline-offset-4"
-              >{{ collection.title }}</NuxtLink>
+                >{{ collection.title }}</NuxtLink
+              >
             </CardTitle>
             <CardDescription>{{ collection.description }}</CardDescription>
           </CardHeader>

@@ -1,5 +1,3 @@
-from rest_framework import serializers
-
 from catalog.models import (
     BaseModel,
     BatteryPack,
@@ -19,6 +17,7 @@ from catalog.models import (
     Transmission,
     Vehicle,
 )
+from rest_framework import serializers
 
 ARCHITECTURE_MAP = {
     PowerTrainArchitecture.ICE: "ice",
@@ -87,8 +86,12 @@ class BaseModelSerializer(serializers.ModelSerializer):
     modelGenerationId = serializers.UUIDField(
         source="model_generation_id", read_only=True
     )
-    model = serializers.CharField(source="model_generation.commercial_model.name", read_only=True)
-    make = serializers.UUIDField(source="model_generation.commercial_model.make.makeId", read_only=True)
+    model = serializers.CharField(
+        source="model_generation.commercial_model.name", read_only=True
+    )
+    make = serializers.UUIDField(
+        source="model_generation.commercial_model.make.makeId", read_only=True
+    )
     generation = serializers.SerializerMethodField()
     platform = serializers.UUIDField(
         source="model_generation.platform_id", read_only=True, allow_null=True
@@ -250,7 +253,9 @@ class ModelGenerationSerializer(serializers.ModelSerializer):
     generation = serializers.SerializerMethodField()
     model = serializers.CharField(source="commercial_model.name", read_only=True)
     make = serializers.UUIDField(source="commercial_model.make_id", read_only=True)
-    makeName = serializers.CharField(source="commercial_model.make.name", read_only=True)
+    makeName = serializers.CharField(
+        source="commercial_model.make.name", read_only=True
+    )
     platformName = serializers.CharField(
         source="platform.name", read_only=True, allow_null=True
     )
@@ -291,15 +296,27 @@ class ModelGenerationDetailSerializer(ModelGenerationSerializer):
 class CommercialModelSerializer(serializers.ModelSerializer):
     makeName = serializers.CharField(source="make.name", read_only=True)
     makeSlug = serializers.CharField(source="make.slug", read_only=True)
-    generationCount = serializers.IntegerField(source="generation_count", read_only=True)
-    startYear = serializers.IntegerField(source="start_year", read_only=True, allow_null=True)
-    endYear = serializers.IntegerField(source="end_year", read_only=True, allow_null=True)
+    generationCount = serializers.IntegerField(
+        source="generation_count", read_only=True
+    )
+    startYear = serializers.IntegerField(
+        source="start_year", read_only=True, allow_null=True
+    )
+    endYear = serializers.IntegerField(
+        source="end_year", read_only=True, allow_null=True
+    )
 
     class Meta:
         model = CommercialModel
         fields = (
-            "id", "name", "make", "makeName", "makeSlug",
-            "generationCount", "startYear", "endYear",
+            "id",
+            "name",
+            "make",
+            "makeName",
+            "makeSlug",
+            "generationCount",
+            "startYear",
+            "endYear",
         )
 
 

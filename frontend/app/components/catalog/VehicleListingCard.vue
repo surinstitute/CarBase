@@ -12,7 +12,10 @@ type ListingCardModel = Pick<
   "id" | "makeId" | "makeName" | "modelName"
 > &
   Partial<
-    Pick<CatalogModel, "makeSlug" | "generation" | "year" | "baseBodyStyle" | "image">
+    Pick<
+      CatalogModel,
+      "makeSlug" | "generation" | "year" | "baseBodyStyle" | "image"
+    >
   >;
 
 const props = defineProps<{
@@ -78,7 +81,7 @@ const architectureLabel = computed(() =>
         :src="image.url"
         :alt="image.alt"
         class="h-full w-full object-cover"
-      >
+      />
       <Icon v-else name="tabler:car" class="size-12" aria-hidden="true" />
     </NuxtLink>
     <div class="flex min-w-0 flex-1 flex-col justify-between gap-5 p-5 md:p-6">
@@ -110,8 +113,8 @@ const architectureLabel = computed(() =>
                 isSelected
                   ? 'Quitar de comparación'
                   : comparison.isAtLimit.value
-                    ? 'Máximo de 4 autos seleccionados'
-                    : 'Añadir a comparación'
+                  ? 'Máximo de 4 autos seleccionados'
+                  : 'Añadir a comparación'
               "
               :aria-pressed="isSelected"
               :disabled="!isSelected && comparison.isAtLimit.value"
@@ -125,20 +128,13 @@ const architectureLabel = computed(() =>
             </Button>
           </div>
         </div>
-
       </div>
 
       <div class="flex flex-wrap gap-2">
-        <Badge
-          v-if="vehicle.lineage.generationId"
-          variant="outline"
-        >
+        <Badge v-if="vehicle.lineage.generationId" variant="outline">
           {{ vehicle.lineage.generationId }}
         </Badge>
-        <Badge
-          v-if="vehicle.configuration.bodyStyle"
-          variant="outline"
-        >
+        <Badge v-if="vehicle.configuration.bodyStyle" variant="outline">
           {{ vehicle.configuration.bodyStyle }}
         </Badge>
         <Badge v-if="architectureLabel" variant="outline">

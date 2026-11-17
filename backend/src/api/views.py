@@ -1,3 +1,29 @@
+from catalog.filters import (
+    POWERTRAIN_TYPE_ARCHITECTURES,
+    BaseModelFilter,
+    CommercialModelFilter,
+    RecallFilter,
+    VehicleFilter,
+)
+from catalog.models import (
+    BaseModel,
+    BatteryPack,
+    Collection,
+    CollectionVehicle,
+    CommercialModel,
+    EMotor,
+    Engine,
+    FuelTank,
+    Group,
+    Make,
+    ModelGeneration,
+    ModelImagePlacement,
+    Platform,
+    PowerTrain,
+    Recall,
+    Transmission,
+    Vehicle,
+)
 from django.db.models import Count, Max, Min, Prefetch
 from django.http import Http404
 from django.utils.text import slugify
@@ -27,32 +53,6 @@ from api.serializers import (
     RecallSerializer,
     TransmissionSerializer,
     VehicleSerializer,
-)
-from catalog.filters import (
-    POWERTRAIN_TYPE_ARCHITECTURES,
-    BaseModelFilter,
-    CommercialModelFilter,
-    RecallFilter,
-    VehicleFilter,
-)
-from catalog.models import (
-    BaseModel,
-    BatteryPack,
-    Collection,
-    CollectionVehicle,
-    CommercialModel,
-    EMotor,
-    Engine,
-    FuelTank,
-    Group,
-    Make,
-    ModelGeneration,
-    ModelImagePlacement,
-    Platform,
-    PowerTrain,
-    Recall,
-    Transmission,
-    Vehicle,
 )
 
 
@@ -124,7 +124,9 @@ def _vehicle_summary_queryset():
 class GroupViewSet(ReadOnlyModelViewSet):
     queryset = Group.objects.annotate(
         make_count=Count("makes", distinct=True),
-        model_year_count=Count("makes__commercial_models__generations__model_years", distinct=True),
+        model_year_count=Count(
+            "makes__commercial_models__generations__model_years", distinct=True
+        ),
         vehicle_count=Count(
             "makes__commercial_models__generations__model_years__model_vehicles",
             distinct=True,
@@ -137,10 +139,15 @@ class MakeViewSet(ReadOnlyModelViewSet):
     queryset = (
         Make.objects.select_related("group")
         .annotate(
-            model_generation_count=Count("commercial_models__generations", distinct=True),
-            model_year_count=Count("commercial_models__generations__model_years", distinct=True),
+            model_generation_count=Count(
+                "commercial_models__generations", distinct=True
+            ),
+            model_year_count=Count(
+                "commercial_models__generations__model_years", distinct=True
+            ),
             vehicle_count=Count(
-                "commercial_models__generations__model_years__model_vehicles", distinct=True
+                "commercial_models__generations__model_years__model_vehicles",
+                distinct=True,
             ),
         )
         .order_by("name")
@@ -166,11 +173,18 @@ class CommercialModelViewSet(ReadOnlyModelViewSet):
         queryset = super().get_queryset()
         if self.action == "retrieve":
             generations = (
-                ModelGeneration.objects.select_related("commercial_model__make", "platform")
-                .annotate(start_year=Min("model_years__year"), end_year=Max("model_years__year"))
+                ModelGeneration.objects.select_related(
+                    "commercial_model__make", "platform"
+                )
+                .annotate(
+                    start_year=Min("model_years__year"),
+                    end_year=Max("model_years__year"),
+                )
                 .order_by("generation_prefix", "generation_number", "id")
             )
-            queryset = queryset.prefetch_related(Prefetch("generations", queryset=generations))
+            queryset = queryset.prefetch_related(
+                Prefetch("generations", queryset=generations)
+            )
         return queryset
 
     def get_serializer_class(self):
@@ -195,9 +209,9 @@ def _base_model_queryset():
         .prefetch_related(
             Prefetch(
                 "image_placements",
-                queryset=ModelImagePlacement.objects.filter(is_visible=True).select_related(
-                    "image"
-                ),
+                queryset=ModelImagePlacement.objects.filter(
+                    is_visible=True
+                ).select_related("image"),
                 to_attr="visible_image_placements",
             )
         )
@@ -219,15 +233,24 @@ class ModelGenerationViewSet(ReadOnlyModelViewSet):
             start_year=Min("model_years__year"),
             end_year=Max("model_years__year"),
         )
-        .order_by("commercial_model__make__name", "commercial_model__name", "generation_prefix", "generation_number")
+        .order_by(
+            "commercial_model__make__name",
+            "commercial_model__name",
+            "generation_prefix",
+            "generation_number",
+        )
     )
     serializer_class = ModelGenerationSerializer
 
     def get_queryset(self):
         queryset = super().get_queryset()
         if self.action == "retrieve":
-            models = _base_model_queryset().prefetch_related(_catalog_vehicles_prefetch())
-            queryset = queryset.prefetch_related(Prefetch("model_years", queryset=models))
+            models = _base_model_queryset().prefetch_related(
+                _catalog_vehicles_prefetch()
+            )
+            queryset = queryset.prefetch_related(
+                Prefetch("model_years", queryset=models)
+            )
         return queryset
 
     def get_serializer_class(self):
@@ -309,7 +332,9 @@ class BaseModelViewSet(ReadOnlyModelViewSet):
         )
 
         if model_name:
-            queryset = queryset.filter(model_generation__commercial_model__name__iexact=model_name)
+            queryset = queryset.filter(
+                model_generation__commercial_model__name__iexact=model_name
+            )
 
         years = queryset.order_by("-year").values_list("year", flat=True).distinct()
         body_styles = (
@@ -407,8 +432,12 @@ class VehicleViewSet(ReadOnlyModelViewSet):
             "model__model_generation__commercial_model__make_id", flat=True
         ).distinct()
         group_ids = (
-            queryset.values_list("model__model_generation__commercial_model__make__group_id", flat=True)
-            .exclude(model__model_generation__commercial_model__make__group_id__isnull=True)
+            queryset.values_list(
+                "model__model_generation__commercial_model__make__group_id", flat=True
+            )
+            .exclude(
+                model__model_generation__commercial_model__make__group_id__isnull=True
+            )
             .distinct()
         )
         makes = Make.objects.filter(makeId__in=make_ids).order_by("name")
@@ -432,9 +461,11 @@ class VehicleViewSet(ReadOnlyModelViewSet):
 
 
 class CollectionViewSet(ReadOnlyModelViewSet):
-    queryset = Collection.objects.filter(is_published=True).annotate(
-        vehicle_count=Count("items")
-    ).order_by("title", "id")
+    queryset = (
+        Collection.objects.filter(is_published=True)
+        .annotate(vehicle_count=Count("items"))
+        .order_by("title", "id")
+    )
     serializer_class = CollectionSerializer
     lookup_field = "slug"
 
